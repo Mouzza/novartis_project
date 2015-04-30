@@ -1,0 +1,57 @@
+﻿@model System.Collections.ObjectModel.Collection<JPP.UI.Web.MVC.Models.UserRoleViewModel>
+
+@{
+   
+    Layout = "";
+    
+    ViewBag.Title = "Meest recente gebruikers";
+
+}
+@if (Request.IsAuthenticated)
+{
+    <div id="extraInfoTable">
+        <h2>Meest recente gebruikers</h2>
+
+        <table class="table table-striped">
+            <tr class="success">
+                <th>
+                    Gebruiker
+                <th>
+                    Datum
+                </th>
+          
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+
+                if (item.user.LockoutEndDateUtc == null)
+                {
+
+                    <tr>
+                        <td id="cellFocus">
+                            @Html.ActionLink(item.user.UserName, "Profiel", new { UserName = item.user.UserName }) 
+                           
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user.Created)
+
+                        </td>
+                       
+                    </tr>
+
+                }
+
+            }
+
+        </table>
+
+
+    </div>
+   
+
+}
+
+
+

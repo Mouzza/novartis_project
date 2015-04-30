@@ -1,0 +1,397 @@
+﻿
+html{
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+}
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom:80px;/* Height of the footer element */ 
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#logoImage{
+
+    height:86px;
+    float:left;
+    clip:rect(0px,200px,80px,0px);
+    position:absolute;
+}
+
+.linkExtraLogin{
+
+    float:left;
+    margin:1% 6%;
+    width:100%;
+}
+
+.footer {
+    font-size:18px;
+    padding:5px 5px;
+ 	width:100%;
+
+    bottom:0;
+    left:0;
+    background:#222;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+}
+
+.footerMenu{
+    padding:0;
+    margin:0;
+    list-style-type:none;
+
+}.footerMenu li{
+     display:inline;
+     margin-left:30px;
+ }
+#fotoWrapper {
+    min-height:100%;
+    position:relative;
+    background:url(../Images/afbeeldingen/homeImage.jpg) no-repeat center center fixed ;
+    background-size:100% 100%;
+        box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+}
+#videoWrapper {
+   background: url(../Images/afbeeldingen/homeImage4.png) no-repeat;
+    padding:0;
+    min-height:83%;
+    background-position:center center;
+    background-attachment:fixed;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    text-align: center;
+    position: relative;
+}
+
+#mainWrapper {
+    
+    min-height:50%;
+    position:relative;
+    background-color:white;
+    padding:50px;
+     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+}
+
+#mainWrapper2 {
+    
+    min-height:50%;
+    position:relative;
+    background-color:white;
+    padding:50px;
+}
+
+#extraWrapper {
+    
+    min-height:50%;
+    position:relative;
+    background-color:lightgray;
+    padding:50px;
+    box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+
+}
+
+#wrapper4 {
+    
+    min-height:50%;
+    position:relative;
+    background-color:white;
+    padding:50px;
+     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+}
+
+#socialFooter {
+    font-size:18px;
+    padding:2% 5px;
+    height:100px;
+ 	width:100%;
+    bottom:70px;
+    left:0;
+    background-color:darkgray;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+}
+#homePageLayer{
+
+
+}
+
+#to-top {
+  font-size:16px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 160px;
+  padding: 5px;
+  border: 2px solid black;
+  background: #f7f7f7;
+  color: #333;
+  text-align: center;
+  cursor: pointer;
+  display: none;
+  font-weight:bold;
+}
+
+#specialMenuItem{
+
+    color:turquoise;
+}
+
+#homeSlogan{
+    color:white;
+    font-size:5em;
+    text-align:center;
+    text-shadow: 4px 4px black;
+    font-family: 'Comic Sans MS';
+    font-weight:bold;
+
+}
+
+.centraal{
+     text-align:center;
+}
+.centraal2{
+     text-align:center;
+     color:white;
+     text-shadow:2px 2px 2px black;
+}
+.centraal2 img{
+  border:2px solid black;
+}
+
+#mainContent{
+    text-align:center;
+}
+#headerWrapper{
+
+    background-color:#C70000;
+}
+#centraleButton{
+    left:33%;
+    border:2px solid black;
+    background-color:rgba(255,255,255,.5);
+    padding:1%;
+    cursor:pointer;
+    border-radius:10px 10px 0 0;
+    bottom:0px;
+    position:absolute;
+    color:black;
+    font-size:24px;
+    font-weight:bold;
+    width:33%;
+    text-align:center;
+    float:none;
+}
+
+.eersteMenu{
+    height:70px;
+
+}
+.tweedeMenu{
+    margin-top:70px;
+    font-size:18px;
+    cursor:pointer;
+    background-color: RGBA(0,0,0,0.9);
+    color:white;
+}
+
+.centraal p{
+    text-align:justify;
+    width: 80%;
+    margin:0 auto;
+}
+
+#playButton{
+    cursor:pointer;
+    bottom:0;
+    float:none;
+    text-align:center;
+}
+
+#loginNaam a{
+    text-decoration:none;
+    font-size:18px;
+    color: black;
+    font-weight:bold;
+
+}
+
+.pagination-container{
+
+    text-align:center;
+}
+
+#settingsLayout{
+
+    color:blue;
+}
+#cellFocus{
+
+    font-weight:bold;
+}
+#paginaTitel{
+    font-family:'Century Gothic';
+    text-align:center;
+    font-size:45px;
+    width:100%;
+    font-weight:bold;
+    border:3px solid #E8500B;
+    padding:1%;
+    margin-bottom:5%;
+    background-color:lightgray;
+    border-radius:3%;
+    color:#00789A;
+ 
+
+}
+#spanZwart{
+    color:black;
+}
+
+#extraInfoTable{
+    float:left;
+    margin:1%;
+}
+
+#beloningSecion{
+
+    border:1px solid gray;
+    padding:1%;
+    margin-bottom:10px;
+    background-color:lightgrey;
+}
+
+#dossierModule{
+    border:2px solid black;
+    padding:5%;
+    background-color: white;
+}
+#dossierModuleContent{
+
+
+}
+
+ #dossierModule h4{
+     color:#00789a;
+
+ }
+  #dossierModule h2{
+    font-family:'Comic Sans MS'
+
+ }
+  #dossierModule p{
+   text-align:right;
+
+ }
+  #extrainfoSpan{
+   font-weight:bold;
+
+
+ }
+
+  #extraInfoParagraaf{
+
+      float:right;
+  }
+
+  #zelfdeGebruikerSpan{
+
+      color:green;
+      font-weight:bold;
+  }
+
+  .verborgen{
+      display:none;
+  }
+
+  #homeIconMenu{
+     
+      color:white;
+      height:60%;
+  }
+
+  #eersteMenuItem{
+      float:left;
+      width:40%;
+      background-color:blue;
+      height:100%;
+      padding:1%;
+      padding-top:2%;
+  }
+  
+  #tweedeMenuItem{
+      float:right;
+      width:60%;
+      background-color:green;
+      height:50%;
+      padding:1%;
+      padding-top:2%;
+
+  }
+  
+  #derdeMenuItem{
+      float:right;
+      width:60%;
+      background-color:purple;
+      height:50%;
+      padding:1%;
+      padding-top:2%;
+        
+  }
+
+  #derdeMenuItem a{
+      text-align:left;
+      float:left;
+      margin-left:15%;
+ 
+  }
+
+  #tweedeMenuItem a{
+      text-align:left;
+      float:right;
+      margin-right:15%;
+    
+  }
+
+     #homeTitelHeader{
+        padding:1%;
+         color:white;
+         background-color:black;
+         height:70px;
+         width:100%;
+     }
+
+     #homeTitelHeader button{
+         
+         float:left;
+         color:black;
+     }
+       #homeTitelHeader p{
+       font-size:30px;
+      text-align:center;
+     }

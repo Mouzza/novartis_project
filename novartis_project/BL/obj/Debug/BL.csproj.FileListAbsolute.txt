@@ -1,0 +1,69 @@
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.pdb
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\obj\Debug\JPP.BL.pdb
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.dll.config
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\EntityFramework.dll
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\EntityFramework.xml
+C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.BL.dll.config
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\EntityFramework.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\EntityFramework.xml
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\BL\obj\Debug\JPP.BL.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.BL.dll.config
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\EntityFramework.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\EntityFramework.xml
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\BL\obj\Debug\JPP.BL.pdb

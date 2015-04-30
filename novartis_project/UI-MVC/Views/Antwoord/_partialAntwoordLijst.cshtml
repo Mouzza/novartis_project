@@ -1,0 +1,133 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Antwoorden.DossierAntwoord>
+@using PagedList
+@using PagedList.Mvc
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "_partialAntwoordLijst";
+    Layout = "";
+    var zelfdeGebruiker = false;
+}
+
+
+
+<div id="antwoordlijstWrapper">
+
+    @if (ViewBag.Aantal > 1)
+    {
+
+        <h2>@ViewBag.Aantal  Antwoorden</h2>
+    }
+    else if (ViewBag.Aantal == 1)
+    {
+        <h2>@ViewBag.Aantal  Antwoord</h2>
+    }
+    
+<p>
+    @Html.ActionLink("Geef een antwoord", "Create")
+</p>
+
+    <div id="pager">
+        @Html.PagedListPager(Model, page => Url.Action("_partialAntwoordLijst",
+    new { page }))
+
+        @foreach (var item in Model)
+        {
+            if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
+            {
+                zelfdeGebruiker = true;
+
+            }
+            else
+            {
+                zelfdeGebruiker = false;
+            }
+
+            <p id="extraInfoParagraaf">
+                <span id="extrainfoSpan">
+                    Gebruiker:
+                </span>
+                @if (zelfdeGebruiker)
+                {
+
+                    <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
+                }
+                else
+                {
+                    <span>@item.gebruikersNaam</span>
+                }
+
+                | <span id="extrainfoSpan">Datum: </span> @item.datum
+            </p>
+
+            if (zelfdeGebruiker)
+            {
+                @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
+            }
+            <table class="table">
+                <tr>
+                    <th>
+                        Inhoud
+                    </th>
+                    <th>Aantal stemmen</th>
+                </tr>
+
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.inhoud)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.aantalStemmen)
+
+                    </td>
+
+
+                </tr>
+
+                <tr>
+                    <th>
+                        Extra info
+                    </th>
+                    <th>
+                        Dossier volledigheid (%)
+                    </th>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.extraInfo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.percentageVolledigheid)
+                    </td>
+
+                </tr>
+            </table>
+
+        }
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+    $(function () {
+        $('#pager').on('click', 'a', function () {
+            $.ajax({
+                url: this.href,
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#antwoordlijstWrapper').html(result);
+                }
+            });
+            return false;
+        });
+    });
+
+</script>

@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@if (Request.IsAuthenticated)
+{
+
+
+
+    <div id="homeIconMenu" class="row verborgen">
+        <div id="eersteMenuItem" class="col-md-4 centraal">
+
+            <a href="#"><img src="~/Images/homeSpecialMenu icons/iconStart.png"></a>
+            <h2>Bedenk</h2>
+            <h2>Comment</h2>
+            <h2>Like</h2>
+        
+            <h4>Crëer je eigen pagina, <br>
+            of geef mening over een bestaand pagina.</h4>
+
+        </div>
+        <div id="tweedeMenuItem" class="col-md-4 centraal">
+
+            <a href="#"><img src="~/Images/homeSpecialMenu icons/iconFinish.png"></a>
+            <h2>Volg op</h2>
+            <h4>Wat gebeurt er met de voorstelen die gewonnen hebben.</h4>
+         
+        </div>
+    
+
+        <div id="derdeMenuItem" class="col-md-4 centraal">
+
+            <a href="#"><img src="~/Images/homeSpecialMenu icons/iconComing.png"></a>
+            <h2>Comming soon</h2>
+            <h4>Vind hier de toekomstige projecten.</h4>
+        </div>
+
+    </div>
+    <div id="homeTitelHeader">
+        <button id="hide">Verberg</button>
+        <button id="show">Toon</button>
+        <p>
+            <span>Actieve dossier module</span>
+        </p>
+        
+
+
+
+    </div>
+
+
+    <div id="mainWrapper2">
+        <div class="container body-content">
+
+
+            @{ Html.RenderAction("Actief", "Module");}
+
+            @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord");}
+
+            <hr />
+
+
+            @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
+            @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
+            @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
+
+
+
+
+
+
+        </div>
+        <hr />
+    </div>
+
+}
+else
+{
+
+    <div id="mainWrapper2">
+        <div class="container body-content">
+
+            <div class="row">
+                <div class="col-md-4 centraal">
+
+                    <a href="#"><img src="~/Images/websitePage logos/iconIdea.png"></a>
+                    <h2>Bedenk</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
+                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                    </p>
+                </div>
+                <div class="col-md-4 centraal">
+
+                    <a href="#"><img src="~/Images/websitePage logos/iconSamenwerken.png"></a>
+                    <h2>Werk samen</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
+                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                    </p>
+                </div>
+                <div class="col-md-4 centraal">
+
+                    <a href="#"><img src="~/Images/websitePage logos/iconLike.png"></a>
+                    <h2>Like</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
+                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                    </p>
+                </div>
+
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-4 centraal">
+
+                    <a href="#"><img src="~/Images/websitePage logos/iconExpert.png"></a>
+                    <h2>Vraag aan expert</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
+                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                    </p>
+                </div>
+                <div class="col-md-4 centraal">
+
+                    <a href="#"><img src="~/Images/websitePage logos/iconQuestion.png"></a>
+                    <h2>Comment</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
+                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                    </p>
+                </div>
+                <div class="col-md-4 centraal">
+
+                    <a href="#"><img src="~/Images/websitePage logos/iconVolgOp.png"></a>
+                    <h2>Volg op</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
+                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+        <hr />
+    </div>
+}
+

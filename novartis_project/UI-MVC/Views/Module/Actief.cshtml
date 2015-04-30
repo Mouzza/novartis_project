@@ -1,0 +1,100 @@
+﻿@model JPP.BL.Domain.Modules.DossierModule
+
+@{
+    ViewBag.Title = "actief";
+    Layout = "";
+}
+<div id="dossierModule">
+
+    <h2>Titel: @Model.naam</h2>
+    <h4>Geef je mening en maak een eigen dossier! Maak kans op een prijs! </h4>
+    <hr />
+    <h2>Vraag: @Model.centraleVraag.inhoud</h2>
+    <p><span id="extrainfoSpan">Auteur: @Model.adminNaam </span> | <span id="extrainfoSpan">Thema: </span> @Model.thema.naam | <span id="extrainfoSpan">Aantal antwoorden: </span> @Model.dossierAntwoorden.Count</p>
+    <div id="dossierModuleContent">
+        <div id="beloningSecion">
+            <h4>Beloning</h4>
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt>
+                    Beloning:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.beloning.FirstOrDefault().naam)
+                </dd>
+
+                <dt>
+                    Beschrijving:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.beloning.FirstOrDefault().beschrijving)
+                </dd>
+                <dt>
+                    Aantal mogelijke winnaars:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.centraleVraag.aantalWinAntwoorden)
+                </dd>
+
+            </dl>
+
+
+        </div>
+        <div id="beloningSecion">
+            <h4>Extra info</h4>
+            <hr />
+            <dl class="dl-horizontal">
+
+                <dt>
+                    Begin datum:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.beginDatum)
+                </dd>
+
+                <dt>
+                    Eind datum:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.eindDatum)
+                </dd>
+
+                <br />
+                <dt>
+                    Status:
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.status)
+                </dd>
+
+            </dl>
+
+
+        </div>
+
+
+    </div>
+
+    
+</div>
+
+
+<p>
+    @if(User.IsInRole("Admin")){
+
+        @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+    }
+ 
+
+</p>
+
+
+
+
