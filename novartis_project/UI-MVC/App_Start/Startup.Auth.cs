@@ -56,8 +56,8 @@ namespace JPP.UI.Web.MVC
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "874796782564271",
-               appSecret: "5643fccd2d924933ae80a3f494587dfa");
+               appId: "793904920716898",
+               appSecret: "fbc65fc070d129a78c8146fdc9ac4ff8");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
