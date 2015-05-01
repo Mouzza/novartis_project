@@ -329,7 +329,7 @@ textarea {
       display:none;
   }
 
-  #homeIconMenu{
+   #homeIconMenu{
      
       color:white;
       height:60%;
@@ -337,30 +337,35 @@ textarea {
 
   #eersteMenuItem{
       float:left;
-      width:40%;
-      background-color:blue;
+      width:35%;
+      background-color:#199eb0;
       height:100%;
-      padding:1%;
-      padding-top:2%;
-  }
-  
-  #tweedeMenuItem{
-      float:right;
-      width:60%;
-      background-color:green;
-      height:50%;
       padding:1%;
       padding-top:2%;
 
   }
   
-  #derdeMenuItem{
+  #tweedeMenuItem{
       float:right;
-      width:60%;
-      background-color:purple;
+      width:65%;
+      background-color:#69bd21;
       height:50%;
       padding:1%;
       padding-top:2%;
+      box-shadow: inset 10px 0px 50px -7px #000;
+     
+
+  }
+  
+  #derdeMenuItem{
+      float:right;
+      width:65%;
+      background-color:#c01e84;
+      height:50%;
+      padding:1%;
+      padding-top:2%;
+      box-shadow: inset 10px 10px 50px -7px #000;
+
         
   }
 
@@ -368,6 +373,7 @@ textarea {
       text-align:left;
       float:left;
       margin-left:15%;
+     
  
   }
 
