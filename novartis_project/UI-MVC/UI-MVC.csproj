@@ -320,13 +320,16 @@
     <Content Include="Images\menu logos\adminpanelLogo.png" />
     <Content Include="Images\menu logos\berichtenLogo.png" />
     <Content Include="Images\menu logos\contactpersonenLogo.png" />
+    <Content Include="Images\menu logos\dossier.png" />
     <Content Include="Images\menu logos\gebruikersLogo.png" />
     <Content Include="Images\menu logos\loginsLogo.png" />
+    <Content Include="Images\menu logos\oplosing.png" />
     <Content Include="Images\menu logos\profielLogo.png" />
     <Content Include="Images\menu logos\profielSettingsLogo.png" />
     <Content Include="Images\menu logos\recensiesLogo.png" />
     <Content Include="Images\menu logos\rolesLogo.png" />
     <Content Include="Images\page icons\goBack2.png" />
+    <Content Include="Images\page icons\new.png" />
     <Content Include="Images\socialMedia icons\fb.png" />
     <Content Include="Images\socialMedia icons\google.png" />
     <Content Include="Images\socialMedia icons\twitter.png" />
@@ -385,6 +388,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\websiteAnimation.js" />
+    <Content Include="Scripts\websiteRouting.js" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -456,6 +460,8 @@
     <Content Include="Views\Antwoord\Lijst.cshtml" />
     <Content Include="Views\Antwoord\_partialAntwoordLijst.cshtml" />
     <Content Include="Views\Antwoord\Create.cshtml" />
+    <Content Include="Views\Module\Dossier.cshtml" />
+    <Content Include="Views\Home\Main.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

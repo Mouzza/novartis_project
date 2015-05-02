@@ -11,7 +11,7 @@
 
 
 
-<div id="antwoordlijstWrapper">
+
 
     @if (ViewBag.Aantal > 1)
     {
@@ -23,8 +23,9 @@
         <h2>@ViewBag.Aantal  Antwoord</h2>
     }
     
-<p>
-    @Html.ActionLink("Geef een antwoord", "Create")
+<p id="antwoordlijstCreateSection">
+    <img src="~/Images/page icons/new.png" alt="Alternate Text" />
+    @Html.ActionLink("Nieuw oplossing", "Create")
 </p>
 
     <div id="pager">
@@ -65,45 +66,22 @@
                 @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
             }
             <table class="table">
-                <tr>
-                    <th>
-                        Inhoud
-                    </th>
-                    <th>Aantal stemmen</th>
-                </tr>
+            
 
                 <tr>
 
-                    <td>
+                    <td id="antwoordInhoud">
                         @Html.DisplayFor(modelItem => item.inhoud)
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.aantalStemmen)
+                    <td id="aantalStemmen">
+                         +@Html.DisplayFor(modelItem => item.aantalStemmen)
 
                     </td>
 
 
                 </tr>
 
-                <tr>
-                    <th>
-                        Extra info
-                    </th>
-                    <th>
-                        Dossier volledigheid (%)
-                    </th>
-
-
-                </tr>
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.extraInfo)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.percentageVolledigheid)
-                    </td>
-
-                </tr>
+            
             </table>
 
         }
@@ -111,7 +89,6 @@
 
     </div>
 
-</div>
 
 
 

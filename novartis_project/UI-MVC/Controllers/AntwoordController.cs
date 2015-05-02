@@ -84,15 +84,15 @@ namespace JPP.UI.Web.MVC.Controllers
                 DossierModule dossiermodule = dossManager.readActieveDossierModule();
                 
                 dossierAntwoord.datum = DateTime.Now;
-                //dossierAntwoord.aantalFlags = 0;   Wat is aantalFlags?
+                dossierAntwoord.aantalFlags = 0;  
                 dossierAntwoord.aantalStemmen = 0;
                 dossierAntwoord.statusOnline = true;
                 dossierAntwoord.module = dossiermodule;
-                dossierAntwoord.evenement = new Evenement();
-                dossierAntwoord.comments = new List<Comment>();
                 dossierAntwoord.gebruikersNaam= User.Identity.GetUserName();
-                antwManager.createAgendaAntwoord(dossierAntwoord);
 
+                antwManager.createDossierAntwoord(dossierAntwoord);
+                dossiermodule.dossierAntwoorden.Add(dossierAntwoord);
+                dossManager.updateModule(dossiermodule);
                 return RedirectToAction("Index","Home");
                  
             }

@@ -2,88 +2,89 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@{
+    Html.RenderAction("Actief", "Module");
 }
 
-<h2>Geef een uitgewerkte oplossing</h2>
+<div id="antwoordWrapper">
+    <h2>Mijn oplossing</h2>
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.gebruikerNaam)
-    @Html.HiddenFor(model => model.id)
-    @Html.HiddenFor(model => model.percentageVolledigheid)
-    @Html.HiddenFor(model => model.statusOnline)
-    @Html.HiddenFor(model => model.datum)
-    @Html.HiddenFor(model => model.aantalStemmen)
-    @Html.HiddenFor(model => model.persoonlijkeTags)
-    @Html.HiddenFor(model => model.tags)
-    @Html.HiddenFor(model => model.aantalFlags)
-    @Html.HiddenFor(model => model.evenement)
-  
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.gebruikersNaam)
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.percentageVolledigheid)
+        @Html.HiddenFor(model => model.statusOnline)
+        @Html.HiddenFor(model => model.datum)
+        @Html.HiddenFor(model => model.aantalStemmen)
+        @Html.HiddenFor(model => model.persoonlijkeTags)
+        @Html.HiddenFor(model => model.vasteTags)
+        @Html.HiddenFor(model => model.aantalFlags)
+        @Html.HiddenFor(model => model.evenement)
+        @Html.HiddenFor(model => model.module)
 
 
-    <div class="form-horizontal">
-        <h4>Antwoord</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Medebeheerder</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.medebeheerderNaam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.medebeheerderNaam, "", new { @class = "text-danger" })
+
+        <div class="form-horizontal">
+      
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Antwoord</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.inhoud, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.inhoud, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Extra info</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.extraInfo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.extraInfo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Extra vraag</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.extraVraag, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.extraVraag, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Bevestig" class="btn btn-default" />
+                </div>
             </div>
         </div>
+    }
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Expert</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.expertNaam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.expertNaam, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Antwoord</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.inhoud, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.inhoud, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Extra info</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.extraInfo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.extraInfo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-   
-
-
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Extra vraag</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.extraVraag, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.extraVraag, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Bevestig" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Ga terug", "Index")
     </div>
-}
 
-<div>
-    @Html.ActionLink("Ga terug", "Index")
 </div>
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

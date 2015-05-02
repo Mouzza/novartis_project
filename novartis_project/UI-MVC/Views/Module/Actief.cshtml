@@ -3,16 +3,41 @@
 @{
     ViewBag.Title = "actief";
     Layout = "";
+
 }
 <div id="dossierModule">
+    <p>
+        @if (User.IsInRole("Admin"))
+        {
 
-    <h2>Titel: @Model.naam</h2>
-    <h4>Geef je mening en maak een eigen dossier! Maak kans op een prijs! </h4>
-    <hr />
-    <h2>Vraag: @Model.centraleVraag.inhoud</h2>
-    <p><span id="extrainfoSpan">Auteur: @Model.adminNaam </span> | <span id="extrainfoSpan">Thema: </span> @Model.thema.naam | <span id="extrainfoSpan">Aantal antwoorden: </span> @Model.dossierAntwoorden.Count</p>
-    <div id="dossierModuleContent">
-        <div id="beloningSecion">
+            @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+        }
+
+
+    </p>
+    <p><span id="extrainfoSpan">Auteur: @Model.adminNaam </span> | <span id="extrainfoSpan">Thema: </span> @Model.thema.naam | <span id="extrainfoSpan">Aantal antwoorden: </span> @Model.dossierAntwoorden.Count | <span id="extrainfoSpan">Aantal keren bekeken: </span> @ApplicationInstance.Application["Totaluser"]</p>
+
+
+    <img id="moduleIcon" src="~/Images/menu logos/dossier.png" alt="Alternate Text" />
+
+    <div id="moduleInhoud">
+
+        <h1 id="moduleTitel">Bedenk een oplossing! </h1>
+
+        <h4>Geef je mening en maak een eigen dossier! Maak kans op een prijs! </h4>
+
+
+        <h1 id="centraleVraag">@Model.centraleVraag.inhoud</h1>
+        <p>@Model.centraleVraag.extraInfo</p>
+   
+     
+
+    </div>
+
+ 
+   
+    @*<div id="dossierModuleContent">
+        <div id="beloningSection">
             <h4>Beloning</h4>
             <hr />
             <dl class="dl-horizontal">
@@ -44,7 +69,7 @@
 
 
         </div>
-        <div id="beloningSecion">
+        <div id="extraInfoSection">
             <h4>Extra info</h4>
             <hr />
             <dl class="dl-horizontal">
@@ -67,7 +92,7 @@
 
                 <br />
                 <dt>
-                    Status:
+                    Actief:
                 </dt>
 
                 <dd>
@@ -80,20 +105,16 @@
         </div>
 
 
-    </div>
+    </div>*@
 
-    
+
 </div>
 
 
-<p>
-    @if(User.IsInRole("Admin")){
 
-        @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
-    }
- 
 
-</p>
+
+
 
 
 

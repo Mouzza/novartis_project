@@ -64,6 +64,8 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return View(model);
         }
+
+
         // /Gebruiker/WijzigGebruiker
         public ActionResult WijzigGebruiker(string id)
         {

@@ -35,7 +35,7 @@ $(document).ready(function () {
         var lastPart = window.location.href.split("/").pop();
         //var value = '#' + lastPart.toLowerCase() + 'Wrapper';
 
-        if (lastPart == 'Register' || lastPart == 'ForgotPassword' || lastPart=="Login" || lastPart=="Diensten" || lastPart.substring(0, 12)=="ConfirmEmail") {
+        if (lastPart == 'Register' || lastPart == 'ForgotPassword' || lastPart=="Login" || lastPart=="Diensten" || lastPart.substring(0, 12)=="ConfirmEmail" || lastPart=="Contact") {
             $('html, body').animate({ scrollTop: $('#mainWrapper').offset().top -80});
         }
 
@@ -82,7 +82,8 @@ $(document).ready(function () {
             $("#hide").css('display', 'block');
             $("#show").css('display', 'none');
             window.localStorage.setItem("hideMenu", "visible")
-        });
+    });
+
 
 
 });

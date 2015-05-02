@@ -26,7 +26,11 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return View(DossierModules);
         }
+       public ActionResult Dossier()
+       {
 
+           return View();
+       }
         public ActionResult Actief()
         {
            //DossierModule actieveDossierModule = moduleManager.readAllDossierModules().Where(dmod => dmod.status == true).First();

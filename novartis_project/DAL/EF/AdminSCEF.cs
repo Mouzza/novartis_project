@@ -191,6 +191,8 @@ namespace JPP.DAL.EF
         public void wijzigModule(Module module)
         {
             dbcontext.Entry(module).State = System.Data.Entity.EntityState.Modified;
+            //alles met betrekken tot de module moet mee gewijzigd worden, bv thema, beloning enz
+            dbcontext.Entry(module.thema).State = System.Data.Entity.EntityState.Modified;
             dbcontext.SaveChanges();
         }
 

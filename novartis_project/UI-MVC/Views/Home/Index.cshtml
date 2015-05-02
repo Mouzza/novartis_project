@@ -1,5 +1,7 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home pagina";
+    
+    
 }
 
 
@@ -11,7 +13,7 @@
     <div id="homeIconMenu" class="row verborgen">
         <div id="eersteMenuItem" class="col-md-4 centraal">
 
-            <a href="#"><img src="~/Images/homeSpecialMenu icons/iconStart.png"></a>
+            <a id="eersteMenuLink" href="@Url.Action("Dossier","Module")"><img src="~/Images/homeSpecialMenu icons/iconStart.png"></a>
             <h2>Bedenk</h2>
             <h2>Comment</h2>
             <h2>Like</h2>
@@ -41,7 +43,7 @@
         <button id="hide">Verberg</button>
         <button id="show">Toon</button>
         <p>
-            <span>Actieve dossier module</span>
+            <span>Populairste pagina's</span>
         </p>
         
 
@@ -54,12 +56,7 @@
         <div class="container body-content">
 
 
-            @{ Html.RenderAction("Actief", "Module");}
-
-            @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord");}
-
-            <hr />
-
+  
 
             @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
             @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
