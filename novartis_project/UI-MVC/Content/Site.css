@@ -367,6 +367,11 @@ textarea {
       color:white;
       height:60%;
   }
+      #eersteMenuItem:hover, #tweedeMenuItem:hover, #derdeMenuItem:hover{
+      border:2px solid yellow;
+  }
+
+  
 
   #eersteMenuItem{
       float:left;
