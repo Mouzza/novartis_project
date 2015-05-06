@@ -540,4 +540,6 @@ textarea {
 #antwoordInhoud {
     font-size: 30px;
     font-weight: bold;
+    background-image:url("../Images/Paars.png");
+    background-size: 50px 50px;
 }
