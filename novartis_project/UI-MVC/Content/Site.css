@@ -499,7 +499,6 @@ textarea {
 
 #antwoordlijstWrapper {
     background-color: lightgray;
-    background-image: url("../Images/Paars.png");
     width: 80%;
     float: left;
     padding: 1%;
@@ -545,7 +544,4 @@ textarea {
 #antwoordInhoud {
     font-size: 30px;
     font-weight: bold;
-    background-image:url("../Images/Paars.png");
-    width:50px;
-    height:7000px;
 }
