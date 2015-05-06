@@ -480,6 +480,7 @@
     <Content Include="Views\Module\partialViewAgendaModule.cshtml" />
     <Content Include="Views\Module\_Details.cshtml" />
     <Content Include="Views\Antwoord\_Lijst.cshtml" />
+    <Content Include="Views\Antwoord\homePartialAntwoorden.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

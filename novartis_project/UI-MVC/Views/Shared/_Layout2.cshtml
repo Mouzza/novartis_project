@@ -112,8 +112,8 @@
     }
     
 
-    @{ var controle = false; }
-    @*@if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/")
+   @{ var controle = false; }
+   @* @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/")
     {
         @RenderBody()
         controle = true;
@@ -131,7 +131,66 @@
         @RenderBody()
         controle = true;
 
+    }
+    @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/Module/Dossier")
+    {
+
+        <div id="mainWrapper3">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        controle = true;
+    }
+
+    @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/Module/Agenda")
+    {
+
+        <div id="mainWrapper3">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        controle = true;
+    }
+    @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/Antwoord/Create")
+    {
+
+        <div id="mainWrapper3">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        controle = true;
+    }
+
+
+    @if(!controle){
+
+        <div id="mainWrapper4">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+
     }*@
+
     @if (Request.Url.AbsoluteUri == "http://localhost:44302/")
     {
         @RenderBody()
@@ -151,10 +210,55 @@
         controle = true;
 
     }
+
+    @if (Request.Url.AbsoluteUri == "http://localhost:44302/Module/Dossier")
+    {
+
+        <div id="mainWrapper3">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        controle = true;
+    }
+    
+    @if (Request.Url.AbsoluteUri == "http://localhost:44302/Module/Agenda")
+    {
+
+        <div id="mainWrapper3">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        controle = true;
+    }
+    @if (Request.Url.AbsoluteUri == "http://localhost:44302/Antwoord/Create")
+    {
+
+        <div id="mainWrapper3">
+
+            <div class="container body-content">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+        controle = true;
+    }
+
     
     @if(!controle){
 
-        <div id="mainWrapper2">
+        <div id="mainWrapper4">
 
             <div class="container body-content">
 
@@ -170,7 +274,7 @@
      
 
 
-    <h1>Sponsors</h1>
+    @*<h1>Sponsors</h1>
     <hr />
     <div id="fotoWrapper2">
         <div class="row">
@@ -187,10 +291,10 @@
                 <h2>treecompany</h2>
             </div>
         </div>
-    </div>
+    </div>*@
 
                         <div id="to-top">Ga naar de Top</div>
-                    </div>
+              
 
                     <div>
 

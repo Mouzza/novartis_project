@@ -1,0 +1,178 @@
+﻿@model JPP.BL.Domain.Modules.DossierModule
+@{
+    ViewBag.Title = "Wijzig dossiermodule";
+}
+
+<h2>Wijzig dossiermodule</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.vasteVragen)
+    @Html.HiddenFor(model => model.dossierAntwoorden)
+    
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.adminNaam)
+    @Html.HiddenFor(model => model.organisatie)
+
+
+    @Html.HiddenFor(model => model.thema.modules)
+    @Html.HiddenFor(model => model.thema.ID)
+
+    @Html.HiddenFor(model => model.beloning.First().ID)
+    @Html.HiddenFor(model => model.centraleVraag.moduleID)
+    @Html.HiddenFor(model => model.centraleVraag.datum)
+    @Html.HiddenFor(model => model.centraleVraag.module)
+
+
+
+
+    <div class="form-horizontal">
+        <h4>DossierModule</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Module naam</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Begin datum</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.beginDatum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beginDatum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Eind datum</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.eindDatum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.eindDatum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Verplichte volledigheids %</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.verplichteVolledigheidsPercentage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.verplichteVolledigheidsPercentage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Open</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <h4>Thema</h4>
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Thema naam</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.thema.naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.thema.naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Beschrijving</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.thema.beschrijving, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.thema.beschrijving, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <h4>Centrale vraag</h4>
+        <hr />
+        <div class="form-group">
+            <label class="control-label col-md-2">Vraag</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.centraleVraag.inhoud, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.centraleVraag.inhoud, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Extra info</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.centraleVraag.extraInfo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.centraleVraag.extraInfo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+@*
+       <h4>Vaste vragen voor het module</h4>
+        <hr />
+    @foreach (var vv in Model.vasteVragen)
+    {
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Vaste vraag</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => vv.inhoud, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => vv.inhoud, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Verplicht?</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => vv.verplicht, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => vv.verplicht, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    }*@
+
+
+        <h4>Beloning</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Eerste beloning naam (demo)</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.beloning.First().naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beloning.First().naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Beschrijving (demo)</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.beloning.First().beschrijving, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beloning.First().beschrijving, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Aantal winnaars</label>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.centraleVraag.aantalWinAntwoorden, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.centraleVraag.aantalWinAntwoorden, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Opslaan" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

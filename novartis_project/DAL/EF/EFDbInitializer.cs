@@ -17,7 +17,7 @@ using JPP.BL.Domain.Gebruikers.SuperUser;
 
 namespace JPP.DAL.EF
 {
-    public class EFDbInitializer : DropCreateDatabaseIfModelChanges<EFDbContext>
+    public class EFDbInitializer : CreateDatabaseIfNotExists<EFDbContext>
     {
        protected override void Seed(EFDbContext context)
         {

@@ -28,6 +28,22 @@ namespace JPP.UI.Web.MVC.Controllers
         
         }
 
+        public ActionResult homePartialAntwoorden(int? page, string searchString)
+        {
+
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden();
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dossierAntwoorden = dossierAntwoorden.Where(antw => antw.inhoud.Contains(searchString)
+                                       || antw.extraInfo.Contains(searchString));
+            }
+
+            return PartialView(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
+        }
+
         //Antwoord/Lijst
 
         public ActionResult _partialAntwoordLijst(int? page)

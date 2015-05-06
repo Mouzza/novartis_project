@@ -1,0 +1,59 @@
+﻿@model IEnumerable<JPP.BL.Domain.Modules.AgendaModule>
+
+@{
+    ViewBag.Title = "";
+}
+
+<h2>Agenda modules</h2>
+
+<p>
+    @Html.ActionLink("Agenda module aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+          Admin naam
+        </th>
+        <th>
+            Inhoud
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+           Begin datum
+        </th>
+        <th>
+            Eind datum
+        </th>
+
+        <th id="settingsLayout">Instellingen</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.adminNaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.beginDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eindDatum)
+        </td>
+
+        <td>
+            @Html.ActionLink("Wijzig", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "_Details", new { id=item.ID }) |
+            @Html.ActionLink("Verwijder", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

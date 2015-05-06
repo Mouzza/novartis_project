@@ -1,0 +1,14 @@
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.BL.dll.config
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.BL.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.BL.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\EntityFramework.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.BL.Domain.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.DAL.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.DAL.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\JPP.BL.Domain.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\EntityFramework.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\obj\Release\BL.csprojResolveAssemblyReference.cache
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\obj\Release\JPP.BL.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\BL\obj\Release\JPP.BL.pdb

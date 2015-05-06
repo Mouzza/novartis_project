@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+@{
+    ViewBag.Title = "CreateRol";
+}
+
+@if (User.IsInRole("Admin"))
+{
+    <h2>Maak een rol aan.</h2>
+
+    <p>
+        @Html.ActionLink("Lijst rollen", "Index") | @Html.ActionLink("Beheer rollen", "ManageUserRoles")
+    </p>
+
+    <div>
+
+        @using (Html.BeginForm())
+        {
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <div class="form-group">
+
+                    <p>@Html.TextBox("Rolename", null, new { @class = "form-control" })</p>
+
+                </div>
+
+                <div></div>
+                <input type="submit" value="Toevoegen" class="btn btn-default" /> |
+                @Html.ActionLink("Terug naar de lijst", "Index")
+            </div>
+
+        }
+    </div>
+}
