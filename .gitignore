@@ -7,3 +7,4 @@
 novartis_project/BL/bin/Debug/JPP.BL.dll.config
 *.pdb
 novartis_project/BL/obj/Debug/BL.csproj.FileListAbsolute.txt
+*.suo
