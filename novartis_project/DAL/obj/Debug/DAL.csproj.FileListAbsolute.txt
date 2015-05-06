@@ -20,3 +20,16 @@ C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\zh-Hant\Microsoft.Da
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\obj\Debug\JPP.DAL.dll
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\obj\Debug\JPP.DAL.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.dll.config
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\EntityFramework.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\Microsoft.Data.Entity.Design.Extensibility.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\EntityFramework.xml
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
