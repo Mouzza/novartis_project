@@ -38,7 +38,8 @@ else if (ViewBag.Aantal == 1)
             zelfdeGebruiker = false;
         }
 
-        <p id="extraInfoParagraaf">
+        
+            <p id="extraInfoParagraaf">
             <span id="extrainfoSpan">
                 Gebruiker:
             </span>
@@ -53,7 +54,7 @@ else if (ViewBag.Aantal == 1)
             }
             | <span id="extrainfoSpan">Datum: </span> @item.datum
         </p>
-
+        
         if (zelfdeGebruiker)
         {
             @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
@@ -61,12 +62,14 @@ else if (ViewBag.Aantal == 1)
         <table class="table">
 
             <tr>
-                <td id="antwoordInhoud" background="../Images/Paars.png" >
-                    @Html.DisplayFor(modelItem => item.inhoud)
+                <td id="antwoordInhoud" >
+                    <img src="../Images/Paars.png" />
+                    <br />@Html.DisplayFor(modelItem => item.inhoud)
+                    
                 </td>
                 <td id="aantalStemmen">
-                    +@Html.DisplayFor(modelItem => item.aantalStemmen)
-                </td>
+        +@Html.DisplayFor(modelItem => item.aantalStemmen)
+    </td>
 
             </tr>
 
