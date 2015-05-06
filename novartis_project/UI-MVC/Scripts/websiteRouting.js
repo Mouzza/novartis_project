@@ -7,4 +7,11 @@
         return false;
     });
 
+    $("#tweedeMenuItem").click(function () {
+        window.location = $(this).find("#tweedeMenuLink").attr("href");
+        return false;
+    });
+
+ 
+
 });

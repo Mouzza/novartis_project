@@ -2314,4 +2314,8 @@ if (typeof jQuery === 'undefined') {
     })
   })
 
+  function showImage() {
+      var obj=document.getElementById
+  }
+
 }(jQuery);

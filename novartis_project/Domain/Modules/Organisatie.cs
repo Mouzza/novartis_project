@@ -17,7 +17,6 @@ namespace JPP.BL.Domain.Modules
         //check if uri = url
         public string url { get; set; }
         public string imagePathname { get; set; }
-        public List<Gebruiker> gebruikers { get; set; }
         public ICollection<Module> modules { get; set; }
 
 

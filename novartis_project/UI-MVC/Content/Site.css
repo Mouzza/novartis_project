@@ -1,10 +1,11 @@
 ﻿
-html{
-    margin:0;
-    padding:0;
-    height:100%;
-    width:100%;
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
+
 body {
     margin: 0;
     width: 100%;
@@ -15,8 +16,8 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom:80px;/* Height of the footer element */ 
-    width:100%;
+    padding-bottom: 80px; /* Height of the footer element */
+    width: 100%;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -33,508 +34,492 @@ textarea {
     max-width: 280px;
 }
 
-#logoImage{
-
-    height:86px;
-    float:left;
-    clip:rect(0px,200px,80px,0px);
-    position:absolute;
+#logoImage {
+    height: 86px;
+    float: left;
+    clip: rect(0px,200px,80px,0px);
+    position: absolute;
 }
 
-.linkExtraLogin{
-
-    float:left;
-    margin:1% 6%;
-    width:100%;
+.linkExtraLogin {
+    float: left;
+    margin: 1% 6%;
+    width: 100%;
 }
 
 .footer {
-    font-size:18px;
-    padding:5px 5px;
- 	width:100%;
-
-    bottom:0;
-    left:0;
-    background:#222;
-    color:white;
-    text-align:center;
-    font-weight:bold;
+    font-size: 18px;
+    padding: 5px 5px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: #222;
+    color: white;
+    text-align: center;
+    font-weight: bold;
 }
 
-.footerMenu{
-    padding:0;
-    margin:0;
-    list-style-type:none;
+.footerMenu {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
 
-}.footerMenu li{
-     display:inline;
-     margin-left:30px;
- }
+    .footerMenu li {
+        display: inline;
+        margin-left: 30px;
+    }
+
 #fotoWrapper {
-    min-height:100%;
-    position:relative;
-    background:url(../Images/afbeeldingen/homeImage.jpg) no-repeat center center fixed ;
-    background-size:100% 100%;
-        box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+    min-height: 100%;
+    position: relative;
+    background: url(../Images/afbeeldingen/homeImage.jpg) no-repeat center center fixed;
+    background-size: 100% 100%;
+    box-shadow: 0px 0px 50px rgba(0,0,0,.8);
 }
+
 #videoWrapper {
-   background: url(../Images/afbeeldingen/homeImage4.png) no-repeat;
-    padding:0;
-    min-height:83%;
-    background-position:center center;
-    background-attachment:fixed;
+    background-color: #AD0002;
+    height:83%;
+    background-position: center center;
+    background-attachment: fixed;
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
     text-align: center;
     position: relative;
 }
 
+
 #mainWrapper {
-    
-    min-height:50%;
-    position:relative;
-    background-color:white;
-    padding:50px;
-     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+    min-height: 50%;
+    position: relative;
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+}
+/**/
+#mainWrapper2 {
+    min-height: 50%;
+    position: relative;
+    background-color: white;
+    padding: 50px;
 }
 
-#mainWrapper2 {
-    
-    min-height:50%;
-    position:relative;
-    background-color:white;
-    padding:50px;
+#youtube {
+     position: relative;
+      width: 100%; 
+      height: 100%; 
+      padding-bottom: 60%;
+      
 }
+
+    #youtube iframe, #youtube object, #youtube embed {
+       
+       position: absolute; 
+       left: 0px; 
+       top: 0px; 
+       width: 85%; 
+       height: 80%;
+       border:none;
+       margin-left:7%;
+    }
+
+     
+
 
 #extraWrapper {
-    
-    min-height:50%;
-    position:relative;
-    background-color:lightgray;
-    padding:50px;
+    min-height: 50%;
+    position: relative;
+    background-color: lightgray;
+    padding: 50px;
     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
-
 }
 
 #wrapper4 {
-    
-    min-height:50%;
-    position:relative;
-    background-color:white;
-    padding:50px;
-     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+    min-height: 50%;
+    position: relative;
+    background-color: white;
+    padding: 50px;
+    box-shadow: 0px 0px 50px rgba(0,0,0,.8);
 }
 
 #socialFooter {
-    font-size:18px;
-    padding:2% 5px;
-    height:100px;
- 	width:100%;
-    bottom:70px;
-    left:0;
-    background-color:darkgray;
-    color:white;
-    text-align:center;
-    font-weight:bold;
+    font-size: 18px;
+    padding: 2% 5px;
+    height: 100px;
+    width: 100%;
+    bottom: 70px;
+    left: 0;
+    background-color: darkgray;
+    color: white;
+    text-align: center;
+    font-weight: bold;
 }
-#homePageLayer{
 
-
+#homePageLayer {
 }
 
 #to-top {
-  font-size:16px;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 160px;
-  padding: 5px;
-  border: 2px solid black;
-  background: #f7f7f7;
-  color: #333;
-  text-align: center;
-  cursor: pointer;
-  display: none;
-  font-weight:bold;
+    font-size: 16px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 160px;
+    padding: 5px;
+    border: 2px solid black;
+    background: #f7f7f7;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    font-weight: bold;
 }
 
-#specialMenuItem{
-
-    color:turquoise;
+#specialMenuItem {
+    color: turquoise;
 }
 
-#homeSlogan{
-    color:white;
-    font-size:5em;
-    text-align:center;
+#homeSlogan {
+    color: white;
+    font-size: 5em;
+    text-align: center;
     text-shadow: 4px 4px black;
     font-family: 'Comic Sans MS';
-    font-weight:bold;
-
+    font-weight: bold;
 }
 
-.centraal{
-     text-align:center;
-}
-.centraal2{
-     text-align:center;
-     color:white;
-     text-shadow:2px 2px 2px black;
-}
-.centraal2 img{
-  border:2px solid black;
+.centraal {
+    text-align: center;
 }
 
-#mainContent{
-    text-align:center;
-}
-#headerWrapper{
-
-    background-color:#C70000;
-}
-#centraleButton{
-    left:10%;
-    border:2px solid black;
-    background-color:rgba(255,255,255,.5);
-    padding:1%;
-    cursor:pointer;
-    border-radius:10px 10px 0 0;
-    bottom:0px;
-    position:absolute;
-    color:black;
-    font-size:24px;
-    font-weight:bold;
-    width:33%;
-    text-align:center;
-    float:left;
-}
-#centraleButton2{
-    left:50%;
-    border:2px solid black;
-    background-color:rgba(255,255,255,.5);
-    padding:1%;
-    cursor:pointer;
-    border-radius:10px 10px 0 0;
-    bottom:0px;
-    position:absolute;
-    color:blue;
-    font-size:24px;
-    font-weight:bold;
-    width:33%;
-    text-align:center;
-    float:left;
+.centraal2 {
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black;
 }
 
-.eersteMenu{
-    height:70px;
+    .centraal2 img {
+        border: 2px solid black;
+    }
 
+#mainContent {
+    text-align: center;
 }
-.tweedeMenu{
-    margin-top:70px;
-    font-size:18px;
-    cursor:pointer;
+
+#headerWrapper {
+    background-color: #C70000;
+}
+
+#centraleButton {
+    left:49%;
+    background-image: url("../images/websitePage logos/iconContinue.png");
+    background-repeat: no-repeat;
+    background-size: 50px;
+    padding: 1%;
+    cursor: pointer;
+    bottom: 0px;
+    position: absolute;
+    width: 50px;
+    text-align: center;
+}
+
+#centraleButton2 {
+    left:34%;
+    background-image: url("../images/websitePage logos/verder.png");
+    padding: 1%;
+    cursor: pointer;
+    bottom: 90px;
+    position: absolute;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    width: 33%;
+    text-align: center;
+}
+
+.eersteMenu {
+    height: 70px;
+}
+
+.tweedeMenu {
+    margin-top: 70px;
+    font-size: 18px;
+    cursor: pointer;
     background-color: RGBA(0,0,0,0.9);
-    color:white;
+    color: white;
 }
 
-.centraal p{
-    text-align:justify;
+.centraal p {
+    text-align: justify;
     width: 80%;
-    margin:0 auto;
+    margin: 0 auto;
 }
 
-#playButton{
-    cursor:pointer;
-    bottom:0;
-    float:none;
-    text-align:center;
+#playButton {
+    cursor: pointer;
+    margin-top: 15%;
+    float: none;
+    text-align: center;
 }
 
-#loginNaam a{
-    text-decoration:none;
-    font-size:18px;
+#loginNaam a {
+    text-decoration: none;
+    font-size: 18px;
     color: black;
-    font-weight:bold;
-
+    font-weight: bold;
 }
 
-.pagination-container{
-
-    text-align:center;
+.pagination-container {
+    text-align: center;
 }
 
-#settingsLayout{
-
-    color:blue;
-}
-#cellFocus{
-
-    font-weight:bold;
-}
-#paginaTitel{
-    font-family:'Century Gothic';
-    text-align:center;
-    font-size:45px;
-    width:100%;
-    font-weight:bold;
-    border:3px solid #E8500B;
-    padding:1%;
-    margin-bottom:5%;
-    background-color:lightgray;
-    border-radius:3%;
-    color:#00789A;
- 
-
-}
-#spanZwart{
-    color:black;
+#settingsLayout {
+    color: blue;
 }
 
-#extraInfoTable{
-    float:left;
-    margin:1%;
+#cellFocus {
+    font-weight: bold;
 }
 
-#beloningSection{
-
-    border:1px solid gray;
-    padding:1%;
-    margin-bottom:10px;
-    background-color:lightgrey;
-    width:49%;
-    float:left;
-}
-#extraInfoSection{
-
-    border:1px solid gray;
-    padding:1%;
-    margin-bottom:10px;
-    background-color:lightgrey;
-    width:49%;
-    float:right;
+#paginaTitel {
+    font-family: 'Century Gothic';
+    text-align: center;
+    font-size: 45px;
+    width: 100%;
+    font-weight: bold;
+    border: 3px solid #E8500B;
+    padding: 1%;
+    margin-bottom: 5%;
+    background-color: lightgray;
+    border-radius: 3%;
+    color: #00789A;
 }
 
-#dossierModule{
+#spanZwart {
+    color: black;
+}
 
-    padding:2%;
+#extraInfoTable {
+    float: left;
+    margin: 1%;
+}
+
+#beloningSection {
+    border: 1px solid gray;
+    padding: 1%;
+    margin-bottom: 10px;
+    background-color: lightgrey;
+    width: 49%;
+    float: left;
+}
+
+#extraInfoSection {
+    border: 1px solid gray;
+    padding: 1%;
+    margin-bottom: 10px;
+    background-color: lightgrey;
+    width: 49%;
+    float: right;
+}
+
+#dossierModule {
+    padding: 2%;
     background-color: white;
-    float:left;
-    width:100%;
-    border:1px solid gray;
-}
-#dossierModuleContent{
-
-    height:50%;
-    width:100%;
+    float: left;
+    width: 100%;
+    border: 1px solid gray;
 }
 
- #dossierModule h4{
-     color:#00789a;
-     text-align:center;
+#dossierModuleContent {
+    height: 50%;
+    width: 100%;
+}
 
- }
-  #dossierModule h2{
-    font-family:'Comic Sans MS'
+#dossierModule h4 {
+    color: #00789a;
+    text-align: center;
+}
 
- }
-  #dossierModule p{
-   text-align:right;
+#dossierModule h2 {
+    font-family: 'Comic Sans MS';
+}
 
- }
-  #extrainfoSpan{
-   font-weight:bold;
+#dossierModule p {
+    text-align: right;
+}
+
+#extrainfoSpan {
+    font-weight: bold;
+}
+
+#extraInfoParagraaf {
+    float: right;
+}
+
+#zelfdeGebruikerSpan {
+    color: green;
+    font-weight: bold;
+}
+
+.verborgen {
+    display: none;
+}
+
+#homeIconMenu {
+    color: white;
+    height: 60%;
+}
+
+#eersteMenuItem:hover, #tweedeMenuItem:hover, #derdeMenuItem:hover {
+    border: 2px solid yellow;
+}
 
 
- }
 
-  #extraInfoParagraaf{
+#eersteMenuItem {
+    float: left;
+    width: 35%;
+    background-color: #199eb0;
+    height: 100%;
+    padding: 1%;
+    padding-top: 2%;
+    cursor: pointer;
+}
 
-      float:right;
-  }
+#tweedeMenuItem {
+    float: right;
+    width: 65%;
+    background-color: #69bd21;
+    height: 50%;
+    padding: 1%;
+    padding-top: 2%;
+    box-shadow: inset 10px 0px 50px -7px #000;
+    cursor: pointer;
+}
 
-  #zelfdeGebruikerSpan{
+#derdeMenuItem {
+    float: right;
+    width: 65%;
+    background-color: #c01e84;
+    height: 50%;
+    padding: 1%;
+    padding-top: 2%;
+    box-shadow: inset 10px 10px 50px -7px #000;
+    cursor: pointer;
+}
 
-      color:green;
-      font-weight:bold;
-  }
+    #derdeMenuItem a {
+        text-align: left;
+        float: left;
+        margin-left: 15%;
+    }
 
-  .verborgen{
-      display:none;
-  }
+#tweedeMenuItem a {
+    text-align: left;
+    float: right;
+    margin-right: 15%;
+}
 
-   #homeIconMenu{
-     
-      color:white;
-      height:60%;
-  }
-      #eersteMenuItem:hover, #tweedeMenuItem:hover, #derdeMenuItem:hover{
-      border:2px solid yellow;
-  }
+#homeTitelHeader {
+    padding: 1%;
+    color: white;
+    background-color: black;
+    height: 70px;
+    width: 100%;
+}
 
-  
+    #homeTitelHeader button {
+        float: left;
+        color: black;
+    }
 
-  #eersteMenuItem{
-      float:left;
-      width:35%;
-      background-color:#199eb0;
-      height:100%;
-      padding:1%;
-      padding-top:2%;
-      cursor:pointer;
+    #homeTitelHeader p {
+        font-size: 30px;
+        text-align: center;
+    }
 
-  }
-  
-  #tweedeMenuItem{
-      float:right;
-      width:65%;
-      background-color:#69bd21;
-      height:50%;
-      padding:1%;
-      padding-top:2%;
-      box-shadow: inset 10px 0px 50px -7px #000;
-      cursor:pointer;
+#moduleTitel {
+    color: blue;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+}
 
-  }
-  
-  #derdeMenuItem{
-      float:right;
-      width:65%;
-      background-color:#c01e84;
-      height:50%;
-      padding:1%;
-      padding-top:2%;
-      box-shadow: inset 10px 10px 50px -7px #000;
-      cursor:pointer;
-        
-  }
+#moduleNaam {
+    margin-top: 80px;
+    text-align: center;
+    font-size: 43px;
+}
 
-  #derdeMenuItem a{
-      text-align:left;
-      float:left;
-      margin-left:15%;
-     
- 
-  }
+#centraleVraag {
+    text-align: center;
+    font-size: 30px;
+    width: 60%;
+    margin: 6% auto;
+    margin-bottom: 1%;
+}
 
-  #tweedeMenuItem a{
-      text-align:left;
-      float:right;
-      margin-right:15%;
-    
-  }
+#moduleInhoud {
+    margin-bottom: 1%;
+    float: left;
+    margin-left: 5%;
+}
 
-     #homeTitelHeader{
-        padding:1%;
-         color:white;
-         background-color:black;
-         height:70px;
-         width:100%;
-     }
+#moduleIcon {
+    float: left;
+    width: 250px;
+    height: 250px;
+}
 
-     #homeTitelHeader button{
-         
-         float:left;
-         color:black;
-     }
-       #homeTitelHeader p{
-       font-size:30px;
-       text-align:center;
-     }
+#moduleInhoud p {
+    font-size: 20px;
+    text-align: left;
+}
 
-       #moduleTitel{
-           color:blue;
-           text-align:center;
-           font-weight:bold;
-           font-size:50px;
-       }
+#antwoordlijstWrapper {
+    background-color: lightgray;
+    width: 80%;
+    float: left;
+    padding: 1%;
+    box-shadow: inset 10px 0px 50px -7px #000;
+}
 
-       #moduleNaam{
-           margin-top:80px;
-           text-align:center;
-           font-size:43px;
-       }
+    #antwoordlijstWrapper table {
+        background-color: white;
+    }
 
-       #centraleVraag{
-           text-align:center;
-           font-size:30px;
-           width:60%;
-           margin: 6% auto;
-           margin-bottom:1%;
-     
+#moduleLeftMenuSection {
+    min-width: 20%;
+    width: 20%;
+    float: left;
+    background-color: darkgray;
+    height: 866px;
+}
 
-       }
+#antwoordlijstCreateSection img {
+    width: 50px;
+    height: 50px;
+}
 
-       #moduleInhoud{
-           margin-bottom:1%;
-           float:left;
-           margin-left:5%;
-   
-       }
-       #moduleIcon{
-           float:left;
-          
-           width:250px;
-           height:250px;
-       }
+#antwoordlijstCreateSection a {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+}
 
-       #moduleInhoud p{
-           font-size:20px;
-           text-align:left;
-       }
+#antwoordWrapper {
+    background-color: lightgray;
+    width: 100%;
+    float: left;
+    padding: 1%;
+}
 
-       #antwoordlijstWrapper{
+#aantalStemmen {
+    color: green;
+    font-size: 40px;
+}
 
-           background-color:lightgray;
-           width:80%;
-           float:left;
-           padding:1%;
-           box-shadow: inset 10px 0px 50px -7px #000;
-       }
-
-       #antwoordlijstWrapper table{
-
-           background-color:white;
-       }
-
-       #moduleLeftMenuSection{
-           min-width:20%;
-           width:20%;
-           float:left;
-           background-color:darkgray;
-           height:866px;
-       }
-       
-       #antwoordlijstCreateSection img{
-           width:50px;
-           height:50px;
-
-       }
-
-       #antwoordlijstCreateSection a{
-        font-size:20px;
-        font-weight:bold;
-        color:blue;
-
-       }
-
-       #antwoordWrapper{
-           background-color:lightgray;
-           width:100%;
-           float:left;
-           padding:1%;
-
-       }
-
-       #aantalStemmen{
-
-           color:green;
-           font-size:40px;
-       }
-
-       #antwoordInhoud{
-           font-size:30px;
-           font-weight:bold;
-
-       }
-
-       
+#antwoordInhoud {
+    font-size: 30px;
+    font-weight: bold;
+}

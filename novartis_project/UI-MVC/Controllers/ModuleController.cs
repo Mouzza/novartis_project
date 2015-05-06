@@ -8,6 +8,10 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using JPP.UI.Web.MVC.Models;
 using JPP.BL.Domain.Modules;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+
+
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -26,11 +30,26 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return View(DossierModules);
         }
+
+       public ActionResult partialViewAgendaModule()
+       {
+           IEnumerable<AgendaModule> AgendaModules = moduleManager.readAllAgendaModules();
+           return PartialView(AgendaModules);
+       }
        public ActionResult Dossier()
        {
 
            return View();
        }
+
+       public ActionResult Agenda()
+       {
+
+           return View();
+       }
+      
+    
+        
         public ActionResult Actief()
         {
            //DossierModule actieveDossierModule = moduleManager.readAllDossierModules().Where(dmod => dmod.status == true).First();
@@ -38,6 +57,15 @@ namespace JPP.UI.Web.MVC.Controllers
             DossierModule actieveDossierModule = moduleManager.readActieveDossierModule();
            return View(actieveDossierModule);
         }
+
+        public ActionResult ActiefAgenda()
+        {
+            //DossierModule actieveDossierModule = moduleManager.readAllDossierModules().Where(dmod => dmod.status == true).First();
+
+            AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
+            return View(actieveAgendaModule);
+        }
+
        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)
         {
@@ -45,6 +73,13 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return View(DossierModule);
         }
+       [Authorize(Roles = "Admin")]
+       public ActionResult _Details(int id)
+       {
+           AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
+
+           return View(agendaModule);
+       }
        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {

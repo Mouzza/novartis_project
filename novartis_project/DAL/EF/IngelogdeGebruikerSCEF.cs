@@ -76,7 +76,7 @@ namespace JPP.DAL.EF
         }
         public List<AgendaAntwoord> getAllAgendaAntwoorden()
         {
-            return dbcontext.antwoord.Cast<AgendaAntwoord>().ToList();
+            return dbcontext.antwoord.OfType<AgendaAntwoord>().ToList();
         }
 
         public Comment createComment(Comment comment)

@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using JPP.DAL.EF;
 using System;
+using JPP.BL.Domain.Antwoorden;
 
 namespace JPP.UI.Web.MVC.Models
 {
@@ -17,8 +18,8 @@ namespace JPP.UI.Web.MVC.Models
         public virtual String FirstName { get; set; }
         public virtual String LastName { get; set; }
         public virtual DateTime Birthday { get; set; }
-        public virtual int Zipcode { get; set; }
-
+        public virtual int Zipcode { get; set; }   
+   
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
@@ -42,7 +43,7 @@ namespace JPP.UI.Web.MVC.Models
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
-            : base("DBConnection", throwIfV1Schema: false)
+            : base("dbteamnovartis", throwIfV1Schema: false)
         {
         }
         //Voor roles

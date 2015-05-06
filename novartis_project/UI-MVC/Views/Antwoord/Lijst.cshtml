@@ -3,7 +3,7 @@
 @using PagedList.Mvc
 
 @{
-    ViewBag.Title = "Lijst";
+    ViewBag.Title = "Dossier antwoorden";
 }
 
 <h2>@Model.First().module.naam: Antwoorden(@ViewBag.Aantal)</h2>
@@ -75,9 +75,9 @@
             @Html.DisplayFor(modelItem => item.aantalFlags)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Wijzig", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detail", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Verwijder", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

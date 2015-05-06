@@ -48,6 +48,25 @@ namespace JPP.UI.Web.MVC.Controllers
 
             
         }
+
+        public ActionResult _partialAgendaAntwoordLijst(int? page)
+        {
+            //Manager moet nog gemaakt worden
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            AgendaModule agendaModule = dossManager.readActieveAgendaModule();
+            IEnumerable<AgendaAntwoord> dossierAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+
+            ViewBag.Aantal = dossierAntwoorden.Count();
+
+            return PartialView(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
+
+
+
+
+        }
         //Antwoord/Lijst
         public ActionResult Lijst(int id, int? page)
         {
@@ -62,10 +81,25 @@ namespace JPP.UI.Web.MVC.Controllers
             
 
         }
+        //Antwoord/_Lijst
+        public ActionResult _Lijst(int id, int? page)
+        {
+            //Manager moet nog gemaakt worden
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id);
+            ViewBag.Aantal = agendaAntwoorden.Count();
+            return View(agendaAntwoorden.ToPagedList(pageNumber, pageSize));
+
+
+        }
         // GET: Antwoord/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Antwoord antwoord = antwManager.readAntwoord(id);
+            return View(antwoord);
         }
 
         // GET: Antwoord/Create

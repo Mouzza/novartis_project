@@ -1,7 +1,7 @@
 ﻿
 $(document).ready(function () {
    
-  
+    
 
     if (window.localStorage.getItem("hideMenu")=="hidden") {
         $("#homeIconMenu").css("display","none");

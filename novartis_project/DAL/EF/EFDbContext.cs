@@ -25,7 +25,7 @@ namespace JPP.DAL.EF
 
 
         public EFDbContext()
-            : base("DBConnection")
+            : base("dbteamnovartis")
         {
 
        

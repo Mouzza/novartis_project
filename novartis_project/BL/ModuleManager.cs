@@ -44,7 +44,7 @@ namespace JPP.BL
         public DossierModule readActieveDossierModule()
         {
             //CHECK kan het zelfde zijn als read module er is maar 1 actieveVraag per keer dus nrml geizen geen ID
-            List<Module> modules = nietInlog.getModules();
+            List<DossierModule> modules = nietInlog.getDossierModules();
             Module moduleTussen=new DossierModule();
             for (int i = 0; i < modules.Count; i++)
             {
@@ -59,7 +59,7 @@ namespace JPP.BL
         public AgendaModule readActieveAgendaModule()
         {
             ////CONTROLEEEEE agenda en dossier zitten samen in module
-            List<Module> modules = nietInlog.getModules();
+            List<AgendaModule> modules = nietInlog.getAgendaModules();
             Module moduleTussen = new AgendaModule();
             for (int i = 0; i < modules.Count; i++)
             {

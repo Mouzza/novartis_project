@@ -1,87 +1,22 @@
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.dll
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.dll
-C:\Users\Michiel\Documents\PRO NOVARTIS\PRO NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.dll
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.dll
-C:\Users\Michiel\Documents\PRO_NOVARTIS\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.dll
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.dll
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Michiel\Documents\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.dll.config
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\EntityFramework.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\Microsoft.Data.Entity.Design.Extensibility.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\EntityFramework.xml
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\de\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\es\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\fr\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\it\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\ja\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\ko\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\ru\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Michiel\Desktop\PRO_NOVARTIS\novartis_project\DAL\bin\Debug\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\JPP.DAL.dll.config
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\JPP.DAL.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\EntityFramework.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\Microsoft.Data.Entity.Design.Extensibility.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\EntityFramework.xml
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\de\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\es\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\fr\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\it\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\ja\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\ko\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\ru\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\bin\Debug\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\obj\Debug\JPP.DAL.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\JPP.DAL.dll.config
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\JPP.DAL.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\EntityFramework.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\Microsoft.Data.Entity.Design.Extensibility.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\EntityFramework.xml
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\de\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\es\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\fr\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\it\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\ja\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\ko\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\ru\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\bin\Debug\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\obj\Debug\JPP.DAL.dll
-C:\Users\Moussa\Desktop\PRO-NOVARTIS-SERVER-EDITION - kopie 2\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\JPP.DAL.dll.config
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\JPP.DAL.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\JPP.DAL.pdb
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\Microsoft.Data.Entity.Design.Extensibility.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\de\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\es\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\fr\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\it\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\ja\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\ko\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\ru\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\bin\Debug\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\obj\Debug\JPP.DAL.dll
+C:\Users\Moussa\Desktop\JPPSVN\web\website v2\DAL\obj\Debug\JPP.DAL.pdb

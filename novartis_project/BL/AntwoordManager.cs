@@ -47,6 +47,21 @@ namespace JPP.BL
             return dossierReturn;
         }
 
+        public List<AgendaAntwoord> getAllAgendaAntwoordenPerModule(int agendaID)
+        {
+            List<AgendaAntwoord> agendaList = inlog.getAllAgendaAntwoorden();
+            List<AgendaAntwoord> agendaReturn = new List<AgendaAntwoord>();
+            foreach (var agenda in agendaList)
+            {
+                if (agenda.module.ID == agendaID)
+                {
+                    agendaReturn.Add(agenda);
+                }
+            }
+
+            return agendaReturn;
+        }
+
         public List<AgendaAntwoord> topAgendaAntwoorden(int top)
         {
             List<AgendaAntwoord> agendaList=inlog.getAllAgendaAntwoorden();

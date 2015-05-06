@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<JPP.BL.Domain.Modules.DossierModule>
 
 @{
-    ViewBag.Title = "Dossiermodules";
+    ViewBag.Title = "Beheer modules";
 }
 
-<h2>Dossiermodules</h2>
+<h2>Dossier modules</h2>
 
 <p>
-    @Html.ActionLink("DossierModule aanmaken", "Create")
+    @Html.ActionLink("Dossier module aanmaken", "Create")
 </p>
 <table class="table">
     <tr>
@@ -71,3 +71,6 @@
 }
 
 </table>
+
+
+@{ Html.RenderAction("partialViewAgendaModule", "Module"); }

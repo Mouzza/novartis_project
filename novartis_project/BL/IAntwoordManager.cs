@@ -18,6 +18,7 @@ namespace JPP.BL
         //void updateAntwoord(Antwoord antwoord);
 
         List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID);
+        List<AgendaAntwoord> getAllAgendaAntwoordenPerModule(int agendaID);
         void removeAntwoord(int id); 
     }
 }

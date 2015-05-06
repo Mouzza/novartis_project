@@ -19,8 +19,11 @@
 
     @Html.HiddenFor(model => model.thema.modules)
     @Html.HiddenFor(model => model.thema.ID)
-    
+
+    @Html.HiddenFor(model => model.beloning.First().ID)
     @Html.HiddenFor(model => model.centraleVraag.moduleID)
+    @Html.HiddenFor(model => model.centraleVraag.datum)
+    @Html.HiddenFor(model => model.centraleVraag.module)
 
 
 

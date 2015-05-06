@@ -47,6 +47,16 @@ namespace JPP.DAL.EF
                    
 
             };
+
+            CentraleVraag centraleVraag2 = new CentraleVraag()
+            {
+                inhoud = "Deel u idee mee, wat zou er veranderd worden in de hogeschool?",
+                extraInfo = "Wij zijn op zoek naar ideen, deel uw idee met ons en maak kans op prijzen!",
+                datum = new DateTime(2015, 9, 10, 15, 5, 59),
+                aantalWinAntwoorden = 1
+
+
+            };
             Thema thema = new Thema()
             {
                 naam="Sport",
@@ -76,6 +86,18 @@ namespace JPP.DAL.EF
                 verplichteVolledigheidsPercentage = 90.5,
                 vasteVragen = new List<VasteVraag>(),
                 dossierAntwoorden = new List<DossierAntwoord>(),
+                status = true
+
+
+            };
+            AgendaModule agendaModule = new AgendaModule()
+            {
+                beloning = new List<Beloning>(),
+                adminNaam = "Admin",
+                naam = "Rivierenhof categorie",
+                beginDatum = new DateTime(2014, 03, 10, 15, 5, 59),
+                eindDatum = new DateTime(2018, 10, 10, 15, 5, 59),
+                agendaAntwoorden = new List<AgendaAntwoord>(),
                 status = true
 
 
@@ -116,7 +138,7 @@ namespace JPP.DAL.EF
                     inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg",
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
-                    aantalStemmen = 20,
+                    aantalStemmen = i,
                     percentageVolledigheid = 95,
                     statusOnline = true,
                     extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
@@ -127,15 +149,32 @@ namespace JPP.DAL.EF
 
 
                 };
-           
-                dossierModule.dossierAntwoorden.Add(dossierAntwoord);
 
+                AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
+                {
+
+
+                    gebruikersNaam = "Gebruiker01",
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg",
+                    extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
+                    datum = DateTime.Now,
+                    aantalStemmen = i,             
+                    aantalFlags = 0,
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>()
+
+
+                };
+                agendaModule.agendaAntwoorden.Add(agendaAntwoord);
+                agendaAntwoord.module = agendaModule;
+                dossierModule.dossierAntwoorden.Add(dossierAntwoord);
+                dossierAntwoord.module = dossierModule;
                 //Tags
                 //tag.antwoorden.Add(dossierAntwoord);
                 //pTag.antwoorden.Add(dossierAntwoord);
 
                 //DossierAntwoord
-                dossierAntwoord.module = dossierModule;
+        
                 //dossierAntwoord.vasteTags.Add(tag);
                 //dossierAntwoord.persoonlijkeTags.Add(pTag);
 
@@ -154,11 +193,16 @@ namespace JPP.DAL.EF
             dossierModule.organisatie = organisatieLeuven;
             organisatieLeuven.modules.Add((Module)dossierModule);
        
-          
+           //AgendaModule
+
+            agendaModule.beloning.Add(beloning);
+            agendaModule.thema = thema;
+            agendaModule.organisatie = organisatieLeuven;
+            agendaModule.centraleVraag = centraleVraag2;
 
          
             context.modules.Add(dossierModule);
-         
+            context.modules.Add(agendaModule);
  
 
             context.SaveChanges();
