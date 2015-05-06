@@ -12,3 +12,17 @@ C:\Users\Moussa\Desktop\JPPSVN\web\website v2\BL\bin\Debug\EntityFramework.SqlSe
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\BL\obj\Debug\JPP.BL.dll
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\BL\obj\Debug\JPP.BL.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.dll.config
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.xml
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\BL\obj\Debug\JPP.BL.pdb

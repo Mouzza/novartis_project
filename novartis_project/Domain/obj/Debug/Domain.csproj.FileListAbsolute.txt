@@ -7,3 +7,13 @@ C:\Users\Moussa\Desktop\JPPSVN\web\website v2\Domain\bin\Debug\EntityFramework.x
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\Domain\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\Moussa\Desktop\JPPSVN\web\website v2\Domain\obj\Debug\JPP.BL.Domain.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.xml
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
+C:\Users\MERGEN\Desktop\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
