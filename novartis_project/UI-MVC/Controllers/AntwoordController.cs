@@ -177,7 +177,8 @@ namespace JPP.UI.Web.MVC.Controllers
         // GET: Antwoord/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Antwoord antwoord = antwManager.readAntwoord(id);
+            return View(antwoord);
         }
 
         // POST: Antwoord/Delete/5
@@ -188,7 +189,8 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                antwManager.removeAntwoord(id);
+                return RedirectToAction("Index", "Module");
             }
             catch
             {

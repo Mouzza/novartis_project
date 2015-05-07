@@ -35,3 +35,15 @@ C:\Users\MERGEN\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.Doma
 C:\Users\MERGEN\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
 C:\Users\MERGEN\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
 C:\Users\MERGEN\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.dll.config
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.dll
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.pdb
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.dll
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.Domain.dll
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.DAL.dll
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.pdb
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.DAL.pdb
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.Domain.pdb
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb

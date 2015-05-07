@@ -112,8 +112,8 @@
     }
     
 
-    @{ var controle = false; }
-    @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/")
+   @{ var controle = false; }
+   @* @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/")
     {
         @RenderBody()
         controle = true;
@@ -189,9 +189,9 @@
 
         </div>
 
-    }
+    }*@
 
-    @*@if (Request.Url.AbsoluteUri == "http://localhost:44302/")
+    @if (Request.Url.AbsoluteUri == "http://localhost:44302/")
     {
         @RenderBody()
         controle = true;
@@ -268,7 +268,7 @@
         
         </div>
 
-    }*@
+    }
     
 
      
