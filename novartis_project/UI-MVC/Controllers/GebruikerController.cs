@@ -225,7 +225,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         //Gebuiker/Gebruikers
-        public ActionResult Index(int? page)
+        public ActionResult partialViewGebruikers1(int? page)
         {
             int pageSize = 5;
             int pageNumber = (page ?? 1);
@@ -248,6 +248,38 @@ namespace JPP.UI.Web.MVC.Controllers
             }
 
             return View(model.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult partialViewGebruikers2(int? page)
+        {
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<User> users = apc.Users.ToList();
+            var model = new Collection<UserRoleViewModel>();
+
+            foreach (var user in users)
+            {
+                var roles = user.Roles;
+                var rolesCollection = new Collection<IdentityRole>();
+
+                foreach (var role in roles)
+                {
+                    var role1 = RoleManager.FindById(role.RoleId);
+                    rolesCollection.Add(role1);
+                }
+
+                model.Add(new UserRoleViewModel { user = user, roles = rolesCollection });
+            }
+
+            return View(model.ToPagedList(pageNumber, pageSize));
+        }
+
+        //Gebuiker/Gebruikers
+        public ActionResult Index()
+        {
+            
+            return View();
         }
 
           //Gebuiker/recenteGebruikers

@@ -15,6 +15,8 @@ $(document).ready(function () {
  
     } else {
         $("#homeIconMenu").removeClass("verborgen");
+        $("#hide").css('display', 'block');
+        $("#show").css('display', 'none');
     }
     $('#to-top').hide();
   
