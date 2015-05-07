@@ -370,8 +370,10 @@ textarea {
 }
 
 #dossierModule h4 {
-    color: #00789a;
+    color: #686868;
     text-align: center;
+    font-size: 200%;
+    font-weight:bold;
 }
 
 #dossierModule h2 {
@@ -491,7 +493,7 @@ textarea {
     }
 
 #moduleTitel {
-    color: blue;
+    color: #1A9ADD;
     text-align: center;
     font-weight: bold;
     font-size: 50px;
@@ -507,14 +509,14 @@ textarea {
     text-align: center;
     font-size: 30px;
     width: 60%;
-    margin: 6% auto;
+    margin: 1% auto;
     margin-bottom: 1%;
 }
 
 #moduleInhoud {
     margin-bottom: 1%;
     float: left;
-    margin-left: 5%;
+    margin-left: 15%;
 }
 
 #moduleIcon {
