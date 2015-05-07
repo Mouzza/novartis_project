@@ -54,3 +54,17 @@ C:\Users\Michiel\Desktop\novartis_project\novartis_project\BL\bin\Debug\EntityFr
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\BL\obj\Debug\JPP.BL.dll
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\BL\obj\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.dll.config
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.pdb
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.DAL.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.DAL.pdb
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.xml
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\obj\Debug\JPP.BL.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\BL\obj\Debug\JPP.BL.pdb
