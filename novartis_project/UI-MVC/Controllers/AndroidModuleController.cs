@@ -1,4 +1,5 @@
 ﻿using JPP.BL;
+using JPP.BL.Domain.Antwoorden;
 using JPP.BL.Domain.Modules;
 using JPP.UI.Web.MVC.Models;
 using Newtonsoft.Json;
@@ -15,6 +16,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         ModuleManager moduleManager = new ModuleManager();
+ 
 
 
         //// GET  http://localhost:44302/AndroidModule/ActieveModule
@@ -25,7 +27,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             DossierModule actieveDossierModule = moduleManager.readActieveDossierModule();
 
-
+          
             ANDROIDDossierModule dosModule = new ANDROIDDossierModule()
             {
                 ID = actieveDossierModule.ID,
@@ -33,13 +35,18 @@ namespace JPP.UI.Web.MVC.Controllers
                 beginDatum = actieveDossierModule.beginDatum,
                 eindDatum = actieveDossierModule.eindDatum,
                 adminNaam = actieveDossierModule.adminNaam,
-                status = actieveDossierModule.status
-
+                status = actieveDossierModule.status,
+                thema = new Thema()
+                {
+                    ID=actieveDossierModule.thema.ID,
+                    naam=actieveDossierModule.thema.naam,
+                    beschrijving=actieveDossierModule.thema.beschrijving
+                }
 
             };
 
 
-            var json = JsonConvert.SerializeObject(actieveDossierModule, new JsonSerializerSettings()
+            var json = JsonConvert.SerializeObject(dosModule,new JsonSerializerSettings()
             {
                 ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             });
