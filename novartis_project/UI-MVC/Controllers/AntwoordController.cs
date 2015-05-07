@@ -31,7 +31,7 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult homePartialAntwoorden(int? page, string searchString)
         {
 
-            int pageSize = 12;
+            int pageSize = 8;
             int pageNumber = (page ?? 1);
 
             IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden();

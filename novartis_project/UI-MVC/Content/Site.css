@@ -166,7 +166,7 @@ textarea {
 #wrapper4 {
     min-height: 50%;
     position: relative;
-    background-color: white;
+    background-color: #d3d3d3;
     padding: 50px;
     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
 }
@@ -178,7 +178,7 @@ textarea {
     width: 100%;
     bottom: 70px;
     left: 0;
-    background-color: darkgray;
+    background-color: #FFF;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -405,7 +405,25 @@ textarea {
 }
 
 #eersteMenuItem:hover, #tweedeMenuItem:hover, #derdeMenuItem:hover {
-    border: 2px solid yellow;
+    font-size: 150%;
+}
+
+#eersteMenuItem:hover h2, #tweedeMenuItem:hover h2, #derdeMenuItem:hover h2{
+    font-size: 150%;
+}
+
+#eersteMenuItem:hover h4, #tweedeMenuItem:hover h4, #derdeMenuItem:hover h4{
+    font-size:100%;
+}
+
+#eersteMenuItem:hover img{
+    width: 35%;
+    height: 35%;
+}
+
+#tweedeMenuItem:hover img, #derdeMenuItem:hover img{
+    width: 120%;
+    height: 120%;
 }
 
 
