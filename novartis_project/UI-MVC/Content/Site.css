@@ -412,20 +412,27 @@ textarea {
 
 #eersteMenuItem:hover h2, #tweedeMenuItem:hover h2, #derdeMenuItem:hover h2{
     font-size: 150%;
+    font-weight: bold;
+
 }
 
 #eersteMenuItem:hover h4, #tweedeMenuItem:hover h4, #derdeMenuItem:hover h4{
     font-size:100%;
+    font-weight: bold;
+
 }
 
 #eersteMenuItem:hover img{
-    width: 35%;
-    height: 35%;
+
+    /*width: 35%;
+    height: 35%;*/
+
 }
 
 #tweedeMenuItem:hover img, #derdeMenuItem:hover img{
-    width: 120%;
-    height: 120%;
+    /*width: 120%;
+    height: 120%;*/
+
 }
 
 
@@ -438,6 +445,13 @@ textarea {
     padding: 1%;
     padding-top: 2%;
     cursor: pointer;
+        /* HOVER OFF*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+
 }
 
 #tweedeMenuItem {
@@ -449,6 +463,12 @@ textarea {
     padding-top: 2%;
     box-shadow: inset 10px 0px 50px -7px #000;
     cursor: pointer;
+        /* HOVER OFF*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
 }
 
 #derdeMenuItem {
@@ -460,6 +480,12 @@ textarea {
     padding-top: 2%;
     box-shadow: inset 10px 10px 50px -7px #000;
     cursor: pointer;
+        /* HOVER OFF*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
 }
 
     #derdeMenuItem a {
