@@ -481,6 +481,7 @@
     <Content Include="Views\Module\_Details.cshtml" />
     <Content Include="Views\Antwoord\_Lijst.cshtml" />
     <Content Include="Views\Antwoord\homePartialAntwoorden.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
