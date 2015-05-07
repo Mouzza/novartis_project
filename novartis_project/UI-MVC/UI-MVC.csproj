@@ -273,6 +273,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
+    <Content Include="Content\KeuzePagina.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
@@ -316,6 +317,8 @@
     <Content Include="Images\afbeeldingen\homeImage2.jpg" />
     <Content Include="Images\afbeeldingen\homeImage3.jpg" />
     <Content Include="Images\afbeeldingen\homeImage4.png" />
+    <Content Include="Images\buttonAgenda.png" />
+    <Content Include="Images\buttonDossier.png" />
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
