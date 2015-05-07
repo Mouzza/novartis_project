@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -317,7 +317,6 @@
     <Content Include="Images\afbeeldingen\homeImage2.jpg" />
     <Content Include="Images\afbeeldingen\homeImage3.jpg" />
     <Content Include="Images\afbeeldingen\homeImage4.png" />
-<<<<<<< HEAD
     <Content Include="Images\countdown\flipper00.png" />
     <Content Include="Images\countdown\flipper01.png" />
     <Content Include="Images\countdown\flipper02.png" />
@@ -348,10 +347,8 @@
     <Content Include="Images\countdown\flipper90.png" />
     <Content Include="Images\countdown\flipper91.png" />
     <Content Include="Images\countdown\flipper92.png" />
-=======
     <Content Include="Images\buttonAgenda.png" />
     <Content Include="Images\buttonDossier.png" />
->>>>>>> origin/master
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
