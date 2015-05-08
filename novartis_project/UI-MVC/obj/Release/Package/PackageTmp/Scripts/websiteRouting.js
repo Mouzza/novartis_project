@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-   
+
   
 
     $("#eersteMenuItem").click(function () {
@@ -9,6 +9,11 @@
 
     $("#tweedeMenuItem").click(function () {
         window.location = $(this).find("#tweedeMenuLink").attr("href");
+        return false;
+    });
+
+    $("#derdeMenuItem").click(function () {
+        window.location = $(this).find("#derdeMenuLink").attr("href");
         return false;
     });
 

@@ -31,7 +31,7 @@
     <div id="pager">
         @Html.PagedListPager(Model, page => Url.Action("_partialAntwoordLijst",
     new { page }))
-
+    </div>
         @foreach (var item in Model)
         {
             if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
@@ -69,14 +69,14 @@
             
 
                 <tr>
+                    <td id="aantalStemmen">
+                        +@Html.DisplayFor(modelItem => item.aantalStemmen)
 
+                    </td>
                     <td id="antwoordInhoud">
                         @Html.DisplayFor(modelItem => item.inhoud)
                     </td>
-                    <td id="aantalStemmen">
-                         +@Html.DisplayFor(modelItem => item.aantalStemmen)
-
-                    </td>
+  
 
 
                 </tr>
@@ -85,9 +85,6 @@
             </table>
 
         }
-
-
-    </div>
 
 
 
