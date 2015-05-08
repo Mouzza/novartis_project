@@ -14,8 +14,8 @@ namespace JPP.UI.Web.MVC.Controllers
     {
 
          ModuleManager moduleManager = new ModuleManager();
-        [HttpGet]
-        public IHttpActionResult ActieveDossierModule()
+         [HttpGet]
+       public IHttpActionResult ActieveDossierModule()
         {
 
 

@@ -37,3 +37,12 @@ C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\Domain\bin\D
 C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.dll
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.xml
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
+C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
