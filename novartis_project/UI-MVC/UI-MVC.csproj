@@ -401,6 +401,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TimeLine.js" />
     <Content Include="Scripts\websiteAnimation.js" />
     <Content Include="Scripts\websiteRouting.js" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
