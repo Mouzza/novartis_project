@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.Module>
+@using PagedList
+@using PagedList.Mvc
+
+@{ 
+    Layout = "";
+    
+}
+
+<div id="pager">
+    @Html.PagedListPager(Model, page => Url.Action("CommingSoon",
+    new { page }))
+</div>
+<div id="geplandeModules">
+@foreach (var item in Model)
+{
+    <input type="hidden" value="@item.beginDatum" id="beginDatum" />
+
+    <table class="table">
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                Vraag
+            </th>
+            <th>
+                Tijd resterend
+            </th>
+
+            <th>
+                Auteur
+            </th>
+            <th>
+                Beloning
+            </th>
+
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+            </td>
+
+            <td>
+                <script>
+
+
+                    // alert(date);
+                    function myFunc() {
+
+                        var date = $('#beginDatum').val();
+                        //date.setMonth(date.getMonth() - 1);
+                        var jaar = date.substr(6, 9);
+                        var maand = date.substr(3, 4);
+                        var dag = date.substr(0, 1);
+                        var uur = date.substr(11, 12);
+                        var min = date.substr(14, 15);
+                        var sec = date.substr(17, 18);
+
+                        var beginDatum = new Date(date);
+                        //alert(date);
+                        return beginDatum;
+
+
+
+                    };
+                    //myFunc();
+                    var myCountdown1 = new Countdown({
+                        time: myFunc(), // 86400 seconds = 1 day
+                        width: 300,
+                        height: 60,
+                        rangeHi: "month",
+                        style: "flip"	// <- no comma on last item!
+                    });
+
+
+
+
+
+                </script>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adminNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beloning.FirstOrDefault().beschrijving)
+            </td>
+
+
+        </tr>
+
+    </table>
+}
+</div>
+
+

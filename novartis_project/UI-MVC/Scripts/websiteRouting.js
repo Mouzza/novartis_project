@@ -12,6 +12,11 @@
         return false;
     });
 
+    $("#derdeMenuItem").click(function () {
+        window.location = $(this).find("#derdeMenuLink").attr("href");
+        return false;
+    });
+
  
 
 });

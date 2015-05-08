@@ -24,8 +24,9 @@ else if (ViewBag.Aantal == 1)
     @Html.ActionLink("Nieuw oplossing", "Create")
 </p>
 <div id="pager">
-    @Html.PagedListPager(Model, page => Url.Action("_partialAntwoordLijst",
+    @Html.PagedListPager(Model, page => Url.Action("_partialAgendaAntwoordLijst",
     new { page }))
+</div>
     @foreach (var item in Model)
     {
         if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
@@ -76,7 +77,7 @@ else if (ViewBag.Aantal == 1)
 
     }
 
-</div>
+
 
 
 <script>

@@ -118,7 +118,7 @@ textarea {
     padding-bottom: 10px;
 }
 #mainWrapper3, #mainWrapper4  {
-    min-height: 50%;
+    min-height: 80%;
     position: relative;
     background-color: white;
     padding-bottom: 10px;
@@ -166,7 +166,7 @@ textarea {
 #wrapper4 {
     min-height: 50%;
     position: relative;
-    background-color: white;
+    background-color: #d3d3d3;
     padding: 50px;
     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
 }
@@ -178,7 +178,7 @@ textarea {
     width: 100%;
     bottom: 70px;
     left: 0;
-    background-color: darkgray;
+    background-color: #FFF;
     color: white;
     text-align: center;
     font-weight: bold;
@@ -370,8 +370,10 @@ textarea {
 }
 
 #dossierModule h4 {
-    color: #00789a;
+    color: #686868;
     text-align: center;
+    font-size: 200%;
+    font-weight:bold;
 }
 
 #dossierModule h2 {
@@ -405,7 +407,25 @@ textarea {
 }
 
 #eersteMenuItem:hover, #tweedeMenuItem:hover, #derdeMenuItem:hover {
-    border: 2px solid yellow;
+    font-size: 150%;
+}
+
+#eersteMenuItem:hover h2, #tweedeMenuItem:hover h2, #derdeMenuItem:hover h2{
+    font-size: 150%;
+}
+
+#eersteMenuItem:hover h4, #tweedeMenuItem:hover h4, #derdeMenuItem:hover h4{
+    font-size:100%;
+}
+
+#eersteMenuItem:hover img{
+    width: 35%;
+    height: 35%;
+}
+
+#tweedeMenuItem:hover img, #derdeMenuItem:hover img{
+    width: 120%;
+    height: 120%;
 }
 
 
@@ -473,7 +493,7 @@ textarea {
     }
 
 #moduleTitel {
-    color: blue;
+    color: #1A9ADD;
     text-align: center;
     font-weight: bold;
     font-size: 50px;
@@ -489,14 +509,14 @@ textarea {
     text-align: center;
     font-size: 30px;
     width: 60%;
-    margin: 6% auto;
+    margin: 1% auto;
     margin-bottom: 1%;
 }
 
 #moduleInhoud {
     margin-bottom: 1%;
     float: left;
-    margin-left: 5%;
+    margin-left: 15%;
 }
 
 #moduleIcon {
