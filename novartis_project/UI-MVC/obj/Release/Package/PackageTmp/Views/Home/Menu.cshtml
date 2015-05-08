@@ -3,10 +3,12 @@
     ViewBag.Title = "Menu";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="~/Content/KeuzePagina.css">
 
-<h2>Tussen menu (Actieve dossiermodule + Actieve agenamodule)</h2>
+<div class="containerButton">
+    <p><a href="@Url.Action("Dossier","Module")" class="ButtonDossier"></a>
+    <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda"></a></p>
+</div>
 
-<p><a href="@Url.Action("Dossier","Module")">Actieve dossiermodule</a></p>
-<p><a href="@Url.Action("Agenda","Module")">Actieve agendamodule</a></p>
 
 
