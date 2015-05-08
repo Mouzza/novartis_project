@@ -11,6 +11,7 @@
     <script src="~/Scripts/login.js" type="text/javascript"></script>
     <script src="~/Scripts/websiteAnimation.js" type="text/javascript"></script>
     <script src="~/Scripts/websiteRouting.js" type="text/javascript"></script>
+    <script src="~/Scripts/countdown.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -113,7 +114,7 @@
     
 
    @{ var controle = false; }
-   @* @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/")
+    @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/")
     {
         @RenderBody()
         controle = true;
@@ -189,9 +190,9 @@
 
         </div>
 
-    }*@
+    }
 
-    @if (Request.Url.AbsoluteUri == "http://localhost:44302/")
+    @*@if (Request.Url.AbsoluteUri == "http://localhost:44302/")
     {
         @RenderBody()
         controle = true;
@@ -268,7 +269,7 @@
         
         </div>
 
-    }
+    }*@
     
 
      
