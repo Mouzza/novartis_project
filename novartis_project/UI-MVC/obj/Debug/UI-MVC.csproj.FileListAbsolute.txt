@@ -19,7 +19,6 @@ C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JP
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.pdb
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JPP.DAL.pdb
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.Domain.pdb
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\Newtonsoft.Json.xml
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb
@@ -59,3 +58,9 @@ C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\J
 C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
 C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\System.Net.Http.Formatting.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.WebHost.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\System.Net.Http.Formatting.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.WebHost.xml
