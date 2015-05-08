@@ -28,6 +28,10 @@ namespace JPP.UI.Web.MVC.Controllers
         
         }
 
+        public ActionResult DossierModelOne()
+        {
+            return View();
+        }
         public ActionResult homePartialAntwoorden(int? page, string searchString)
         {
 

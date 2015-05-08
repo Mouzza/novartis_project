@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -271,6 +271,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DosierModel.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
     <Content Include="Content\KeuzePagina.css" />
@@ -521,6 +522,7 @@
     <Content Include="Views\Antwoord\Delete.cshtml" />
     <Content Include="Views\Module\CommingSoon.cshtml" />
     <Content Include="Views\Module\GeplandeModules.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelOne.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
