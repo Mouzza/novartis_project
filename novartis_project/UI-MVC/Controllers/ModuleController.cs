@@ -10,6 +10,7 @@ using JPP.UI.Web.MVC.Models;
 using JPP.BL.Domain.Modules;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
+using PagedList;
 
 
 
@@ -22,19 +23,48 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
 
 
+
+        public ActionResult CommingSoon()
+        {
+
+            return View();
+        }
+
+        public ActionResult GeplandeModules(int? page)
+        {
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<Module> geplandeModules = moduleManager.readGeplandeModules();
+
+            return View(geplandeModules.ToPagedList(pageNumber, pageSize));
+        }
+
+
         // GET: Module
        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
-            IEnumerable<DossierModule> DossierModules = moduleManager.readAllDossierModules();
-
-            return View(DossierModules);
+            return View();
         }
 
-       public ActionResult partialViewAgendaModule()
+       public ActionResult partialViewDossierModule(int? page)
        {
+           int pageSize = 5;
+           int pageNumber = (page ?? 1);
+
+           IEnumerable<DossierModule> DossierModules = moduleManager.readAllDossierModules();
+
+           return PartialView(DossierModules.ToPagedList(pageNumber, pageSize));
+
+       }
+       public ActionResult partialViewAgendaModule(int? page)
+       {
+           int pageSize = 5;
+           int pageNumber = (page ?? 1);
+
            IEnumerable<AgendaModule> AgendaModules = moduleManager.readAllAgendaModules();
-           return PartialView(AgendaModules);
+           return PartialView(AgendaModules.ToPagedList(pageNumber, pageSize));
        }
        public ActionResult Dossier()
        {
@@ -96,7 +126,7 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 // TODO: Add delete logic here
                 moduleManager.removeModule(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Module");
             }
             catch
             {

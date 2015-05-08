@@ -13,6 +13,10 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
+        public ActionResult Menu()
+        {
+            return View();
+        }
         public ActionResult Main()
         {
             return View();

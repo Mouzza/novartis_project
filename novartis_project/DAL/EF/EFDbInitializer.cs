@@ -73,9 +73,7 @@ namespace JPP.DAL.EF
 
 
             };
-            
-
-
+          
             DossierModule dossierModule = new DossierModule()
             {
                 beloning = new List<Beloning>(),    
@@ -135,7 +133,7 @@ namespace JPP.DAL.EF
 
                 
                    gebruikersNaam = "Gebruiker01",
-                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg",
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg, antw nummer: " + i,
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     aantalStemmen = i,
@@ -155,7 +153,7 @@ namespace JPP.DAL.EF
 
 
                     gebruikersNaam = "Gebruiker01",
-                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg",
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg, antw nummer: " + i,
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     aantalStemmen = i,             
@@ -183,7 +181,61 @@ namespace JPP.DAL.EF
             vasteVraagAntwoord.vasteVraag = vasteVraag;
             vasteVraag.vasteVraagAntwoorden.Add(vasteVraagAntwoord);
 
-         
+
+
+            //geplande modules
+            int jaar = 2015;
+            int jaar2 = 2016;
+            for (int x = 0; x < 10; x++)
+            {
+          
+                jaar+=1;
+                jaar2+=1;
+
+                DossierModule geplandeDossierModule = new DossierModule()
+                {
+                    beloning = new List<Beloning>(),
+                    adminNaam = "Admin",
+                    naam = "Rivierenhof speeltuin",
+                    beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
+                    eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
+                    verplichteVolledigheidsPercentage = 90.5,
+                    vasteVragen = new List<VasteVraag>(),
+                    dossierAntwoorden = new List<DossierAntwoord>(),
+                    status = false
+
+
+                };
+                geplandeDossierModule.beloning.Add(beloning);
+                geplandeDossierModule.centraleVraag = centraleVraag;
+                geplandeDossierModule.thema = thema;
+                geplandeDossierModule.organisatie = organisatieLeuven;
+                geplandeDossierModule.vasteVragen.Add(vasteVraag);
+                context.modules.Add(geplandeDossierModule);
+
+
+                AgendaModule geplandeAgendaModule = new AgendaModule()
+                {
+                    beloning = new List<Beloning>(),
+                    adminNaam = "Admin",
+                    naam = "Hoe creatief ben jij?!",
+                    beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
+                    eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
+                    agendaAntwoorden = new List<AgendaAntwoord>(),
+                    status = false
+
+
+                };
+                geplandeAgendaModule.centraleVraag = centraleVraag2;
+                geplandeAgendaModule.beloning.Add(beloning);
+                geplandeAgendaModule.thema = thema;
+                geplandeAgendaModule.organisatie = organisatieLeuven;
+                context.modules.Add(geplandeAgendaModule);
+
+                
+
+            }
+
         
             //DossierModule
             dossierModule.beloning.Add(beloning);
@@ -203,8 +255,7 @@ namespace JPP.DAL.EF
          
             context.modules.Add(dossierModule);
             context.modules.Add(agendaModule);
- 
-
+            
             context.SaveChanges();
 
         }
