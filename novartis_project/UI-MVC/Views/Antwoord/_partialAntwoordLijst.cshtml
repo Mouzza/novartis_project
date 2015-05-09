@@ -4,7 +4,6 @@
 @using Microsoft.AspNet.Identity
 
 @{
-    ViewBag.Title = "_partialAntwoordLijst";
     Layout = "";
     var zelfdeGebruiker = false;
 }
@@ -66,33 +65,43 @@
                 @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
             }
 
-            <table class="table" id="tableAntwoord">
+            <div id="tableAntwoord" onclick="goToPagina(this)">
+                <table class="table">
+
+                    <tr>
+                        <td id="aantalStemmen">
+                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                        </td>
+
+                        <td id="antwoordInhoud">
+                            @Html.DisplayFor(modelItem => item.titel)
+
+                        </td>
+
+                    </tr>
+
+                </table>
+                <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
+
+            </div>
 
 
-                <tr>
-                    <td id="aantalStemmen">
-                        +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                <script>
 
-                    </td>
-                    <td id="antwoordInhoud">
-                        @Html.DisplayFor(modelItem => item.titel)
-                    </td>
-
-
-
-                </tr>
-
-
-            </table>
-
-
-
+                    function goToPagina(element) {
+                        window.location = $(element).find("#paginaLink").attr("href");
+                        return false;
+                    };
+                </script>
         }
 
 
 
 
 <script>
+
+
+
     $(function () {
         $('#pager').on('click', 'a', function () {
             $.ajax({
