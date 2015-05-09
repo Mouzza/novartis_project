@@ -612,7 +612,7 @@ transition: all 500ms ease;
     height:300px;
     margin-right:2%;
     background-color:#15A9D5;
-    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
     /*background:url("../Images/Paars.png");¨*/
     margin-bottom:30px;
 
