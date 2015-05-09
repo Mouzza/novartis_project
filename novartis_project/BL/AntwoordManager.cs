@@ -14,7 +14,6 @@ namespace JPP.BL
     {
         IngelogdeGebruikerSCEF inlog;
         BeheerderSCEF beheerder;
-
         public AntwoordManager()
         {
             inlog = new IngelogdeGebruikerSCEF();
@@ -35,7 +34,6 @@ namespace JPP.BL
         {
             List<Antwoord> antwoorden = inlog.getAllAntwoorden();
             return antwoorden;
-       
         }
         public List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID)
         {
@@ -48,10 +46,8 @@ namespace JPP.BL
                     dossierReturn.Add(dossier);
                 }
             }
-
             return dossierReturn;
         }
-
         public List<AgendaAntwoord> getAllAgendaAntwoordenPerModule(int agendaID)
         {
             List<AgendaAntwoord> agendaList = inlog.getAllAgendaAntwoorden();
@@ -63,10 +59,8 @@ namespace JPP.BL
                     agendaReturn.Add(agenda);
                 }
             }
-
             return agendaReturn;
         }
-
         public List<AgendaAntwoord> topAgendaAntwoorden(int top)
         {
             List<AgendaAntwoord> agendaList=inlog.getAllAgendaAntwoorden();
@@ -78,37 +72,28 @@ namespace JPP.BL
             }
             return agendaReturn;
         }
-
         public Antwoord readAntwoord(int id)
         {
            return inlog.getAntwoord(id);
         }
-
         public List<DossierAntwoord> readAllDossierAntwoorden()
         {
             List<DossierAntwoord> dossierReturn = inlog.getAllDossierAntwoorden();
             return dossierReturn;
         }
-
         public List<AgendaAntwoord> readAllAgendaAntwoorden()
         {
             List<AgendaAntwoord> agendaReturn = inlog.getAllAgendaAntwoorden();
             return agendaReturn;
         }
-
-        
-
         public Antwoord createDossierAntwoord(Antwoord antwoord)
         {
            return inlog.maakDossierAntwoord((DossierAntwoord)antwoord);
         }
-
         public Antwoord createAgendaAntwoord(Antwoord antwoord)
         {
             return inlog.maakAgendaAntwoord((AgendaAntwoord)antwoord);
         }
-
-        
         public void updateAgendaAntwoord(Antwoord antwoord)
         {
             beheerder.wijzigAgendaAntwoord((AgendaAntwoord)antwoord);
@@ -117,11 +102,17 @@ namespace JPP.BL
         {
             beheerder.wijzigDossierAntwoord((DossierAntwoord)antwoord);
         }
-
-
         public void removeAntwoord(int id)
         {
             beheerder.deleteAntwoord(id);
+        }
+        public void stemOpComment(int id)
+        {
+            beheerder.stemOpComment(id);
+        }
+        public void stemOpAntwoord(int id)
+        {
+            beheerder.stemOpAntwoord(id);
         }
     }
 }

@@ -111,7 +111,13 @@ namespace JPP.DAL.EF
             dbcontext.Entry(comment).State = System.Data.Entity.EntityState.Modified;
             dbcontext.SaveChanges();
         }
-
+        public void stemOpAntwoord(int id)
+        {
+            Antwoord antwoord = dbcontext.antwoord.Find(id);
+            antwoord.aantalStemmen++;
+            dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.SaveChanges();
+        }
 
     }
 }
