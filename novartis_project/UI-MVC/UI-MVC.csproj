@@ -368,6 +368,7 @@
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
     <Content Include="Images\homeSpecialMenu icons\iconStart.png" />
+    <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoOld.png" />

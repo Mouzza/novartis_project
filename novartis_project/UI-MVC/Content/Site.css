@@ -503,15 +503,93 @@ transition: all 500ms ease;
 #homeTitelHeader {
     padding: 1%;
     color: white;
-    background-color: black;
+    background-color: #222222;
+    border:#222222;
     height: 70px;
     width: 100%;
+    font-weight:bold;
 }
 
-    #homeTitelHeader button {
+    #hide {
         float: left;
         color: black;
+        background-image:url(../Images/iconmonstr-x-mark-4-icon-256.png);
+         background-repeat: no-repeat;
+        height:40px;
+        width:40px;
+        background-size:40px;
+        background-position:0 0;
+        background-color:#222222;
+        border:#222222;
+
+                    -webkit-transition: all 500ms ease;
+-moz-transition: all 300ms ease;
+-ms-transition: all 300ms ease;
+-o-transition: all 300ms ease;
+transition: all 300ms ease;
     }
+        #hide:hover {
+            margin-left:-3px;
+            margin-top:-3px;
+        float: left;
+        color: black;
+        background-image:url(../Images/iconmonstr-x-mark-4-icon-256.png);
+         background-repeat: no-repeat;
+        height:45px;
+        width:45px;
+        background-size:45px;
+        background-position:0 0;
+        background-color:#222222;
+        border:#222222;
+            -webkit-transition: all 500ms ease;
+-moz-transition: all 300ms ease;
+-ms-transition: all 300ms ease;
+-o-transition: all 300ms ease;
+transition: all 300ms ease;
+
+    }
+
+        #show{
+            background-image:url("../images/websitePage logos/iconContinue.png");
+            background-repeat: no-repeat;
+            float: left;
+        color: black;
+        height:40px;
+        width:40px;
+        background-size:40px;
+        background-position:0 45%;
+        background-color:#222222;
+        border:#222222;
+
+                    -webkit-transition: all 500ms ease;
+-moz-transition: all 300ms ease;
+-ms-transition: all 300ms ease;
+-o-transition: all 300ms ease;
+transition: all 300ms ease;
+        }
+
+                #show:hover {
+            margin-left:-3px;
+            margin-top:-3px;
+        float: left;
+        color: black;
+        background-image:url("../images/websitePage logos/iconContinue.png");
+         background-repeat: no-repeat;
+        height:45px;
+        width:45px;
+        background-size:45px;
+        background-position:0 45%;
+        background-color:#222222;
+        border:#222222;
+            -webkit-transition: all 500ms ease;
+-moz-transition: all 300ms ease;
+-ms-transition: all 300ms ease;
+-o-transition: all 300ms ease;
+transition: all 300ms ease;
+
+    }
+
+
 
     #homeTitelHeader p {
         font-size: 30px;
