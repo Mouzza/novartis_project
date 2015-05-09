@@ -14,3 +14,5 @@ novartis_project/BL/obj/Debug/BL.csproj.FileListAbsolute.txt
 novartis_project/UI-MVC/Views/Shared/_Layout2.cshtml
 novartis_project/UI-MVC/Views/Shared/_Layout2.cshtml
 novartis_project/UI-MVC/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.suo
+novartis_project/UI-MVC/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache

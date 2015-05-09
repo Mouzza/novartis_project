@@ -16,14 +16,8 @@ namespace JPP.UI.Web.MVC
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            config.Routes.MapHttpRoute(
-                name: "ApiByName",
-                routeTemplate: "api/{controller}/{name}",
-                defaults: null
-            );
-            //    config.Routes.MapHttpRoute("DefaultApiWithId", "Api/{controller}/{id}", new { id = RouteParameter.Optional }, new { id = @"\d+" });
-            //    config.Routes.MapHttpRoute("DefaultApiWithAction", "Api/{controller}/{action}");
-        }
+        //    config.Routes.MapHttpRoute("DefaultApiWithId", "Api/{controller}/{id}", new { id = RouteParameter.Optional }, new { id = @"\d+" });
+        //    config.Routes.MapHttpRoute("DefaultApiWithAction", "Api/{controller}/{action}");
+       }
     }
 }

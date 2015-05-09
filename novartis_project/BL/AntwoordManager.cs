@@ -10,7 +10,7 @@ using JPP.BL.Domain.Modules;
 
 namespace JPP.BL
 {
-    public class AntwoordManager : IAntwoordManager
+    public class AntwoordManager:IAntwoordManager
     {
         IngelogdeGebruikerSCEF inlog;
         BeheerderSCEF beheerder;
@@ -22,9 +22,9 @@ namespace JPP.BL
         }
         public List<DossierAntwoord> topDossierAntwoorden(int top)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierList=inlog.getAllDossierAntwoorden();
             List<DossierAntwoord> dossierTussenRes = dossierList.OrderBy(o => o.aantalStemmen).ToList();
-            List<DossierAntwoord> dossierReturn = new List<DossierAntwoord>();
+            List<DossierAntwoord> dossierReturn=new List<DossierAntwoord>(); 
             for (int i = 0; i < top; i++)
             {
                 dossierReturn.Add(dossierTussenRes[i]);
@@ -35,7 +35,7 @@ namespace JPP.BL
         public List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID)
         {
             List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierReturn = new List<DossierAntwoord>();
+            List<DossierAntwoord> dossierReturn=new List<DossierAntwoord>(); 
             foreach (var dossier in dossierList)
             {
                 if (dossier.module.ID == moduleID)
@@ -64,9 +64,9 @@ namespace JPP.BL
 
         public List<AgendaAntwoord> topAgendaAntwoorden(int top)
         {
-            List<AgendaAntwoord> agendaList = inlog.getAllAgendaAntwoorden();
+            List<AgendaAntwoord> agendaList=inlog.getAllAgendaAntwoorden();
             List<AgendaAntwoord> agendaTussenRes = agendaList.OrderBy(o => o.aantalStemmen).ToList();
-            List<AgendaAntwoord> agendaReturn = new List<AgendaAntwoord>();
+            List<AgendaAntwoord> agendaReturn=new List<AgendaAntwoord>(); 
             for (int i = 0; i < top; i++)
             {
                 agendaReturn.Add(agendaTussenRes[i]);
@@ -76,7 +76,7 @@ namespace JPP.BL
 
         public Antwoord readAntwoord(int id)
         {
-            return inlog.getAntwoord(id);
+           return inlog.getAntwoord(id);
         }
 
         public List<DossierAntwoord> readAllDossierAntwoorden()
@@ -91,11 +91,11 @@ namespace JPP.BL
             return agendaReturn;
         }
 
-
+        
 
         public Antwoord createDossierAntwoord(Antwoord antwoord)
         {
-            return inlog.maakDossierAntwoord((DossierAntwoord)antwoord);
+           return inlog.maakDossierAntwoord((DossierAntwoord)antwoord);
         }
 
         public Antwoord createAgendaAntwoord(Antwoord antwoord)
@@ -103,7 +103,7 @@ namespace JPP.BL
             return inlog.maakAgendaAntwoord((AgendaAntwoord)antwoord);
         }
 
-
+        
         public void updateAgendaAntwoord(Antwoord antwoord)
         {
             beheerder.wijzigAgendaAntwoord((AgendaAntwoord)antwoord);
@@ -118,14 +118,5 @@ namespace JPP.BL
         {
             beheerder.deleteAntwoord(id);
         }
-        public void stemOpComment(int id)
-        {
-            beheerder.stemOpComment(id);
-        }
-        public void stemOpAntwoord(int id)
-        {
-            beheerder.stemOpAntwoord(id);
-        }
-      
     }
 }
