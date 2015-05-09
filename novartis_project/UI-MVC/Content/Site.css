@@ -611,17 +611,27 @@ transition: all 500ms ease;
     width:250px;
     height:300px;
     margin-right:2%;
-    background:url("../Images/Paars.png");
+    background-color:#15A9D5;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    /*background:url("../Images/Paars.png");¨*/
     margin-bottom:30px;
+
+            /* HOVER OFF*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
 
 }
 #homeTable h1{
     font-size:18px;
+    text-align:center;
 }
 #homeTable img{
     height:100px;
     width:100px;
-    margin-left:25%;
+    margin-left:27%;
 }
 #body-contentwrapper{
     margin-left: 15%;
@@ -630,6 +640,11 @@ transition: all 500ms ease;
 #homeMidContent{
     margin-left:5%;
     width:100%;
+}
+
+#homeMid p{
+    margin:0 0 0;
+    height: 40px;
 }
 
 #likes{
@@ -647,11 +662,22 @@ transition: all 500ms ease;
 }
 
 #homeTable:hover{
-     padding:0;
+         padding:0;
+         /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+  
+
 }
 #homeTable:hover #likes {
+
     display:block;
     z-index:2;
+
+
     
 }
 #homeTable:hover h1  {
@@ -761,3 +787,43 @@ transition: all 500ms ease;
         width: 700px;
         height: 400px;
       }
+
+ .imgClass {
+     background-image: url("../Images/search.png");
+     background-repeat: no-repeat;
+     height: 25px;
+     width: 25px;
+     background-size:25px;
+     background-color: #FFF;
+     border: #FFF;
+float:right;
+margin-right:77%;
+         /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+ }
+
+#SearchString{
+     margin-bottom:1%;
+ }
+
+#searchbox{
+    float:left;
+    margin-left:5%;
+}
+
+.imgClass:hover{
+    height:30px;
+    width:30px;
+    background-size: 30px;
+    margin-right: 76.8%;
+             /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+}

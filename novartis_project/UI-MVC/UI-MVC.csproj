@@ -385,6 +385,7 @@
     <Content Include="Images\Paars.png" />
     <Content Include="Images\page icons\goBack2.png" />
     <Content Include="Images\page icons\new.png" />
+    <Content Include="Images\search.png" />
     <Content Include="Images\socialMedia icons\fb.png" />
     <Content Include="Images\socialMedia icons\google.png" />
     <Content Include="Images\socialMedia icons\twitter.png" />

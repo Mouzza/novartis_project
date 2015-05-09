@@ -7,9 +7,13 @@
 
 @using (Html.BeginForm())
 {
+    
     <p>
-        Zoeken: @Html.TextBox("SearchString")
-        <input type="submit" value="Zoek" />
+        <div id="searchbox">
+            @Html.TextBox("SearchString")
+        </div>
+
+        <input type="submit" value="" class="imgClass" />
     </p>
 }
 <div id="pager">
