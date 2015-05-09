@@ -115,15 +115,9 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\net45\System.Net.Http.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
@@ -226,7 +220,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\Sql Scripts\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\AndroidModule\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
@@ -292,7 +285,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\DosierModel.css" />
+    <Content Include="Content\DossierModel.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
     <Content Include="Content\KeuzePagina.css" />
@@ -371,10 +364,12 @@
     <Content Include="Images\countdown\flipper92.png" />
     <Content Include="Images\buttonAgenda.png" />
     <Content Include="Images\buttonDossier.png" />
+    <Content Include="Images\dossier-white.png" />
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
     <Content Include="Images\homeSpecialMenu icons\iconStart.png" />
+    <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoOld.png" />
@@ -392,6 +387,7 @@
     <Content Include="Images\Paars.png" />
     <Content Include="Images\page icons\goBack2.png" />
     <Content Include="Images\page icons\new.png" />
+    <Content Include="Images\search.png" />
     <Content Include="Images\socialMedia icons\fb.png" />
     <Content Include="Images\socialMedia icons\google.png" />
     <Content Include="Images\socialMedia icons\twitter.png" />
@@ -545,6 +541,8 @@
     <Content Include="Views\Module\CommingSoon.cshtml" />
     <Content Include="Views\Module\GeplandeModules.cshtml" />
     <Content Include="Views\Antwoord\DossierModelOne.cshtml" />
+    <Content Include="Views\Antwoord\Dossier.cshtml" />
+    <Content Include="Views\Antwoord\Agenda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

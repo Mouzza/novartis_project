@@ -27,7 +27,16 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         
         }
-
+        public ActionResult Dossier(int id)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            return View(dossierAntwoord);
+        }
+        public ActionResult Agenda(int id)
+        {
+            AgendaAntwoord agendaAntwoord = (AgendaAntwoord)antwManager.readAntwoord(id);
+            return View(agendaAntwoord);
+        }
         public ActionResult DossierModelOne()
         {
             return View();
@@ -38,14 +47,14 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageSize = 8;
             int pageNumber = (page ?? 1);
 
-            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden();
+            IEnumerable<Antwoord> antwoorden = antwManager.readAllAntwoorden();
             if (!String.IsNullOrEmpty(searchString))
             {
-                dossierAntwoorden = dossierAntwoorden.Where(antw => antw.inhoud.Contains(searchString)
-                                       || antw.extraInfo.Contains(searchString));
+                antwoorden = antwoorden.Where(antw => antw.inhoud.Contains(searchString)
+                                       || antw.titel.Contains(searchString));
             }
 
-            return PartialView(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
+            return PartialView(antwoorden.ToPagedList(pageNumber, pageSize));
         }
 
         //Antwoord/Lijst

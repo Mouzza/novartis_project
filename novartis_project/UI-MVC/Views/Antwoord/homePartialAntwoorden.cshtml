@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<JPP.BL.Domain.Antwoorden.DossierAntwoord>
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Antwoorden.Antwoord>
 @using PagedList
 @using PagedList.Mvc
 @{
@@ -7,9 +7,13 @@
 
 @using (Html.BeginForm())
 {
+    
     <p>
-        Zoeken: @Html.TextBox("SearchString")
-        <input type="submit" value="Zoek" />
+        <div id="searchbox">
+            @Html.TextBox("SearchString")
+        </div>
+
+        <input type="submit" value="" class="imgClass" />
     </p>
 }
 <div id="pager">
@@ -21,20 +25,41 @@
         @foreach (var item in Model)
         {
             <div id="homeTable">
-                <img src="~/Images/menu logos/dossier.png" alt="Alternate Text" />
+                <img src="~/Images/dossier-white.png" alt="Alternate Text" />
                 <h1>
-                    @Html.DisplayFor(modelItem => item.inhoud)
+                    @Html.DisplayFor(modelItem => item.titel)
                 </h1>
-                <div id="likes">
+                <div id="likes" onclick="goToPagina(this)">
                     <p>Aantal stemmen</p>
                     <p>@Html.DisplayFor(modelItem => item.aantalStemmen)</p>
+                    @if (item.GetType().Name.Substring(0, 15) == "DossierAntwoord")
+                    {
+
+                        <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})">DossAntw</a>
+                    }
+                    else
+                    {
+                        <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">AgendaAntw</a>
+                    }
                 </div>
+                <script>
+
+                    function goToPagina(element) {
+                        window.location = $(element).find("#paginaLink").attr("href");
+                        return false;
+                    };
+                </script>
+               
 
             </div>
+            
+           
+            
+
         }
 
     </div>
-
+    
 
 
 
