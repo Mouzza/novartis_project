@@ -542,6 +542,7 @@
     <Content Include="Views\Antwoord\DossierModelOne.cshtml" />
     <Content Include="Views\Antwoord\Dossier.cshtml" />
     <Content Include="Views\Antwoord\Agenda.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelTwo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
