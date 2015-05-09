@@ -163,10 +163,6 @@ namespace JPP.DAL.EF
 
 
                 };
-                //agendaAntwoord.vasteTags.Add(tag);
-                //agendaAntwoord.persoonlijkeTags.Add(pTag);
-                //tag.antwoorden.Add(agendaAntwoord);
-                //pTag.antwoorden.Add(agendaAntwoord);
                 agendaModule.agendaAntwoorden.Add(agendaAntwoord);
                 agendaAntwoord.module = agendaModule;
                 dossierModule.dossierAntwoorden.Add(dossierAntwoord);

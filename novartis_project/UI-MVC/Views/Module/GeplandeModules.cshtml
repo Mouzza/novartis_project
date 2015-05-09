@@ -14,95 +14,90 @@
 <div id="geplandeModules">
 @foreach (var item in Model)
 {
-   
+    <input type="hidden" value="@item.beginDatum" id="beginDatum" />
     //<p id="beginDatum">@item.beginDatum</p>
 
-    <div id="moduleTable">
 
-        <p id="beginDatum">@item.beginDatum</p>
+    <table class="table">
+        <tr>
+            <th>
+                Naam
+            </th>
+            <th>
+                Vraag
+            </th>
+            <th>
+                Tijd resterend
+            </th>
 
-        <table class="table">
-            <tr>
-                <th>
-                    Naam
-                </th>
-                <th>
-                    Vraag
-                </th>
-                <th>
-                    Tijd resterend
-                </th>
+            <th>
+                Auteur
+            </th>
+            <th>
+                Beloning
+            </th>
 
-                <th>
-                    Auteur
-                </th>
-                <th>
-                    Beloning
-                </th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+            </td>
 
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.naam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
-                </td>
+            <td>
+                <script>
+                    var teller = 0;
 
-                <td id="countdowntimer"></td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.adminNaam)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.beloning.FirstOrDefault().beschrijving)
-                </td>
+                    // alert(date);
+                    function myFunc() {
+              
+
+                        var date = $('#beginDatum').get(teller).value();
+                        //date.setMonth(date.getMonth() - 1);
+                        var jaar = date.substr(6, 9);
+                        var maand = date.substr(3, 4);
+                        var dag = date.substr(0, 1);
+                        var uur = date.substr(11, 12);
+                        var min = date.substr(14, 15);
+                        var sec = date.substr(17, 18);
+
+                        var beginDatum = new Date(date);
+                        //alert(date);
+                        teller++;
+                        return beginDatum;
 
 
-            </tr>
 
-        </table>
+                    };
+                    //myFunc();
+                    var myCountdown1 = new Countdown({
+                        time: myFunc(), // 86400 seconds = 1 day
+                        width: 300,
+                        height: 60,
+                        rangeHi: "month",
+                        style: "flip"	// <- no comma on last item!
+                    });
 
-    </div>
+
+
+
+
+                </script>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.adminNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beloning.FirstOrDefault().beschrijving)
+            </td>
+
+
+        </tr>
+
+    </table>
 }
 </div>
 
 
-<script type="text/javascript">
-
-
-
-       $("#moduletable").each(function () {
-           var date = $(this).find("#beginDatum").text(); 
-          
-
-            var jaar = date.substr(6, 4);
-            var maand = date.substr(3, 2);
-            var dag = date.substr(0, 2);
-            var uur = date.substr(11, 2);
-            var min = date.substr(14, 2);
-            var sec = date.substr(17, 2);
-
-            var datum = new Date(jaar, maand, dag, uur, min, sec);
-            datum.setMonth(date.getMonth() - 1);
-            alert(datum);
-
-            var myCountdown1 = new Countdown({
-                time: datum, // 86400 seconds = 1 day
-                width: 300,
-                height: 60,
-                rangeHi: "month",
-                style: "flip"	// <- no comma on last item!
-            });
-
-         //   $(this).find("#countdowntimer").text() = myCountdown1;
-
-        });
-    
-    
-    
-
-
-
-
-
-</script>
