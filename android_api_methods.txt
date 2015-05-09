@@ -1,0 +1,22 @@
+//GET
+getAgendaAntwoorden();
+getDossierAntwoorden();
+getActieveDossierModule();
+getActieveAgendaSettingModule();
+getAfgeslotenAgendaSettingModules();
+getAfgeslotenDossierModules();
+getToekomstigeAgendaSettingModules();
+getToekomstigeDossierModules();
+getInloggegevens(int Id);
+
+//POST
+postInlogGegevens(); //registratiegegevens
+postAgendaAntwoord();
+postDossierAntwoord();
+
+//DELETE & POST
+agendaAntwoordAanpassen() 
+dossierAntwoordAanpassen()
+antwoordLiken()
+
+

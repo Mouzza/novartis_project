@@ -74,11 +74,6 @@ namespace JPP.DAL.EF
          
             return dbcontext.antwoord.OfType<DossierAntwoord>().ToList();
         }
-        public List<Antwoord> getAllAntwoorden()
-        {
-
-            return dbcontext.antwoord.ToList();
-        }
         public List<AgendaAntwoord> getAllAgendaAntwoorden()
         {
             return dbcontext.antwoord.OfType<AgendaAntwoord>().ToList();
@@ -112,6 +107,13 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
+        public void stemOpAntwoord(int id)
+        {
+            Antwoord antwoord = dbcontext.antwoord.Find(id);
+            antwoord.aantalStemmen++;
+            dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.SaveChanges();
+        }
 
     }
 }

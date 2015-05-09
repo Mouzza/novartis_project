@@ -14,12 +14,13 @@ namespace JPP.BL
         Antwoord readAntwoord(int id);
         List<DossierAntwoord> readAllDossierAntwoorden();
         List<AgendaAntwoord> readAllAgendaAntwoorden();
-        List<Antwoord> readAllAntwoorden();
         //Antwoord createAntwoord(Antwoord antwoord);
         //void updateAntwoord(Antwoord antwoord);
 
         List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID);
         List<AgendaAntwoord> getAllAgendaAntwoordenPerModule(int agendaID);
-        void removeAntwoord(int id); 
+        void removeAntwoord(int id);
+        void stemOpComment(int id);
+        void stemOpAntwoord(int id);
     }
 }

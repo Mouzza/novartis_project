@@ -132,10 +132,8 @@ namespace JPP.DAL.EF
                 {
 
                 
-                    gebruikersNaam = "Gebruiker01",
-                    titel ="Mijn oplossing (dossier)" + i ,
-                    subtitel ="Een plein met fitness toestellen",
-                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Mvg, antw nummer: " + i,
+                   gebruikersNaam = "Gebruiker01",
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg, antw nummer: " + i,
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     aantalStemmen = i,
@@ -155,9 +153,7 @@ namespace JPP.DAL.EF
 
 
                     gebruikersNaam = "Gebruiker01",
-                    titel = "Mijn oplossing (agenda)" + i,
-                    subtitel="Heraanleg rivierenhof",
-                    inhoud = "Heraanleg rivierenhof!blablablablablablablablablablablablablablablablablabla ! Mvg, antw nummer: " + i,
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg, antw nummer: " + i,
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     aantalStemmen = i,             

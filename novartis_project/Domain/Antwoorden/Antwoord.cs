@@ -13,8 +13,6 @@ namespace JPP.BL.Domain.Antwoorden
     {
         [Key]
         public int ID { get; set; }
-        public string titel { get; set; }
-        public string subtitel { get; set; }
         public string inhoud { get; set; }
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
