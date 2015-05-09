@@ -65,27 +65,27 @@
             {
                 @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
             }
-            <div id="TableAntwoord">
-                <table class="table">
+
+            <table class="table" id="tableAntwoord">
 
 
-                    <tr>
-                        <td id="aantalStemmen">
-                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                <tr>
+                    <td id="aantalStemmen">
+                        +@Html.DisplayFor(modelItem => item.aantalStemmen)
 
-                        </td>
-                        <td id="antwoordInhoud">
-                            @Html.DisplayFor(modelItem => item.titel)
-                        </td>
-
-
-
-                    </tr>
+                    </td>
+                    <td id="antwoordInhoud">
+                        @Html.DisplayFor(modelItem => item.titel)
+                    </td>
 
 
-                </table>
-            </div>
-            
+
+                </tr>
+
+
+            </table>
+
+
 
         }
 

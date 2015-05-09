@@ -60,40 +60,42 @@ else if (ViewBag.Aantal == 1)
         {
             @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
         }
-        <table class="table">
 
-            <tr>
-                <td id="aantalStemmen">
-                    +@Html.DisplayFor(modelItem => item.aantalStemmen)
-                </td>
+    
+            <table class="table" id="tableAntwoord">
 
-                <td id="antwoordInhoud" >
-                   @Html.DisplayFor(modelItem => item.titel)
-                    
-                </td>
+                <tr>
+                    <td id="aantalStemmen">
+                        +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                    </td>
 
-            </tr>
+                    <td id="antwoordInhoud">
+                        @Html.DisplayFor(modelItem => item.titel)
 
-        </table>
+                    </td>
 
-    }
+                </tr>
+
+            </table>
+         
+            }
 
 
 
 
-<script>
-    $(function () {
-        $('#pager').on('click', 'a', function () {
-            $.ajax({
-                url: this.href,
-                type: 'GET',
-                cache: false,
-                success: function (result) {
-                    $('#antwoordlijstWrapper').html(result);
-                }
-            });
-            return false;
-        });
-    });
+            <script>
+                $(function () {
+                    $('#pager').on('click', 'a', function () {
+                        $.ajax({
+                            url: this.href,
+                            type: 'GET',
+                            cache: false,
+                            success: function (result) {
+                                $('#antwoordlijstWrapper').html(result);
+                            }
+                        });
+                        return false;
+                    });
+                });
 
-</script>
+            </script>
