@@ -723,6 +723,7 @@ transition: all 500ms ease;
    width:500px;
    height:300px;   
    float:left;
+   box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
 }
 
 #TweeTextvakWrapper{
