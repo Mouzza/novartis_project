@@ -219,7 +219,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Data\Sql Scripts\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\AndroidModule\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
@@ -285,7 +284,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\DosierModel.css" />
+    <Content Include="Content\DossierModel.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
     <Content Include="Content\KeuzePagina.css" />
@@ -541,6 +540,8 @@
     <Content Include="Views\Module\CommingSoon.cshtml" />
     <Content Include="Views\Module\GeplandeModules.cshtml" />
     <Content Include="Views\Antwoord\DossierModelOne.cshtml" />
+    <Content Include="Views\Antwoord\Dossier.cshtml" />
+    <Content Include="Views\Antwoord\Agenda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
