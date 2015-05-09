@@ -31,7 +31,12 @@ namespace JPP.BL
             }
             return dossierReturn;
         }
-
+        public List<Antwoord> readAllAntwoorden()
+        {
+            List<Antwoord> antwoorden = inlog.getAllAntwoorden();
+            return antwoorden;
+       
+        }
         public List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID)
         {
             List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
