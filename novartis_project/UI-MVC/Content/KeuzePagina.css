@@ -21,7 +21,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 15px;
-  margin-left:15%;
+  margin-left:10%;
   background-image:url("../Images/buttonDossier.png");
 
     /* HOVER OFF*/
@@ -64,7 +64,7 @@ border-right: 1px solid  rgba(0,0,0,0.15);
     height:550px;
     width:550px;
   background-size: 550px;
-  margin-left: 13%;
+  margin-left: 8%;
   -webkit-transition: all 500ms ease;
 -moz-transition: all 500ms ease;
 -ms-transition: all 500ms ease;

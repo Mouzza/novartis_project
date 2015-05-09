@@ -123,3 +123,5 @@ C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Debug\JP
 C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Michiel\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.xml
