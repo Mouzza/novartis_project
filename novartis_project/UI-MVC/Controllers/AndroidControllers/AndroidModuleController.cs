@@ -8,22 +8,18 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace JPP.UI.Web.MVC.Controllers
+namespace JPP.UI.Web.MVC.Controllers.AndroidControllers
 {
     public class AndroidModuleController : ApiController
     {
 
-         ModuleManager moduleManager = new ModuleManager();
-         [HttpGet]
-       public IHttpActionResult ActieveDossierModule()
+        ModuleManager moduleManager = new ModuleManager();
+        [HttpGet]
+        #region ACTIEVE dossier/agenda
+        public IHttpActionResult getActieveDossierModule()
         {
-
-
             DossierModule actieveDossierModule = moduleManager.readActieveDossierModule();
-
-            List<ANDROIDDossierModule> modules = new List<ANDROIDDossierModule>();
-
-            
+            List<ANDROIDDossierModule> dossierModules = new List<ANDROIDDossierModule>();
             ANDROIDDossierModule dosModule = new ANDROIDDossierModule()
             {
                 ID = actieveDossierModule.ID,
@@ -34,14 +30,12 @@ namespace JPP.UI.Web.MVC.Controllers
                 status = actieveDossierModule.status,
                 centralevraag = actieveDossierModule.centraleVraag.inhoud,
                 beloningen = new List<ANDROIDBeloning>()
-                
-                //thema = new Thema()
+                /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
                 //    naam = actieveDossierModule.thema.naam,
                 //    beschrijving = actieveDossierModule.thema.beschrijving
-                //}
-
+                }*/
             };
 
             foreach (var bel in actieveDossierModule.beloning)
@@ -51,21 +45,149 @@ namespace JPP.UI.Web.MVC.Controllers
                     naam = bel.naam,
                     beschrijving = bel.beschrijving,
                     ID = bel.ID
-
                 };
-
                 dosModule.beloningen.Add(beloning);
             }
-
-
-            modules.Add(dosModule);
-
+            dossierModules.Add(dosModule);
             //var json = JsonConvert.SerializeObject(dosModule);
-
             //  json = json.Replace(@"\", @"");
-
-            return Ok(modules);
+            return Ok(dossierModules);
         }
+        public IHttpActionResult getActieveAgendaModule()
+        {
+            AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
+            List<ANDROIDAgendaModule> agendaModules = new List<ANDROIDAgendaModule>();
+            ANDROIDAgendaModule agendaModule = new ANDROIDAgendaModule()
+            {
+                ID = actieveAgendaModule.ID,
+                naam = actieveAgendaModule.naam,
+                beginDatum = actieveAgendaModule.beginDatum,
+                eindDatum = actieveAgendaModule.eindDatum,
+                adminNaam = actieveAgendaModule.adminNaam,
+                status = actieveAgendaModule.status,
+                centraleVraag = actieveAgendaModule.centraleVraag.inhoud,
+                beloningen = new List<ANDROIDBeloning>()
+                /*thema = new Thema()
+                //{
+                //    ID = actieveDossierModule.thema.ID,
+                //    naam = actieveDossierModule.thema.naam,
+                //    beschrijving = actieveDossierModule.thema.beschrijving
+                }*/
+            };
+
+            foreach (var bel in actieveAgendaModule.beloning)
+            {
+                ANDROIDBeloning beloning = new ANDROIDBeloning()
+                {
+                    naam = bel.naam,
+                    beschrijving = bel.beschrijving,
+                    ID = bel.ID
+                };
+                agendaModule.beloningen.Add(beloning);
+            }
+            agendaModules.Add(agendaModule);
+            //var json = JsonConvert.SerializeObject(dosModule);
+            //  json = json.Replace(@"\", @"");
+            return Ok(agendaModules);
+        }
+        #endregion
+
+        #region ALL dossier/agenda
+        public IHttpActionResult getAllAgendaModules()
+        {
+            List<AgendaModule> agendaModules = moduleManager.readAllAgendaModules();
+            List<ANDROIDAgendaModule> agModules = new List<ANDROIDAgendaModule>();
+
+            foreach (AgendaModule agenda in agendaModules)
+            {
+                ANDROIDAgendaModule agModule = new ANDROIDAgendaModule()
+                {
+                    adminNaam = agenda.adminNaam,
+                    beginDatum = agenda.beginDatum,
+                    beloningen = new List<ANDROIDBeloning>(),
+                    centraleVraag = agenda.centraleVraag.inhoud,
+                    eindDatum = agenda.eindDatum,
+                    ID = agenda.ID,
+                    naam = agenda.naam,
+                    status = agenda.status
+                };
+                foreach (var bel in agenda.beloning)
+                {
+                    ANDROIDBeloning beloning = new ANDROIDBeloning()
+                    {
+                        naam = bel.naam,
+                        beschrijving = bel.beschrijving,
+                        ID = bel.ID
+                    };
+                    agModule.beloningen.Add(beloning);
+                }
+            }
+            return Ok(agModules);
+        }
+        public IHttpActionResult getAllDossierModules()
+        {
+            List<DossierModule> dossierModule = moduleManager.readAllDossierModules();
+            List<ANDROIDDossierModule> dosModule = new List<ANDROIDDossierModule>();
+
+            foreach (var dos in dossierModule)
+            {
+                ANDROIDDossierModule dosMod = new ANDROIDDossierModule()
+                {
+                    adminNaam = dos.adminNaam,
+                    beginDatum = dos.beginDatum,
+                    beloningen = new List<ANDROIDBeloning>(),
+                    centralevraag = dos.centraleVraag.inhoud,
+                    eindDatum = dos.eindDatum,
+                    ID = dos.ID,
+                    naam = dos.naam,
+                    status = dos.status
+                };
+                foreach (var bel in dos.beloning)
+                {
+                    ANDROIDBeloning beloning = new ANDROIDBeloning()
+                    {
+                        beschrijving = bel.beschrijving,
+                        ID = bel.ID,
+                        naam = bel.naam
+                    };
+                }
+                dosModule.Add(dosMod);
+            }
+            return Ok(dosModule);
+        }
+        #endregion
+
+        #region TOEKOMSTIGE modules
+        public IHttpActionResult getToekomstigModules()
+        {
+            List<Module> modules = moduleManager.readGeplandeModules();
+            List<ANDROIDModule> returnModules = new List<ANDROIDModule>();
+            foreach (var mod in modules) 
+            {
+                ANDROIDModule module = new ANDROIDModule()
+                {
+                    adminNaam = mod.adminNaam,
+                    beginDatum = mod.beginDatum,
+                    beloningen = new List<ANDROIDBeloning>(),
+                    centraleVraag = mod.centraleVraag.inhoud,
+                    eindDatum = mod.eindDatum,
+                    ID = mod.ID,
+                    naam = mod.naam,
+                    status = mod.status
+                };
+                foreach (var bel in mod.beloning) {
+                    ANDROIDBeloning beloning = new ANDROIDBeloning()
+                    {
+                        beschrijving = bel.beschrijving,
+                        ID = bel.ID,
+                        naam = bel.naam
+                    };
+                    module.beloningen.Add(beloning);
+                }
+                returnModules.Add(module);
+            }
+            return Ok(returnModules);
+        }
+        #endregion
     }
-    
 }
