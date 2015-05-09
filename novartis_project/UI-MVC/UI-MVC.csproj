@@ -364,6 +364,7 @@
     <Content Include="Images\countdown\flipper92.png" />
     <Content Include="Images\buttonAgenda.png" />
     <Content Include="Images\buttonDossier.png" />
+    <Content Include="Images\dossier-white.png" />
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
