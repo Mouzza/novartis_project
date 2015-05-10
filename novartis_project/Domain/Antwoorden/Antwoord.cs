@@ -15,7 +15,7 @@ namespace JPP.BL.Domain.Antwoorden
         public int ID { get; set; }
         public string titel { get; set; }
         public string subtitel { get; set; }
-        public string inhoud { get; set; }
+        public string inhoud { get; set; } //Textvak 1
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
         public int aantalStemmen { get; set; }
