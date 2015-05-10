@@ -10,12 +10,15 @@ using System.Web.Http;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
+
     public class AndroidModuleController : ApiController
     {
 
         ModuleManager moduleManager = new ModuleManager();
         [HttpGet]
         #region ACTIEVE dossier/agenda
+
+        [ActionName("getActieveDossier")]
         public IHttpActionResult getActieveDossierModule()
         {
             DossierModule actieveDossierModule = moduleManager.readActieveDossierModule();
@@ -53,6 +56,8 @@ namespace JPP.UI.Web.MVC.Controllers
             //  json = json.Replace(@"\", @"");
             return Ok(dossierModules);
         }
+        [HttpGet]
+        [ActionName("getActieveAgenda")]
         public IHttpActionResult getActieveAgendaModule()
         {
             AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
@@ -92,7 +97,9 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
 
+
         #region ALL dossier/agenda
+        [ActionName("getAllAgendas")]
         public IHttpActionResult getAllAgendaModules()
         {
             List<AgendaModule> agendaModules = moduleManager.readAllAgendaModules();
@@ -100,6 +107,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             foreach (AgendaModule agenda in agendaModules)
             {
+
                 ANDROIDAgendaModule agModule = new ANDROIDAgendaModule()
                 {
                     adminNaam = agenda.adminNaam,
@@ -111,6 +119,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     naam = agenda.naam,
                     status = agenda.status
                 };
+
                 foreach (var bel in agenda.beloning)
                 {
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
@@ -124,6 +133,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(agModules);
         }
+        [ActionName("getAllDossiers")]
         public IHttpActionResult getAllDossierModules()
         {
             List<DossierModule> dossierModule = moduleManager.readAllDossierModules();
@@ -157,7 +167,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
 
-        #region TOEKOMSTIGE modules
+        /*  #region TOEKOMSTIGE modules
         public IHttpActionResult getToekomstigModules()
         {
             List<Module> modules = moduleManager.readGeplandeModules();
@@ -189,7 +199,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(returnModules);
         }
-        #endregion
+        #endregion*/
 
     }
 }
