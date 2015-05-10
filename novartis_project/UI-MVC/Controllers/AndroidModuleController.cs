@@ -146,7 +146,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     adminNaam = dos.adminNaam,
                     beginDatum = dos.beginDatum,
                     beloningen = new List<ANDROIDBeloning>(),
-                    centralevraag = dos.centraleVraag.inhoud,
+                    centralevraag = "TEST",
                     eindDatum = dos.eindDatum,
                     ID = dos.ID,
                     naam = dos.naam,
@@ -160,6 +160,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         ID = bel.ID,
                         naam = bel.naam
                     };
+                    dosMod.beloningen.Add(beloning);
                 }
                 dosModule.Add(dosMod);
             }

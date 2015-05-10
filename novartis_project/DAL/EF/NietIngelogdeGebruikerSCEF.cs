@@ -175,7 +175,17 @@ namespace JPP.DAL.EF
             return agendaModules;
         }
 
+        //public List<DossierModule> getDossierModules()
+        //{
+        //    List<DossierModule> dossierModule = dbcontext.modules.OfType<DossierModule>().ToList();
+        //    return dossierModule;
+        //}
 
+        //public List<AgendaModule> getAgendaModules()
+        //{
+        //    List<AgendaModule> agendaModules = dbcontext.modules.OfType<AgendaModule>().ToList();
+        //    return agendaModules;
+        //}
     }
 }
 
