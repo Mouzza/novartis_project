@@ -52,6 +52,7 @@
                         }
                         @if (User.IsInRole("Admin"))
                         {
+                            <li>@Html.ActionLink("Mijn modules", "Index", "Admin")</li>
                             <li>@Html.ActionLink("Admin paneel", "Index", "Admin")</li>
 
                         }
