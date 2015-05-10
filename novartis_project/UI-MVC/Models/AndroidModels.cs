@@ -41,7 +41,6 @@ namespace JPP.UI.Web.MVC.Models
         public Boolean status { get; set; }
         public DateTime beginDatum { get; set; }
         public DateTime eindDatum { get; set; }
-
         public string adminNaam { get; set; }
         public string centraleVraag { get; set; }
         public List<ANDROIDBeloning> beloningen { get; set; }
@@ -54,9 +53,8 @@ namespace JPP.UI.Web.MVC.Models
         public Boolean status { get; set; }
         public DateTime beginDatum { get; set; }
         public DateTime eindDatum { get; set; }
-
-        public string adminNaam { get; set; }
         public string centraleVraag { get; set; }
+        public string adminNaam { get; set; }
         public List<ANDROIDBeloning> beloningen { get; set; }
         //public Thema thema { get; set; }
     }
