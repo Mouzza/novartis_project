@@ -10,10 +10,8 @@ using System.Web.Http;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
-
     public class AndroidModuleController : ApiController
     {
-
         ModuleManager moduleManager = new ModuleManager();
         [HttpGet]
         #region ACTIEVE dossier/agenda
@@ -97,7 +95,6 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
 
-
         #region ALL dossier/agenda
         [ActionName("getAllAgendas")]
         public IHttpActionResult getAllAgendaModules()
@@ -112,7 +109,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     adminNaam = agenda.adminNaam,
                     beginDatum = agenda.beginDatum,
                     beloningen = new List<ANDROIDBeloning>(),
-                    centraleVraag = "testtest",
+                    centraleVraag = agenda.centraleVraag.inhoud,
                     eindDatum = agenda.eindDatum,
                     ID = agenda.ID,
                     naam = agenda.naam,
@@ -160,6 +157,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         ID = bel.ID,
                         naam = bel.naam
                     };
+                    dosMod.beloningen.Add(beloning);
                 }
                 dosModule.Add(dosMod);
             }
@@ -167,7 +165,8 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
 
-        /*  #region TOEKOMSTIGE modules
+        #region TOEKOMSTIGE modules
+        [ActionName("getToekomst")]
         public IHttpActionResult getToekomstigModules()
         {
             List<Module> modules = moduleManager.readGeplandeModules();
@@ -199,7 +198,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(returnModules);
         }
-        #endregion*/
+        #endregion
 
     }
 }

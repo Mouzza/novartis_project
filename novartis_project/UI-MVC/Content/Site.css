@@ -1195,3 +1195,8 @@ transition: all 500ms ease;
 #paginaLink{
     display:none;
 }
+
+#adminMenuButton{
+
+    background-image:none;
+}

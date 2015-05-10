@@ -44,6 +44,13 @@ filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff12385
   -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
 filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
 }
+.ButtonDossier a, .ButtonAgenda a{
+    text-decoration:none;
+    font-size:50px;
+}
+.ButtonDossier:hover, .ButtonAgenda:hover{
+    text-decoration:none;
+}
 
 .ButtonDossier span {
   position: absolute;
@@ -51,16 +58,17 @@ filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#3300000
   width: 50px;
   background-color:rgba(0,0,0,0.5);
   
-  -webkit-border-top-left-radius: 5px;
--webkit-border-bottom-left-radius: 5px;
--moz-border-radius-topleft: 5px;
--moz-border-radius-bottomleft: 5px;
-border-top-left-radius: 5px;
-border-bottom-left-radius: 5px;
-border-right: 1px solid  rgba(0,0,0,0.15);
+      -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: 1px solid  rgba(0,0,0,0.15);
 }
 
 .ButtonDossier:hover{
+   text-decoration:none;
     height:550px;
     width:550px;
   background-size: 550px;
@@ -142,6 +150,7 @@ border-right: 1px solid  rgba(0,0,0,0.15);
 }
 
 .ButtonAgenda:hover {
+  
     height:550px;
     width:550px;
   background-size: 550px;

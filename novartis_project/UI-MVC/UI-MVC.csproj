@@ -546,6 +546,7 @@
     <Content Include="Views\Antwoord\DossierModelThree.cshtml" />
     <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
+    <Content Include="Views\Admin\Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

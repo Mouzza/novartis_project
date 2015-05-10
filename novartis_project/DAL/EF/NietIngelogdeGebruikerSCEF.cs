@@ -165,6 +165,7 @@ namespace JPP.DAL.EF
 
         public List<DossierModule> getDossierModules()
         {
+<<<<<<< HEAD
             List<Module> antwoordlist = dbcontext.modules.ToList();
             List<DossierModule> AgendaAntwoordList = new List<DossierModule>();
             DossierModule agmod = new DossierModule();
@@ -173,9 +174,21 @@ namespace JPP.DAL.EF
                 {
                     AgendaAntwoordList.Add((DossierModule)antwoord);
                 }
+=======
+            //List<Module> antwoordlist = dbcontext.modules.ToList();
+            //List<DossierModule> AgendaAntwoordList = new List<DossierModule>();
+            //DossierModule agmod = new DossierModule();
+            //foreach(var antwoord in antwoordlist){
+            //    if (antwoord.GetType() == agmod.GetType())
+            //    {
+            //        AgendaAntwoordList.Add((DossierModule)antwoord);
+            //    }
+>>>>>>> origin/master
                 
-            }
-            return AgendaAntwoordList;
+            //}
+            //return AgendaAntwoordList;
+            List<DossierModule> dossierModule = dbcontext.modules.OfType<DossierModule>().ToList();
+                return dossierModule;
         }
         
 
@@ -185,7 +198,17 @@ namespace JPP.DAL.EF
             return agendaModules;
         }
 
+        //public List<DossierModule> getDossierModules()
+        //{
+        //    List<DossierModule> dossierModule = dbcontext.modules.OfType<DossierModule>().ToList();
+        //    return dossierModule;
+        //}
 
+        //public List<AgendaModule> getAgendaModules()
+        //{
+        //    List<AgendaModule> agendaModules = dbcontext.modules.OfType<AgendaModule>().ToList();
+        //    return agendaModules;
+        //}
     }
 }
 

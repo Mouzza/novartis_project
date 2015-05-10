@@ -20,23 +20,7 @@ namespace JPP.UI.Web.MVC.Controllers
     public class AdminController : Controller
     {
 
-        private ApplicationUserManager _userManager;
-
-        public ApplicationUserManager UserManager
-        {
-            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
-            private set { _userManager = value; }
-        }
-
-         public ApplicationRoleManager roleManager; 
-         public ApplicationRoleManager RoleManager 
-        { 
-            get 
-            { 
-                return this.roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>(); 
-            } 
-            private set { this.roleManager = value; } 
-        }
+        
 
         public class CustomAuthorizeAttribute : AuthorizeAttribute
         {
@@ -70,13 +54,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
     
-         // /Admin/Roles
-        public ActionResult Roles()
-        {
-            var roles = apc.Roles.ToList();
-            return View(roles);
-            
-        }
+       
 
         // GET: Admin 
         public ActionResult Index()
@@ -86,29 +64,15 @@ namespace JPP.UI.Web.MVC.Controllers
             
         }
 
-
-        // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Menu()
         {
+     
             return View();
-        }
 
-        // POST: Admin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
         }
 
 
+   
+      
     }
 }
