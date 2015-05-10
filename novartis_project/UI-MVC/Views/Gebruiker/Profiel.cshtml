@@ -1,14 +1,17 @@
 ﻿@model JPP.UI.Web.MVC.Models.UserRoleViewModel
 @{var tekstRollen = "";
-
-  Layout = "~/Views/Shared/_Layout2.cshtml";
   
-  }
+  
+
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
 
 
 
 @if(Model.user.LockoutEndDateUtc==null){
-    
+    ViewBag.title = Model.user.UserName + " profiel";
  
     <h2>Profiel</h2>
     if (Model.user.profilePublic == false && !User.IsInRole("Admin"))

@@ -2,7 +2,7 @@
 @{var tekstRollen = "";}
 
 @{
-    ViewBag.Title = "BlokkeerGebruiker";
+    ViewBag.Title = "Blokkeer gebruiker";
 }
 
 @if (Model.user.LockoutEndDateUtc == null)
@@ -115,11 +115,13 @@ else
         <div class="form-actions no-color">
             @if (Model.user.LockoutEndDateUtc == null)
             {
-
+                ViewBag.Title = "Blokkeer gebruiker";
+            
                 <input type="submit" value="Blokkeer" class="btn btn-default" /> 
             }
             else
             {
+                ViewBag.Title = "Deblokkeer gebruiker";
                 <input type="submit" value="Deblokkeer" class="btn btn-default" /> 
             }
       
