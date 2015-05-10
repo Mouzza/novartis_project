@@ -61,14 +61,14 @@
 
 </table>
 
-<div id="pager">
+<div id="pager2">
     @Html.PagedListPager(Model, page => Url.Action("partialViewAgendaModule",
     new { page }))
 </div>
 
 <script>
     $(function () {
-        $('#pager').on('click', 'a', function () {
+        $('#pager2').on('click', 'a', function () {
             $.ajax({
                 url: this.href,
                 type: 'GET',
