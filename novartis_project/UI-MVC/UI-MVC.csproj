@@ -197,8 +197,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AndroidControllers\AndroidAntwoordController.cs" />
-    <Compile Include="Controllers\AndroidControllers\AndroidModuleController.cs" />
+    <Compile Include="Controllers\AndroidAntwoordController.cs" />
+    <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
