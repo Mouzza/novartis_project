@@ -36,9 +36,12 @@ $(document).ready(function () {
     $('.dot').click(function () {
         var modal = $(this).attr('id');
         $('.mask').has('article.' + modal).fadeIn(300);
+       
         $('.mask article.' + modal).animate({
-            'top': '10%'
+            'top': '20%'
         }, 300)
+        $('.mask article.' + modal).css("display", "block");
+       
     });
 
 });
