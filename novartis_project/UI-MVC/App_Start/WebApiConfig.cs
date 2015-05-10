@@ -11,11 +11,22 @@ namespace JPP.UI.Web.MVC
         {
             config.MapHttpAttributeRoutes();
 
+            /******
+             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+             * 
+            routes.MapRoute(
+                "Blog",                                           // Route name
+                "Archive/{entryDate}",                            // URL with parameters
+                new { controller = "Archive", action = "Entry" }  // Parameter defaults
+            );
+             * */
+
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: "ApiModule",
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
 
           
         //    config.Routes.MapHttpRoute("DefaultApiWithId", "Api/{controller}/{id}", new { id = RouteParameter.Optional }, new { id = @"\d+" });
