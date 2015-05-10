@@ -72,6 +72,79 @@ namespace JPP.BL
             }
             return agendaReturn;
         }
+        #region sortDossierAntwoord
+        public List<DossierAntwoord> sortDossierAntwoordNieuwOud()
+        {
+            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierRes = dossierList.OrderBy(o => o.datum).ToList();
+            return dossierRes;
+        }
+        public List<DossierAntwoord> sortDossierAntwoordOudNieuw()
+        {
+            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierRes = dossierList.OrderByDescending(o => o.datum).ToList();
+            return dossierRes;
+        }
+        public List<DossierAntwoord> sortDossierAntwoordMeesteLikes()
+        {
+            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierRes = dossierList.OrderByDescending(o => o.aantalStemmen).ToList();
+            return dossierRes;
+        }
+        public List<DossierAntwoord> sortDossierAntwoordMinsteLikes()
+        {
+            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierRes = dossierList.OrderBy(o => o.aantalStemmen).ToList();
+            return dossierRes;
+        }
+        public List<DossierAntwoord> sortDossierAntwoordTitelAZ()
+        {
+            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierRes = dossierList.OrderBy(o => o.titel).ToList();
+            return dossierRes;
+        }
+        public List<DossierAntwoord> sortDossierAntwoordTitelZA()
+        {
+            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
+            List<DossierAntwoord> dossierRes = dossierList.OrderByDescending(o => o.titel).ToList();
+            return dossierRes;
+        }
+        #endregion
+
+        #region GET SORT Gesloten modules
+        public List<Antwoord> getAllGeslotenModules()
+        {
+            List<Antwoord> antwoordList = inlog.getAllAntwoorden();
+            return antwoordList;
+        }
+        public List<Antwoord> sortGeslotenModulesNieuwOud()
+        {
+            List<Antwoord> antwoordList = inlog.getAllAntwoorden();
+            List<Antwoord> antwoordRes = antwoordList.OrderBy(o => o.datum).ToList();
+            return antwoordList;
+        }
+        public List<Antwoord> sortGeslotenModulesOudNieuw()
+        {
+            List<Antwoord> antwoordList = inlog.getAllAntwoorden();
+            List<Antwoord> antwoordRes = antwoordList.OrderByDescending(o => o.datum).ToList();
+            return antwoordList;
+        }
+        public List<Antwoord> sortGeslotenModulesMeesteLikes()
+        {
+            List<Antwoord> antwoordList = inlog.getAllAntwoorden();
+            List<Antwoord> antwoordRes = antwoordList.OrderByDescending(o => o.aantalStemmen).ToList();
+            return antwoordRes;
+        }
+        public List<Antwoord> sortGeslotenModulesMinsteLikes()
+        {
+            List<Antwoord> antwoordList = inlog.getAllAntwoorden();
+            List<Antwoord> antwoordRes = antwoordList.OrderBy(o => o.aantalStemmen).ToList();
+            return antwoordRes;
+        }
+
+        #endregion
+
+
         public Antwoord readAntwoord(int id)
         {
            return inlog.getAntwoord(id);
@@ -114,5 +187,7 @@ namespace JPP.BL
         {
             beheerder.stemOpAntwoord(id);
         }
+
+         
     }
 }
