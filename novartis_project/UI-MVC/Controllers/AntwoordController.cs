@@ -46,6 +46,22 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
+
+        public ActionResult DossierModelThree()
+        {
+            return View();
+        }
+
+        public ActionResult DossierModelFive()
+        {
+            return View();
+        }
+
+        public ActionResult DossierModelSix()
+        {
+            return View();
+        }
+
         public ActionResult homePartialAntwoorden(int? page, string searchString)
         {
 

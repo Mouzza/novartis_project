@@ -197,8 +197,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AndroidControllers\AndroidAntwoordController.cs" />
-    <Compile Include="Controllers\AndroidControllers\AndroidModuleController.cs" />
+    <Compile Include="Controllers\AndroidAntwoordController.cs" />
+    <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -544,6 +544,9 @@
     <Content Include="Views\Antwoord\Dossier.cshtml" />
     <Content Include="Views\Antwoord\Agenda.cshtml" />
     <Content Include="Views\Antwoord\DossierModelTwo.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelThree.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
