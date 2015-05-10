@@ -105,20 +105,20 @@ namespace JPP.UI.Web.MVC.Controllers
             List<AgendaModule> agendaModules = moduleManager.readAllAgendaModules();
             List<ANDROIDAgendaModule> agModules = new List<ANDROIDAgendaModule>();
 
-            for (int agenda = 0; agenda < agendaModules.Count()-1;agenda++ )
+            foreach(var agenda in agendaModules)
             {
                 ANDROIDAgendaModule agModule = new ANDROIDAgendaModule()
                 {
-                    adminNaam = agendaModules[agenda].adminNaam,
-                    beginDatum = agendaModules[agenda].beginDatum,
+                    adminNaam = agenda.adminNaam,
+                    beginDatum = agenda.beginDatum,
                     beloningen = new List<ANDROIDBeloning>(),
                     centraleVraag = "testtest",
-                    eindDatum = agendaModules[agenda].eindDatum,
-                    ID = agendaModules[agenda].ID,
-                    naam = agendaModules[agenda].naam,
-                    status = agendaModules[agenda].status
+                    eindDatum = agenda.eindDatum,
+                    ID = agenda.ID,
+                    naam = agenda.naam,
+                    status = agenda.status
                 };
-                foreach (var bel in agendaModules[agenda].beloning)
+                foreach (var bel in agenda.beloning)
                 {
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
                     {
@@ -128,6 +128,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     };
                     agModule.beloningen.Add(beloning);
                 }
+                agModules.Add(agModule);
             }
             return Ok(agModules);
         }
