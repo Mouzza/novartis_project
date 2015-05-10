@@ -50,13 +50,14 @@
                 @if (zelfdeGebruiker)
                 {
 
-                    <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
+                    <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
                 }
                 else
                 {
-                    <span>@item.gebruikersNaam</span>
+                    <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
+                        <span>@item.gebruikersNaam</span>
+                    </a>
                 }
-
                 | <span id="extrainfoSpan">Datum: </span> @item.datum
             </p>
 

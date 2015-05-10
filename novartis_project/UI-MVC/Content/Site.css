@@ -230,6 +230,7 @@ textarea {
 
     .centraal2 img {
         border: 2px solid black;
+        width:80%;
     }
 
 #mainContent {
@@ -250,6 +251,7 @@ textarea {
     bottom: 0px;
     position: absolute;
     width: 50px;
+    height:30px;
     text-align: center;
 }
 
@@ -507,7 +509,6 @@ transition: all 500ms ease;
     color: white;
     background-color: #222222;
     border:#222222;
-    height: 70px;
     width: 100%;
     font-weight:bold;
 }
@@ -518,67 +519,77 @@ transition: all 500ms ease;
         background-image:url(../Images/iconmonstr-x-mark-4-icon-256.png);
          background-repeat: no-repeat;
         height:40px;
-        width:40px;
+        width:120px;
         background-size:40px;
         background-position:0 0;
         background-color:#222222;
         border:#222222;
 
-                    -webkit-transition: all 500ms ease;
--moz-transition: all 300ms ease;
--ms-transition: all 300ms ease;
--o-transition: all 300ms ease;
-transition: all 300ms ease;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+    #hide span{
+         margin-left:40px;
+         color: white;
     }
         #hide:hover {
-            margin-left:-3px;
-            margin-top:-3px;
+        margin-left:-3px;
+        margin-top:-3px;
         float: left;
         color: black;
         background-image:url(../Images/iconmonstr-x-mark-4-icon-256.png);
-         background-repeat: no-repeat;
+        background-repeat: no-repeat;
         height:45px;
-        width:45px;
+        width:115px;
         background-size:45px;
         background-position:0 0;
         background-color:#222222;
         border:#222222;
-            -webkit-transition: all 500ms ease;
--moz-transition: all 300ms ease;
--ms-transition: all 300ms ease;
--o-transition: all 300ms ease;
-transition: all 300ms ease;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
 
     }
 
         #show{
-            background-image:url("../images/websitePage logos/iconContinue.png");
-            background-repeat: no-repeat;
-            float: left;
+        background-image:url("../images/websitePage logos/iconContinue.png");
+        background-repeat: no-repeat;
+        float: left;
         color: black;
         height:40px;
-        width:40px;
+        width:120px;
         background-size:40px;
         background-position:0 45%;
         background-color:#222222;
         border:#222222;
 
-                    -webkit-transition: all 500ms ease;
--moz-transition: all 300ms ease;
--ms-transition: all 300ms ease;
--o-transition: all 300ms ease;
-transition: all 300ms ease;
+         -webkit-transition: all 500ms ease;
+        -moz-transition: all 300ms ease;
+        -ms-transition: all 300ms ease;
+        -o-transition: all 300ms ease;
+        transition: all 300ms ease;
         }
 
-                #show:hover {
-            margin-left:-3px;
-            margin-top:-3px;
+        #show span{
+         margin-left:30px;
+         color: white;
+
+        }
+
+        #show:hover {
+        margin-left:-3px;
+        margin-top:-3px;
         float: left;
         color: black;
         background-image:url("../images/websitePage logos/iconContinue.png");
-         background-repeat: no-repeat;
+        background-repeat: no-repeat;
         height:45px;
-        width:45px;
+        width:115px;
         background-size:45px;
         background-position:0 45%;
         background-color:#222222;
@@ -639,6 +650,7 @@ transition: all 300ms ease;
 #antwoordlijstWrapper {
     background-color: lightgray;
     width: 80%;
+    height:100%;
     float: left;
     padding: 1%;
     box-shadow: inset 10px 0px 50px -7px #000;
@@ -653,7 +665,7 @@ transition: all 300ms ease;
     width: 20%;
     float: left;
     background-color: darkgray;
-    height: 866px;
+    padding:1%;
 }
 
 #antwoordlijstCreateSection img {

@@ -132,7 +132,7 @@ namespace JPP.DAL.EF
                 {
 
                 
-                    gebruikersNaam = "Gebruiker01",
+                    gebruikersNaam = "Gebruiker1",
                     titel ="Mijn oplossing (dossier)" + i ,
                     subtitel ="Een plein met fitness toestellen",
                     inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Mvg, antw nummer: " + i,
@@ -154,7 +154,7 @@ namespace JPP.DAL.EF
                 {
 
 
-                    gebruikersNaam = "Gebruiker01",
+                    gebruikersNaam = "Gebruiker2",
                     titel = "Mijn oplossing (agenda)" + i,
                     subtitel="Heraanleg rivierenhof",
                     inhoud = "Heraanleg rivierenhof!blablablablablablablablablablablablablablablablablabla ! Mvg, antw nummer: " + i,
