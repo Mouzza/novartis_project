@@ -66,6 +66,3 @@ $("#switch1").click(function () {
 })
 
 
- Slider functionality
-
- slide knob to position function

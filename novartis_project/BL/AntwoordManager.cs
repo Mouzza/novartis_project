@@ -72,7 +72,6 @@ namespace JPP.BL
             }
             return agendaReturn;
         }
-<<<<<<< HEAD
 
         public List<AgendaAntwoord> sortAgendaAntwoordOudNieuw()
         {
@@ -103,7 +102,7 @@ namespace JPP.BL
         {
             return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.titel).ToList();
         }
-=======
+
         #region sortDossierAntwoord
         public List<DossierAntwoord> sortDossierAntwoordNieuwOud()
         {
@@ -176,7 +175,6 @@ namespace JPP.BL
 
         #endregion
 
->>>>>>> origin/master
 
         public Antwoord readAntwoord(int id)
         {
