@@ -112,7 +112,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     adminNaam = agendaModules[agenda].adminNaam,
                     beginDatum = agendaModules[agenda].beginDatum,
                     beloningen = new List<ANDROIDBeloning>(),
-                    centraleVraag = agendaModules[agenda].centraleVraag.inhoud,
+                    centraleVraag = "testtest",
                     eindDatum = agendaModules[agenda].eindDatum,
                     ID = agendaModules[agenda].ID,
                     naam = agendaModules[agenda].naam,
