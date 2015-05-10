@@ -45,15 +45,17 @@ else if (ViewBag.Aantal == 1)
             Gebruiker:
         </span>
         @if (zelfdeGebruiker)
-            {
+        {
 
-            <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
-            }
-            else
-            {
-            <span>@item.gebruikersNaam</span>
-            }
-        | <span id="extrainfoSpan">Datum: </span> @item.datum
+            <a id="extrainfoSpan"  href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
+        }
+        else
+        {
+            <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
+                <span>@item.gebruikersNaam</span>
+            </a>
+        }
+                | <span id="extrainfoSpan">Datum: </span> @item.datum
     </p>
 
         if (zelfdeGebruiker)

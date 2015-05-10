@@ -142,4 +142,3 @@ C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\UI-MVC\bin\JPP.
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\UI-MVC\bin\System.Net.Http.Formatting.xml
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.xml
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.WebHost.xml
-

@@ -639,6 +639,7 @@ transition: all 300ms ease;
 #antwoordlijstWrapper {
     background-color: lightgray;
     width: 80%;
+    height:100%;
     float: left;
     padding: 1%;
     box-shadow: inset 10px 0px 50px -7px #000;
@@ -653,7 +654,7 @@ transition: all 300ms ease;
     width: 20%;
     float: left;
     background-color: darkgray;
-    height: 866px;
+    padding:1%;
 }
 
 #antwoordlijstCreateSection img {

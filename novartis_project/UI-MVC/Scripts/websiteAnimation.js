@@ -87,5 +87,16 @@ $(document).ready(function () {
     });
 
 
+    if ($("#antwoordlijstWrapper").height() != null) {
+        
+        var update = setInterval(function () {
+            //you can access the width as a percentage pretty easily:
+            var divHeight = $("#antwoordlijstWrapper").height();
 
+            $("#moduleLeftMenuSection").height(divHeight);
+        }, 100);
+
+    } 
+   
+    
 });
