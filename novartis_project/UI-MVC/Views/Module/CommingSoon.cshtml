@@ -1,35 +1,39 @@
 ﻿
 <script src="~/Scripts/TimeLine.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/TimeLine.css">
 
 @{
     ViewBag.Title = "Comming soon";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-<link rel="stylesheet" type="text/css" href="~/Content/TimeLine.css">
+
 
 <h2>Comming soon</h2>
 
+<div>
+    <div id="timeline">
+        <div class="dot" id="one">
+            <span></span>
+            <date>1280</date>
+        </div>
+        <div class="dot" id="two">
+            <span></span>
+            <date>1649</date>
+        </div>
+        <div class="dot" id="three">
+            <span></span>
+            <date>1831</date>
+        </div>
+        <div class="dot" id="four">
+            <span></span>
+            <date>1992</date>
+        </div>
+        <div class="inside"></div>
+    </div>
 
-
-<div id="timeline">
-    <div class="dot" id="one">
-        <span></span>
-        <date>1280</date>
-    </div>
-    <div class="dot" id="two">
-        <span></span>
-        <date>1649</date>
-    </div>
-    <div class="dot" id="three">
-        <span></span>
-        <date>1831</date>
-    </div>
-    <div class="dot" id="four">
-        <span></span>
-        <date>1992</date>
-    </div>
-    <div class="inside"></div>
 </div>
+
+
 
 <!-- Modals -->
 
@@ -58,7 +62,6 @@
 </article>
 
 
-    @{ Html.RenderAction("GeplandeModules", "Module"); }
 
 
 
