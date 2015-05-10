@@ -1,0 +1,71 @@
+﻿@model JPP.BL.Domain.Antwoorden.Antwoord
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Antwoord</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Inhoud
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inhoud)
+        </dd>
+
+        <dt>
+            Extra info
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.extraInfo)
+        </dd>
+
+        <dt>
+            Datum
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datum)
+        </dd>
+
+        <dt>
+            Aantal stemmen
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aantalStemmen)
+        </dd>
+        <br />
+        <dt>
+           Wijzigbaar
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editable)
+        </dd>
+
+        <dt>
+            Gebruiker
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gebruikersNaam)
+        </dd>
+
+        <dt>
+           Aantal flags
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aantalFlags)
+        </dd>
+
+    </dl>
+</div>
+

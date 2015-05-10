@@ -214,7 +214,7 @@ textarea {
     font-size: 5em;
     text-align: center;
     text-shadow: 4px 4px black;
-    font-family: 'Comic Sans MS';moduleinhoud
+    font-family: 'Comic Sans MS';
     font-weight: bold;
 }
 
@@ -633,7 +633,7 @@ transition: all 300ms ease;
 #moduleInhoud {
     margin-bottom: 1%;
     float: left;
-    margin-left: 13%;
+    margin-left: 10%;
 }
 
 #moduleIcon {

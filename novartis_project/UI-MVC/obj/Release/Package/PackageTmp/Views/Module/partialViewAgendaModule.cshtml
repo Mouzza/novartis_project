@@ -1,0 +1,84 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.AgendaModule>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "";
+    Layout = "";
+}
+
+<h2>Agenda modules</h2>
+
+<p>
+    @Html.ActionLink("Agenda module aanmaken", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+          Admin naam
+        </th>
+        <th>
+            Inhoud
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+           Begin datum
+        </th>
+        <th>
+            Eind datum
+        </th>
+
+        <th id="settingsLayout">Instellingen</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.adminNaam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.beginDatum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.eindDatum)
+        </td>
+
+        <td>
+            @Html.ActionLink("Wijzig", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "_Details", new { id=item.ID }) |
+            @Html.ActionLink("Verwijder", "Delete", new { id=item.ID }) |
+            <h4>@Html.ActionLink("Beheer alle antwoorden(" + item.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = item.ID }, null)</h4>
+        </td>
+    </tr>
+}
+
+</table>
+
+<div id="pager">
+    @Html.PagedListPager(Model, page => Url.Action("partialViewAgendaModule",
+    new { page }))
+</div>
+
+<script>
+    $(function () {
+        $('#pager').on('click', 'a', function () {
+            $.ajax({
+                url: this.href,
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#agendaModules').html(result);
+                }
+            });
+            return false;
+        });
+    });
+
+</script>

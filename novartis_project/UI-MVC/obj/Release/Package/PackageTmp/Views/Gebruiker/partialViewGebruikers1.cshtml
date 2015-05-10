@@ -1,0 +1,149 @@
+﻿@model PagedList.IPagedList<JPP.UI.Web.MVC.Models.UserRoleViewModel>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Gebruikers";
+       var tekstRollen = "";
+       Layout = "";
+     
+}
+
+    @if (User.IsInRole("Admin"))
+    {
+
+            <h2>Gebruikers</h2>
+
+            <p>
+                @Html.ActionLink("Maak een gebruikers aan", "Register", "Account") | @Html.ActionLink("Maak een geactiveerde account", "MakeActivatedAccount", "Account")
+            </p>
+
+            <table class="table table-striped">
+                <tr class="success">
+                    <th>
+                        Naam
+                    </th>
+                    <th>
+                        Gsm-nummer
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Functie
+                    </th>
+                    <th>
+                        Blokkeerbaar
+                    </th>
+                    <th>
+                        Laatste login
+                    </th>
+                    <th>
+                        Aangemaakt op
+                    </th>
+                    <th id="settingsLayout">
+                        Instellingen
+                    </th>
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+
+                    if (item.user.LockoutEndDateUtc == null)
+                    {
+
+                        <tr>
+                            <td id="cellFocus">
+                                @Html.DisplayFor(modelItem => item.user.UserName)
+                            </td>
+                            <td>
+                                @if (item.user.PhoneNumber == null)
+                                {
+                                    item.user.PhoneNumber = "Geen";
+                                    @Html.DisplayFor(modelItem => item.user.PhoneNumber)
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.user.PhoneNumber)
+                                }
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.Email)
+                            </td>
+                            <td>
+
+                                @{var laatsteRol = item.roles.Last(); tekstRollen = "";}
+                                @foreach (var role in item.roles)
+                                {
+                                    if (role.Equals(laatsteRol))
+                                    {
+
+                                        tekstRollen = tekstRollen + role.Name;
+                                    }
+                                    else
+                                    {
+                                        tekstRollen = tekstRollen + role.Name + ", ";
+
+                                    }
+
+                                }
+
+                                @tekstRollen
+
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.LockoutEnabled)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.LastLogin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user.Created)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Wijzig", "WijzigGebruiker", new { id = item.user.Id }) |
+                                @Html.ActionLink("Detail", "Profiel", new { UserName = item.user.UserName }) |
+
+
+                                @if (item.user.LockoutEnabled == true)
+                                {
+                                    @Html.ActionLink("Blokkeer |", "BlokkeerGebruiker", new { id = item.user.Id })
+
+                                }
+
+                                @Html.ActionLink("Verwijder", "VerwijderGebruiker", new { id = item.user.Id })
+                            </td>
+                        </tr>
+
+                    }
+
+                }
+            </table>
+
+            <br />
+
+    <div id="pager">
+        @Html.PagedListPager(Model, page => Url.Action("partialViewGebruikers1",
+    new { page }))
+
+    </div>
+    }
+
+    
+    <script>
+        $(function () {
+            $('#pager').on('click', 'a', function () {
+                $.ajax({
+                    url: this.href,
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        $('#gebruikerLijst1').html(result);
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>

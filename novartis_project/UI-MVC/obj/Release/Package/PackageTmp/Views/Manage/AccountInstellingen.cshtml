@@ -1,0 +1,84 @@
+﻿@model JPP.UI.Web.MVC.Models.IndexViewModel
+@{
+    ViewBag.Title = "Account instellingen";
+    
+}
+@using Microsoft.AspNet.Identity
+
+
+
+@Html.Action("ProfielPartial")
+
+
+
+<div class="col-md-6">
+    
+    <h2>@ViewBag.Title.</h2>
+    <p class="text-success">@ViewBag.StatusMessage</p>
+    <h4>Wijzig de instellingen van uw account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>Wachtwoord:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Wijzig uw wachtwoord", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Maak", "SetPassword")
+            }
+            ]
+        </dd>
+        <dt>Externe Logins:</dt>
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Beheer uw logins", "ManageLogins") ]
+        </dd>
+
+        <dt>GSM-nummer:</dt>
+        <dd>
+            @(Model.PhoneNumber ?? "Geen") [
+            @if (Model.PhoneNumber != null)
+            {
+                @Html.ActionLink("Wijzig", "AddPhoneNumber")
+                @: &nbsp;|&nbsp;
+                @Html.ActionLink("Verwijder", "RemovePhoneNumber")
+            }
+            else
+            {
+                @Html.ActionLink("Voeg toe", "AddPhoneNumber")
+            }
+            ]
+        </dd>
+
+        <dt>Two-Factor Authentication:</dt>
+        <dd>
+
+            @if (Model.TwoFactor)
+            {
+
+                <form method="post" action="/Manage/DisableTwoFactorAuthentication">
+                    Aan
+                    <input type="submit" value="Deactiveer" class="btn btn-link" />
+                </form>
+            }
+            else
+            {
+
+                <form method="post" action="/Manage/EnableTwoFactorAuthentication">
+                    Uit
+                    <input type="submit" value="Activeer" class="btn btn-link" />
+                </form>
+            }
+        </dd>
+
+    </dl>
+
+</div>
+@Html.Action("InstellingenPartial")
+
+
+

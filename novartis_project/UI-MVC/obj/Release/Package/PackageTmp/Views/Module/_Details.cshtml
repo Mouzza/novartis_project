@@ -1,0 +1,98 @@
+﻿@model JPP.BL.Domain.Modules.AgendaModule
+
+@{
+    ViewBag.Title = "Agenda module";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Agenda module</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Admin naam:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.adminNaam)
+        </dd>
+        <dt>
+            Module naam:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.naam)
+        </dd>
+        <dt>
+            Begin datum:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.beginDatum)
+        </dd>
+        <dt>
+            Eind datum:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.eindDatum)
+        </dd>
+
+        </br>
+        <dt>
+            Status:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+        <dt>
+            Thema:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.thema.naam)
+        </dd>
+        <dt>
+            Central vraag:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.centraleVraag.inhoud)
+        </dd>
+        <br />
+        <dt>
+            Beloning naam:
+        </dt>
+        @foreach (var bel in Model.beloning)
+        {
+
+            <dd>
+                @bel.naam ,
+            </dd>
+        }
+
+        <dt>
+            Beloning beschrijving:
+        </dt>
+        @foreach (var bel in Model.beloning)
+        {
+
+            <dd>
+                @bel.beschrijving ,
+            </dd>
+        }
+        <br />
+        <dt>
+            Aantal winnaars:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.centraleVraag.aantalWinAntwoorden)
+        </dd>
+        <dt>
+            Aantal antwoorden:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.agendaAntwoorden.Count)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Ga terug", "Index")
+    <h4>@Html.ActionLink("Beheer de antwoorden("+@Model.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = @Model.ID }, null)</h4>
+</p>
