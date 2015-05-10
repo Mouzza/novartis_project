@@ -169,7 +169,7 @@ namespace JPP.DAL.EF
             List<DossierModule> AgendaAntwoordList = new List<DossierModule>();
             DossierModule agmod = new DossierModule();
             foreach(var antwoord in antwoordlist){
-                if (antwoord.GetType() == agmod.GetType())
+                if (antwoord is DossierModule)
                 {
                     AgendaAntwoordList.Add((DossierModule)antwoord);
                 }

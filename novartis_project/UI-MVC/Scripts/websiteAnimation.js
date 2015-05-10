@@ -31,6 +31,8 @@ $(document).ready(function () {
       
 
     });
+
+
     window.onload = function () {
 
         
@@ -44,6 +46,7 @@ $(document).ready(function () {
     
 
     };
+
 
 
     //Click event to scroll to top
@@ -100,3 +103,5 @@ $(document).ready(function () {
    
     
 });
+
+
