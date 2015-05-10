@@ -8,13 +8,14 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace JPP.UI.Web.MVC.Controllers.AndroidControllers
+namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidAntwoordController : ApiController
     {
         AntwoordManager antwoordManager = new AntwoordManager();
         [HttpGet]
         #region GET dossier/agenda
+        [ActionName("getAgendaAntwoorden")]
         public IHttpActionResult getAgendaAntwoorden()
         {
             List<AgendaAntwoord> agendaAntwoord = antwoordManager.readAllAgendaAntwoorden();
