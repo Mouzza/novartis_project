@@ -171,8 +171,17 @@ namespace JPP.DAL.EF
 
         public List<AgendaModule> getAgendaModules()
         {
-            List<AgendaModule> agendaModules = dbcontext.modules.OfType<AgendaModule>().ToList();
-            return agendaModules;
+            List<Module> antwoordlist = dbcontext.modules.ToList();
+            List<AgendaModule> AgendaAntwoordList = new List<AgendaModule>();
+            AgendaModule agmod = new AgendaModule();
+            foreach(var antwoord in antwoordlist){
+                if (antwoord.GetType() == agmod.GetType())
+                {
+                    AgendaAntwoordList.Add((AgendaModule)antwoord);
+                }
+                
+            }
+            return AgendaAntwoordList;
         }
 
 
