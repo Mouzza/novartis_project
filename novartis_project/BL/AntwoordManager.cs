@@ -72,6 +72,37 @@ namespace JPP.BL
             }
             return agendaReturn;
         }
+
+        public List<AgendaAntwoord> sortAgendaAntwoordOudNieuw()
+        {
+            return inlog.getAllAgendaAntwoorden().OrderBy(o => o.datum).ToList();
+        }
+
+        public List<AgendaAntwoord> sortAgendaAntwoordNieuwOud()
+        {
+            return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.datum).ToList();
+        }
+
+        public List<AgendaAntwoord> sortAgendaAntwoordMeesteLikes()
+        {
+            return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.aantalStemmen).ToList();
+        }
+
+        public List<AgendaAntwoord> sortAgendaAntwoordMinsteLikes()
+        {
+            return inlog.getAllAgendaAntwoorden().OrderBy(o => o.aantalStemmen).ToList();
+        }
+
+        public List<AgendaAntwoord> sortAgendaAntwoordAZ()
+        {
+            return inlog.getAllAgendaAntwoorden().OrderBy(o => o.titel).ToList();
+        }
+
+        public List<AgendaAntwoord> sortAgendaAntwoordZA()
+        {
+            return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.titel).ToList();
+        }
+
         public Antwoord readAntwoord(int id)
         {
            return inlog.getAntwoord(id);
