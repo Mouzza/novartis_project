@@ -230,6 +230,7 @@ textarea {
 
     .centraal2 img {
         border: 2px solid black;
+        width:80%;
     }
 
 #mainContent {
@@ -250,6 +251,7 @@ textarea {
     bottom: 0px;
     position: absolute;
     width: 50px;
+    height:30px;
     text-align: center;
 }
 
