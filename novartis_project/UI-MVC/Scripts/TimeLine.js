@@ -34,7 +34,7 @@ $(document).ready(function () {
     });
 
     $('.dot').click(function () {
-        var modal = $(this).attr('id');
+        var modal = $('.dot').attr('id');
         $('.mask').has('article.' + modal).fadeIn(300);
         $('.mask article.' + modal).animate({
             'top': '10%'
