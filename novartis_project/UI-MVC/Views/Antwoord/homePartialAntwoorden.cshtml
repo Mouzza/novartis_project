@@ -36,37 +36,62 @@
 
         @foreach (var item in Model)
         {
-            <div id="homeTable">
-                <img src="~/Images/dossier-white.png" alt="Alternate Text" />
-                <h1>
-                    @Html.DisplayFor(modelItem => item.titel)
-                </h1>
-                <div id="likes" onclick="goToPagina(this)">
-                    <p>Aantal stemmen</p>
-                    <p>@Html.DisplayFor(modelItem => item.aantalStemmen)</p>
-                    @if (item.GetType().Name.Substring(0, 15) == "DossierAntwoord")
-                    {
+            if (item.GetType().Name.Substring(0, 15) == "DossierAntwoord")
+            {
 
-                        <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})">DossAntw</a>
-                    }
-                    else
-                    {
-                        <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">AgendaAntw</a>
-                    }
+                <div id="homeTable">
+                    <img src="~/Images/dossier-white.png" alt="Dossier antwoord" />
+                    <h1>
+                        @Html.DisplayFor(modelItem => item.titel)
+                    </h1>
+                    <div id="likes" onclick="goToPagina(this)">
+                        <p>Aantal stemmen</p>
+                        <p>@Html.DisplayFor(modelItem => item.aantalStemmen)</p>
+                       
+
+                            <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})">DossAntw</a>
+                       
+                    </div>
+                    <script>
+
+                        function goToPagina(element) {
+                            window.location = $(element).find("#paginaLink").attr("href");
+                            return false;
+                        };
+                    </script>
+
+
                 </div>
-                <script>
+            }
+            else
+            {
 
-                    function goToPagina(element) {
-                        window.location = $(element).find("#paginaLink").attr("href");
-                        return false;
-                    };
-                </script>
-               
+                <div id="homeTable" style="background-color:#135A6F;">
+                    <img src="~/Images/oplosing2.png" alt="Antwoord" />
+                    <h1>
+                        @Html.DisplayFor(modelItem => item.titel)
+                    </h1>
+                    <div id="likes" onclick="goToPagina(this)">
+                        <p>Aantal stemmen</p>
+                        <p>@Html.DisplayFor(modelItem => item.aantalStemmen)</p>
 
-            </div>
-            
-           
-            
+
+                        <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">AgendaAntw</a>
+
+                    </div>
+                    <script>
+
+                        function goToPagina(element) {
+                            window.location = $(element).find("#paginaLink").attr("href");
+                            return false;
+                        };
+                    </script>
+
+
+                </div>
+
+            }
+
 
         }
 
