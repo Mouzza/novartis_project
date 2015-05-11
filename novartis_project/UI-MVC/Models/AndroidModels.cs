@@ -32,7 +32,6 @@ namespace JPP.UI.Web.MVC.Models
         public int ID { get; set; }
         public string naam { get; set; }
         public string beschrijving { get; set; }
-
         //public Thema thema { get; set; }
     }
     public class ANDROIDAgendaModule

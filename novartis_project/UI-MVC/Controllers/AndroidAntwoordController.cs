@@ -77,8 +77,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             List<DossierAntwoord> dossierAntwoord = antwoordManager.getAllDossierAntwoordenPerModule(id);
             List<ANDROIDDossierAntwoorden> dossierAntwoorden = new List<ANDROIDDossierAntwoorden>();
-            try
-            {
                 foreach (DossierAntwoord dossier in dossierAntwoord)
                 {
                     ANDROIDDossierAntwoorden dosAntwoord = new ANDROIDDossierAntwoorden()
@@ -137,12 +135,6 @@ namespace JPP.UI.Web.MVC.Controllers
                         dosAntwoord.comments.Add(aComment);
                     }
                 }
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-
             return Ok(dossierAntwoorden);
         }
         #endregion
@@ -164,20 +156,19 @@ namespace JPP.UI.Web.MVC.Controllers
         #endregion
 
         #region UPDATE dossier/agenda
-        [HttpPost]
+        [HttpPut]
         [ActionName("updateAgenda")]
         public void updateAgendaAntwoord(Antwoord antwoord)
         {
             antwoordManager.updateAgendaAntwoord(antwoord);
         }
-        [HttpPost]
+        [HttpPut]
         [ActionName("updateDossier")]
         public void updateDossierAntwoord(Antwoord antwoord)
         {
             antwoordManager.updateDossierAntwoord(antwoord);
         }
         #endregion
-
 
         #region STEM
         [HttpPut]
