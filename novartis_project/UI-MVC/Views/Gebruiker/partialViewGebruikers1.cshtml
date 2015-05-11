@@ -134,6 +134,7 @@
     <script>
         $(function () {
             $('#pager').on('click', 'a', function () {
+                if (this.href == "") { return; }
                 $.ajax({
                     url: this.href,
                     type: 'GET',

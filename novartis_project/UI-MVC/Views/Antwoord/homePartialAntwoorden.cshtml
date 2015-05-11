@@ -11,7 +11,7 @@
     <p>
         <div id="BoxesWrapper">
             <div id="searchbox">
-                @Html.TextBox("SearchString")
+                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
             </div>
 
             <input type="submit" value="" class="imgClass" />
@@ -30,7 +30,7 @@
 }
 <div id="pager">
     @Html.PagedListPager(Model, page => Url.Action("homePartialAntwoorden",
-    new { page }))
+            new { page, currentFilter = ViewBag.CurrentFilter }))
 </div>
     <div id="homeMidContent">
 
@@ -78,6 +78,7 @@
 <script>
     $(function () {
         $('#pager').on('click', 'a', function () {
+            if (this.href == "") { return; }
             $.ajax({
                 url: this.href,
                 type: 'GET',
