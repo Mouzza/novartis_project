@@ -8,20 +8,26 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+
+
 namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidAntwoordController : ApiController
     {
         AntwoordManager antwoordManager = new AntwoordManager();
-        [HttpGet]
+
         #region GET dossier/agenda
-        [ActionName("getAgendaAntwoorden")]
-        public IHttpActionResult getAgendaAntwoorden()
+        [HttpGet]
+        [ActionName("getAgendaAntwoordID")]
+        public IHttpActionResult getAgendaAntwoorden(int id)
         {
-            List<AgendaAntwoord> agendaAntwoord = antwoordManager.readAllAgendaAntwoorden();
+            List<AgendaAntwoord> agendaAntwoord = antwoordManager.getAllAgendaAntwoordenPerModule(id);
             List<ANDROIDAgendaAntwoorden> agendaAntwoorden = new List<ANDROIDAgendaAntwoorden>();
 
-            foreach (AgendaAntwoord agenda in agendaAntwoord)
+            foreach (var agenda in agendaAntwoord)
             {
                 ANDROIDAgendaAntwoorden agAntwoord = new ANDROIDAgendaAntwoorden()
                 {
@@ -33,13 +39,13 @@ namespace JPP.UI.Web.MVC.Controllers
                     editable = agenda.editable,
                     gebruikersNaam = agenda.gebruikersNaam,
                     aantalFlags = agenda.aantalFlags,
-                    module = agenda.module,
+                    moduleID = agenda.module.ID,
                     vasteTags = new List<ANDROIDVasteTag>(),
                     persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    titel=agenda.titel
+                    titel = agenda.titel
                 };
 
-                foreach (VasteTag vTag in agenda.vasteTags)
+                foreach (var vTag in agenda.vasteTags)
                 {
                     ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
                     {
@@ -50,7 +56,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     agAntwoord.vasteTags.Add(vasteTag);
                 }
 
-                foreach (PersoonlijkeTag pTag in agenda.persoonlijkeTags)
+                foreach (var pTag in agenda.persoonlijkeTags)
                 {
                     ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
                     {
@@ -62,84 +68,87 @@ namespace JPP.UI.Web.MVC.Controllers
                 }
                 agendaAntwoorden.Add(agAntwoord);
             }
-
             return Ok(agendaAntwoorden);
         }
 
-        public IHttpActionResult getDossierAntwoorden()
+        [HttpGet]
+        [ActionName("getDossierAntwoordID")]
+        public IHttpActionResult getDossierAntwoorden(int id)
         {
-            List<DossierAntwoord> dossierAntwoord = antwoordManager.readAllDossierAntwoorden();
+            List<DossierAntwoord> dossierAntwoord = antwoordManager.getAllDossierAntwoordenPerModule(id);
             List<ANDROIDDossierAntwoorden> dossierAntwoorden = new List<ANDROIDDossierAntwoorden>();
-
-            foreach (DossierAntwoord dossier in dossierAntwoord)
-            {
-                ANDROIDDossierAntwoorden dosAntwoord = new ANDROIDDossierAntwoorden()
+                foreach (DossierAntwoord dossier in dossierAntwoord)
                 {
-                    ID = dossier.ID,
-                    inhoud = dossier.inhoud,
-                    extraInfo = dossier.extraInfo,
-                    datum = dossier.datum,
-                    aantalStemmen = dossier.aantalStemmen,
-                    editable = dossier.editable,
-                    gebruikersNaam = dossier.gebruikersNaam,
-                    aantalFlags = dossier.aantalFlags,
-                    module = dossier.module,
-                    vasteTags = new List<ANDROIDVasteTag>(),
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    afbeeldingPath = dossier.afbeeldingPath,
-                    percentageVolledigheid = dossier.percentageVolledigheid,
-                    statusOnline = dossier.statusOnline,
-                    extraVraag = dossier.extraVraag,
-                    evenement = dossier.evenement,
-                    comments = new List<ANDROIDComment>(),
-                    titel=dossier.titel
-                };
-                foreach (VasteTag vTag in dossier.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                    ANDROIDDossierAntwoorden dosAntwoord = new ANDROIDDossierAntwoorden()
                     {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
+                        ID = dossier.ID,
+                        inhoud = dossier.inhoud,
+                        extraInfo = dossier.extraInfo,
+                        datum = dossier.datum,
+                        aantalStemmen = dossier.aantalStemmen,
+                        editable = dossier.editable,
+                        gebruikersNaam = dossier.gebruikersNaam,
+                        aantalFlags = dossier.aantalFlags,
+                        moduleID = dossier.module.ID,
+                        vasteTags = new List<ANDROIDVasteTag>(),
+                        persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                        afbeeldingPath = dossier.afbeeldingPath,
+                        percentageVolledigheid = dossier.percentageVolledigheid,
+                        statusOnline = dossier.statusOnline,
+                        extraVraag = dossier.extraVraag,
+                        evenementID = dossier.evenement.ID,
+                        comments = new List<ANDROIDComment>(),
+                        titel = dossier.titel
                     };
-                    dosAntwoord.vasteTags.Add(vasteTag);
-                }
-
-                foreach (PersoonlijkeTag pTag in dossier.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                    foreach (VasteTag vTag in dossier.vasteTags)
                     {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    dosAntwoord.persoonlijkeTags.Add(persTag);
-                }
+                        ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                        {
+                            ID = vTag.ID,
+                            naam = vTag.naam,
+                            beschrijving = vTag.beschrijving
+                        };
+                        dosAntwoord.vasteTags.Add(vasteTag);
+                    }
 
-                foreach (Comment comment in dossier.comments)
-                {
-                    ANDROIDComment aComment = new ANDROIDComment()
+                    foreach (PersoonlijkeTag pTag in dossier.persoonlijkeTags)
                     {
-                        ID = comment.ID,
-                        inhoud = comment.inhoud,
-                        datum = comment.datum,
-                        aantalStemmen = comment.aantalStemmen,
-                        gebruikersNaam = comment.gebruikersNaam
-                    };
-                    dosAntwoord.comments.Add(aComment);
+                        ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                        {
+                            ID = pTag.ID,
+                            naam = pTag.naam,
+                            beschrijving = pTag.beschrijving
+                        };
+                        dosAntwoord.persoonlijkeTags.Add(persTag);
+                    }
+
+                    foreach (Comment comment in dossier.comments)
+                    {
+                        ANDROIDComment aComment = new ANDROIDComment()
+                        {
+                            ID = comment.ID,
+                            inhoud = comment.inhoud,
+                            datum = comment.datum,
+                            aantalStemmen = comment.aantalStemmen,
+                            gebruikersNaam = comment.gebruikersNaam
+                        };
+                        dosAntwoord.comments.Add(aComment);
+                    }
                 }
-            }
             return Ok(dossierAntwoorden);
         }
         #endregion
 
         #region CREATE dossier/agenda
         //VOID of niet?
+        [HttpPost]
+        [ActionName("createAgenda")]
         public void createAgendaAntwoord(Antwoord antwoord)
         {
             antwoordManager.createAgendaAntwoord(antwoord);
         }
-
+        [HttpPost]
+        [ActionName("createDossier")]
         public void createDossierAntwoord(Antwoord antwoord)
         {
             antwoordManager.createDossierAntwoord(antwoord);
@@ -147,34 +156,41 @@ namespace JPP.UI.Web.MVC.Controllers
         #endregion
 
         #region UPDATE dossier/agenda
-
+        [HttpPut]
+        [ActionName("updateAgenda")]
         public void updateAgendaAntwoord(Antwoord antwoord)
         {
             antwoordManager.updateAgendaAntwoord(antwoord);
         }
-
+        [HttpPut]
+        [ActionName("updateDossier")]
         public void updateDossierAntwoord(Antwoord antwoord)
         {
             antwoordManager.updateDossierAntwoord(antwoord);
         }
         #endregion
 
-        #region DELETE
-        public void deleteAntwoord(int id)
-        {
-            antwoordManager.removeAntwoord(id);
-        }
-        #endregion
-
         #region STEM
+        [HttpPut]
+        [ActionName("stemCommentID")]
         public void stemOpComment(int id)
         {
             antwoordManager.stemOpComment(id);
         }
-
+        [HttpPut]
+        [ActionName("stemAntwoordID")]
         public void stemOpAntwoord(int id)
         {
             antwoordManager.stemOpAntwoord(id);
+        }
+        #endregion
+
+        #region DELETE antwoord
+        [HttpDelete]
+        [ActionName("deleteAntwoordID")]
+        public void deleteAntwoord(int id)
+        {
+            antwoordManager.removeAntwoord(id);
         }
         #endregion
     }
