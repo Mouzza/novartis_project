@@ -1204,14 +1204,40 @@ transition: all 500ms ease;
 }
 
 /*###################################################################################*/
-#MainFilter{
+#MainFilterAZ{
     display: table-cell;
     background-color: #FFF;
     border: #FFF;
     width: 35px;
     height: 30px;
     float: right;
-    clear: right;
+}
+
+#MainFilterZA{
+    display: table-cell;
+    background-color: #FFF;
+    border: #FFF;
+    width: 35px;
+    height: 30px;
+    float: right;
+}
+
+#MainFilterOJ{
+    display: table-cell;
+    background-color: #FFF;
+    border: #FFF;
+    width: 35px;
+    height: 30px;
+    float: right;
+}
+
+#MainFilterJO{
+    display: table-cell;
+    background-color: #FFF;
+    border: #FFF;
+    width: 35px;
+    height: 30px;
+    float: right;
 }
 #BoxesWrapper{
     height: 100px;
@@ -1219,7 +1245,23 @@ transition: all 500ms ease;
     display: table;
 }
 
-#MainFilterImg{
+#MainFilterImgAZ{
+    width: 30px;
+    height: 30px;
+
+}
+
+#MainFilterImgZA{
+    width: 30px;
+    height: 30px;
+
+}
+#MainFilterImgOJ{
+    width: 30px;
+    height: 30px;
+
+}
+#MainFilterImgJO{
     width: 30px;
     height: 30px;
 
