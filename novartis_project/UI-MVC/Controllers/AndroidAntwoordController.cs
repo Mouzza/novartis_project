@@ -52,19 +52,18 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 foreach (PersoonlijkeTag pTag in agenda.persoonlijkeTags)
                 {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
                     {
                         ID = pTag.ID,
                         naam = pTag.naam,
                         beschrijving = pTag.beschrijving
                     };
-                    agAntwoord.vasteTags.Add(vasteTag);
+                    agAntwoord.persoonlijkeTags.Add(persTag);
                 }
                 agendaAntwoorden.Add(agAntwoord);
             }
 
             return Ok(agendaAntwoorden);
-
         }
 
         public IHttpActionResult getDossierAntwoorden()

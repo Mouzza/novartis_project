@@ -1160,8 +1160,8 @@ transition: all 500ms ease;
      background-size:25px;
      background-color: #FFF;
      border: #FFF;
-float:right;
-margin-right:77%;
+float:left;
+margin-left:1%;
          /* HOVER ON*/
     -webkit-transition: all 500ms ease;
 -moz-transition: all 500ms ease;
@@ -1175,15 +1175,17 @@ transition: all 500ms ease;
  }
 
 #searchbox{
+    display: table-cell;
     float:left;
     margin-left:5%;
 }
 
 .imgClass:hover{
+    display: table-cell;
     height:30px;
     width:30px;
     background-size: 30px;
-    margin-right: 76.8%;
+    margin-left: 1%;
              /* HOVER ON*/
     -webkit-transition: all 500ms ease;
 -moz-transition: all 500ms ease;
@@ -1201,4 +1203,24 @@ transition: all 500ms ease;
     background-image:none;
 }
 
+/*###################################################################################*/
+#MainFilter{
+    display: table-cell;
+    background-color: #FFF;
+    border: #FFF;
+    width: 35px;
+    height: 30px;
+    float: right;
+    clear: right;
+}
+#BoxesWrapper{
+    height: 100px;
+    width: 100%;
+    display: table;
+}
 
+#MainFilterImg{
+    width: 30px;
+    height: 30px;
+
+}
