@@ -4,8 +4,12 @@
 
 }
 
+
 @{ Html.RenderAction("ActiefAgenda", "Module");}
 
+<div id="antwoorden">
+   @{ Html.RenderAction("_partialAgendaAntwoordLijst", "Antwoord"); }
 
-@{ Html.RenderAction("_partialAgendaAntwoordLijst", "Antwoord"); }
 
+
+</div>

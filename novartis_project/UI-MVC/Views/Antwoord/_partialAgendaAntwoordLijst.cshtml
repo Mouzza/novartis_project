@@ -8,6 +8,7 @@
     var zelfdeGebruiker = false;
 }
 
+
 <div id="moduleLeftMenuSection">
 
     <ul>
@@ -18,6 +19,7 @@
 
 
 </div>
+
 <div id="antwoordlijstWrapper">
     @if (ViewBag.Aantal > 1)
     {
@@ -115,7 +117,7 @@
                     type: 'GET',
                     cache: false,
                     success: function (result) {
-                        $('#antwoordlijstWrapper').html(result);
+                        $('#antwoorden').html(result);
                     }
                 });
                 return false;
