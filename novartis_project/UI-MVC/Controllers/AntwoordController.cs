@@ -80,38 +80,84 @@ namespace JPP.UI.Web.MVC.Controllers
 
         //Antwoord/Lijst
 
-        public ActionResult _partialAntwoordLijst(int? page)
+        public ActionResult _partialAntwoordLijst(int? page, string sortOrder)
         {
-            //Manager moet nog gemaakt worden
+            ViewBag.Top25SortParm = sortOrder == "top25" ? "" : "top25";
+
+
+            ViewBag.RecentSortParm = sortOrder == "recent" ? "" : "recent"; 
+            
+
             
             int pageSize = 5;
             int pageNumber = (page ?? 1);
 
             DossierModule dossiermodule = dossManager.readActieveDossierModule();
-            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+            List<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+            List<DossierAntwoord> dossierAntwoorden2 = new List<DossierAntwoord>();
 
-            ViewBag.Aantal = dossierAntwoorden.Count();
-             
-            return PartialView(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
-            
-            
-
-            
+            switch (sortOrder)
+            {
+                case "top25":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordMeesteLikes(dossierAntwoorden);
+                    for (int i = 0; i < 25; i++)
+                    {
+                        dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                    }
+                    break;
+                case "recent":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordNieuwOud(dossierAntwoorden);
+                    dossierAntwoorden2 = dossierAntwoorden;
+                    break;
+                default:
+                    dossierAntwoorden = antwManager.sortDossierAntwoordNieuwOud(dossierAntwoorden);
+                    dossierAntwoorden2 = dossierAntwoorden;
+                    break;
+            }
+            ViewBag.Aantal = dossierAntwoorden2.Count();
+            return PartialView(dossierAntwoorden2.ToPagedList(pageNumber, pageSize));
+ 
         }
 
-        public ActionResult _partialAgendaAntwoordLijst(int? page)
+        public ActionResult _partialAgendaAntwoordLijst(int? page, string sortOrder)
         {
-            //Manager moet nog gemaakt worden
+
+            ViewBag.Top25SortParm = sortOrder=="top25" ? "" : "top25";
+         
+          
+            ViewBag.RecentSortParm = sortOrder =="recent" ? "" : "recent"; 
+            
 
             int pageSize = 5;
             int pageNumber = (page ?? 1);
 
             AgendaModule agendaModule = dossManager.readActieveAgendaModule();
-            IEnumerable<AgendaAntwoord> dossierAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+            List<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+            List<AgendaAntwoord> agendaAntwoorden2 = new List<AgendaAntwoord>();
 
-            ViewBag.Aantal = dossierAntwoorden.Count();
 
-            return PartialView(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
+
+
+            switch (sortOrder)
+            {
+                case "top25":
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordMeesteLikes(agendaAntwoorden);
+                    for (int i = 0; i < 25; i++)
+                    {
+                        agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                    }
+                        break;
+                case "recent":
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordNieuwOud(agendaAntwoorden);
+                    agendaAntwoorden2 = agendaAntwoorden;
+                    break;
+                default:
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordNieuwOud(agendaAntwoorden);
+                    agendaAntwoorden2 = agendaAntwoorden;
+                    break;
+            }
+            ViewBag.Aantal = agendaAntwoorden2.Count();
+            return PartialView(agendaAntwoorden2.ToPagedList(pageNumber, pageSize));
 
 
 

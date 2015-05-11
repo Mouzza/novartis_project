@@ -73,72 +73,68 @@ namespace JPP.BL
             return agendaReturn;
         }
 
-        public List<AgendaAntwoord> sortAgendaAntwoordOudNieuw()
+        public List<AgendaAntwoord> sortAgendaAntwoordOudNieuw(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return inlog.getAllAgendaAntwoorden().OrderBy(o => o.datum).ToList();
+            return agendaAntwoorden.OrderBy(o => o.datum).ToList();
         }
 
-        public List<AgendaAntwoord> sortAgendaAntwoordNieuwOud()
+        public List<AgendaAntwoord> sortAgendaAntwoordNieuwOud(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.datum).ToList();
+            return agendaAntwoorden.OrderByDescending(o => o.datum).ToList();
         }
 
-        public List<AgendaAntwoord> sortAgendaAntwoordMeesteLikes()
+        public List<AgendaAntwoord> sortAgendaAntwoordMeesteLikes(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.aantalStemmen).ToList();
+            return agendaAntwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
         }
 
-        public List<AgendaAntwoord> sortAgendaAntwoordMinsteLikes()
+        public List<AgendaAntwoord> sortAgendaAntwoordMinsteLikes(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return inlog.getAllAgendaAntwoorden().OrderBy(o => o.aantalStemmen).ToList();
+            return agendaAntwoorden.OrderBy(o => o.aantalStemmen).ToList();
         }
 
-        public List<AgendaAntwoord> sortAgendaAntwoordAZ()
+        public List<AgendaAntwoord> sortAgendaAntwoordAZ(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return inlog.getAllAgendaAntwoorden().OrderBy(o => o.titel).ToList();
+            return agendaAntwoorden.OrderBy(o => o.titel).ToList();
         }
 
-        public List<AgendaAntwoord> sortAgendaAntwoordZA()
+        public List<AgendaAntwoord> sortAgendaAntwoordZA(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return inlog.getAllAgendaAntwoorden().OrderByDescending(o => o.titel).ToList();
+            return agendaAntwoorden.OrderByDescending(o => o.titel).ToList();
         }
 
         #region sortDossierAntwoord
-        public List<DossierAntwoord> sortDossierAntwoordNieuwOud()
+        public List<DossierAntwoord> sortDossierAntwoordNieuwOud(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierRes = dossierList.OrderBy(o => o.datum).ToList();
-            return dossierRes;
+
+
+            return dossierAntwoorden.OrderBy(o => o.datum).ToList();
         }
-        public List<DossierAntwoord> sortDossierAntwoordOudNieuw()
+        public List<DossierAntwoord> sortDossierAntwoordOudNieuw(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierRes = dossierList.OrderByDescending(o => o.datum).ToList();
-            return dossierRes;
+
+
+            return dossierAntwoorden.OrderByDescending(o => o.datum).ToList();
         }
-        public List<DossierAntwoord> sortDossierAntwoordMeesteLikes()
+        public List<DossierAntwoord> sortDossierAntwoordMeesteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierRes = dossierList.OrderByDescending(o => o.aantalStemmen).ToList();
-            return dossierRes;
+      
+            return dossierAntwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
         }
-        public List<DossierAntwoord> sortDossierAntwoordMinsteLikes()
+        public List<DossierAntwoord> sortDossierAntwoordMinsteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierRes = dossierList.OrderBy(o => o.aantalStemmen).ToList();
-            return dossierRes;
+
+            return dossierAntwoorden.OrderBy(o => o.aantalStemmen).ToList();
         }
-        public List<DossierAntwoord> sortDossierAntwoordTitelAZ()
+        public List<DossierAntwoord> sortDossierAntwoordTitelAZ(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierRes = dossierList.OrderBy(o => o.titel).ToList();
-            return dossierRes;
+
+            return dossierAntwoorden.OrderBy(o => o.titel).ToList();
         }
-        public List<DossierAntwoord> sortDossierAntwoordTitelZA()
+        public List<DossierAntwoord> sortDossierAntwoordTitelZA(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
-            List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierRes = dossierList.OrderByDescending(o => o.titel).ToList();
-            return dossierRes;
+
+            return dossierAntwoorden.OrderByDescending(o => o.titel).ToList(); ;
         }
         #endregion
 

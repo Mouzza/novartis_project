@@ -8,26 +8,36 @@
     var zelfdeGebruiker = false;
 }
 
+<div id="moduleLeftMenuSection">
 
-@if (ViewBag.Aantal > 1)
-{
+    <ul>
+        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
+        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
 
-    <h2>@ViewBag.Aantal  Antwoorden</h2>
-}
-else if (ViewBag.Aantal == 1)
-{
-    <h2>@ViewBag.Aantal  Antwoord</h2>
-}
+    </ul>
 
-<p id="antwoordlijstCreateSection">
-    <img src="~/Images/page icons/new.png" alt="Alternate Text" />
-    @Html.ActionLink("Nieuw oplossing", "Create")
-</p>
-<div id="pager">
-    @Html.PagedListPager(Model, page => Url.Action("_partialAgendaAntwoordLijst",
-    new { page }))
+
 </div>
-@foreach (var item in Model)
+<div id="antwoordlijstWrapper">
+    @if (ViewBag.Aantal > 1)
+    {
+
+        <h2>@ViewBag.Aantal  Antwoorden</h2>
+    }
+    else if (ViewBag.Aantal == 1)
+    {
+        <h2>@ViewBag.Aantal  Antwoord</h2>
+    }
+
+    <p id="antwoordlijstCreateSection">
+        <img src="~/Images/page icons/new.png" alt="Alternate Text" />
+        @Html.ActionLink("Nieuw oplossing", "Create")
+    </p>
+    <div id="pager">
+        @Html.PagedListPager(Model, page => Url.Action("_partialAgendaAntwoordLijst",
+    new { page }))
+    </div>
+    @foreach (var item in Model)
     {
         if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
         {
@@ -40,23 +50,23 @@ else if (ViewBag.Aantal == 1)
         }
 
 
-    <p id="extraInfoParagraaf">
-        <span id="extrainfoSpan">
-            Gebruiker:
-        </span>
-        @if (zelfdeGebruiker)
-        {
+        <p id="extraInfoParagraaf">
+            <span id="extrainfoSpan">
+                Gebruiker:
+            </span>
+            @if (zelfdeGebruiker)
+            {
 
-            <a id="extrainfoSpan"  href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
-        }
-        else
-        {
-            <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
-                <span>@item.gebruikersNaam</span>
-            </a>
-        }
-                | <span id="extrainfoSpan">Datum: </span> @item.datum
-    </p>
+                <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
+            }
+            else
+            {
+                <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
+                    <span>@item.gebruikersNaam</span>
+                </a>
+            }
+            | <span id="extrainfoSpan">Datum: </span> @item.datum
+        </p>
 
         if (zelfdeGebruiker)
         {
@@ -66,50 +76,50 @@ else if (ViewBag.Aantal == 1)
         <div id="tableAntwoord" onclick="goToPagina(this)">
             <table class="table">
 
-                    <tr>
-                        <td id="aantalStemmen">
-                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
-                        </td>
+                <tr>
+                    <td id="aantalStemmen">
+                        +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                    </td>
 
-                        <td id="antwoordInhoud">
-                            @Html.DisplayFor(modelItem => item.titel)
+                    <td id="antwoordInhoud">
+                        @Html.DisplayFor(modelItem => item.titel)
 
-                        </td>
+                    </td>
 
-                    </tr>
+                </tr>
 
-                </table>
+            </table>
             <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})"></a>
 
         </div>
 
 
-    <script>
+        <script>
 
-    function goToPagina(element) {
-        window.location = $(element).find("#paginaLink").attr("href");
-        return false;
-    };
-    </script>
+            function goToPagina(element) {
+                window.location = $(element).find("#paginaLink").attr("href");
+                return false;
+            };
+        </script>
 
     }
 
 
+</div>
 
+    <script>
+        $(function () {
+            $('#pager').on('click', 'a', function () {
+                $.ajax({
+                    url: this.href,
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        $('#antwoordlijstWrapper').html(result);
+                    }
+                });
+                return false;
+            });
+        });
 
-                <script>
-                    $(function () {
-                        $('#pager').on('click', 'a', function () {
-                            $.ajax({
-                                url: this.href,
-                                type: 'GET',
-                                cache: false,
-                                success: function (result) {
-                                    $('#antwoordlijstWrapper').html(result);
-                                }
-                            });
-                            return false;
-                        });
-                    });
-
-                </script>
+    </script>

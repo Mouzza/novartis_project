@@ -669,6 +669,31 @@ transition: all 300ms ease;
     background-color: darkgray;
     padding:1%;
 }
+#moduleLeftMenuSection ul {
+   text-decoration:none;
+   list-style:none;
+   margin-top:50px;
+
+}
+#moduleLeftMenuSection ul li {
+   margin:10px 10px;
+   color:white;
+
+}
+#moduleLeftMenuSection ul li a {
+   text-decoration:none;
+   font-size:150%;
+   color:white;
+   font-weight:bold;
+}
+
+#moduleLeftMenuSection ul li a:hover {
+
+   font-size:200%;
+   color:#1A9ADD;
+
+}
+
 
 #antwoordlijstCreateSection img {
     width: 50px;
