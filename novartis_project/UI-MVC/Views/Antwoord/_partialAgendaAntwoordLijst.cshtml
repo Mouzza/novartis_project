@@ -36,6 +36,7 @@
         @Html.ActionLink("Nieuw oplossing", "Create")
     </p>
     <div id="pager">
+
         @Html.PagedListPager(Model, page => Url.Action("_partialAgendaAntwoordLijst",
     new { page }))
     </div>
@@ -112,6 +113,7 @@
     <script>
         $(function () {
             $('#pager').on('click', 'a', function () {
+                if (this.href == "") { return; }
                 $.ajax({
                     url: this.href,
                     type: 'GET',
