@@ -9,12 +9,18 @@
 {
     
     <p>
-        <div id="searchbox">
-            @Html.TextBox("SearchString")
-        </div>
+        <div id="BoxesWrapper">
+            <div id="searchbox">
+                @Html.TextBox("SearchString")
+            </div>
 
-        <input type="submit" value="" class="imgClass" />
+            <input type="submit" value="" class="imgClass" />
+
+            <button id="MainFilter"> <img id="MainFilterImg" src="~/Images/filter.png" /> </button>
+        </div>
     </p>
+    
+    
 }
 <div id="pager">
     @Html.PagedListPager(Model, page => Url.Action("homePartialAntwoorden",
