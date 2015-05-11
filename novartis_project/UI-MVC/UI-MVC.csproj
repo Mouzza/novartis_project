@@ -371,6 +371,8 @@
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
     <Content Include="Images\homeSpecialMenu icons\iconStart.png" />
+    <Content Include="Images\iconmonstr-sort-14-icon-256.png" />
+    <Content Include="Images\iconmonstr-sort-16-icon-256.png" />
     <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
     <Content Include="Images\logo.png" />
@@ -393,6 +395,8 @@
     <Content Include="Images\socialMedia icons\fb.png" />
     <Content Include="Images\socialMedia icons\google.png" />
     <Content Include="Images\socialMedia icons\twitter.png" />
+    <Content Include="Images\sort.png" />
+    <Content Include="Images\sortFlip.png" />
     <Content Include="Images\sponsors logos\iconKULeuven.png" />
     <Content Include="Images\sponsors logos\iconLeuven.png" />
     <Content Include="Images\sponsors logos\iconTreeCompany.png" />
