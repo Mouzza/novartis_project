@@ -7,8 +7,18 @@
     Layout = "";
     var zelfdeGebruiker = false;
 }
+<div id="moduleLeftMenuSection">
+
+    <ul>
+        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top5SortParm }, null)">Top 5</a></li>
+        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
+        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
+
+    </ul>
 
 
+</div>
+<div id="antwoordlijstWrapper">
 
 
 
@@ -21,51 +31,81 @@
     {
         <h2>@ViewBag.Aantal  Antwoord</h2>
     }
-    
-<p id="antwoordlijstCreateSection">
-    <img src="~/Images/page icons/new.png" alt="Alternate Text" />
-    @Html.ActionLink("Nieuw oplossing", "Create")
-</p>
+
+    <p id="antwoordlijstCreateSection">
+        <img src="~/Images/page icons/new.png" alt="Alternate Text" />
+        @Html.ActionLink("Nieuw oplossing", "Create")
+    </p>
 
     <div id="pager">
         @Html.PagedListPager(Model, page => Url.Action("_partialAntwoordLijst",
-    new { page }))
+             new { page, sortOrder = ViewBag.CurrentSort }))
     </div>
-        @foreach (var item in Model)
+    @foreach (var item in Model)
+    {
+        if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
         {
-            if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
-            {
-                zelfdeGebruiker = true;
+            zelfdeGebruiker = true;
 
+        }
+        else
+        {
+            zelfdeGebruiker = false;
+        }
+
+        if (ViewBag.winnaar == item.aantalStemmen)
+        {
+            <span id="winnaarSpan">
+                Voorlopige winnaar!
+            </span>
+        }
+        
+        <p id="extraInfoParagraaf">
+            <span id="extrainfoSpan">
+                Gebruiker:
+            </span>
+            @if (zelfdeGebruiker)
+            {
+
+                <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
             }
             else
             {
-                zelfdeGebruiker = false;
+                <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
+                    <span>@item.gebruikersNaam</span>
+                </a>
             }
+            | <span id="extrainfoSpan">Datum: </span> @item.datum
+        </p>
 
-            <p id="extraInfoParagraaf">
-                <span id="extrainfoSpan">
-                    Gebruiker:
-                </span>
-                @if (zelfdeGebruiker)
-                {
+        if (zelfdeGebruiker)
+        {
+            @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
+        }
+        if (ViewBag.winnaar == item.aantalStemmen)
+        {
+            <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
+                <table class="table">
 
-                    <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
-                }
-                else
-                {
-                    <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
-                        <span>@item.gebruikersNaam</span>
-                    </a>
-                }
-                | <span id="extrainfoSpan">Datum: </span> @item.datum
-            </p>
+                    <tr>
+                        <td id="aantalStemmen">
+                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                        </td>
 
-            if (zelfdeGebruiker)
-            {
-                @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
-            }
+                        <td id="antwoordInhoud">
+                            @Html.DisplayFor(modelItem => item.titel)
 
+                        </td>
+
+                    </tr>
+
+                </table>
+                <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
+
+            </div>
+        }
+        else
+        {
             <div id="tableAntwoord" onclick="goToPagina(this)">
                 <table class="table">
 
@@ -85,36 +125,39 @@
                 <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
 
             </div>
-
-
-                <script>
-
-                    function goToPagina(element) {
-                        window.location = $(element).find("#paginaLink").attr("href");
-                        return false;
-                    };
-                </script>
         }
 
 
 
+        <script>
 
-<script>
+            function goToPagina(element) {
+                window.location = $(element).find("#paginaLink").attr("href");
+                return false;
+            };
+        </script>
+    }
 
 
 
-    $(function () {
-        $('#pager').on('click', 'a', function () {
-            $.ajax({
-                url: this.href,
-                type: 'GET',
-                cache: false,
-                success: function (result) {
-                    $('#antwoordlijstWrapper').html(result);
-                }
+</div>
+    <script>
+
+
+
+        $(function () {
+            $('#pager').on('click', 'a', function () {
+                if (this.href == "") { return; }
+                $.ajax({
+                    url: this.href,
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        $('#antwoorden').html(result);
+                    }
+                });
+                return false;
             });
-            return false;
         });
-    });
 
-</script>
+    </script>

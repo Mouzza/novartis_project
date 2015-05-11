@@ -371,6 +371,8 @@
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
     <Content Include="Images\homeSpecialMenu icons\iconStart.png" />
+    <Content Include="Images\iconmonstr-sort-14-icon-256.png" />
+    <Content Include="Images\iconmonstr-sort-16-icon-256.png" />
     <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
     <Content Include="Images\logo.png" />
@@ -386,6 +388,7 @@
     <Content Include="Images\menu logos\profielSettingsLogo.png" />
     <Content Include="Images\menu logos\recensiesLogo.png" />
     <Content Include="Images\menu logos\rolesLogo.png" />
+    <Content Include="Images\oplosing2.png" />
     <Content Include="Images\Paars.png" />
     <Content Include="Images\page icons\goBack2.png" />
     <Content Include="Images\page icons\new.png" />
@@ -393,6 +396,8 @@
     <Content Include="Images\socialMedia icons\fb.png" />
     <Content Include="Images\socialMedia icons\google.png" />
     <Content Include="Images\socialMedia icons\twitter.png" />
+    <Content Include="Images\sort.png" />
+    <Content Include="Images\sortFlip.png" />
     <Content Include="Images\sponsors logos\iconKULeuven.png" />
     <Content Include="Images\sponsors logos\iconLeuven.png" />
     <Content Include="Images\sponsors logos\iconTreeCompany.png" />
@@ -549,6 +554,12 @@
     <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
     <Content Include="Views\Admin\Menu.cshtml" />
+    <Content Include="Views\Antwoord\CreateDossier.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelOne.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelTwo.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelThree.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelFive.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelSix.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -8,13 +8,9 @@
 
 @{ Html.RenderAction("Actief", "Module");}
 
-    <div id="moduleLeftMenuSection">
-        <p></p>
 
-    </div>
 
-    <div id="antwoordlijstWrapper">
+<div id="antwoorden">
+    @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord"); }
 
-        @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord"); }
-
-    </div>
+</div>
