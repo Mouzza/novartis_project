@@ -10,6 +10,7 @@
 <div id="moduleLeftMenuSection">
 
     <ul>
+        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top5SortParm }, null)">Top 5</a></li>
         <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
         <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
 
@@ -38,7 +39,7 @@
 
     <div id="pager">
         @Html.PagedListPager(Model, page => Url.Action("_partialAntwoordLijst",
-    new { page }))
+             new { page, sortOrder = ViewBag.CurrentSort }))
     </div>
     @foreach (var item in Model)
     {
@@ -52,6 +53,13 @@
             zelfdeGebruiker = false;
         }
 
+        if (ViewBag.winnaar == item.aantalStemmen)
+        {
+            <span id="winnaarSpan">
+                Voorlopige winnaar!
+            </span>
+        }
+        
         <p id="extraInfoParagraaf">
             <span id="extrainfoSpan">
                 Gebruiker:
@@ -74,26 +82,51 @@
         {
             @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
         }
+        if (ViewBag.winnaar == item.aantalStemmen)
+        {
+            <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
+                <table class="table">
 
-        <div id="tableAntwoord" onclick="goToPagina(this)">
-            <table class="table">
+                    <tr>
+                        <td id="aantalStemmen">
+                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                        </td>
 
-                <tr>
-                    <td id="aantalStemmen">
-                        +@Html.DisplayFor(modelItem => item.aantalStemmen)
-                    </td>
+                        <td id="antwoordInhoud">
+                            @Html.DisplayFor(modelItem => item.titel)
 
-                    <td id="antwoordInhoud">
-                        @Html.DisplayFor(modelItem => item.titel)
+                        </td>
 
-                    </td>
+                    </tr>
 
-                </tr>
+                </table>
+                <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
 
-            </table>
-            <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
+            </div>
+        }
+        else
+        {
+            <div id="tableAntwoord" onclick="goToPagina(this)">
+                <table class="table">
 
-        </div>
+                    <tr>
+                        <td id="aantalStemmen">
+                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                        </td>
+
+                        <td id="antwoordInhoud">
+                            @Html.DisplayFor(modelItem => item.titel)
+
+                        </td>
+
+                    </tr>
+
+                </table>
+                <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
+
+            </div>
+        }
+
 
 
         <script>

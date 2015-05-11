@@ -62,8 +62,18 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-        public ActionResult homePartialAntwoorden(int? page, string searchString)
+        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, int? page)
         {
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
 
             int pageSize = 8;
             int pageNumber = (page ?? 1);
@@ -74,20 +84,21 @@ namespace JPP.UI.Web.MVC.Controllers
                 antwoorden = antwoorden.Where(antw => antw.inhoud.Contains(searchString)
                                        || antw.titel.Contains(searchString));
             }
-
+         
             return PartialView(antwoorden.ToPagedList(pageNumber, pageSize));
         }
 
         //Antwoord/Lijst
 
-        public ActionResult _partialAntwoordLijst(int? page, string sortOrder)
+        public ActionResult _partialAntwoordLijst(string sortOrder, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.Top25SortParm = sortOrder == "top25" ? "" : "top25";
+            ViewBag.Top5SortParm = sortOrder == "top5" ? "" : "top5";
 
+            ViewBag.RecentSortParm = sortOrder == "recent" ? "" : "recent";
 
-            ViewBag.RecentSortParm = sortOrder == "recent" ? "" : "recent"; 
-            
-
+         
             
             int pageSize = 5;
             int pageNumber = (page ?? 1);
@@ -95,12 +106,20 @@ namespace JPP.UI.Web.MVC.Controllers
             DossierModule dossiermodule = dossManager.readActieveDossierModule();
             List<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
             List<DossierAntwoord> dossierAntwoorden2 = new List<DossierAntwoord>();
+            ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
 
             switch (sortOrder)
             {
                 case "top25":
                     dossierAntwoorden = antwManager.sortDossierAntwoordMeesteLikes(dossierAntwoorden);
                     for (int i = 0; i < 25; i++)
+                    {
+                        dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                    }
+                    break;
+                case "top5":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordMeesteLikes(dossierAntwoorden);
+                    for (int i = 0; i < 5; i++)
                     {
                         dossierAntwoorden2.Add(dossierAntwoorden[i]);
                     }
@@ -119,11 +138,12 @@ namespace JPP.UI.Web.MVC.Controllers
  
         }
 
-        public ActionResult _partialAgendaAntwoordLijst(int? page, string sortOrder)
+        public ActionResult _partialAgendaAntwoordLijst(string sortOrder, int? page)
         {
-
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.Top25SortParm = sortOrder=="top25" ? "" : "top25";
-         
+            ViewBag.Top5SortParm = sortOrder == "top5" ? "" : "top5";
+
           
             ViewBag.RecentSortParm = sortOrder =="recent" ? "" : "recent"; 
             
@@ -135,6 +155,7 @@ namespace JPP.UI.Web.MVC.Controllers
             List<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
             List<AgendaAntwoord> agendaAntwoorden2 = new List<AgendaAntwoord>();
 
+            ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
 
 
 
@@ -146,6 +167,13 @@ namespace JPP.UI.Web.MVC.Controllers
                     {
                         agendaAntwoorden2.Add(agendaAntwoorden[i]);
                     }
+                        break;
+                case "top5":
+                        agendaAntwoorden = antwManager.sortAgendaAntwoordMeesteLikes(agendaAntwoorden);
+                        for (int i = 0; i < 5; i++)
+                        {
+                            agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                        }
                         break;
                 case "recent":
                     agendaAntwoorden = antwManager.sortAgendaAntwoordNieuwOud(agendaAntwoorden);
