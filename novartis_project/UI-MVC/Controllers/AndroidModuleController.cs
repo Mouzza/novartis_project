@@ -13,9 +13,9 @@ namespace JPP.UI.Web.MVC.Controllers
     public class AndroidModuleController : ApiController
     {
         ModuleManager moduleManager = new ModuleManager();
-        [HttpGet]
+        
         #region ACTIEVE dossier/agenda
-
+        [HttpGet]
         [ActionName("getActieveDossier")]
         public IHttpActionResult getActieveDossierModule()
         {
@@ -96,6 +96,7 @@ namespace JPP.UI.Web.MVC.Controllers
         #endregion
 
         #region ALL dossier/agenda
+        [HttpGet]
         [ActionName("getAllAgendas")]
         public IHttpActionResult getAllAgendaModules()
         {
@@ -129,7 +130,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(agModules);
         }
-
+        [HttpGet]
         [ActionName("getAllDossiers")]
         public IHttpActionResult getAllDossierModules()
         {
@@ -166,6 +167,7 @@ namespace JPP.UI.Web.MVC.Controllers
         #endregion
 
         #region TOEKOMSTIGE modules
+        [HttpGet]
         [ActionName("getToekomst")]
         public IHttpActionResult getToekomstigModules()
         {

@@ -83,7 +83,7 @@ namespace JPP.UI.Web.MVC.Models
         public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
-        public Module module { get; set; }
+        public int moduleID { get; set; }
         public List<ANDROIDVasteTag> vasteTags { get; set; }
         public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
     }
@@ -106,14 +106,14 @@ namespace JPP.UI.Web.MVC.Models
         public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
-        public Module module { get; set; }
+        public int moduleID { get; set; }
         public List<ANDROIDVasteTag> vasteTags { get; set; }
         public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
         public string afbeeldingPath { get; set; }
         public int percentageVolledigheid { get; set; }
         public Boolean statusOnline { get; set; }
         public string extraVraag { get; set; }
-        public Evenement evenement { get; set; }
+        public int evenementID { get; set; }
         public List<ANDROIDComment> comments { get; set; }
     }
         
