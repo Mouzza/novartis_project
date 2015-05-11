@@ -13,5 +13,6 @@ C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.BL.Dom
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\System.Net.Http.Formatting.xml
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.xml
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\System.Web.Http.WebHost.xml
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb

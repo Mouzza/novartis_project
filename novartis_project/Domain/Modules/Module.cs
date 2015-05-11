@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using JPP.BL.Domain.Vragen;
 using System.ComponentModel.DataAnnotations;
 using JPP.BL.Domain.Gebruikers.SuperUser;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JPP.BL.Domain.Modules
 {
@@ -19,6 +20,10 @@ namespace JPP.BL.Domain.Modules
         public DateTime eindDatum { get; set; }
 
         public string adminNaam { get; set; }
+
+        
+        public int centraleVraagID { get; set; }
+        [ForeignKey("centraleVraagID")]
         public virtual CentraleVraag centraleVraag { get; set; }
         public virtual ICollection<Beloning> beloning { get; set; }
         public virtual Organisatie organisatie { get; set; }

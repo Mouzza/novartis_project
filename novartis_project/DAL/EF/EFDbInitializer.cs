@@ -43,7 +43,7 @@ namespace JPP.DAL.EF
                     inhoud="Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?",
                     extraInfo="Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
                     datum= new DateTime(2015, 9, 10, 15, 5, 59),
-                    aantalWinAntwoorden = 1
+                    aantalWinAntwoorden = 1,
                    
 
             };
@@ -53,7 +53,7 @@ namespace JPP.DAL.EF
                 inhoud = "Deel u idee mee, wat zou er veranderd worden in de hogeschool?",
                 extraInfo = "Wij zijn op zoek naar ideen, deel uw idee met ons en maak kans op prijzen!",
                 datum = new DateTime(2015, 9, 10, 15, 5, 59),
-                aantalWinAntwoorden = 1
+                aantalWinAntwoorden = 1,
 
 
             };
