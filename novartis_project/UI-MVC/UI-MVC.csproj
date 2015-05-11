@@ -553,6 +553,12 @@
     <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
     <Content Include="Views\Admin\Menu.cshtml" />
+    <Content Include="Views\Antwoord\CreateDossier.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelOne.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelTwo.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelThree.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelFive.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelSix.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -832,10 +832,16 @@ transition: all 500ms ease;
 
 #DossierModelTextVakEen{
     float:right;
+    max-width:500px;
     width: 500px;
     height: 300px;
     margin-right: 15%;
+    border: #FFF;
+    overflow:hidden
 }
+
+
+
 
 #DossierModelTextVakEen p{  
 
@@ -864,15 +870,23 @@ transition: all 500ms ease;
 }
 #DossierModelTextVakTwee{
     width: 500px;
-    height: 100px;
+    height: 120px;
+    max-height: 120px;
     float: left;
+    max-width:500px;
+    border:#FFF;
+    overflow:hidden
 }
 
 #DossierModelTextVakDrie{
     width: 500px;
-    height: 100px;
+    height: 120px;
     float: right;
+    max-height: 120px;
     margin-right: 15%;  
+    max-width:500px;
+    border: #FFF;
+    overflow:hidden
 }
 
 #DossierModelTag{
@@ -923,6 +937,9 @@ transition: all 500ms ease;
     width: 500px;
     height: 300px;
     margin-left:1%;
+        max-width:500px;
+        overflow:hidden;
+        border:#FFF;
 }
 
 #DossierModelTwoTextVakEen p{  
@@ -945,14 +962,19 @@ transition: all 500ms ease;
 }
 
 #TweeTextvakWrapperTwo{
+    width: 500px;
     height: 200px;
     float:right;
     margin-right:13%;
+       
 }
 #DossierModelTwoTextVakTwee{
     width: 500px;
     height: 100px;
 
+     max-width:500px;
+        overflow:hidden;
+        border:#FFF;
 }
 
 #TextWrapperTwo{
@@ -966,6 +988,9 @@ transition: all 500ms ease;
     height: 100px;
     margin-top:20px;
     margin-right: 15%;  
+     max-width:500px;
+        overflow:hidden;
+        border:#FFF;
 }
 
 #DossierModelTwoTag{
@@ -1020,11 +1045,14 @@ transition: all 500ms ease;
 }
 
 #DossierModelThreeTextVakEen{
-
-    float:left;
+    max-width:500px;
+    border:#FFF;
+    float:right;
     width: 500px;
     height: 300px;
     margin-left:1%;
+
+    overflow: hidden;
 }
 
 #DossierModelThreeTextVakEen p{  
@@ -1049,13 +1077,16 @@ transition: all 500ms ease;
 #TweeTextvakWrapperThree{
     height: 200px;
     float:left;
+    width: 500px;
     margin-left: 19%;
     margin-top:25px;
 }
 #DossierModelThreeTextVakTwee{
     width: 500px;
     height: 100px;
-
+    max-width: 500px;
+    border:#FFF;
+    overflow: hidden;
 }
 
 #TextWrapperThree{
@@ -1067,6 +1098,9 @@ transition: all 500ms ease;
     width: 500px;
     height: 100px;
     margin-top:20px;
+        max-width: 500px;
+        border: #FFF;
+        overflow: hidden;
 }
 
 #DossierModelThreeTag{
@@ -1110,14 +1144,22 @@ transition: all 500ms ease;
     margin-right:auto;
 }
 
+ #AdjDossierModelSixTextVakEen{
+
+    position:relative;
+    width: 70%;
+    height: 150px;
+    margin-left:15%;
+    margin-right:15%;
+    max-width: 70%;
+    overflow: hidden;
+    border: #FFF;
+}
+
     #DossierModelSixTextVakEen p {
     }
 
-    #DossierModelSixTextVakTwee{
-    width: 500px;
-    height: 100px;
 
-}
 
 #TextWrapperSix{
     width: 80%;
@@ -1130,6 +1172,9 @@ transition: all 500ms ease;
     width: 500px;
     height: 100px;
     float:left;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
 }
 
 #DossierModelSixTextVakDrie{
@@ -1137,6 +1182,9 @@ transition: all 500ms ease;
     height: 100px;
     margin-right: 15%;  
     float:right;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
 }
 
  /*##################################################################################################################################################*/

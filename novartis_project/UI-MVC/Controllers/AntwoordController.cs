@@ -37,6 +37,37 @@ namespace JPP.UI.Web.MVC.Controllers
             AgendaAntwoord agendaAntwoord = (AgendaAntwoord)antwManager.readAntwoord(id);
             return View(agendaAntwoord);
         }
+
+        public ActionResult AdjustableDossierModelOne()
+        {
+            return View();
+        }
+
+        public ActionResult AdjustableDossierModelSix()
+        {
+            return View();
+        }
+
+        public ActionResult AdjustableDossierModelThree()
+        {
+            return View();
+        }
+
+        public ActionResult AdjustableDossierModelFive()
+        {
+            return View();
+        }
+
+        public ActionResult CreateDossier()
+        {
+            return View();
+        }
+
+        public ActionResult AdjustableDossierModelTwo()
+        {
+            return View();
+        }
+
         public ActionResult DossierModelOne()
         {
             return View();
