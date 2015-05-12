@@ -15,6 +15,14 @@ namespace JPP.UI.Web.MVC.Models
 
     }
 
+    
+    public class ANDROIDBeloning
+    {
+        public int ID { get; set; }
+        public string naam { get; set; }
+        public string beschrijving { get; set; }
+        //public Thema thema { get; set; }
+    }
     public class ANDROIDDossierModule
     {
         public int ID { get; set; }
@@ -25,13 +33,9 @@ namespace JPP.UI.Web.MVC.Models
         public string centralevraag { get; set; }
         public string adminNaam { get; set; }
         public List<ANDROIDBeloning> beloningen { get; set; }
-        //public Thema thema { get; set; }
-    }
-    public class ANDROIDBeloning
-    {
-        public int ID { get; set; }
-        public string naam { get; set; }
-        public string beschrijving { get; set; }
+        public List<VasteVraag> vasteVragen { get; set; }
+        public List<DossierAntwoord> dossierAntwoorden { get; set; }
+        public double verplichteVolledigheidsPercentage { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDAgendaModule
@@ -56,6 +60,7 @@ namespace JPP.UI.Web.MVC.Models
         public string centraleVraag { get; set; }
         public string adminNaam { get; set; }
         public List<ANDROIDBeloning> beloningen { get; set; }
+        public string type { get; set; }
         //public Thema thema { get; set; }
     }
 
