@@ -1,7 +1,7 @@
 ﻿@model JPP.UI.Web.MVC.Models.DossiermoduleView
 
 @{
-    ViewBag.Title = "DossierModule aanmaken";
+    //ViewBag.Title = "DossierModule aanmaken";
 }
 
 <h2>Maak een nieuw dossiermodule aan</h2>
@@ -17,8 +17,8 @@
         <div class="form-group">
             <label class="control-label col-md-2">Module naam</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dossiermodule.naam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dossiermodule.naam, "", new { @class = "text-danger" })
+                @Html.EditorFor( model => model.dossiermodule.naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => Model.dossiermodule.naam, "", new { @class = "text-danger" })
             </div>
         </div>
 

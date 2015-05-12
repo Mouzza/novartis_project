@@ -176,10 +176,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             try
             {
-
-
-                DossierModule dossierModule = new DossierModule();
-                dossierModule.vasteVragen.Add(dosModule.vasteVraag);
+                dosModule.dossiermodule.vasteVragen.Add(dosModule.vasteVraag);
                 // TODO: Add insert logic here
                moduleManager.createModule(dosModule.dossiermodule);
 
