@@ -181,11 +181,21 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public Module createModule(Module module)
+        public DossierModule createDossierModule(DossierModule dossierModule)
         {
-            dbcontext.modules.Add(module);
+
+
+
+          //  dbcontext.vasteVragen.AddRange(dossierModule.vasteVragen);
+           
+            dbcontext.centraleVragen.Add(dossierModule.centraleVraag);
+            dbcontext.themas.Add(dossierModule.thema);
+            dbcontext.beloningen.Add(dossierModule.beloning);
+            
+            dbcontext.modules.Add(dossierModule);
+            
             dbcontext.SaveChanges();
-            return module;
+            return dossierModule;
         }
 
         public void wijzigModule(Module module)
@@ -193,7 +203,7 @@ namespace JPP.DAL.EF
 
             //alles met betrekken tot de module moet mee gewijzigd worden, bv thema, beloning enz
             dbcontext.Entry(module.thema).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.Entry(module.beloning.First()).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.Entry(module.beloning).State = System.Data.Entity.EntityState.Modified;
             dbcontext.Entry(module.centraleVraag).State = System.Data.Entity.EntityState.Modified;
 
             dbcontext.Entry(module).State = System.Data.Entity.EntityState.Modified;

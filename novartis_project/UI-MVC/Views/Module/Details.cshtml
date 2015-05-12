@@ -77,24 +77,21 @@
         <dt>
             Beloning naam:
         </dt>
-        @foreach(var bel in Model.beloning){
-
+     
             <dd>
-                @bel.naam , 
+                @Model.beloning.naam  
             </dd>
-        }
+      
 
 
         <dt>
             Beloning beschrijving:
         </dt>
-            @foreach (var bel in Model.beloning)
-            {
-
+          
                 <dd>
-                    @bel.beschrijving ,
+                    @Model.beloning.beschrijving
                 </dd>
-            }
+          
         <br />
         <dt>
             Aantal winnaars:

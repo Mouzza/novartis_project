@@ -15,6 +15,8 @@ namespace JPP.UI.Web.MVC.Models
 
     }
 
+    
+
     public class ANDROIDDossierModule
     {
         public int ID { get; set; }
@@ -24,7 +26,8 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string centralevraag { get; set; }
         public string adminNaam { get; set; }
-        public List<ANDROIDBeloning> beloningen { get; set; }
+
+        public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDBeloning
@@ -32,6 +35,7 @@ namespace JPP.UI.Web.MVC.Models
         public int ID { get; set; }
         public string naam { get; set; }
         public string beschrijving { get; set; }
+
         //public Thema thema { get; set; }
     }
     public class ANDROIDAgendaModule
@@ -43,7 +47,7 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string adminNaam { get; set; }
         public string centraleVraag { get; set; }
-        public List<ANDROIDBeloning> beloningen { get; set; }
+        public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDModule
@@ -55,7 +59,12 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string centraleVraag { get; set; }
         public string adminNaam { get; set; }
+
+        public ANDROIDBeloning beloning { get; set; }
+
         public List<ANDROIDBeloning> beloningen { get; set; }
+        public string type { get; set; }
+
         //public Thema thema { get; set; }
     }
 
@@ -71,7 +80,7 @@ namespace JPP.UI.Web.MVC.Models
         public string naam { get; set; }
         public string beschrijving { get; set; }
     }
-    public class ANDROIDAgendaAntwoorden
+    public class ANDROIDAgendaAntwoord
     {
         public int ID { get; set; }
         public string titel { get; set; }
@@ -94,7 +103,7 @@ namespace JPP.UI.Web.MVC.Models
         public int aantalStemmen { get; set; }
         public string gebruikersNaam { get; set; }
     }
-    public class ANDROIDDossierAntwoorden
+    public class ANDROIDDossierAntwoord
     {
         public int ID { get; set; }
         public string titel { get; set; }

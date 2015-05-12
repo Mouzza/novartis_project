@@ -16,7 +16,7 @@ namespace JPP.BL
         List<DossierModule> readAllDossierModules();
         List<AgendaModule> readAllAgendaModules();
         List<Module> readGeplandeModules();
-        Module createModule(Module module);
+        DossierModule createDossierModule(DossierModule dossierModule);
         void updateModule(Module module);
         void removeModule(int id);
     }

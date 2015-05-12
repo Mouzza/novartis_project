@@ -273,6 +273,7 @@ namespace JPP.UI.Web.MVC.Controllers
             {
 
                 DossierModule dossiermodule = dossManager.readActieveDossierModule();
+
                 
                 dossierAntwoord.datum = DateTime.Now;
                 dossierAntwoord.aantalFlags = 0;  
@@ -282,8 +283,8 @@ namespace JPP.UI.Web.MVC.Controllers
                 dossierAntwoord.gebruikersNaam= User.Identity.GetUserName();
 
                 antwManager.createDossierAntwoord(dossierAntwoord);
-                dossiermodule.dossierAntwoorden.Add(dossierAntwoord);
-                dossManager.updateModule(dossiermodule);
+                //dossiermodule.dossierAntwoorden.Add(dossierAntwoord);
+                //dossManager.updateModule(dossiermodule);
                 return RedirectToAction("Index","Home");
                  
             }
