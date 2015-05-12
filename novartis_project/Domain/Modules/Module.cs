@@ -12,6 +12,8 @@ namespace JPP.BL.Domain.Modules
 {
     public class Module
     {
+       
+
         [Key]
         public int ID { get; set; }
         public string naam { get; set; }
@@ -25,9 +27,10 @@ namespace JPP.BL.Domain.Modules
         public int centraleVraagID { get; set; }
         [ForeignKey("centraleVraagID")]
         public virtual CentraleVraag centraleVraag { get; set; }
-        public virtual ICollection<Beloning> beloning { get; set; }
+        public virtual Beloning beloning { get; set; }
         public virtual Organisatie organisatie { get; set; }
         public virtual Thema thema { get; set; }
         
+      
     }
 }

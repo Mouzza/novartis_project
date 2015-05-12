@@ -24,7 +24,7 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string centralevraag { get; set; }
         public string adminNaam { get; set; }
-        public List<ANDROIDBeloning> beloningen { get; set; }
+        public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDBeloning
@@ -43,7 +43,7 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string adminNaam { get; set; }
         public string centraleVraag { get; set; }
-        public List<ANDROIDBeloning> beloningen { get; set; }
+        public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDModule
@@ -55,7 +55,7 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string centraleVraag { get; set; }
         public string adminNaam { get; set; }
-        public List<ANDROIDBeloning> beloningen { get; set; }
+        public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
 

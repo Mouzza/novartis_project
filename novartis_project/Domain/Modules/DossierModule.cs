@@ -11,7 +11,9 @@ namespace JPP.BL.Domain.Modules
 {
     public class DossierModule:Module
     {
-        public virtual  ICollection<VasteVraag> vasteVragen { get; set; }
+        public virtual VasteVraag vasteVraagEen { get; set; }
+        public virtual VasteVraag vasteVraagTwee { get; set; }
+        public virtual VasteVraag vasteVraagDrie { get; set; }
         public virtual ICollection<DossierAntwoord> dossierAntwoorden { get; set; }
         public double verplichteVolledigheidsPercentage { get; set; }
     }

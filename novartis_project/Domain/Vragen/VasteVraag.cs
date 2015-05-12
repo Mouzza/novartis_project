@@ -13,9 +13,6 @@ namespace JPP.BL.Domain.Vragen
         public String inhoud { get; set; }
         public string extraInfo { get; set; }
         public Boolean boolVerplicht { get; set; }
-        public int MyProperty { get; set; }
-        public int antwoordID { get; set; }
-        public virtual ICollection<DossierAntwoord> dossierAntwoord { get; set; }
         public virtual ICollection<VasteVraagAntwoord> vasteVraagAntwoorden { get; set; }
     }
 }

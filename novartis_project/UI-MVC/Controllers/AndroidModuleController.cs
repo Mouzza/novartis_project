@@ -30,7 +30,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 adminNaam = actieveDossierModule.adminNaam,
                 status = actieveDossierModule.status,
                 centralevraag = actieveDossierModule.centraleVraag.inhoud,
-                beloningen = new List<ANDROIDBeloning>()
                 /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
@@ -39,16 +38,15 @@ namespace JPP.UI.Web.MVC.Controllers
                 }*/
             };
 
-            foreach (var bel in actieveDossierModule.beloning)
-            {
+          
                 ANDROIDBeloning beloning = new ANDROIDBeloning()
                 {
-                    naam = bel.naam,
-                    beschrijving = bel.beschrijving,
-                    ID = bel.ID
+                    naam = actieveDossierModule.beloning.naam,
+                    beschrijving = actieveDossierModule.beloning.beschrijving,
+                    ID = actieveDossierModule.beloning.ID
                 };
-                dosModule.beloningen.Add(beloning);
-            }
+                dosModule.beloning = beloning;
+            
             dossierModules.Add(dosModule);
             //var json = JsonConvert.SerializeObject(dosModule);
             //  json = json.Replace(@"\", @"");
@@ -69,7 +67,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 adminNaam = actieveAgendaModule.adminNaam,
                 status = actieveAgendaModule.status,
                 centraleVraag = actieveAgendaModule.centraleVraag.inhoud,
-                beloningen = new List<ANDROIDBeloning>()
+               
                 /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
@@ -78,16 +76,15 @@ namespace JPP.UI.Web.MVC.Controllers
                 }*/
             };
 
-            foreach (var bel in actieveAgendaModule.beloning)
-            {
+           
                 ANDROIDBeloning beloning = new ANDROIDBeloning()
                 {
-                    naam = bel.naam,
-                    beschrijving = bel.beschrijving,
-                    ID = bel.ID
+                    naam = actieveAgendaModule.beloning.naam,
+                    beschrijving = actieveAgendaModule.beloning.beschrijving,
+                    ID = actieveAgendaModule.beloning.ID
                 };
-                agendaModule.beloningen.Add(beloning);
-            }
+                agendaModule.beloning = beloning;
+         
             agendaModules.Add(agendaModule);
             //var json = JsonConvert.SerializeObject(dosModule);
             //  json = json.Replace(@"\", @"");
@@ -109,23 +106,21 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     adminNaam = agenda.adminNaam,
                     beginDatum = agenda.beginDatum,
-                    beloningen = new List<ANDROIDBeloning>(),
                     centraleVraag = agenda.centraleVraag.inhoud,
                     eindDatum = agenda.eindDatum,
                     ID = agenda.ID,
                     naam = agenda.naam,
                     status = agenda.status
                 };
-                foreach (var bel in agenda.beloning)
-                {
+              
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
                     {
-                        naam = bel.naam,
-                        beschrijving = bel.beschrijving,
-                        ID = bel.ID
+                        naam = agenda.beloning.naam,
+                        beschrijving = agenda.beloning.beschrijving,
+                        ID = agenda.beloning.ID
                     };
-                    agModule.beloningen.Add(beloning);
-                }
+                    agModule.beloning = beloning;
+                
                 agModules.Add(agModule);
             }
             return Ok(agModules);
@@ -143,23 +138,21 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     adminNaam = dos.adminNaam,
                     beginDatum = dos.beginDatum,
-                    beloningen = new List<ANDROIDBeloning>(),
                     centralevraag = dos.centraleVraag.inhoud,
                     eindDatum = dos.eindDatum,
                     ID = dos.ID,
                     naam = dos.naam,
                     status = dos.status
                 };
-                foreach (var bel in dos.beloning)
-                {
+               
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
                     {
-                        beschrijving = bel.beschrijving,
-                        ID = bel.ID,
-                        naam = bel.naam
+                        beschrijving = dosMod.beloning.beschrijving,
+                        ID = dosMod.beloning.ID,
+                        naam = dosMod.beloning.naam
                     };
-                    dosMod.beloningen.Add(beloning);
-                }
+                    dosMod.beloning = beloning;
+                
                 dosModule.Add(dosMod);
             }
             return Ok(dosModule);
@@ -179,23 +172,22 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     adminNaam = mod.adminNaam,
                     beginDatum = mod.beginDatum,
-                    beloningen = new List<ANDROIDBeloning>(),
+                   
                     centraleVraag = mod.centraleVraag.inhoud,
                     eindDatum = mod.eindDatum,
                     ID = mod.ID,
                     naam = mod.naam,
                     status = mod.status
                 };
-                foreach (var bel in mod.beloning)
-                {
+             
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
                     {
-                        beschrijving = bel.beschrijving,
-                        ID = bel.ID,
-                        naam = bel.naam
+                        beschrijving = mod.beloning.beschrijving,
+                        ID = mod.beloning.ID,
+                        naam = mod.beloning.naam
                     };
-                    module.beloningen.Add(beloning);
-                }
+                    module.beloning = beloning;
+                
                 returnModules.Add(module);
             }
             return Ok(returnModules);
