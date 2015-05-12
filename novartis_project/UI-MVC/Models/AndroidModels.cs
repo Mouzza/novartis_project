@@ -76,7 +76,7 @@ namespace JPP.UI.Web.MVC.Models
         public string naam { get; set; }
         public string beschrijving { get; set; }
     }
-    public class ANDROIDAgendaAntwoorden
+    public class ANDROIDAgendaAntwoord
     {
         public int ID { get; set; }
         public string titel { get; set; }
@@ -99,7 +99,7 @@ namespace JPP.UI.Web.MVC.Models
         public int aantalStemmen { get; set; }
         public string gebruikersNaam { get; set; }
     }
-    public class ANDROIDDossierAntwoorden
+    public class ANDROIDDossierAntwoord
     {
         public int ID { get; set; }
         public string titel { get; set; }
