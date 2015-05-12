@@ -149,7 +149,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         [HttpPost]
         [ActionName("createDossier")]
-        public void createDossierAntwoord(Antwoord antwoord)
+        public void createDossierAntwoord(DossierAntwoord antwoord)
         {
             antwoordManager.createDossierAntwoord(antwoord);
         }
