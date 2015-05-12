@@ -295,7 +295,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelOne(HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelOne(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
         {
 
             if (file.ContentLength > 0)

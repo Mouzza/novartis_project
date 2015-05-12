@@ -176,10 +176,14 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             try
             {
+<<<<<<< HEAD
+                dosModule.dossiermodule.vasteVragen.Add(dosModule.vasteVraag);
+=======
 
 
                 dosModule.adminNaam = User.Identity.GetUserName();
              
+>>>>>>> origin/master
                 // TODO: Add insert logic here
                 moduleManager.createDossierModule(dosModule);
 

@@ -147,9 +147,9 @@ namespace JPP.UI.Web.MVC.Controllers
                
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
                     {
-                        beschrijving = dosMod.beloning.beschrijving,
-                        ID = dosMod.beloning.ID,
-                        naam = dosMod.beloning.naam
+                        beschrijving = dos.beloning.beschrijving,
+                        ID = dos.beloning.ID,
+                        naam = dos.beloning.naam
                     };
                     dosMod.beloning = beloning;
                 
