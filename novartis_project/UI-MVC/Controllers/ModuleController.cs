@@ -172,16 +172,20 @@ namespace JPP.UI.Web.MVC.Controllers
         // POST: Module/Create
         [HttpPost]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create(DossiermoduleView dosModule)
+        public ActionResult Create(DossierModule dosModule)
         {
             try
             {
 
+                
 
-                DossierModule dossierModule = new DossierModule();
-                dossierModule.vasteVragen.Add(dosModule.vasteVraag);
+
+
+                dosModule.adminNaam = User.Identity.GetUserName();
+             
+
                 // TODO: Add insert logic here
-               moduleManager.createModule(dosModule.dossiermodule);
+                moduleManager.createDossierModule(dosModule);
 
                 return RedirectToAction("Index");
             }

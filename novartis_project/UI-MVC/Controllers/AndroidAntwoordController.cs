@@ -25,11 +25,11 @@ namespace JPP.UI.Web.MVC.Controllers
         public IHttpActionResult getAgendaAntwoorden(int id)
         {
             List<AgendaAntwoord> agendaAntwoord = antwoordManager.getAllAgendaAntwoordenPerModule(id);
-            List<ANDROIDAgendaAntwoorden> agendaAntwoorden = new List<ANDROIDAgendaAntwoorden>();
+            List<ANDROIDAgendaAntwoord> agendaAntwoorden = new List<ANDROIDAgendaAntwoord>();
 
             foreach (var agenda in agendaAntwoord)
             {
-                ANDROIDAgendaAntwoorden agAntwoord = new ANDROIDAgendaAntwoorden()
+                ANDROIDAgendaAntwoord agAntwoord = new ANDROIDAgendaAntwoord()
                 {
                     ID = agenda.ID,
                     inhoud = agenda.inhoud,
@@ -76,10 +76,10 @@ namespace JPP.UI.Web.MVC.Controllers
         public IHttpActionResult getDossierAntwoorden(int id)
         {
             List<DossierAntwoord> dossierAntwoord = antwoordManager.getAllDossierAntwoordenPerModule(id);
-            List<ANDROIDDossierAntwoorden> dossierAntwoorden = new List<ANDROIDDossierAntwoorden>();
+            List<ANDROIDDossierAntwoord> dossierAntwoorden = new List<ANDROIDDossierAntwoord>();
                 foreach (DossierAntwoord dossier in dossierAntwoord)
                 {
-                    ANDROIDDossierAntwoorden dosAntwoord = new ANDROIDDossierAntwoorden()
+                    ANDROIDDossierAntwoord dosAntwoord = new ANDROIDDossierAntwoord()
                     {
                         ID = dossier.ID,
                         inhoud = dossier.inhoud,
@@ -149,7 +149,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         [HttpPost]
         [ActionName("createDossier")]
-        public void createDossierAntwoord(Antwoord antwoord)
+        public void createDossierAntwoord(DossierAntwoord antwoord)
         {
             antwoordManager.createDossierAntwoord(antwoord);
         }

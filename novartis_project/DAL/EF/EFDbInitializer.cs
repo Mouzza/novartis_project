@@ -76,13 +76,12 @@ namespace JPP.DAL.EF
           
             DossierModule dossierModule = new DossierModule()
             {
-                beloning = new List<Beloning>(),    
+                  
                 adminNaam = "Admin",
                 naam = "Rivierenhof categorie",
                 beginDatum= new DateTime(2014, 03, 10, 15, 5, 59),
                 eindDatum= new DateTime(2018, 10, 10, 15, 5, 59),
                 verplichteVolledigheidsPercentage = 90.5,
-                vasteVragen = new List<VasteVraag>(),
                 dossierAntwoorden = new List<DossierAntwoord>(),
                 status = true
 
@@ -90,7 +89,7 @@ namespace JPP.DAL.EF
             };
             AgendaModule agendaModule = new AgendaModule()
             {
-                beloning = new List<Beloning>(),
+              
                 adminNaam = "Admin",
                 naam = "Rivierenhof categorie",
                 beginDatum = new DateTime(2014, 03, 10, 15, 5, 59),
@@ -198,29 +197,29 @@ namespace JPP.DAL.EF
 
                 DossierModule geplandeDossierModule = new DossierModule()
                 {
-                    beloning = new List<Beloning>(),
+                 
                     adminNaam = "Admin",
                     naam = "Rivierenhof speeltuin",
                     beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
                     eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
                     verplichteVolledigheidsPercentage = 90.5,
-                    vasteVragen = new List<VasteVraag>(),
+                   
                     dossierAntwoorden = new List<DossierAntwoord>(),
                     status = false
 
 
                 };
-                geplandeDossierModule.beloning.Add(beloning);
+                geplandeDossierModule.beloning = beloning;
                 geplandeDossierModule.centraleVraag = centraleVraag;
                 geplandeDossierModule.thema = thema;
                 geplandeDossierModule.organisatie = organisatieLeuven;
-                geplandeDossierModule.vasteVragen.Add(vasteVraag);
+                geplandeDossierModule.vasteVraagEen=vasteVraag;
                 context.modules.Add(geplandeDossierModule);
 
 
                 AgendaModule geplandeAgendaModule = new AgendaModule()
                 {
-                    beloning = new List<Beloning>(),
+                  
                     adminNaam = "Admin",
                     naam = "Hoe creatief ben jij?!",
                     beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
@@ -231,7 +230,7 @@ namespace JPP.DAL.EF
 
                 };
                 geplandeAgendaModule.centraleVraag = centraleVraag2;
-                geplandeAgendaModule.beloning.Add(beloning);
+                geplandeAgendaModule.beloning = beloning;
                 geplandeAgendaModule.thema = thema;
                 geplandeAgendaModule.organisatie = organisatieLeuven;
                 context.modules.Add(geplandeAgendaModule);
@@ -242,16 +241,16 @@ namespace JPP.DAL.EF
 
         
             //DossierModule
-            dossierModule.beloning.Add(beloning);
+            dossierModule.beloning = beloning;
             dossierModule.thema = thema;
             dossierModule.centraleVraag = centraleVraag;
-            dossierModule.vasteVragen.Add(vasteVraag);
+            dossierModule.vasteVraagEen = vasteVraag;
             dossierModule.organisatie = organisatieLeuven;
             organisatieLeuven.modules.Add((Module)dossierModule);
        
            //AgendaModule
 
-            agendaModule.beloning.Add(beloning);
+            agendaModule.beloning = beloning;
             agendaModule.thema = thema;
             agendaModule.organisatie = organisatieLeuven;
             agendaModule.centraleVraag = centraleVraag2;

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+
+@{
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "eigenpagina";
 }
@@ -19,42 +21,63 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<div id="DossierModelTitle"> <h1>Mijn favoriete feestzaal</h1></div><!--Hier moet de titel van de pagina komen-->
-<div id="DossierModelSubTitle">
-    <h2>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-        Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.
-    </h2>
-</div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
-<div id="DossierModelAfbeelding">
-    <img src="~/Images/afbeeldingen/homeImage.jpg" />
-    <textarea id="DossierModelTextVakEen" name="backgroundColor" wrap="soft" cols="500" rows="10">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.</textarea>
+@using (Html.BeginForm())
+    {
+            <div id="OptionsBar">
+                <div id="OptionsbarTitle">Creëer je eigen pagina!</div>
+                <div id="AdjCleanUp">
+        
+                    <div id="googlemaps">Google maps coordinaten: <input type="text" name="googleMaps" /></div>
+                    <div id="persoonlijkeTags">Persoonlijke Tags: <input type="text" name="persoonlijkeTags" /></div>
+                    <div id="foregroundColor">tekstkleur: <input type="text" name="foregroundColor" /></div>
+                    <div id="backgroundColor">achtergrondKleur: <input type="text" name="backgroundColor" /></div>
 
-
-    <!--Hier moet de eerste textvak van de pagina komen-->
+                    
+                </div>
+                </div>
 
     
-</div><!--Hier moet de afbeelding van de pagina komen-->
-<form id="fileUploadForm" action="" method="post" enctype="multipart/form-data">
-
-    <label id="fileUploadLabel" for="file">Selecteer een afbeelding</label>
-    <input id="fileUploadInput" type="file" name="file" />
-
-    <input id="fileUploadSubmit" type="submit" />
-</form>
-
-
-
-<div id="TweeTextvakWrapper">
-    <textarea id="DossierModelTextVakTwee">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
-
-Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea><!--Hier moet de tweedetextvak van de pagina komen-->
-
-    <textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
-
-Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea><!--Hier moet de derde textvak van de pagina komen-->
-</div>
+            @*<textarea id="AdjDossierModelTitle">Mijn favoriete feestzaal</textarea>*@<!--Hier moet de titel van de pagina komen-->
+            @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
+            @Html.ValidationMessageFor(model => model.titel)
+            <textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+            <div id="DossierModelAfbeelding">
+                <img src="~/Images/afbeeldingen/homeImage.jpg" />
+                <textarea id="DossierModelTextVakEen" name="backgroundColor" wrap="soft" cols="500" rows="10">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.</textarea>
 
 
-<div id="map-canvas"></div>
-<div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+                <!--Hier moet de eerste textvak van de pagina komen-->
+
+    
+            </div><!--Hier moet de afbeelding van de pagina komen-->
+            <form id="fileUploadForm" action="" method="post" enctype="multipart/form-data">
+
+                <label id="fileUploadLabel" for="file">Selecteer een afbeelding</label>
+                <input id="fileUploadInput" type="file" name="file" />
+
+                <input id="fileUploadSubmit" type="submit" />
+            </form>
+
+
+
+            <div id="TweeTextvakWrapper">
+                <textarea id="DossierModelTextVakTwee">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+
+            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea><!--Hier moet de tweedetextvak van de pagina komen-->
+
+                <textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+
+            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea><!--Hier moet de derde textvak van de pagina komen-->
+            </div>
+
+
+            <div id="map-canvas"></div>
+            <div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Bevestig" class="btn btn-default" />
+        </div>
+    </div>
+    }

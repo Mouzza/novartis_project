@@ -929,6 +929,52 @@ transition: all 500ms ease;
 }
 
 
+/*############################AdjustableDosierModelOne################################################*/
+#AdjDossierModelTitle{
+    width:100%;
+    max-width: 100%;
+    color:#0099cc;
+    margin-left: auto;
+    margin-right:auto;
+    text-align:center;
+    font-weight:bold;
+    font-size: 50px;
+    overflow:hidden;
+        border:#FFF;
+        height: 80px;
+        margin-top:50px;
+}
+.AdjDossierModelTitle{
+    width:100%;
+    max-width: 100%;
+    color:#0099cc;
+    margin-left: auto;
+    margin-right:auto;
+    text-align:center;
+    font-weight:bold;
+    font-size: 50px;
+    overflow:hidden;
+        border:#FFF;
+        height: 80px;
+        margin-top:50px;
+}
+
+
+#AdjDossierModelSubTitle{
+    width:100%;
+    max-width: 100%;
+    text-align:center;
+    color:#666666;
+    margin-left: auto;
+    margin-right:auto;
+    font-size: 30px; 
+ font-weight:bold;
+ overflow:hidden;
+        border:#FFF;
+             
+}
+
+
 /*###########################################DossierModelTwo#############################################*/
 
 #DossierModelTwoTitle{
@@ -1329,4 +1375,59 @@ margin-top:20px;
 
 #fileUploadLabel{
 
+}
+
+#OptionsBar{
+    background-color:#D3D3D3;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    width: 100%;
+    height: 150px;  
+    display:table;
+}
+
+#googlemaps{
+    display:table-cell;
+    float:left;
+    width: 370px;
+}
+
+#persoonlijkeTags{
+    display:table-cell;
+    float:left;
+    margin-left:1%;
+    width: 370px;
+}
+
+#foregroundColor{
+    display:table-cell;
+    float:left;
+    clear:left;
+    width: 370px;
+}
+
+#backgroundColor{
+    display:table-cell;
+    float:left;
+    margin-left:1%;
+    width: 370px;
+}
+
+#SubmitButtonAdj{
+    display:table-cell;
+    float:right;
+    clear:left;
+    margin-top:20px;
+}
+
+#AdjCleanUp{
+    margin-top: 25px;
+    margin-left:2%;
+    margin-right:2%;
+}
+
+#OptionsbarTitle{
+    text-align:center;
+    font-size: 30px;
+    color: #0099CC;
+    font-weight: bold;
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.EF;
 using JPP.BL.Domain.Modules;
+using JPP.BL.Domain.Vragen;
 
 namespace JPP.BL
 {
@@ -97,9 +98,74 @@ namespace JPP.BL
             return moduleTussen;
         }
         
-        public Module createModule(Module module)
+        public DossierModule createDossierModule(DossierModule dossierModule)
         {
-            return admin.createModule(module);
+            CentraleVraag centraleVraag = new CentraleVraag()
+            {
+                inhoud = dossierModule.centraleVraag.inhoud,
+                aantalWinAntwoorden = dossierModule.centraleVraag.aantalWinAntwoorden,
+                extraInfo = dossierModule.centraleVraag.extraInfo,
+                datum = DateTime.Now
+
+
+            };
+
+            Thema thema = new Thema()
+            {
+                beschrijving = dossierModule.thema.beschrijving,
+                naam = dossierModule.thema.naam,
+
+            };
+
+            //List<VasteVraag> vasteVragen = new List<VasteVraag>();
+            //foreach (var vasteVraag in dossierModule.vasteVragen)
+            //{
+            //    VasteVraag vasteVraagX = new VasteVraag()
+            //    {
+            //        boolVerplicht = vasteVraag.boolVerplicht,
+            //        inhoud = vasteVraag.inhoud,
+            //        extraInfo = vasteVraag.extraInfo,
+
+
+
+            //    };
+            //    vasteVragen.Add(vasteVraagX);
+            //}
+
+
+
+
+         
+                Beloning beloning = new Beloning()
+                {
+                    naam = dossierModule.beloning.naam,
+                    beschrijving = dossierModule.beloning.beschrijving
+                    
+
+                };
+         
+
+            DossierModule moduleX = new DossierModule()
+            {
+
+               
+                status = dossierModule.status,
+                adminNaam = dossierModule.adminNaam,
+                beginDatum = dossierModule.beginDatum,
+                eindDatum = dossierModule.eindDatum,
+                //vasteVragen = new List<VasteVraag>(),
+                verplichteVolledigheidsPercentage = dossierModule.verplichteVolledigheidsPercentage,
+                naam = dossierModule.naam
+
+
+            };
+
+            moduleX.beloning = beloning;
+            //dossierModule.vasteVragen = vasteVragen;
+            moduleX.centraleVraag = centraleVraag;
+            moduleX.thema = thema;
+
+            return admin.createDossierModule(moduleX);
         }
 
         public void updateModule(Module module)

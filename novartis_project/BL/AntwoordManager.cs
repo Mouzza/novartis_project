@@ -189,9 +189,10 @@ namespace JPP.BL
 
 
 
-        public Antwoord createDossierAntwoord(Antwoord antwoord)
+        public Antwoord createDossierAntwoord(DossierAntwoord antwoord)
         {
-           return inlog.maakDossierAntwoord((DossierAntwoord)antwoord);
+            return inlog.maakDossierAntwoord(antwoord);
+
         }
         public Antwoord createAgendaAntwoord(Antwoord antwoord)
         {

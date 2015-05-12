@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.vasteVragen)
+    @Html.HiddenFor(model => model.vasteVraagEen)
     @Html.HiddenFor(model => model.dossierAntwoorden)
     
     @Html.HiddenFor(model => model.ID)
@@ -20,10 +20,10 @@
     @Html.HiddenFor(model => model.thema.modules)
     @Html.HiddenFor(model => model.thema.ID)
 
-    @Html.HiddenFor(model => model.beloning.First().ID)
-    @Html.HiddenFor(model => model.centraleVraag.moduleID)
+ 
+    @Html.HiddenFor(model => model.centraleVraag.centralevraagID)
     @Html.HiddenFor(model => model.centraleVraag.datum)
-    @Html.HiddenFor(model => model.centraleVraag.module)
+  
 
 
 
@@ -140,16 +140,16 @@
             <label class="control-label col-md-2">Eerste beloning naam (demo)</label>
 
             <div class="col-md-10">
-                @Html.EditorFor(model => model.beloning.First().naam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.beloning.First().naam, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.beloning.naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beloning.naam, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
             <label class="control-label col-md-2">Beschrijving (demo)</label>
 
             <div class="col-md-10">
-                @Html.EditorFor(model => model.beloning.First().beschrijving, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.beloning.First().beschrijving, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.beloning.beschrijving, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beloning.beschrijving, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
