@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 using PagedList;
 using Microsoft.AspNet.Identity;
 using JPP.DAL.Interface;
@@ -14,6 +15,7 @@ using JPP.BL.Domain.Antwoorden;
 using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Gebruikers.Beheerder;
 using JPP.BL.Domain.Gebruikers.SuperUser;
+using JPP.UI.Web.MVC;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -290,6 +292,78 @@ namespace JPP.UI.Web.MVC.Controllers
                 return View("Error");
             }
         }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelOne(HttpPostedFileBase file)
+        {
+
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/")+ fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("AdjustableDossierModelOne");
+        }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file)
+        {
+
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("AdjustableDossierModelOne");
+        }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file)
+        {
+
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("AdjustableDossierModelOne");
+        }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file)
+        {
+
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("AdjustableDossierModelOne");
+        }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file)
+        {
+
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
+                file.SaveAs(path);
+            }
+
+            return RedirectToAction("AdjustableDossierModelOne");
+        }
+
+
 
         // GET: Antwoord/Edit/5
         public ActionResult Edit(int id)
