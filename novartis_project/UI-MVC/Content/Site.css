@@ -944,7 +944,20 @@ transition: all 500ms ease;
         height: 80px;
         margin-top:50px;
 }
-
+.AdjDossierModelTitle{
+    width:100%;
+    max-width: 100%;
+    color:#0099cc;
+    margin-left: auto;
+    margin-right:auto;
+    text-align:center;
+    font-weight:bold;
+    font-size: 50px;
+    overflow:hidden;
+        border:#FFF;
+        height: 80px;
+        margin-top:50px;
+}
 
 
 #AdjDossierModelSubTitle{

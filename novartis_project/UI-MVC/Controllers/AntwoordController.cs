@@ -42,7 +42,19 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult AdjustableDossierModelOne()
         {
-            return View();
+
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login","Account");
+            }
+
+            DossierAntwoord dossierAntwoord = new DossierAntwoord()
+            {
+
+                titel = "Geef titel",
+                subtitel ="Geef subtitel"
+            };
+            return View(dossierAntwoord);
         }
 
         public ActionResult AdjustableDossierModelSix()
@@ -303,7 +315,11 @@ namespace JPP.UI.Web.MVC.Controllers
                 var fileName = Path.GetFileName(file.FileName);
                 var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/")+ fileName);
                 file.SaveAs(path);
+                dossierAntwoord.afbeeldingPath = fileName;
             }
+            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
+           
+            antwManager.createDossierAntwoord(dossierAntwoord);
 
             return RedirectToAction("AdjustableDossierModelOne");
         }

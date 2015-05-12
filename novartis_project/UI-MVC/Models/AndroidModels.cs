@@ -30,9 +30,7 @@ namespace JPP.UI.Web.MVC.Models
         public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
-<<<<<<< HEAD
 
-=======
     public class ANDROIDBeloning
     {
         public int ID { get; set; }
@@ -41,7 +39,7 @@ namespace JPP.UI.Web.MVC.Models
 
         //public Thema thema { get; set; }
     }
->>>>>>> origin/master
+
     public class ANDROIDAgendaModule
     {
         public int ID { get; set; }
