@@ -177,7 +177,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     eindDatum = mod.eindDatum,
                     ID = mod.ID,
                     naam = mod.naam,
-                    status = mod.status
+                    status = mod.status,
+                    type=mod.GetType().BaseType.Name
                 };
              
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
