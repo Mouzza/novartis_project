@@ -111,6 +111,7 @@ namespace JPP.UI.Web.MVC.Models
         public List<ANDROIDVasteTag> vasteTags { get; set; }
         public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
         public string afbeeldingPath { get; set; }
+        public byte[] afbeeldingBytes { get; set; }
         public int percentageVolledigheid { get; set; }
         public Boolean statusOnline { get; set; }
         public string extraVraag { get; set; }

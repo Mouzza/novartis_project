@@ -34,9 +34,6 @@ namespace JPP.BL
             admin = new AdminSCEF();
         }
 
-
-        
-
         public Module readModule(int id)
         {
             return nietInlog.getModule(id);
@@ -176,6 +173,34 @@ namespace JPP.BL
         public void removeModule(int id)
         {
             admin.deleteModule(id);
+        }
+
+        public List<DossierModule> readGeslotenDossiers()
+        {
+            List<DossierModule> dossierModules = nietInlog.getDossierModules();
+            List<DossierModule> moduleTussen = new List<DossierModule>();
+            for (int i = 0; i < dossierModules.Count; i++)
+            {
+                if (dossierModules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(dossierModules[i]);
+                }
+            }
+            return moduleTussen;
+        }
+
+        public List<AgendaModule> readGeslotenAgendas()
+        {
+            List<AgendaModule> agendaModules = nietInlog.getAgendaModules();
+            List<AgendaModule> moduleTussen = new List<AgendaModule>();
+            for (int i = 0; i < agendaModules.Count; i++)
+            {
+                if (agendaModules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(agendaModules[i]);
+                }
+            }
+            return moduleTussen;
         }
     }
 }

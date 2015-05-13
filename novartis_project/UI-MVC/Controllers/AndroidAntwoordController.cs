@@ -11,6 +11,8 @@ using System.Web.Http;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Drawing;
+using System.IO;
 
 
 namespace JPP.UI.Web.MVC.Controllers
@@ -70,7 +72,6 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(agendaAntwoorden);
         }
-
         [HttpGet]
         [ActionName("getDossierAntwoordID")]
         public IHttpActionResult getDossierAntwoorden(int id)
@@ -100,6 +101,17 @@ namespace JPP.UI.Web.MVC.Controllers
                         comments = new List<ANDROIDComment>(),
                         titel = dossier.titel
                     };
+
+                    Image tmpimg = null;
+                    HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
+                    HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    Stream stream = httpWebReponse.GetResponseStream();
+                    tmpimg = Image.FromStream(stream);
+
+                    MemoryStream ms = new MemoryStream();
+                    tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                    dosAntwoord.afbeeldingBytes = ms.ToArray();
+
                     foreach (VasteTag vTag in dossier.vasteTags)
                     {
                         ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()

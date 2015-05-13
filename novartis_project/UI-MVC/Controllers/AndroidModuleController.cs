@@ -30,7 +30,8 @@ namespace JPP.UI.Web.MVC.Controllers
                 eindDatum = actieveDossierModule.eindDatum,
                 adminNaam = actieveDossierModule.adminNaam,
                 status = actieveDossierModule.status,
-                centralevraag = actieveDossierModule.centraleVraag.inhoud,
+                centralevraag = actieveDossierModule.centraleVraag.inhoud
+             
                 /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
@@ -218,8 +219,67 @@ namespace JPP.UI.Web.MVC.Controllers
                     return Ok(agMod);
                 }
             }
-            return Ok();
+            return Ok("Agenda niet gevonden");
         }
+        [HttpGet]
+        [ActionName("getGeslotenDossiers")]
+        public IHttpActionResult getGeslotenDossiers()
+        {
+            List<DossierModule> dossierModules = moduleManager.readGeslotenDossiers();
+            List<ANDROIDDossierModule> androidDossiers = new List<ANDROIDDossierModule>();
+            foreach (var dos in dossierModules)
+            {
+                ANDROIDDossierModule dosMod = new ANDROIDDossierModule()
+                {
+                    adminNaam=dos.adminNaam,
+                    beginDatum=dos.beginDatum,
+                    centralevraag=dos.centraleVraag.inhoud,
+                    eindDatum=dos.eindDatum,
+                    ID=dos.ID,
+                    naam=dos.naam,
+                    status=dos.status
+                };
+                ANDROIDBeloning bel = new ANDROIDBeloning()
+                {
+                    beschrijving=dos.beloning.beschrijving,
+                    ID=dos.beloning.ID,
+                    naam=dos.beloning.naam
+                };
+                dosMod.beloning = bel;
+                androidDossiers.Add(dosMod);
+            }
+            return Ok(androidDossiers);
+        }
+        [HttpGet]
+        [ActionName("getGeslotenAgendas")]
+        public IHttpActionResult getGeslotenAgendas()
+        {
+            List<AgendaModule> agendaDossiers = moduleManager.readGeslotenAgendas();
+            List<ANDROIDAgendaModule> androidAgendas = new List<ANDROIDAgendaModule>();
+            foreach (var ag in agendaDossiers)
+            {
+                ANDROIDAgendaModule agMod = new ANDROIDAgendaModule()
+                {
+                    adminNaam = ag.adminNaam,
+                    beginDatum = ag.beginDatum,
+                    centraleVraag=ag.centraleVraag.inhoud,
+                    eindDatum = ag.eindDatum,
+                    ID = ag.ID,
+                    naam = ag.naam,
+                    status = ag.status
+                };
+                ANDROIDBeloning bel = new ANDROIDBeloning()
+                {
+                    beschrijving = ag.beloning.beschrijving,
+                    ID = ag.beloning.ID,
+                    naam = ag.beloning.naam
+                };
+                agMod.beloning = bel;
+                androidAgendas.Add(agMod);
+            }
+            return Ok(androidAgendas);
+        }
+     
         #endregion
 
         #region TOEKOMSTIGE modules
@@ -243,7 +303,6 @@ namespace JPP.UI.Web.MVC.Controllers
                     status = mod.status,
                     type=mod.GetType().BaseType.Name
                 };
-             
                     ANDROIDBeloning beloning = new ANDROIDBeloning()
                     {
                         beschrijving = mod.beloning.beschrijving,
