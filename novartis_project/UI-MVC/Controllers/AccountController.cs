@@ -10,6 +10,13 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JPP.UI.Web.MVC.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Drawing;
+
+using System.IO;
+using System.Net;
+using System.Net.Http;
+//using System.Web.Http;
+
 
 namespace JPP.UI.Web.MVC.Controllers
 {
