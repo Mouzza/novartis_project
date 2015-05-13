@@ -22,15 +22,13 @@
 </script>
 
 
-<form id="fileUploadForm" action="" method="post" enctype="multipart/form-data">
 
-    <label id="fileUploadLabel" for="file">Selecteer een afbeelding</label>
-    <input id="fileUploadInput" type="file" name="file" />
 
-    <input id="fileUploadSubmit" type="submit" />
-</form>
+    
 
-@using (Html.BeginForm())
+
+
+@using (Html.BeginForm("", "Antwoord/AdjustableDossierModelOne", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
             <div id="OptionsBar">
                 <div id="OptionsbarTitle">Creëer je eigen pagina!</div>
@@ -63,33 +61,36 @@
 
     
             </div><!--Hier moet de afbeelding van de pagina komen-->
-            
 
 
+        <label id="fileUploadLabel" for="file">Selecteer een afbeelding</label>
+        <input id="fileUploadInput" type="file" name="file" />
 
-            <div id="TweeTextvakWrapper">
-                @*<textarea id="DossierModelTextVakTwee">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+    
+    
 
-            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de tweedetextvak van de pagina komen-->
+        <div id="TweeTextvakWrapper">
+            @*<textarea id="DossierModelTextVakTwee">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
 
-                @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTextVakTwee" })
-                @Html.ValidationMessageFor(model => model.textvak2)
+                Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de tweedetextvak van de pagina komen-->
+            @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTextVakTwee" })
+            @Html.ValidationMessageFor(model => model.textvak2)
 
-                @*<textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+            @*<textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
 
-            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de derde textvak van de pagina komen-->
+                Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de derde textvak van de pagina komen-->
             @Html.TextAreaFor(model => model.textvak3, new { @class = "AdjDossierModelTextVakDrie" })
             @Html.ValidationMessageFor(model => model.textvak3)
-            
-            </div>
 
-
-            <div id="map-canvas"></div>
-            <div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Bevestig" class="btn btn-default" />
         </div>
-    </div>
-    }
+
+
+        <div id="map-canvas"></div>
+        <div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Bevestig" class="btn btn-default" />
+            </div>
+        </div>
+        }

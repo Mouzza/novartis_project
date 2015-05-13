@@ -86,3 +86,4 @@ C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\En
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
+C:\Users\Michiel\Desktop\novartis_project\novartis_project\Domain\bin\Debug\Newtonsoft.Json.dll
