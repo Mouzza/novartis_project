@@ -97,7 +97,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         percentageVolledigheid = dossier.percentageVolledigheid,
                         statusOnline = dossier.statusOnline,
                         extraVraag = dossier.extraVraag,
-                        evenementID = dossier.evenement.ID,
+                        evenementID = 10/*dossier.evenement.ID*/,
                         comments = new List<ANDROIDComment>(),
                         titel = dossier.titel
                     };
@@ -146,6 +146,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         };
                         dosAntwoord.comments.Add(aComment);
                     }
+                    dossierAntwoorden.Add(dosAntwoord);
                 }
             return Ok(dossierAntwoorden);
         }
