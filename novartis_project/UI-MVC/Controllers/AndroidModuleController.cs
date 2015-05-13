@@ -21,7 +21,7 @@ namespace JPP.UI.Web.MVC.Controllers
         public IHttpActionResult getActieveDossierModule()
         {
             DossierModule actieveDossierModule = moduleManager.readActieveDossierModule();
-            List<ANDROIDDossierModule> dossierModules = new List<ANDROIDDossierModule>();
+            //List<ANDROIDDossierModule> dossierModules = new List<ANDROIDDossierModule>();
             ANDROIDDossierModule dosModule = new ANDROIDDossierModule()
             {
                 ID = actieveDossierModule.ID,
@@ -113,17 +113,21 @@ namespace JPP.UI.Web.MVC.Controllers
                 ID = actieveDossierModule.beloning.ID
             };
             dosModule.beloning = beloning;
-            dossierModules.Add(dosModule);
+
+            //dossierModules.Add(dosModule);
+
             //var json = JsonConvert.SerializeObject(dosModule);
             //  json = json.Replace(@"\", @"");
-            return Ok(dossierModules);
+
+            //return Ok(dossierModules);
+            return Ok(dosModule);
         }
         [HttpGet]
         [ActionName("getActieveAgenda")]
         public IHttpActionResult getActieveAgendaModule()
         {
             AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
-            List<ANDROIDAgendaModule> agendaModules = new List<ANDROIDAgendaModule>();
+           // List<ANDROIDAgendaModule> agendaModules = new List<ANDROIDAgendaModule>();
             ANDROIDAgendaModule agendaModule = new ANDROIDAgendaModule()
             {
                 ID = actieveAgendaModule.ID,
@@ -192,10 +196,13 @@ namespace JPP.UI.Web.MVC.Controllers
             };
             agendaModule.beloning = beloning;
 
-            agendaModules.Add(agendaModule);
+           // agendaModules.Add(agendaModule);
+
             //var json = JsonConvert.SerializeObject(dosModule);
             //  json = json.Replace(@"\", @"");
-            return Ok(agendaModules);
+            
+            //return Ok(agendaModules);
+            return Ok(agendaModule);
         }
         #endregion
 

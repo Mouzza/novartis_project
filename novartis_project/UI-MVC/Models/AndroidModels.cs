@@ -62,7 +62,6 @@ namespace JPP.UI.Web.MVC.Models
         public string centraleVraag { get; set; }
         public string adminNaam { get; set; }
         public ANDROIDBeloning beloning { get; set; }
-        public List<ANDROIDBeloning> beloningen { get; set; }
         public string type { get; set; }
 
         //public Thema thema { get; set; }
