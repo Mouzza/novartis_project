@@ -12,6 +12,7 @@ namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidModuleController : ApiController
     {
+
         ModuleManager moduleManager = new ModuleManager();
         
         #region ACTIEVE dossier/agenda
@@ -156,6 +157,68 @@ namespace JPP.UI.Web.MVC.Controllers
                 dosModule.Add(dosMod);
             }
             return Ok(dosModule);
+        }
+        [HttpGet]
+        [ActionName("getDossierID")]
+        public IHttpActionResult getDossierID(int id)
+        {
+            List<DossierModule> dossierModules = moduleManager.readAllDossierModules();
+            foreach (var dos in dossierModules)
+            {
+                if (dos.ID == id)
+                {
+                    ANDROIDDossierModule dosMod = new ANDROIDDossierModule()
+                    {
+                        adminNaam=dos.adminNaam,
+                        beginDatum=dos.beginDatum,
+                        eindDatum=dos.eindDatum,
+                        ID=dos.ID,
+                        naam=dos.naam,
+                        status=dos.status,
+                        centralevraag=dos.centraleVraag.inhoud,
+                    };
+                    ANDROIDBeloning bel = new ANDROIDBeloning()
+                    {
+                        ID = dos.beloning.ID,
+                        beschrijving = dos.beloning.beschrijving,
+                        naam = dos.beloning.naam
+                    };
+                    dosMod.beloning = bel;
+                    return Ok(dosMod);
+                }
+            }
+            return Ok("Dossier niet gevonden");
+        }
+        [HttpGet]
+        [ActionName("getAgendaID")]
+        public IHttpActionResult getAgendaID(int id)
+        {
+            List<AgendaModule> agendaModules = moduleManager.readAllAgendaModules();
+            foreach (var ag in agendaModules)
+            {
+                if (ag.ID == id)
+                {
+                    ANDROIDAgendaModule agMod = new ANDROIDAgendaModule()
+                    {
+                        adminNaam = ag.adminNaam,
+                        beginDatum = ag.beginDatum,
+                        eindDatum = ag.eindDatum,
+                        ID = ag.ID,
+                        naam = ag.naam,
+                        status = ag.status,
+                        centraleVraag=ag.centraleVraag.inhoud
+                    };
+                    ANDROIDBeloning bel = new ANDROIDBeloning()
+                    {
+                        ID = ag.beloning.ID,
+                        beschrijving = ag.beloning.beschrijving,
+                        naam = ag.beloning.naam
+                    };
+                    agMod.beloning = bel;
+                    return Ok(agMod);
+                }
+            }
+            return Ok();
         }
         #endregion
 

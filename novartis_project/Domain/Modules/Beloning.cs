@@ -13,8 +13,6 @@ namespace JPP.BL.Domain.Modules
         public int ID { get; set; }
         public string naam { get; set; }
         public string beschrijving { get; set; }
-        public string afbeeldingUrl { get; set; }
-     
         public virtual ICollection<Module> modules { get; set; }
     }
 }
