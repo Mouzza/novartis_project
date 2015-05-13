@@ -93,7 +93,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         moduleID = dossier.module.ID,
                         vasteTags = new List<ANDROIDVasteTag>(),
                         persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                        afbeeldingPath = dossier.afbeeldingPath,
+                        //afbeeldingPath = dossier.afbeeldingPath,
                         percentageVolledigheid = dossier.percentageVolledigheid,
                         statusOnline = dossier.statusOnline,
                         extraVraag = dossier.extraVraag,
@@ -102,15 +102,15 @@ namespace JPP.UI.Web.MVC.Controllers
                         titel = dossier.titel
                     };
 
-                    Image tmpimg = null;
-                    HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
-                    HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
-                    Stream stream = httpWebReponse.GetResponseStream();
-                    tmpimg = Image.FromStream(stream);
+                    //Image tmpimg = null;
+                    //HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
+                    //HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    //Stream stream = httpWebReponse.GetResponseStream();
+                    //tmpimg = Image.FromStream(stream);
 
-                    MemoryStream ms = new MemoryStream();
-                    tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-                    dosAntwoord.afbeeldingBytes = ms.ToArray();
+                    //MemoryStream ms = new MemoryStream();
+                    //tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                    //dosAntwoord.afbeeldingBytes = ms.ToArray();
 
                     foreach (VasteTag vTag in dossier.vasteTags)
                     {

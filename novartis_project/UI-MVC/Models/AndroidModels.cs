@@ -11,7 +11,7 @@ namespace JPP.UI.Web.MVC.Models
     public class AndroidModels
     {
 
-        
+
 
     }
     public class ANDROIDDossierModule
@@ -24,6 +24,11 @@ namespace JPP.UI.Web.MVC.Models
         public string centralevraag { get; set; }
         public string adminNaam { get; set; }
         public ANDROIDBeloning beloning { get; set; }
+        public List<ANDROIDDossierAntwoord> dossierAntwoorden { get; set; }
+        public  string vasteVraagEen { get; set; }
+        public  string vasteVraagTwee { get; set; }
+        public  string vasteVraagDrie { get; set; }
+        public double verplichteVolledigheidsPercentage { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDBeloning
@@ -44,6 +49,7 @@ namespace JPP.UI.Web.MVC.Models
         public string adminNaam { get; set; }
         public string centraleVraag { get; set; }
         public ANDROIDBeloning beloning { get; set; }
+        public List<ANDROIDAgendaAntwoord> agendaAntwoorden { get; set; }
         //public Thema thema { get; set; }
     }
     public class ANDROIDModule
@@ -111,11 +117,19 @@ namespace JPP.UI.Web.MVC.Models
         public List<ANDROIDVasteTag> vasteTags { get; set; }
         public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
         public string afbeeldingPath { get; set; }
-        public byte[] afbeeldingBytes { get; set; }
+        //public byte[] afbeeldingBytes { get; set; }
         public int percentageVolledigheid { get; set; }
         public Boolean statusOnline { get; set; }
+        public List<ANDROIDComment> comments { get; set; }
+        public string textvak2 { get; set; }
+        public string textvak3 { get; set; }
+        public string foregroundColor { get; set; }
+        public string backgroundColor { get; set; }
+        public string backgroundImage { get; set; }
         public string extraVraag { get; set; }
         public int evenementID { get; set; }
-        public List<ANDROIDComment> comments { get; set; }
     }
 }
+
+
+
