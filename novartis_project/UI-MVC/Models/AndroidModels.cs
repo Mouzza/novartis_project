@@ -14,9 +14,6 @@ namespace JPP.UI.Web.MVC.Models
         
 
     }
-
-    
-
     public class ANDROIDDossierModule
     {
         public int ID { get; set; }
@@ -26,11 +23,9 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string centralevraag { get; set; }
         public string adminNaam { get; set; }
-
         public ANDROIDBeloning beloning { get; set; }
         //public Thema thema { get; set; }
     }
-
     public class ANDROIDBeloning
     {
         public int ID { get; set; }
@@ -39,7 +34,6 @@ namespace JPP.UI.Web.MVC.Models
 
         //public Thema thema { get; set; }
     }
-
     public class ANDROIDAgendaModule
     {
         public int ID { get; set; }
@@ -61,15 +55,12 @@ namespace JPP.UI.Web.MVC.Models
         public DateTime eindDatum { get; set; }
         public string centraleVraag { get; set; }
         public string adminNaam { get; set; }
-
         public ANDROIDBeloning beloning { get; set; }
-
         public List<ANDROIDBeloning> beloningen { get; set; }
         public string type { get; set; }
 
         //public Thema thema { get; set; }
     }
-
     public class ANDROIDVasteTag
     {
         public int ID { get; set; }
@@ -126,5 +117,4 @@ namespace JPP.UI.Web.MVC.Models
         public int evenementID { get; set; }
         public List<ANDROIDComment> comments { get; set; }
     }
-        
 }
