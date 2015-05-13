@@ -248,6 +248,10 @@ namespace JPP.UI.Web.MVC.Controllers
                 dosMod.beloning = bel;
                 androidDossiers.Add(dosMod);
             }
+            if (androidDossiers.Count() == 0)
+            {
+                return Ok("Geen gesloten dossiers");
+            }
             return Ok(androidDossiers);
         }
         [HttpGet]
@@ -276,6 +280,10 @@ namespace JPP.UI.Web.MVC.Controllers
                 };
                 agMod.beloning = bel;
                 androidAgendas.Add(agMod);
+            }
+            if (androidAgendas.Count() == 0)
+            {
+                return Ok("Geen gesloten agendas");
             }
             return Ok(androidAgendas);
         }
