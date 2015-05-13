@@ -21,10 +21,9 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<div id="DossierModelTitle"> <h1>Mijn favoriete feestzaal</h1></div><!--Hier moet de titel van de pagina komen-->
-<div id="DossierModelSubTitle"> <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-    Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
-<div id="DossierModelAfbeelding"> <img src="~/Images/afbeeldingen/homeImage.jpg" />
+<div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
+<div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+<div id="DossierModelAfbeelding"> <img src=@(Model.afbeeldingPath) />
     <div id="DossierModelTextVakEen"> <p>@(Model.inhoud)</p>
     
 </div><!--Hier moet de eerste textvak van de pagina komen-->
@@ -35,23 +34,13 @@
 <div id="TweeTextvakWrapper">
     <div id="DossierModelTextVakTwee">
         <p>
-            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-            vel pretium nulla posuere sit amet.
-            <br />
-            <br />
-            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-            vel pretium nulla posuere sit amet.
+            @(Model.textvak2)
         </p>
     </div><!--Hier moet de tweedetextvak van de pagina komen-->
 
     <div id="DossierModelTextVakDrie">
         <p>
-            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-            vel pretium nulla posuere sit amet.
-            <br />
-            <br />
-            Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-            vel pretium nulla posuere sit amet.
+            @(Model.textvak3)
         </p>
     </div><!--Hier moet de derde textvak van de pagina komen-->
 </div>
