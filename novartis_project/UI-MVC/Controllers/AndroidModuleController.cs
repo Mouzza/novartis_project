@@ -187,7 +187,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     return Ok(dosMod);
                 }
             }
-            return Ok();
+            return Ok("Dossier niet gevonden");
         }
         [HttpGet]
         [ActionName("getAgendaID")]
