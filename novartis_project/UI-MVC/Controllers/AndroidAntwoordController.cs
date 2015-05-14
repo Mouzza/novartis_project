@@ -270,15 +270,17 @@ namespace JPP.UI.Web.MVC.Controllers
         #region STEM
         [HttpGet]
         [ActionName("stemCommentID")]
-        public void stemOpComment(int id)
+        public IHttpActionResult stemOpComment(int id)
         {
             antwoordManager.stemOpComment(id);
+            return Ok("ok");
         }
-        [HttpPut]
+        [HttpGet]
         [ActionName("stemAntwoordID")]
-        public void stemOpAntwoord(int id)
+        public IHttpActionResult stemOpAntwoord(int id)
         {
             antwoordManager.stemOpAntwoord(id);
+            return Ok("ok");
         }
         #endregion
 
