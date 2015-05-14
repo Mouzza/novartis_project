@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.dll.config
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.pdb
@@ -17,7 +16,6 @@ C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\bin\Sy
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb
-=======
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.dll.config
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.dll
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\JPP.UI.Web.MVC.pdb
@@ -36,4 +34,4 @@ C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\bin\System.Web
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.dll
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\UI-MVC\obj\Debug\JPP.UI.Web.MVC.pdb
->>>>>>> origin/master
+
