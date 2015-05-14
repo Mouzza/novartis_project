@@ -94,7 +94,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = true;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readModule(13);
+            //dossierAntwoord.module = modMan.readActieveDossierModule();
             Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
 
             return RedirectToAction("DossierModelOne", new { id = createddos.ID });
