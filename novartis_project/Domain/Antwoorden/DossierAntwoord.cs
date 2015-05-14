@@ -19,7 +19,7 @@ namespace JPP.BL.Domain.Antwoorden
         public int percentageVolledigheid { get; set; }
         public Boolean statusOnline { get; set; }
         public string extraVraag { get; set; }
-        
+        public string googleMapsAdress{ get; set; }
 
         public virtual Evenement evenement { get; set; }
         public virtual ICollection<Comment> comments { get; set; }
