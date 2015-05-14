@@ -191,24 +191,13 @@ namespace JPP.BL
 
         public Antwoord createDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            DossierAntwoord dosAntwoord = new DossierAntwoord()
-            {
-                titel = dossierAntwoord.titel,
-                subtitel = dossierAntwoord.subtitel,
-                inhoud = dossierAntwoord.inhoud,
-                extraInfo = dossierAntwoord.extraInfo,
-                datum = DateTime.Now,
-                gebruikersNaam = dossierAntwoord.gebruikersNaam,
-                aantalStemmen = dossierAntwoord.aantalStemmen,
-                aantalFlags = dossierAntwoord.aantalFlags,
-                module = dossierAntwoord.module
+            //ModuleManager modMan = new ModuleManager();
 
-            };
+            //dossierAntwoord.module = modMan.readActieveDossierModule();
+            //DossierModule module = (DossierModule)inlog.getModule(dossierAntwoord.module.ID);
+            //module.dossierAntwoorden.Add(dossierAntwoord);
 
-            DossierModule module = (DossierModule)inlog.getModule(dossierAntwoord.module.ID);
-            module.dossierAntwoorden.Add(dosAntwoord);
-
-            return inlog.maakDossierAntwoord(dosAntwoord);
+            return inlog.maakDossierAntwoord(dossierAntwoord);
 
         }
         public Antwoord createAgendaAntwoord(AgendaAntwoord agendaAntwoord)
