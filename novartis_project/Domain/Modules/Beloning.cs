@@ -11,7 +11,9 @@ namespace JPP.BL.Domain.Modules
     {
         [Key]
         public int ID { get; set; }
+        [Required]
         public string naam { get; set; }
+        [Required]
         public string beschrijving { get; set; }
         public virtual ICollection<Module> modules { get; set; }
     }

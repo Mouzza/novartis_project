@@ -47,7 +47,9 @@ namespace JPP.DAL.Interface
         void deleteModerator(int id);
         void wijzigModerator(Moderator moderator);
 
-        DossierModule createDossierModule(DossierModule dossierModule);
+        DossierModule maakDossierModule(DossierModule dossierModule);
+
+        AgendaModule maakAgendaModule(AgendaModule agendaModule);
         
     }
 }

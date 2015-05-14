@@ -567,6 +567,9 @@
     <Content Include="Views\Antwoord\AdjustableDossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelSix.cshtml" />
     <Content Include="Views\Shared\Error2.cshtml" />
+    <Content Include="Views\Module\_Create.cshtml" />
+    <Content Include="Views\Module\_Delete.cshtml" />
+    <Content Include="Views\Module\_Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

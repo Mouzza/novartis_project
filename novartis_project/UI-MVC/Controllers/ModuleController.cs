@@ -133,6 +133,30 @@ namespace JPP.UI.Web.MVC.Controllers
                 return View("Error");
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Delete(int id)
+        {
+            AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
+
+            return View(agendaModule);
+        }
+        // POST: Module/_Delete/5
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                moduleManager.removeModule(id);
+                return RedirectToAction("Index", "Module");
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
@@ -157,9 +181,38 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             catch
             {
-                return View("Error");
+                return View();
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Edit(int id)
+        {
+
+            AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
+
+            return View(agendaModule);
+        }
+        // POST: Module/_Edit/5
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Edit(AgendaModule agendaModule)
+        {
+
+            try
+            {
+
+                // TODO: Add update logic here
+
+                moduleManager.updateModule(agendaModule);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         // GET: Module/Create
         [Authorize(Roles = "Admin")]
@@ -176,13 +229,8 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             try
             {
-
-                
-
-
-
+              
                 dosModule.adminNaam = User.Identity.GetUserName();
-             
 
                 // TODO: Add insert logic here
                 moduleManager.createDossierModule(dosModule);
@@ -191,7 +239,35 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             catch
             {
-                return View("Error");
+                return View();
+            }
+        }
+        // GET: Module/_Create
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Create()
+        {
+
+            return View();
+        }
+
+        // POST: Module/_Create
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Create(AgendaModule agModule)
+        {
+            try
+            {
+
+                agModule.adminNaam = User.Identity.GetUserName();
+
+                // TODO: Add insert logic here
+                moduleManager.createAgendaModule(agModule);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
             }
         }
 

@@ -156,15 +156,15 @@ namespace JPP.UI.Web.MVC.Controllers
         //VOID of niet?
         [HttpPost]
         [ActionName("createAgenda")]
-        public void createAgendaAntwoord(Antwoord antwoord)
+        public void createAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
-            antwoordManager.createAgendaAntwoord(antwoord);
+            antwoordManager.createAgendaAntwoord(agendaAntwoord);
         }
         [HttpPost]
         [ActionName("createDossier")]
-        public void createDossierAntwoord(DossierAntwoord antwoord)
+        public void createDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            antwoordManager.createDossierAntwoord(antwoord);
+            antwoordManager.createDossierAntwoord(dossierAntwoord);
         }
         #endregion
 
