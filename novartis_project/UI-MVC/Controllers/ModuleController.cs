@@ -176,7 +176,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 
                 // TODO: Add update logic here
 
-                moduleManager.updateModule(DossierModule);
+                moduleManager.updateDossierModule(DossierModule);
                 return RedirectToAction("Index");
             }
             catch
@@ -204,7 +204,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 // TODO: Add update logic here
 
-                moduleManager.updateModule(agendaModule);
+                moduleManager.updateAgendaModule(agendaModule);
                 return RedirectToAction("Index");
             }
             catch

@@ -20,7 +20,8 @@ namespace JPP.BL
         List<Module> readGeplandeModules();
         DossierModule createDossierModule(DossierModule dossierModule);
         AgendaModule createAgendaModule(AgendaModule agendaModule);
-        void updateModule(Module module);
+        void updateDossierModule(DossierModule dossierModule);
+        void updateAgendaModule(AgendaModule agendaModule);
         void removeModule(int id);
     }
 }
