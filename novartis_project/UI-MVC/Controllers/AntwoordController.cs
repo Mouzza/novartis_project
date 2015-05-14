@@ -94,10 +94,10 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = true;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            dossierAntwoord.module = modMan.readModule(13);
-           // antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+            //dossierAntwoord.module = modMan.readModule(13);
+            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
 
-            return RedirectToAction("DossierModelOne", dossierAntwoord);
+            return RedirectToAction("DossierModelOne", new { id = createddos.ID });
         }
 
 
@@ -126,10 +126,12 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-        public ActionResult DossierModelOne(DossierAntwoord dossierAntwoord)
+        public ActionResult DossierModelOne(int id)
         {
-            if (dossierAntwoord.titel != null)
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
             {
+                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
                 return View(dossierAntwoord);
             }
             else
