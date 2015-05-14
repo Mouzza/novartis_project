@@ -215,15 +215,28 @@ namespace JPP.DAL.EF
             return agendaModule;
         }
 
-        public void wijzigModule(Module module)
+        public void wijzigDossierModule(DossierModule dossierModule)
         {
 
-            //alles met betrekken tot de module moet mee gewijzigd worden, bv thema, beloning enz
-            dbcontext.Entry(module.thema).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.Entry(module.beloning).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.Entry(module.centraleVraag).State = System.Data.Entity.EntityState.Modified;
+            DossierModule oldDossiermodule = (DossierModule)dbcontext.modules.Find(dossierModule.ID);
+            dbcontext.Entry(oldDossiermodule).CurrentValues.SetValues(dossierModule);
+            dbcontext.Entry(oldDossiermodule.thema).CurrentValues.SetValues(dossierModule.thema);
+            dbcontext.Entry(oldDossiermodule.beloning).CurrentValues.SetValues(dossierModule.beloning);
+            dbcontext.Entry(oldDossiermodule.centraleVraag).CurrentValues.SetValues(dossierModule.centraleVraag);
+     
 
-            dbcontext.Entry(module).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.SaveChanges();
+        }
+
+        public void wijzigAgendaModule(AgendaModule agendaModule)
+        {
+
+            AgendaModule oldAgendamodule = (AgendaModule)dbcontext.modules.Find(agendaModule.ID);
+            dbcontext.Entry(oldAgendamodule).CurrentValues.SetValues(agendaModule);
+            dbcontext.Entry(oldAgendamodule.thema).CurrentValues.SetValues(agendaModule.thema);
+            dbcontext.Entry(oldAgendamodule.beloning).CurrentValues.SetValues(agendaModule.beloning);
+            dbcontext.Entry(oldAgendamodule.centraleVraag).CurrentValues.SetValues(agendaModule.centraleVraag);
+            
 
             dbcontext.SaveChanges();
         }

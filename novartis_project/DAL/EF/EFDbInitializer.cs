@@ -124,6 +124,108 @@ namespace JPP.DAL.EF
                 modules = new List<Module>()
 
             };
+
+            //gesloten modules
+            int oldJaar = 1950;
+            int oldJaar2 = 1951;
+            for (int x = 0; x < 4; x++)
+            {
+
+                oldJaar += 1;
+                oldJaar2 += 1;
+
+                DossierModule geslotenDossierModule = new DossierModule()
+                {
+
+                    adminNaam = "Admin",
+                    naam = "Gesloten dossiermodule" + x,
+                    beginDatum = new DateTime(oldJaar, 03, 10, 15, 5, 59),
+                    eindDatum = new DateTime(oldJaar2, 10, 10, 15, 5, 59),
+                    verplichteVolledigheidsPercentage = 90.5,
+
+                    dossierAntwoorden = new List<DossierAntwoord>(),
+                    status = false
+
+
+                };
+                geslotenDossierModule.beloning = beloning;
+                geslotenDossierModule.centraleVraag = centraleVraag;
+                geslotenDossierModule.thema = thema;
+                geslotenDossierModule.organisatie = organisatieLeuven;
+                geslotenDossierModule.vasteVraagEen = vasteVraag;
+                context.modules.Add(geslotenDossierModule);
+
+
+                AgendaModule geslotenAgendaModule = new AgendaModule()
+                {
+
+                    adminNaam = "Admin",
+                    naam = "Gesloten agendamodule" + x,
+                    beginDatum = new DateTime(oldJaar, 03, 10, 15, 5, 59),
+                    eindDatum = new DateTime(oldJaar2, 10, 10, 15, 5, 59),
+                    agendaAntwoorden = new List<AgendaAntwoord>(),
+                    status = false
+
+
+                };
+                geslotenAgendaModule.centraleVraag = centraleVraag2;
+                geslotenAgendaModule.beloning = beloning;
+                geslotenAgendaModule.thema = thema;
+                geslotenAgendaModule.organisatie = organisatieLeuven;
+                context.modules.Add(geslotenAgendaModule);
+
+                for (int i = 0; i < 2; i++)
+                {
+
+                    DossierAntwoord dossierAntwoord = new DossierAntwoord()
+                    {
+
+
+                        gebruikersNaam = "Gebruiker1",
+                        titel = "Mijn oplossing (dossier)" + i,
+                        subtitel = "Een plein met fitness toestellen",
+                        inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Ik voeg wat extra tekst toe om de tekstvak in te vullen, Lol. Ik hoop dat ik dit vandaag af krijg. nog een paar woorden en we zijn klaar, ok klaar. Mvg, antw nummer: " + i,
+                        extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
+                        datum = DateTime.Now,
+                        aantalStemmen = i,
+                        percentageVolledigheid = 95,
+                        statusOnline = true,
+                        extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
+                        aantalFlags = 0,
+                        comments = new List<Comment>(),
+                        vasteTags = new List<VasteTag>(),
+                        persoonlijkeTags = new List<PersoonlijkeTag>(),
+                        afbeeldingPath = "~/uploads/Jellyfish.jpg",
+                        textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                        textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium."
+                    };
+
+                    AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
+                    {
+
+
+                        gebruikersNaam = "Gebruiker2",
+                        titel = "Mijn oplossing (agenda)" + i,
+                        subtitel = "Heraanleg rivierenhof",
+                        inhoud = "Heraanleg rivierenhof!blablablablablablablablablablablablablablablablablabla ! Mvg, antw nummer: " + i,
+                        extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
+                        datum = DateTime.Now,
+                        aantalStemmen = i,
+                        aantalFlags = 0,
+                        vasteTags = new List<VasteTag>(),
+                        persoonlijkeTags = new List<PersoonlijkeTag>()
+
+
+                    };
+
+                    geslotenAgendaModule.agendaAntwoorden.Add(agendaAntwoord);
+                    agendaAntwoord.module = geslotenAgendaModule;
+                    dossierModule.dossierAntwoorden.Add(dossierAntwoord);
+                    dossierAntwoord.module = dossierModule;
+
+                }
+            }
+
             for (int i = 0; i < 32; i++)
             {
                
@@ -167,10 +269,12 @@ namespace JPP.DAL.EF
 
 
                 };
+                
                 agendaModule.agendaAntwoorden.Add(agendaAntwoord);
                 agendaAntwoord.module = agendaModule;
                 dossierModule.dossierAntwoorden.Add(dossierAntwoord);
                 dossierAntwoord.module = dossierModule;
+
                 //Tags
                 //tag.antwoorden.Add(dossierAntwoord);
                 //pTag.antwoorden.Add(dossierAntwoord);
@@ -240,7 +344,8 @@ namespace JPP.DAL.EF
 
             }
 
-        
+            
+
             //DossierModule
             dossierModule.beloning = beloning;
             dossierModule.thema = thema;

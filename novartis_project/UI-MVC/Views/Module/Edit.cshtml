@@ -10,8 +10,11 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.vasteVraagEen)
+    @Html.HiddenFor(model => model.vasteVraagTwee)
+    @Html.HiddenFor(model => model.vasteVraagDrie)
     @Html.HiddenFor(model => model.dossierAntwoorden)
-    
+
+
     @Html.HiddenFor(model => model.ID)
     @Html.HiddenFor(model => model.adminNaam)
     @Html.HiddenFor(model => model.organisatie)
@@ -19,11 +22,17 @@
 
     @Html.HiddenFor(model => model.thema.modules)
     @Html.HiddenFor(model => model.thema.ID)
-
- 
-    @Html.HiddenFor(model => model.centraleVraag.centralevraagID)
+    
+    @Html.HiddenFor(model => model.centraleVraag.ID)
     @Html.HiddenFor(model => model.centraleVraag.datum)
-  
+    @Html.HiddenFor(model => model.beloning.ID)
+    @Html.HiddenFor(model => model.beloning.modules)
+
+
+
+
+
+
 
 
 

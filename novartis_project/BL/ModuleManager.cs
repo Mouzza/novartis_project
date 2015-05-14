@@ -213,9 +213,13 @@ namespace JPP.BL
             return admin.maakAgendaModule(agendaModuleX);
         }
 
-        public void updateModule(Module module)
+        public void updateDossierModule(DossierModule dossierModule)
         {
-            admin.wijzigModule(module);
+            admin.wijzigDossierModule(dossierModule);
+        }
+        public void updateAgendaModule(AgendaModule agendaModule)
+        {
+            admin.wijzigAgendaModule(agendaModule);
         }
 
         public void removeModule(int id)

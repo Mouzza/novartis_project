@@ -26,9 +26,7 @@ namespace JPP.BL.Domain.Modules
 
         public string adminNaam { get; set; }
 
-        
-        public int centraleVraagID { get; set; }
-        [ForeignKey("centraleVraagID")]
+
         public virtual CentraleVraag centraleVraag { get; set; }
         public virtual Beloning beloning { get; set; }
         public virtual Organisatie organisatie { get; set; }
