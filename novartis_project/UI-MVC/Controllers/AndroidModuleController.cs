@@ -69,7 +69,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     textvak3=dosAntwoord.textvak3,
                     comments = new List<ANDROIDComment>(),
                     persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    vasteTags=new List<ANDROIDVasteTag>()
+                    vasteTags=new List<ANDROIDVasteTag>(),
+                    googleMapsAdress=dosAntwoord.googleMapsAdress
                 };
                 foreach (var vTag in dosAntwoord.vasteTags)
                 {

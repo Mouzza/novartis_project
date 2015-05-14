@@ -89,9 +89,11 @@ namespace JPP.UI.Web.MVC.Models
         public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
+        public string subTitel { get; set; }
         public int moduleID { get; set; }
         public List<ANDROIDVasteTag> vasteTags { get; set; }
         public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
+
     }
     public class ANDROIDComment
     {
@@ -127,6 +129,8 @@ namespace JPP.UI.Web.MVC.Models
         public string backgroundImage { get; set; }
         public string extraVraag { get; set; }
         public int evenementID { get; set; }
+        public string googleMapsAdress { get; set; }
+        public string subtitel { get; set; }
     }
 }
 
