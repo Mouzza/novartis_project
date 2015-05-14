@@ -11,6 +11,8 @@ using System.Web.Http;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Drawing;
+using System.IO;
 
 
 namespace JPP.UI.Web.MVC.Controllers
@@ -70,7 +72,6 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(agendaAntwoorden);
         }
-
         [HttpGet]
         [ActionName("getDossierAntwoordID")]
         public IHttpActionResult getDossierAntwoorden(int id)
@@ -92,14 +93,25 @@ namespace JPP.UI.Web.MVC.Controllers
                         moduleID = dossier.module.ID,
                         vasteTags = new List<ANDROIDVasteTag>(),
                         persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                        afbeeldingPath = dossier.afbeeldingPath,
+                        //afbeeldingPath = dossier.afbeeldingPath,
                         percentageVolledigheid = dossier.percentageVolledigheid,
                         statusOnline = dossier.statusOnline,
                         extraVraag = dossier.extraVraag,
-                        evenementID = dossier.evenement.ID,
+                        evenementID = 10/*dossier.evenement.ID*/,
                         comments = new List<ANDROIDComment>(),
                         titel = dossier.titel
                     };
+
+                    //Image tmpimg = null;
+                    //HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
+                    //HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+                    //Stream stream = httpWebReponse.GetResponseStream();
+                    //tmpimg = Image.FromStream(stream);
+
+                    //MemoryStream ms = new MemoryStream();
+                    //tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+                    //dosAntwoord.afbeeldingBytes = ms.ToArray();
+
                     foreach (VasteTag vTag in dossier.vasteTags)
                     {
                         ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
@@ -134,6 +146,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         };
                         dosAntwoord.comments.Add(aComment);
                     }
+                    dossierAntwoorden.Add(dosAntwoord);
                 }
             return Ok(dossierAntwoorden);
         }

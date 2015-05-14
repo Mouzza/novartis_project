@@ -15,6 +15,8 @@ namespace JPP.BL
         AgendaModule readActieveAgendaModule();
         List<DossierModule> readAllDossierModules();
         List<AgendaModule> readAllAgendaModules();
+        List<DossierModule> readGeslotenDossiers();
+        List<AgendaModule> readGeslotenAgendas();
         List<Module> readGeplandeModules();
         DossierModule createDossierModule(DossierModule dossierModule);
         AgendaModule createAgendaModule(AgendaModule agendaModule);

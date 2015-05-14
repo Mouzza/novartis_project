@@ -151,10 +151,10 @@ C:\Users\Moussa\Downloads\novartis_project-999830484223603273d5c7100de2c32e690a1
 C:\Users\Moussa\Downloads\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
 C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\MERGEN\Desktop\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.xml
-<<<<<<< HEAD
+
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Michiel\Desktop\novartis_project\novartis_project\DAL\bin\Debug\Newtonsoft.Json.xml
-=======
+
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.dll.config
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.dll
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
@@ -170,7 +170,7 @@ C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\bin\Debug\N
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.dll
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
->>>>>>> origin/master
+
 C:\Users\Michiel\Documents\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.dll.config
 C:\Users\Michiel\Documents\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.dll
 C:\Users\Michiel\Documents\novartis_project\novartis_project\DAL\bin\Debug\JPP.DAL.pdb
