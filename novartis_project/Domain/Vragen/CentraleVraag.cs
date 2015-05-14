@@ -13,7 +13,7 @@ namespace JPP.BL.Domain.Vragen
     public class CentraleVraag
     {
         [Key] 
-        public int centralevraagID { get; set; }
+        public int centraleVraagID { get; set; }
         public string inhoud { get; set; }
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }

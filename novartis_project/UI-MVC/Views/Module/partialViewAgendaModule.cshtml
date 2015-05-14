@@ -9,7 +9,7 @@
 <h2>Agenda modules</h2>
 
 <p>
-    @Html.ActionLink("Agenda module aanmaken", "Create")
+    @Html.ActionLink("Agenda module aanmaken", "_Create")
 </p>
 <table class="table">
     <tr>
@@ -20,13 +20,22 @@
             Inhoud
         </th>
         <th>
-            Status
-        </th>
-        <th>
            Begin datum
         </th>
         <th>
             Eind datum
+        </th>
+        <th>
+            Vraag
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Thema
+        </th>
+        <th>
+            Beloning
         </th>
 
         <th id="settingsLayout">Instellingen</th>
@@ -41,19 +50,27 @@
             @Html.DisplayFor(modelItem => item.naam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.status)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.beginDatum)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.eindDatum)
         </td>
-
         <td>
-            @Html.ActionLink("Wijzig", "Edit", new { id=item.ID }) |
+            @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.thema.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.beloning.naam)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzig", "_Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "_Details", new { id=item.ID }) |
-            @Html.ActionLink("Verwijder", "Delete", new { id=item.ID }) |
+            @Html.ActionLink("Verwijder", "_Delete", new { id=item.ID }) |
             <h4>@Html.ActionLink("Beheer alle antwoorden(" + item.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = item.ID }, null)</h4>
         </td>
     </tr>

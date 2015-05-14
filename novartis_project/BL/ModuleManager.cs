@@ -145,7 +145,7 @@ namespace JPP.BL
                 };
          
 
-            DossierModule moduleX = new DossierModule()
+            DossierModule dossierModuleX = new DossierModule()
             {
 
                
@@ -160,12 +160,60 @@ namespace JPP.BL
 
             };
 
-            moduleX.beloning = beloning;
+            dossierModuleX.beloning = beloning;
             //dossierModule.vasteVragen = vasteVragen;
-            moduleX.centraleVraag = centraleVraag;
-            moduleX.thema = thema;
+            dossierModuleX.centraleVraag = centraleVraag;
+            dossierModuleX.thema = thema;
 
-            return admin.createDossierModule(moduleX);
+            return admin.maakDossierModule(dossierModuleX);
+        }
+
+        public AgendaModule createAgendaModule(AgendaModule agendaModule)
+        {
+            CentraleVraag centraleVraag = new CentraleVraag()
+            {
+                inhoud = agendaModule.centraleVraag.inhoud,
+                aantalWinAntwoorden = agendaModule.centraleVraag.aantalWinAntwoorden,
+                extraInfo = agendaModule.centraleVraag.extraInfo,
+                datum = DateTime.Now
+
+
+            };
+
+            Thema thema = new Thema()
+            {
+                beschrijving = agendaModule.thema.beschrijving,
+                naam = agendaModule.thema.naam,
+
+            };
+  
+            Beloning beloning = new Beloning()
+            {
+                naam = agendaModule.beloning.naam,
+                beschrijving = agendaModule.beloning.beschrijving
+
+
+            };
+
+
+            AgendaModule agendaModuleX = new AgendaModule()
+            {
+
+
+                status = agendaModule.status,
+                adminNaam = agendaModule.adminNaam,
+                beginDatum = agendaModule.beginDatum,
+                eindDatum = agendaModule.eindDatum,          
+                naam = agendaModule.naam
+
+
+            };
+
+            agendaModuleX.beloning = beloning;
+            agendaModuleX.centraleVraag = centraleVraag;
+            agendaModuleX.thema = thema;
+
+            return admin.maakAgendaModule(agendaModuleX);
         }
 
         public void updateModule(Module module)

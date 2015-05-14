@@ -16,9 +16,12 @@ namespace JPP.BL.Domain.Modules
 
         [Key]
         public int ID { get; set; }
+        [Required]
         public string naam { get; set; }
         public Boolean status { get; set; }
+        [Required]
         public DateTime beginDatum { get; set; }
+        [Required]
         public DateTime eindDatum { get; set; }
 
         public string adminNaam { get; set; }

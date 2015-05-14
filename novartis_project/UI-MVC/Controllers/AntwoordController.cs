@@ -302,7 +302,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             catch
             {
-                return View("Error");
+                return View();
             }
         }
 

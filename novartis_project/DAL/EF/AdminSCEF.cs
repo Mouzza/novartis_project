@@ -181,7 +181,7 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public DossierModule createDossierModule(DossierModule dossierModule)
+        public DossierModule maakDossierModule(DossierModule dossierModule)
         {
 
 
@@ -196,6 +196,23 @@ namespace JPP.DAL.EF
             
             dbcontext.SaveChanges();
             return dossierModule;
+        }
+
+        public AgendaModule maakAgendaModule(AgendaModule agendaModule)
+        {
+
+
+
+            //  dbcontext.vasteVragen.AddRange(dossierModule.vasteVragen);
+
+            dbcontext.centraleVragen.Add(agendaModule.centraleVraag);
+            dbcontext.themas.Add(agendaModule.thema);
+            dbcontext.beloningen.Add(agendaModule.beloning);
+
+            dbcontext.modules.Add(agendaModule);
+
+            dbcontext.SaveChanges();
+            return agendaModule;
         }
 
         public void wijzigModule(Module module)

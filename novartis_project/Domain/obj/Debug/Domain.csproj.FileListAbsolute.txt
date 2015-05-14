@@ -46,15 +46,6 @@ C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug
 C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\Woe\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.dll
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.xml
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
 C:\Users\Moussa\Downloads\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
 C:\Users\Moussa\Downloads\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
 C:\Users\Moussa\Downloads\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project-999830484223603273d5c7100de2c32e690a1fa5\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
@@ -75,7 +66,6 @@ C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\Domain\bin\Debu
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
 C:\Users\MERGEN\Desktop\GITHUB\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
@@ -86,3 +76,12 @@ C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\En
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
