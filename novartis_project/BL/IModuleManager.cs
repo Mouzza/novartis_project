@@ -22,6 +22,7 @@ namespace JPP.BL
         AgendaModule createAgendaModule(AgendaModule agendaModule);
         void updateDossierModule(DossierModule dossierModule);
         void updateAgendaModule(AgendaModule agendaModule);
-        void removeModule(int id);
+        void removeDossierModule(int id);
+        void removeAgendaModule(int id);
     }
 }

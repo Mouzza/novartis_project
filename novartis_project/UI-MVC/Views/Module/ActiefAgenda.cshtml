@@ -4,6 +4,10 @@
     Layout = "";
 
 }
+
+@if (Model.naam != null)
+{
+
 <div id="dossierModule">
     <p>
         @if (User.IsInRole("Admin"))
@@ -102,4 +106,36 @@
 
 
 
+}
+else
+{
+
+<div id="dossierModule">
+    <p>
+        @if (User.IsInRole("Admin"))
+        {
+
+            @Html.ActionLink("Maak een agendamodule", "_Create", "Module")
+        }
+
+    </p>
+
+
+    <img id="moduleIcon" src="~/Images/menu logos/oplosing.png" alt="Oplossing" />
+    <div id="moduleInhoud">
+        <h1 id="moduleTitel">Er is geen actieve agendamodule</h1>
+        <h4 id="centraleVraag">Bekijk gerust onze geplande modules</h4>
+        <a href="@Url.Action("CommingSoon", "Module")">Geplande modules</a>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+}
 

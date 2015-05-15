@@ -1445,6 +1445,7 @@ transition: all 500ms ease;
 #adminMenuButton{
 
     background-image:none;
+    font-size:40px;
 }
 
 /*###################################################################################*/

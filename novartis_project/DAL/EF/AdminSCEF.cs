@@ -241,10 +241,29 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public void deleteModule(int id)
+        public void deleteDossierModule(int id)
         {
-            Module module = dbcontext.modules.Find(id);
-            dbcontext.modules.Remove(module);
+            DossierModule dossierModule = (DossierModule)dbcontext.modules.Find(id);
+            dbcontext.beloningen.Remove(dossierModule.beloning);
+            dbcontext.themas.Remove(dossierModule.thema);
+           
+            dbcontext.centraleVragen.Remove(dossierModule.centraleVraag);
+            dbcontext.vasteVraagAntwoorden.RemoveRange(dossierModule.vasteVraagEen.vasteVraagAntwoorden);
+            dbcontext.vasteVragen.Remove(dossierModule.vasteVraagEen);
+
+            dbcontext.antwoord.RemoveRange(dossierModule.dossierAntwoorden);
+            dbcontext.modules.Remove(dossierModule);
+            dbcontext.SaveChanges();
+        }
+
+        public void deleteAgendaModule(int id)
+        {
+            AgendaModule agendaModule = (AgendaModule)dbcontext.modules.Find(id);
+            dbcontext.antwoord.RemoveRange(agendaModule.agendaAntwoorden);
+            dbcontext.centraleVragen.Remove(agendaModule.centraleVraag);
+            dbcontext.beloningen.Remove(agendaModule.beloning);
+            dbcontext.themas.Remove(agendaModule.thema);
+            dbcontext.modules.Remove(agendaModule);
             dbcontext.SaveChanges();
         }
     }

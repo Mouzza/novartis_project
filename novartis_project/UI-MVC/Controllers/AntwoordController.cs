@@ -548,9 +548,15 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageNumber = (page ?? 1);
 
             DossierModule dossiermodule = dossManager.readActieveDossierModule();
-            List<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+            List<DossierAntwoord> dossierAntwoorden = new List<DossierAntwoord>();
+            if (dossiermodule.naam != null)
+            {
+                dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+
             List<DossierAntwoord> dossierAntwoorden2 = new List<DossierAntwoord>();
-            ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+
 
             switch (sortOrder)
             {
@@ -596,10 +602,16 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageNumber = (page ?? 1);
 
             AgendaModule agendaModule = dossManager.readActieveAgendaModule();
-            List<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+            List<AgendaAntwoord> agendaAntwoorden = new List<AgendaAntwoord>();
+            if (agendaModule.naam != null)
+            {
+                agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+         
             List<AgendaAntwoord> agendaAntwoorden2 = new List<AgendaAntwoord>();
 
-            ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+           
 
 
 

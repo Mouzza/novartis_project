@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Beheer dossiermodules";
+}
+
+<div id="dossierModules">
+    @{ Html.RenderAction("partialViewDossierModule", "Module"); }
+</div>
+
+<div id="geplandeDossierModules">
+
+    @{ Html.RenderAction("GeplandeDossierModules", "Module"); }
+</div>
+
+<div id="geslotenDossierModules">
+
+    @{ Html.RenderAction("GeslotenDossierModules", "Module"); }
+</div>
+
+
