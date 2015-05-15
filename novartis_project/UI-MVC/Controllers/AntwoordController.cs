@@ -91,7 +91,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -157,7 +157,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -215,7 +215,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -273,7 +273,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -331,7 +331,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -347,7 +347,7 @@ namespace JPP.UI.Web.MVC.Controllers
             DossierAntwoord dossierAntwoord = new DossierAntwoord();
             if (id != null)
             {
-                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                dossierAntwoord = (DossierAntwoord)antwManager.readDossierAntwoord(id);
                 return View(dossierAntwoord);
             }
             else
@@ -368,6 +368,16 @@ namespace JPP.UI.Web.MVC.Controllers
                 return View(dossierAntwoord);
             }
         }
+
+        //[HttpPost]
+        //public ActionResult DossierModelOne(int id)
+        //{
+        //    DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+        //    dossierAntwoord.statusOnline = true;
+        //    antwManager.updateDossierAntwoord(dossierAntwoord);
+        //    return RedirectToAction("DossierModelOne", new { id = dossierAntwoord.ID});
+
+        //}
 
         public ActionResult DossierModelTwo(int id)
         {
