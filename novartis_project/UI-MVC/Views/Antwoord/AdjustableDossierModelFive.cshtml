@@ -1,4 +1,6 @@
-﻿@{
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+
+@{
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "DosierModelFive";
 }
@@ -18,49 +20,70 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
-<textarea id="AdjDossierModelTitle">Mijn favoriete feestzaal</textarea><!--Hier moet de titel van de pagina komen-->
-<textarea id="AdjDossierModelSubTitle">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.
-</textarea> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+<div id="AdjustableButtonWrapper">
+    <div id="OptionsbarTitle">Kies je Layout</div>
+    <button id="AdjButtonSix"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" onclick="location.href='@Url.Action("AdjustableDossierModelSix", "Antwoord")'" /> </button>
+    <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/sort.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
+    <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
+    <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
+</div>
+
+@using (Html.BeginForm("", "Antwoord/AdjustableDossierModelFive", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+    <div id="OptionsBar">
+        <div id="OptionsbarTitle">Personaliseer</div>
+        <div id="AdjCleanUp">
+
+            <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress) @Html.ValidationMessageFor(model => model.googleMapsAdress)</div>
+            <!--<input type="text" name="googleMaps" />-->
+            <div id="persoonlijkeTags">Persoonlijke Tags: @Html.TextBoxFor(model => model.persoonlijkeTags)</div>
+            <div id="foregroundColor">tekstkleur: @Html.TextBoxFor(model => model.foregroundColor)</div>
+            <div id="backgroundColor">achtergrondKleur: @Html.TextBoxFor(model => model.backgroundColor)</div>
 
 
+        </div>
+    </div>
+
+    <div id="OptionsbarTitleHead">Creëer je eigen pagina!</div>
+
+    @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
+    @Html.ValidationMessageFor(model => model.titel)
+    @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+        @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+        @Html.ValidationMessageFor(model => model.subtitel)
 
 <div id="TextWrapperFive">
 
+        @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelThreeTextVakEen" })
+        @Html.ValidationMessageFor(model => model.inhoud)
 
-    <textarea id="DossierModelTwoTextVakEen" name="backgroundColor" wrap="soft" cols="500" rows="10">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.</textarea>
-
-
-    <div id="TweeTextvakWrapperTwo">
         <div id="TweeTextvakWrapperTwo">
-            <textarea id="DossierModelTwoTextVakTwee">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+            <div id="TweeTextvakWrapperTwo">
+                @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTwoTextVakTwee" })
+                @Html.ValidationMessageFor(model => model.textvak2)
 
-Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
-            </textarea><!--Hier moet de tweedetextvak van de pagina komen-->
+                @*<textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
 
-            <textarea id="DossierModelTwoTextVakDrie">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+        Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de derde textvak van de pagina komen-->
+                @Html.TextAreaFor(model => model.textvak3, new { @class = "AdjDossierModelTwoTextVakDrie" })
+                @Html.ValidationMessageFor(model => model.textvak3)
+            </div>
 
-Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
-            </textarea><!--Hier moet de derde textvak van de pagina komen-->
+
         </div>
-
-        
     </div>
-</div>
 
-<div id="DossierModelTwoAfbeelding">
-    <img src="~/Images/afbeeldingen/homeImage.jpg" />
+    <div id="DossierModelTwoAfbeelding">
+        <img src="@Url.Content(Model.afbeeldingPath)" />
 
-    <div id="map-canvasTwo"></div>
+        <div id="map-canvasTwo"></div>
 
-</div><!--Hier moet de afbeelding van de pagina komen-->
-<form id="fileUploadForm" action="" method="post" enctype="multipart/form-data">
+    </div><!--Hier moet de afbeelding van de pagina komen-->
+
 
     <label id="fileUploadLabel" for="file">Selecteer een afbeelding</label>
     <input id="fileUploadInput" type="file" name="file" />
 
-    <input id="fileUploadSubmit" type="submit" />
-</form>
-
 <div id="DossierModelTwoTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+}
