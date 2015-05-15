@@ -22,6 +22,10 @@ namespace JPP.UI.Web.MVC.Controllers
 
         ModuleManager moduleManager = new ModuleManager();
 
+        public ActionResult VolgOp()
+        {
+            return View();
+        }
 
         public ActionResult DossModules()
         {
@@ -30,6 +34,31 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AgdModules()
         {
             return View();
+
+        }
+
+        public ActionResult _GeplandeDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeplandeModules().OfType<DossierModule>();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _GeplandeAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeplandeModules().OfType<AgendaModule>();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -69,6 +98,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         }
 
+
         public ActionResult GeslotenAgendaModules(int? page)
         {
 
@@ -77,6 +107,31 @@ namespace JPP.UI.Web.MVC.Controllers
 
      
        
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeslotenAgendas();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _GeslotenDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeslotenDossiers();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _GeslotenAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+
             IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeslotenAgendas();
             return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
 
