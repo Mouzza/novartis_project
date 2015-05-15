@@ -14,7 +14,7 @@ body {
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-top:40px;
+    padding-top: 40px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 40px; /* Height of the footer element */
@@ -92,7 +92,7 @@ textarea {
 
 #videoWrapper {
     background-color: #AD0002;
-    height:83%;
+    height: 83%;
     background-position: center center;
     background-attachment: fixed;
     -webkit-background-size: 100% 100%;
@@ -119,7 +119,8 @@ textarea {
     background-color: white;
     padding-bottom: 10px;
 }
-#mainWrapper3, #mainWrapper4  {
+
+#mainWrapper3, #mainWrapper4 {
     min-height: 80%;
     position: relative;
     background-color: white;
@@ -128,33 +129,32 @@ textarea {
 }
 
 
-#mainWrapper3 #container  {
-   padding:0;
-}
-#mainWrapper3 .body-content  {
-   padding:0;
-}
+    #mainWrapper3 #container {
+        padding: 0;
+    }
+
+    #mainWrapper3 .body-content {
+        padding: 0;
+    }
 
 #youtube {
-     position: relative;
-      width: 100%; 
-      height: 100%; 
-      padding-bottom: 60%;
-      
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 60%;
 }
 
     #youtube iframe, #youtube object, #youtube embed {
-       
-       position: absolute; 
-       left: 0px; 
-       top: 0px; 
-       width: 85%; 
-       height: 80%;
-       border:none;
-       margin-left:7%;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 85%;
+        height: 80%;
+        border: none;
+        margin-left: 7%;
     }
 
-     
+
 
 
 #extraWrapper {
@@ -232,7 +232,7 @@ textarea {
 
     .centraal2 img {
         border: 2px solid black;
-        width:80%;
+        width: 80%;
     }
 
 #mainContent {
@@ -244,7 +244,7 @@ textarea {
 }
 
 #centraleButton {
-    left:49%;
+    left: 49%;
     background-image: url("../images/websitePage logos/iconContinue.png");
     background-repeat: no-repeat;
     background-size: 50px;
@@ -253,12 +253,12 @@ textarea {
     bottom: 0px;
     position: absolute;
     width: 50px;
-    height:30px;
+    height: 30px;
     text-align: center;
 }
 
 #centraleButton2 {
-    left:34%;
+    left: 34%;
     background-image: url("../images/websitePage logos/verder.png");
     padding: 1%;
     cursor: pointer;
@@ -271,10 +271,10 @@ textarea {
     text-align: center;
 }
 
-#centraleButton2:hover{
-    background-image: none;
-    background-color: #3C79E3;
-}
+    #centraleButton2:hover {
+        background-image: none;
+        background-color: #3C79E3;
+    }
 
 .eersteMenu {
     height: 70px;
@@ -318,7 +318,6 @@ textarea {
 
 #cellFocus {
     font-weight: bold;
- 
 }
 
 #paginaTitel {
@@ -379,7 +378,7 @@ textarea {
     color: #686868;
     text-align: center;
     font-size: 200%;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 #dossierModule h2 {
@@ -392,12 +391,10 @@ textarea {
 
 #extrainfoSpan {
     font-weight: bold;
-
 }
 
 #extraInfoParagraaf {
     float: right;
-
 }
 
 #zelfdeGebruikerSpan {
@@ -418,30 +415,25 @@ textarea {
     font-size: 150%;
 }
 
-#eersteMenuItem:hover h2, #tweedeMenuItem:hover h2, #derdeMenuItem:hover h2{
-    font-size: 150%;
-    font-weight: bold;
+    #eersteMenuItem:hover h2, #tweedeMenuItem:hover h2, #derdeMenuItem:hover h2 {
+        font-size: 150%;
+        font-weight: bold;
+    }
 
-}
+    #eersteMenuItem:hover h4, #tweedeMenuItem:hover h4, #derdeMenuItem:hover h4 {
+        font-size: 100%;
+        font-weight: bold;
+    }
 
-#eersteMenuItem:hover h4, #tweedeMenuItem:hover h4, #derdeMenuItem:hover h4{
-    font-size:100%;
-    font-weight: bold;
-
-}
-
-#eersteMenuItem:hover img{
-
-    /*width: 35%;
+    #eersteMenuItem:hover img {
+        /*width: 35%;
     height: 35%;*/
+    }
 
-}
-
-#tweedeMenuItem:hover img, #derdeMenuItem:hover img{
-    /*width: 120%;
+    #tweedeMenuItem:hover img, #derdeMenuItem:hover img {
+        /*width: 120%;
     height: 120%;*/
-
-}
+    }
 
 
 
@@ -453,13 +445,12 @@ textarea {
     padding: 1%;
     padding-top: 2%;
     cursor: pointer;
-        /* HOVER OFF*/
+    /* HOVER OFF*/
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
-
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
 #tweedeMenuItem {
@@ -471,12 +462,12 @@ transition: all 500ms ease;
     padding-top: 2%;
     box-shadow: inset 10px 0px 50px -7px #000;
     cursor: pointer;
-        /* HOVER OFF*/
+    /* HOVER OFF*/
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
 #derdeMenuItem {
@@ -488,12 +479,12 @@ transition: all 500ms ease;
     padding-top: 2%;
     box-shadow: inset 10px 10px 50px -7px #000;
     cursor: pointer;
-        /* HOVER OFF*/
+    /* HOVER OFF*/
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
     #derdeMenuItem a {
@@ -512,106 +503,103 @@ transition: all 500ms ease;
     padding: 1%;
     color: white;
     background-color: #222222;
-    border:#222222;
+    border: #222222;
     width: 100%;
-    font-weight:bold;
+    font-weight: bold;
 }
 
-    #hide {
+#hide {
+    float: left;
+    color: black;
+    background-image: url(../Images/iconmonstr-x-mark-4-icon-256.png);
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 120px;
+    background-size: 40px;
+    background-position: 0 0;
+    background-color: #222222;
+    border: #222222;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+    #hide span {
+        margin-left: 40px;
+        color: white;
+    }
+
+    #hide:hover {
+        margin-left: -3px;
+        margin-top: -3px;
         float: left;
         color: black;
-        background-image:url(../Images/iconmonstr-x-mark-4-icon-256.png);
-         background-repeat: no-repeat;
-        height:40px;
-        width:120px;
-        background-size:40px;
-        background-position:0 0;
-        background-color:#222222;
-        border:#222222;
-
+        background-image: url(../Images/iconmonstr-x-mark-4-icon-256.png);
+        background-repeat: no-repeat;
+        height: 45px;
+        width: 115px;
+        background-size: 45px;
+        background-position: 0 0;
+        background-color: #222222;
+        border: #222222;
         -webkit-transition: all 500ms ease;
         -moz-transition: all 300ms ease;
         -ms-transition: all 300ms ease;
         -o-transition: all 300ms ease;
         transition: all 300ms ease;
     }
-    #hide span{
-         margin-left:40px;
-         color: white;
+
+#show {
+    background-image: url("../images/websitePage logos/iconContinue.png");
+    background-repeat: no-repeat;
+    float: left;
+    color: black;
+    height: 40px;
+    width: 120px;
+    background-size: 40px;
+    background-position: 0 45%;
+    background-color: #222222;
+    border: #222222;
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+    #show span {
+        margin-left: 30px;
+        color: white;
     }
-        #hide:hover {
-        margin-left:-3px;
-        margin-top:-3px;
+
+    #show:hover {
+        margin-left: -3px;
+        margin-top: -3px;
         float: left;
         color: black;
-        background-image:url(../Images/iconmonstr-x-mark-4-icon-256.png);
+        background-image: url("../images/websitePage logos/iconContinue.png");
         background-repeat: no-repeat;
-        height:45px;
-        width:115px;
-        background-size:45px;
-        background-position:0 0;
-        background-color:#222222;
-        border:#222222;
+        height: 45px;
+        width: 115px;
+        background-size: 45px;
+        background-position: 0 45%;
+        background-color: #222222;
+        border: #222222;
         -webkit-transition: all 500ms ease;
         -moz-transition: all 300ms ease;
         -ms-transition: all 300ms ease;
         -o-transition: all 300ms ease;
         transition: all 300ms ease;
-
-    }
-
-        #show{
-        background-image:url("../images/websitePage logos/iconContinue.png");
-        background-repeat: no-repeat;
-        float: left;
-        color: black;
-        height:40px;
-        width:120px;
-        background-size:40px;
-        background-position:0 45%;
-        background-color:#222222;
-        border:#222222;
-
-         -webkit-transition: all 500ms ease;
-        -moz-transition: all 300ms ease;
-        -ms-transition: all 300ms ease;
-        -o-transition: all 300ms ease;
-        transition: all 300ms ease;
-        }
-
-        #show span{
-         margin-left:30px;
-         color: white;
-
-        }
-
-        #show:hover {
-        margin-left:-3px;
-        margin-top:-3px;
-        float: left;
-        color: black;
-        background-image:url("../images/websitePage logos/iconContinue.png");
-        background-repeat: no-repeat;
-        height:45px;
-        width:115px;
-        background-size:45px;
-        background-position:0 45%;
-        background-color:#222222;
-        border:#222222;
-            -webkit-transition: all 500ms ease;
--moz-transition: all 300ms ease;
--ms-transition: all 300ms ease;
--o-transition: all 300ms ease;
-transition: all 300ms ease;
-
     }
 
 
 
-    #homeTitelHeader p {
-        font-size: 30px;
-        text-align: center;
-    }
+#homeTitelHeader p {
+    font-size: 30px;
+    text-align: center;
+}
 
 #moduleTitel {
     color: #1A9ADD;
@@ -654,7 +642,7 @@ transition: all 300ms ease;
 #antwoordlijstWrapper {
     background-color: lightgray;
     width: 80%;
-    height:100%;
+    height: 100%;
     float: left;
     padding: 1%;
     box-shadow: inset 10px 0px 50px -7px #000;
@@ -669,32 +657,31 @@ transition: all 300ms ease;
     width: 20%;
     float: left;
     background-color: darkgray;
-    padding:1%;
-}
-#moduleLeftMenuSection ul {
-   text-decoration:none;
-   list-style:none;
-   margin-top:50px;
-
-}
-#moduleLeftMenuSection ul li {
-   margin:10px 10px;
-   color:white;
-
-}
-#moduleLeftMenuSection ul li a {
-   text-decoration:none;
-   font-size:150%;
-   color:white;
-   font-weight:bold;
+    padding: 1%;
 }
 
-#moduleLeftMenuSection ul li a:hover {
+    #moduleLeftMenuSection ul {
+        text-decoration: none;
+        list-style: none;
+        margin-top: 50px;
+    }
 
-   font-size:200%;
-   color:#1A9ADD;
+        #moduleLeftMenuSection ul li {
+            margin: 10px 10px;
+            color: white;
+        }
 
-}
+            #moduleLeftMenuSection ul li a {
+                text-decoration: none;
+                font-size: 150%;
+                color: white;
+                font-weight: bold;
+            }
+
+                #moduleLeftMenuSection ul li a:hover {
+                    font-size: 200%;
+                    color: #1A9ADD;
+                }
 
 
 #antwoordlijstCreateSection img {
@@ -717,211 +704,205 @@ transition: all 300ms ease;
 
 #aantalStemmen {
     color: #FFF;
-    width:6%;
+    width: 6%;
     font-size: 40px;
-    background-color:#5E889E;
+    background-color: #5E889E;
 }
 
 #antwoordInhoud {
     font-size: 23px;
     font-weight: bold;
     border: #D3D3D3;
-    
 }
 
-#tableAntwoord table{
+#tableAntwoord table {
     border: #D3D3D3;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
-    cursor:pointer;
-}
-#tableAntwoordWinnaar table{
-    border: 5px solid #FFD700 ;
-    box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
-    cursor:pointer;
+    cursor: pointer;
 }
 
-#homeTable{
-    padding:15px;
-    color:white;
-    float:left;
-    width:250px;
-    height:300px;
-    margin-right:2%;
-    background-color:#15A9D5;
+#tableAntwoordWinnaar table {
+    border: 5px solid #FFD700;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+#homeTable {
+    padding: 15px;
+    color: white;
+    float: left;
+    width: 250px;
+    height: 300px;
+    margin-right: 2%;
+    background-color: #15A9D5;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
     /*background:url("../Images/Paars.png");¨*/
-    margin-bottom:30px;
-
-            /* HOVER OFF*/
+    margin-bottom: 30px;
+    /* HOVER OFF*/
     -webkit-transition: all 500ms ease;
     -moz-transition: all 500ms ease;
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
+}
 
-}
-#homeTable h1{
-    font-size:18px;
-    text-align:center;
-}
-#homeTable img{
-    height:100px;
-    width:100px;
-    margin-left:27%;
-}
-#body-contentwrapper{
+    #homeTable h1 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #homeTable img {
+        height: 100px;
+        width: 100px;
+        margin-left: 27%;
+    }
+
+#body-contentwrapper {
     margin-left: 15%;
     margin-right: 15%;
 }
-#homeMidContent{
-    margin-left:5%;
-    width:100%;
+
+#homeMidContent {
+    margin-left: 5%;
+    width: 100%;
 }
 
-#homeMid p{
-    margin:0 0 0;
+#homeMid p {
+    margin: 0 0 0;
     height: 40px;
 }
 
-#likes{
-    cursor:pointer;
-    padding-top:40%;
-    width:100%;
-    height:100%;
-    font-weight:bold;
-    font-size:20px;
-    color:lightgreen;
-    display:none;
-    background-color:RGBA(0,0,0,0.6);
-    text-align:center;
-
+#likes {
+    cursor: pointer;
+    padding-top: 40%;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 20px;
+    color: lightgreen;
+    display: none;
+    background-color: RGBA(0,0,0,0.6);
+    text-align: center;
 }
 
-#homeTable:hover{
-         padding:0;
-         /* HOVER ON*/
+#homeTable:hover {
+    padding: 0;
+    /* HOVER ON*/
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
-  
-
-}
-#homeTable:hover #likes {
-
-    display:block;
-    z-index:2;
-
-
-    
-}
-#homeTable:hover h1  {
-    display:none;
-
-}
-#homeTable:hover img {
-    display:none;
-
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
-#extraInfoWrapper{
-    width:100%;
-    float:left;
+    #homeTable:hover #likes {
+        display: block;
+        z-index: 2;
+    }
+
+    #homeTable:hover h1 {
+        display: none;
+    }
+
+    #homeTable:hover img {
+        display: none;
+    }
+
+#extraInfoWrapper {
+    width: 100%;
+    float: left;
 }
 
-#DossierModelTitle{
-    width:100%;
-    text-align:center;
-    font-weight:bold;
-    color:#0099cc;
+#DossierModelTitle {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #0099cc;
     font-size: 50px;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
 }
 
-#DossierModelTitle h1{
-    text-align:center;
-    font-weight:bold;
-    font-size: 50px;
+    #DossierModelTitle h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+#DossierModelSubTitle {
+    width: 100%;
+    text-align: center;
+    color: #666666;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
 }
 
-#DossierModelSubTitle{
-    width:100%;
-    text-align:center;
-    color:#666666;
-    margin-left: auto;
-    margin-right:auto;
-             
-}
+    #DossierModelSubTitle h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
 
-#DossierModelSubTitle h2{
- font-size: 30px; 
- font-weight:bold;
-}
-
-#DossierModelTextVakEen{
-    float:right;
-    max-width:500px;
+#DossierModelTextVakEen {
+    float: right;
+    max-width: 500px;
     width: 500px;
     height: 300px;
     margin-right: 15%;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
 
 
 
 
-#DossierModelTextVakEen p{  
+    #DossierModelTextVakEen p {
+    }
 
+#DossierModelAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 15%;
+    margin-top: 50px;
 }
 
-#DossierModelAfbeelding{
-   width:80%;
-   height:300px;
-   
-   margin-left: 15%;
-   margin-top: 50px;
-}
+    #DossierModelAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
 
-#DossierModelAfbeelding img{
-   width:500px;
-   height:300px;   
-   float:left;
-   box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-}
-
-#TweeTextvakWrapper{
+#TweeTextvakWrapper {
     width: 80%;
     height: 100px;
     margin-left: 15%;
     margin-top: 50px;
 }
-#DossierModelTextVakTwee{
+
+#DossierModelTextVakTwee {
     width: 500px;
     height: 120px;
     max-height: 120px;
     float: left;
-    max-width:500px;
-    border:#FFF;
-    overflow:hidden
+    max-width: 500px;
+    border: #FFF;
+    overflow: hidden;
 }
 
-#DossierModelTextVakDrie{
+#DossierModelTextVakDrie {
     width: 500px;
     height: 120px;
     float: right;
     max-height: 120px;
-    margin-right: 15%;  
-    max-width:500px;
+    margin-right: 15%;
+    max-width: 500px;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
 
-#DossierModelTag{
+#DossierModelTag {
     margin-top: 20px;
     width: 500px;
     height: 100px;
@@ -930,93 +911,92 @@ transition: all 500ms ease;
 
 
 /*############################AdjustableDosierModelOne################################################*/
-#AdjDossierModelTitle{
-    width:100%;
+#AdjDossierModelTitle {
+    width: 100%;
     max-width: 100%;
-    color:#0099cc;
+    color: #0099cc;
     margin-left: auto;
-    margin-right:auto;
-    text-align:center;
-    font-weight:bold;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
     font-size: 50px;
-    overflow:hidden;
-        border:#FFF;
-        height: 80px;
-        margin-top:50px;
+    overflow: hidden;
+    border: #FFF;
+    height: 80px;
+    margin-top: 50px;
 }
-.AdjDossierModelTitle{
-    width:100%;
+
+.AdjDossierModelTitle {
+    width: 100%;
     max-width: 100%;
-    color:#0099cc;
+    color: #0099cc;
     margin-left: auto;
-    margin-right:auto;
-    text-align:center;
-    font-weight:bold;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
     font-size: 50px;
-    overflow:hidden;
-        border:#FFF;
-        height: 80px;
-        margin-top:50px;
+    overflow: hidden;
+    border: #FFF;
+    height: 80px;
+    margin-top: 50px;
 }
 
 
-#AdjDossierModelSubTitle{
-    width:100%;
+#AdjDossierModelSubTitle {
+    width: 100%;
     max-width: 100%;
-    text-align:center;
-    color:#666666;
+    text-align: center;
+    color: #666666;
     margin-left: auto;
-    margin-right:auto;
-    font-size: 30px; 
- font-weight:bold;
- overflow:hidden;
-        border:#FFF;
-             
+    margin-right: auto;
+    font-size: 30px;
+    font-weight: bold;
+    overflow: hidden;
+    border: #FFF;
 }
 
-.AdjDossierModelSubTitle{
-    width:100%;
+.AdjDossierModelSubTitle {
+    width: 100%;
     max-width: 100%;
-    text-align:center;
-    color:#666666;
+    text-align: center;
+    color: #666666;
     margin-left: auto;
-    margin-right:auto;
-    font-size: 30px; 
- font-weight:bold;
- overflow:hidden;
-        border:#FFF;
-             
+    margin-right: auto;
+    font-size: 30px;
+    font-weight: bold;
+    overflow: hidden;
+    border: #FFF;
 }
 
-.AdjDossierModelTextVakEen{
-    float:right;
-    max-width:500px;
+.AdjDossierModelTextVakEen {
+    float: right;
+    max-width: 500px;
     width: 500px;
     height: 300px;
     margin-right: 15%;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
 
-.AdjDossierModelTextVakTwee{
+.AdjDossierModelTextVakTwee {
     width: 500px;
     height: 120px;
     max-height: 120px;
     float: left;
-    max-width:500px;
-    border:#FFF;
-    overflow:hidden
+    max-width: 500px;
+    border: #FFF;
+    overflow: hidden;
 }
 
-.AdjDossierModelTextVakDrie{
+.AdjDossierModelTextVakDrie {
     width: 500px;
     height: 120px;
     float: right;
     max-height: 120px;
-    margin-right: 15%;  
-    max-width:500px;
+    margin-right: 15%;
+    max-width: 500px;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
 
 
@@ -1032,258 +1012,249 @@ transition: all 500ms ease;
     border: #FFF;
 }
 
-.AdjDossierModelTwoTextVakTwee{
+.AdjDossierModelTwoTextVakTwee {
     width: 500px;
     height: 120px;
     max-height: 120px;
-    max-width:500px;
+    max-width: 500px;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
 
-#DossierModelTwoTextVakEen{
-
-    float:left;
+#DossierModelTwoTextVakEen {
+    float: left;
     width: 500px;
     height: 300px;
-    margin-left:1%;
-        max-width:500px;
-        overflow:hidden;
-        border:#FFF;
+    margin-left: 1%;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
 }
 
-.AdjDossierModelTwoTextVakEen{
-        float:left;
+.AdjDossierModelTwoTextVakEen {
+    float: left;
     width: 500px;
     height: 300px;
-    margin-left:1%;
-        max-width:500px;
-        overflow:hidden;
-        border:#FFF;
+    margin-left: 1%;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
 }
 
 
 
 
-#DossierModelTwoAfbeelding{
-   width:80%;
-   height:300px;
-   
-   margin-left: 16%;
-   margin-top: 50px;
+#DossierModelTwoAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 50px;
 }
 
-#DossierModelTwoAfbeelding img{
-   width:500px;
-   height:300px;   
-   float:left;
-   box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-}
+    #DossierModelTwoAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
 
-#TweeTextvakWrapperTwo{
+#TweeTextvakWrapperTwo {
     width: 500px;
     height: 200px;
-    float:right;
-    margin-right:13%;
-       
+    float: right;
+    margin-right: 13%;
 }
-#DossierModelTwoTextVakTwee{
+
+#DossierModelTwoTextVakTwee {
     width: 500px;
     height: 100px;
-
-     max-width:500px;
-        overflow:hidden;
-        border:#FFF;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
 }
 
-#TextWrapperTwo{
+#TextWrapperTwo {
     width: 80%;
     height: 100px;
     margin-left: 15%;
 }
 
-#DossierModelTwoTextVakDrie{
+#DossierModelTwoTextVakDrie {
     width: 500px;
     height: 100px;
-    margin-top:20px;
-    margin-right: 15%;  
-     max-width:500px;
-        overflow:hidden;
-        border:#FFF;
+    margin-top: 20px;
+    margin-right: 15%;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
 }
 
-#DossierModelTwoTag{
+#DossierModelTwoTag {
     margin-top: 20px;
     width: 500px;
     height: 100px;
     margin-left: 60%;
 }
 
- #map-canvasTwo {
-     float: right;
-     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-     position: relative;
-     margin-right: 15%;
-        width: 500px;
-        height: 300px;
-      }
+#map-canvasTwo {
+    float: right;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    position: relative;
+    margin-right: 15%;
+    width: 500px;
+    height: 300px;
+}
 
 /*#################################################################################################################################################################*/
 
 /*##################################################################DossierModelThree##############################################################################*/
-#DossierModelThreeTitle{
-    width:100%;
-    text-align:center;
-    font-weight:bold;
-    color:#0099cc;
+#DossierModelThreeTitle {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #0099cc;
     font-size: 50px;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
 }
 
-#DossierModelThreeTitle h1{
-    text-align:center;
-    font-weight:bold;
-    font-size: 50px;
+    #DossierModelThreeTitle h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+#DossierModelThreeSubTitle {
+    width: 100%;
+    text-align: center;
+    color: #666666;
     margin-left: auto;
-    margin-right:auto;
+    margin-right: auto;
 }
 
-#DossierModelThreeSubTitle{
-    width:100%;
-    text-align:center;
-    color:#666666;
-    margin-left: auto;
-    margin-right:auto;
-             
-}
+    #DossierModelThreeSubTitle h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
 
-#DossierModelThreeSubTitle h2{
- font-size: 30px; 
- font-weight:bold;
-}
-
-#DossierModelThreeTextVakEen{
-    max-width:500px;
-    border:#FFF;
-    float:right;
+#DossierModelThreeTextVakEen {
+    max-width: 500px;
+    border: #FFF;
+    float: right;
     width: 500px;
     height: 300px;
-    margin-left:1%;
-
+    margin-left: 1%;
     overflow: hidden;
 }
 
-#DossierModelFiveAfbeelding{
-   width:80%;
-   height:300px;
-   
-   margin-left: 16%;
-   margin-top: 90px;
+#DossierModelFiveAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 90px;
 }
 
-#DossierModelFiveAfbeelding img{
-   width:500px;
-   height:300px;   
-   float:left;
-   box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    #DossierModelFiveAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+
+
+#DossierModelThreeTextVakEen p {
 }
 
-
-
-#DossierModelThreeTextVakEen p{  
-
+#DossierModelThreeAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 50px;
 }
 
-#DossierModelThreeAfbeelding{
-   width:80%;
-   height:300px;
-   
-   margin-left: 16%;
-   margin-top: 50px;
-}
+    #DossierModelThreeAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
 
-#DossierModelThreeAfbeelding img{
-   width:500px;
-   height:300px;   
-   float:left;
-   box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-}
-
-#TweeTextvakWrapperThree{
+#TweeTextvakWrapperThree {
     height: 200px;
-    float:left;
+    float: left;
     width: 500px;
     margin-left: 19%;
-    margin-top:25px;
+    margin-top: 25px;
 }
-#DossierModelThreeTextVakTwee{
+
+#DossierModelThreeTextVakTwee {
     width: 500px;
     height: 100px;
     max-width: 500px;
-    border:#FFF;
+    border: #FFF;
     overflow: hidden;
 }
 
-#TextWrapperThree{
+#TextWrapperThree {
     width: 83%;
     height: 100px;
 }
 
-#DossierModelThreeTextVakDrie{
+#DossierModelThreeTextVakDrie {
     width: 500px;
     height: 100px;
-    margin-top:20px;
-        max-width: 500px;
-        border: #FFF;
-        overflow: hidden;
+    margin-top: 20px;
+    max-width: 500px;
+    border: #FFF;
+    overflow: hidden;
 }
 
-#DossierModelThreeTag{
+#DossierModelThreeTag {
     margin-top: 220px;
     width: 500px;
     height: 100px;
     margin-left: 60%;
 }
 
- #map-canvasThree {
-     float: right;
-     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-     position: relative;
-        width: 500px;
-        height: 300px;
-      }
-
- /*################################################################################################################################################*/
-
- .AdjDossierModelThreeTextVakEen{
-    max-width:500px;
-    border:#FFF;
-    float:right;
+#map-canvasThree {
+    float: right;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    position: relative;
     width: 500px;
     height: 300px;
-    margin-right:15%;
+}
 
+/*################################################################################################################################################*/
+
+.AdjDossierModelThreeTextVakEen {
+    max-width: 500px;
+    border: #FFF;
+    float: right;
+    width: 500px;
+    height: 300px;
+    margin-right: 15%;
     overflow: hidden;
 }
 
-  .AdjDossierModelFiveTextVakEen{
-    max-width:500px;
-    border:#FFF;
-    float:left;
+.AdjDossierModelFiveTextVakEen {
+    max-width: 500px;
+    border: #FFF;
+    float: left;
     width: 500px;
     height: 300px;
-
     overflow: hidden;
 }
 
- #TextWrapperFive{
-     margin-left: 16%;
+#TextWrapperFive {
+    margin-left: 16%;
     width: 83%;
     height: 250px;
 }
 
- .AdjDossierModelSixTextVakDrie {
+.AdjDossierModelSixTextVakDrie {
     width: 500px;
     height: 120px;
     margin-top: 20px;
@@ -1294,173 +1265,168 @@ transition: all 500ms ease;
 }
 
 
- #TweeTextvakWrapperFive{
+#TweeTextvakWrapperFive {
     width: 82%;
     height: 200px;
     margin-left: 15%;
-       
 }
 
-  #DossierModelFiveTextVakEen{
-      text-align: center;
-    position:relative;
+#DossierModelFiveTextVakEen {
+    text-align: center;
+    position: relative;
     width: 70%;
     height: 150px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
- /*################################################################################################################################################*/
+/*################################################################################################################################################*/
 
- #TweeTextvakWrapperSix{
+#TweeTextvakWrapperSix {
     height: 200px;
-    margin-top:25px;
-    margin-left:15%;
+    margin-top: 25px;
+    margin-left: 15%;
 }
 
 
- #DossierModelSixTextVakEen{
-
-    position:relative;
+#DossierModelSixTextVakEen {
+    position: relative;
     width: 70%;
     height: 150px;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
- #AdjDossierModelSixTextVakEen{
-
-    position:relative;
+#AdjDossierModelSixTextVakEen {
+    position: relative;
     width: 70%;
     height: 150px;
-    margin-left:15%;
-    margin-right:15%;
+    margin-left: 15%;
+    margin-right: 15%;
     max-width: 70%;
     overflow: hidden;
     border: #FFF;
 }
 
-  .AdjDossierModelSixTextVakEen{
-
-    position:relative;
+.AdjDossierModelSixTextVakEen {
+    position: relative;
     width: 70%;
     height: 150px;
-    margin-left:15%;
-    margin-right:15%;
+    margin-left: 15%;
+    margin-right: 15%;
     max-width: 70%;
     overflow: hidden;
     border: #FFF;
 }
 
-    #DossierModelSixTextVakEen p {
-    }
+#DossierModelSixTextVakEen p {
+}
 
 
 
-#TextWrapperSix{
+#TextWrapperSix {
     width: 80%;
     height: 100px;
     margin-left: 15%;
 }
 
 
-    #DossierModelSixTextVakTwee{
+#DossierModelSixTextVakTwee {
     width: 500px;
     height: 100px;
-    float:left;
+    float: left;
     max-width: 500px;
     overflow: hidden;
     border: #FFF;
 }
 
-#DossierModelSixTextVakDrie{
+#DossierModelSixTextVakDrie {
     width: 500px;
     height: 100px;
-    margin-right: 15%;  
-    float:right;
+    margin-right: 15%;
+    float: right;
     max-width: 500px;
     overflow: hidden;
     border: #FFF;
 }
 
- /*##################################################################################################################################################*/
+/*##################################################################################################################################################*/
 
 
- #map-canvas {
-     margin-top: 50px;
-     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-     position: relative;
-     margin-left: 31%;
-     margin-right: auto;
-        width: 700px;
-        height: 400px;
-      }
+#map-canvas {
+    margin-top: 50px;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    position: relative;
+    margin-left: 31%;
+    margin-right: auto;
+    width: 700px;
+    height: 400px;
+}
 
- .imgClass {
-     background-image: url("../Images/search.png");
-     background-repeat: no-repeat;
-     height: 25px;
-     width: 25px;
-     background-size:25px;
-     background-color: #FFF;
-     border: #FFF;
-float:left;
-margin-left:1%;
-         /* HOVER ON*/
+.imgClass {
+    background-image: url("../Images/search.png");
+    background-repeat: no-repeat;
+    height: 25px;
+    width: 25px;
+    background-size: 25px;
+    background-color: #FFF;
+    border: #FFF;
+    float: left;
+    margin-left: 1%;
+    /* HOVER ON*/
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
- }
-
-#SearchString{
-     margin-bottom:1%;
- }
-
-#searchbox{
-    display: table-cell;
-    float:left;
-    margin-left:5%;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
-.imgClass:hover{
+#SearchString {
+    margin-bottom: 1%;
+}
+
+#searchbox {
     display: table-cell;
-    height:30px;
-    width:30px;
+    float: left;
+    margin-left: 5%;
+}
+
+.imgClass:hover {
+    display: table-cell;
+    height: 30px;
+    width: 30px;
     background-size: 30px;
     margin-left: 1%;
-             /* HOVER ON*/
+    /* HOVER ON*/
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
-#paginaLink{
-    display:none;
+#paginaLink {
+    display: none;
 }
 
-#adminMenuButton{
-
-    background-image:none;
-    font-size:40px;
+#adminMenuButton {
+    background-image: none;
+    font-size: 40px;
 }
 
 /*###################################################################################*/
-#MainFilterAZ, #MainFilterZA, #MainFilterOJ, #MainFilterJO{
+#MainFilterAZ, #MainFilterZA, #MainFilterOJ, #MainFilterJO {
     display: table-cell;
     background-color: #FFF;
     border: #FFF;
     width: 35px;
     height: 30px;
     float: right;
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 
-#BoxesWrapper{
+#BoxesWrapper {
     height: 100px;
     width: 100%;
     display: table;
@@ -1471,164 +1437,162 @@ transition: all 500ms ease;
     height: 30px;
 }
 
-#winnaarSpan{
-
-    font-size:200%;
-    font-weight:bold;
-    margin-right:15%;
-    color:#ffd700;
+#winnaarSpan {
+    font-size: 200%;
+    font-weight: bold;
+    margin-right: 15%;
+    color: #ffd700;
 }
 
-#fileUploadSubmit{
-
+#fileUploadSubmit {
 }
 
 #fileUploadForm {
-margin-left: 15%;
-margin-top:20px;
+    margin-left: 15%;
+    margin-top: 20px;
 }
 
-#fileUploadInput{
-margin-left: 15%;
+#fileUploadInput {
+    margin-left: 15%;
 }
 
-#fileUploadLabel{
-    margin-left:15%;
+#fileUploadLabel {
+    margin-left: 15%;
 }
 
-#OptionsBar{
-    background-color:#D3D3D3;
+#OptionsBar {
+    background-color: #D3D3D3;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     width: 100%;
-    height: 180px;  
-    display:table;
+    height: 180px;
+    display: table;
     margin-top: 50px;
 }
 
-#googlemaps{
-    display:table-cell;
-    float:left;
+#googlemaps {
+    display: table-cell;
+    float: left;
     width: 370px;
 }
 
-#googlemaps input{
-    width: 290px;
-}
+    #googlemaps input {
+        width: 290px;
+    }
 
-#persoonlijkeTags{
-    display:table-cell;
-    float:left;
-    margin-left:1%;
+#persoonlijkeTags {
+    display: table-cell;
+    float: left;
+    margin-left: 1%;
     width: 370px;
 }
 
-#persoonlijkeTags input{
-    width: 290px;
-}
+    #persoonlijkeTags input {
+        width: 290px;
+    }
 
-#foregroundColor{
-    display:table-cell;
-    clear:left;
-    float:left;
+#foregroundColor {
+    display: table-cell;
+    clear: left;
+    float: left;
     width: 370px;
 }
 
-#foregroundColor input{
+    #foregroundColor input {
+        width: 370px;
+    }
+
+#backgroundColor {
+    display: table-cell;
+    float: left;
+    margin-left: 1%;
     width: 370px;
 }
 
-#backgroundColor{
-    display:table-cell;
-    float:left;
-    margin-left:1%;
-    width: 370px;
+    #backgroundColor input {
+        width: 370px;
+    }
+
+#SubmitButtonAdj {
+    display: table-cell;
+    float: right;
+    clear: left;
+    margin-top: 20px;
 }
 
-#backgroundColor input{
-    width: 370px;
-}
-
-#SubmitButtonAdj{
-    display:table-cell;
-    float:right;
-    clear:left;
-    margin-top:20px;
-}
-
-#AdjCleanUp{
+#AdjCleanUp {
     margin-top: 25px;
-    margin-left:2%;
-    margin-right:2%;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
-#OptionsbarTitle{
-    text-align:center;
+#OptionsbarTitle {
+    text-align: center;
     font-size: 30px;
     color: #0099CC;
     font-weight: bold;
 }
 
-#AdjustableButtonWrapper{
-    background-color:#D3D3D3;
+#AdjustableButtonWrapper {
+    background-color: #D3D3D3;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     width: 100%;
-    height: 150px;  
-    display:table;
-    
+    height: 150px;
+    display: table;
 }
 
-#OptionsbarTitleHead{
+#OptionsbarTitleHead {
     margin-top: 50px;
-    text-align:center;
+    text-align: center;
     font-size: 30px;
     color: #0099CC;
     font-weight: bold;
 }
 
-#AdjButtonWrapper{
+#AdjButtonWrapper {
     margin-left: 37.5%;
 }
-#AdjButtonTwo{
+
+#AdjButtonTwo {
     width: 80px;
     height: 80px;
 }
 
-#AdjButtonTwo img{
-    width: 65px;
-    height: 70px;
-}
+    #AdjButtonTwo img {
+        width: 65px;
+        height: 70px;
+    }
 
-#AdjButtonThree{
+#AdjButtonThree {
     width: 80px;
     height: 80px;
 }
 
-#AdjButtonThree img{
-    width: 65px;
-    height: 70px;
-}
+    #AdjButtonThree img {
+        width: 65px;
+        height: 70px;
+    }
 
-#AdjButtonFive{
+#AdjButtonFive {
     width: 80px;
     height: 80px;
 }
 
-#AdjButtonFive img{
-    width: 65px;
-    height: 70px;
-}
+    #AdjButtonFive img {
+        width: 65px;
+        height: 70px;
+    }
 
-#AdjButtonSix{
+#AdjButtonSix {
     width: 80px;
     height: 80px;
 }
 
-#AdjButtonSix img{
-    width: 65px;
-    height: 70px;
-}
+    #AdjButtonSix img {
+        width: 65px;
+        height: 70px;
+    }
 
-#AgendaAntwoordWrapper{
+#AgendaAntwoordWrapper {
     width: 90%;
     height: 15%;
     position: relative;
@@ -1637,36 +1601,57 @@ margin-left: 15%;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
 }
 
-#AgendaModelTextVakEen{
+#AgendaModelTextVakEen {
     position: relative;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    max-width:80%;
+    max-width: 80%;
     width: 80%;
     height: 300px;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
 
 
-#AgendaAntwoordWrapper{
-    width: 90%;
-    height: 15%;
-    position: relative;
+.AdjAgendaModelTitle {
+    width: 100%;
+    max-width: 100%;
+    color: #0099cc;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
-}
-
-#AgendaModelTextVakEen{
-    position: relative;
     text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    overflow: hidden;
+    border: #FFF;
+    height: 80px;
+    margin-top: 50px;
+}
+
+
+
+.AdjAgendaModelSubTitle {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    color: #666666;
     margin-left: auto;
     margin-right: auto;
-    max-width:80%;
+    font-size: 30px;
+    font-weight: bold;
+    overflow: hidden;
+    border: #FFF;
+}
+
+.AdjAgendaModelTextVakEen {
+    text-align: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 80%;
     width: 80%;
     height: 300px;
     border: #FFF;
-    overflow:hidden
+    overflow: hidden;
 }
