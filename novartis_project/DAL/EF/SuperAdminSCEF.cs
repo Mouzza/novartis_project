@@ -10,11 +10,7 @@ namespace JPP.DAL.EF
 {
     class SuperAdminSCEF : SuperAdminHC
     {
-        EFDbContext dbcontext;
-        public SuperAdminSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
         public Admin createAdmin(Admin admin)
         {
             dbcontext.admin.Add(admin);

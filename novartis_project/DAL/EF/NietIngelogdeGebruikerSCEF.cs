@@ -16,11 +16,8 @@ namespace JPP.DAL.EF
 {
     public class NietIngelogdeGebruikerSCEF
     {
-        EFDbContext dbcontext;
-        public NietIngelogdeGebruikerSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+        public static EFDbContext dbcontext = new EFDbContext();
+       
         public Gebruiker createGebruiker(Gebruiker gebruiker)
         {
             dbcontext.gebruiker.Add(gebruiker);

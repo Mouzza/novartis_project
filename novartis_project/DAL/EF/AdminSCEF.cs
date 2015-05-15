@@ -15,12 +15,8 @@ namespace JPP.DAL.EF
 {
     public class AdminSCEF : AdminHC
     {
-        public AdminSCEF()
-        {
-            dbcontext=new EFDbContext();
-        }
-
-        EFDbContext dbcontext;
+        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
+  
         public VasteVraag createVastevraag(VasteVraag vastevraag)
         {
             dbcontext.vasteVragen.Add(vastevraag);

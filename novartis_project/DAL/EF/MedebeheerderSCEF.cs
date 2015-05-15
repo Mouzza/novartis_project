@@ -16,11 +16,7 @@ namespace JPP.DAL.EF
 {
    public class MedebeheerderSCEF : MedebeheerderHC
     {
-        EFDbContext dbcontext;
-        public MedebeheerderSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+       EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
         public void deleteAntwoord(int id)
         {
             Antwoord antwoord = dbcontext.antwoord.Find(id);
@@ -30,9 +26,12 @@ namespace JPP.DAL.EF
 
         public void wijzigDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            dbcontext.Entry(dossierAntwoord).State = System.Data.Entity.EntityState.Modified;
+
+            DossierAntwoord oldDossierAntwoord = (DossierAntwoord)dbcontext.antwoord.Find(dossierAntwoord.ID);
+            dbcontext.Entry(oldDossierAntwoord).CurrentValues.SetValues(dossierAntwoord);
+            
             dbcontext.SaveChanges();
-            dbcontext.Database.Connection.Close();
+      
         }
         public void wijzigAgendaAntwoord(AgendaAntwoord agendeaAntwoord)
         {
