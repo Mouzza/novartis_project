@@ -487,8 +487,15 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
-        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, int? page)
+        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, string sortOrder, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.LikesSortParm = sortOrder == "Likes" ? "" : "Likes";
+            ViewBag.NPopSortParm = sortOrder == "NPop" ? "" : "NPop";
+            ViewBag.AZSortParm = sortOrder == "AZ" ? "" : "AZ";
+            ViewBag.ZASortParm = sortOrder == "ZA" ? "" : "ZA";
+
             if (searchString != null)
             {
                 page = 1;
@@ -509,7 +516,29 @@ namespace JPP.UI.Web.MVC.Controllers
                 antwoorden = antwoorden.Where(antw => antw.inhoud.Contains(searchString)
                                        || antw.titel.Contains(searchString));
             }
+            switch (sortOrder)
+            {
+                case "AZ":
+                    antwoorden = antwManager.sortAntwoordAZ(antwoorden);
+                 
+                    break;
+                case "ZA":
+                    antwoorden = antwManager.sortAntwoordZA(antwoorden);
+                
+                    break;
+                case "NPop":
+                    antwoorden = antwManager.sortAntwoordMinsteLikes(antwoorden);
+            
+                    break;
+                case "Likes":
+                    antwoorden = antwManager.sortAntwoordMeesteLikes(antwoorden);
+              
+                    break;
+                default:
+                    antwoorden = antwManager.sortAntwoordNieuwOud(antwoorden);
          
+                    break;
+            }
             return PartialView(antwoorden.ToPagedList(pageNumber, pageSize));
         }
 
@@ -529,9 +558,15 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageNumber = (page ?? 1);
 
             DossierModule dossiermodule = dossManager.readActieveDossierModule();
-            List<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+            List<DossierAntwoord> dossierAntwoorden = new List<DossierAntwoord>();
+            if (dossiermodule.naam != null)
+            {
+                dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+
             List<DossierAntwoord> dossierAntwoorden2 = new List<DossierAntwoord>();
-            ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+
 
             switch (sortOrder)
             {
@@ -577,10 +612,16 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageNumber = (page ?? 1);
 
             AgendaModule agendaModule = dossManager.readActieveAgendaModule();
-            List<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+            List<AgendaAntwoord> agendaAntwoorden = new List<AgendaAntwoord>();
+            if (agendaModule.naam != null)
+            {
+                agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+         
             List<AgendaAntwoord> agendaAntwoorden2 = new List<AgendaAntwoord>();
 
-            ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+           
 
 
 

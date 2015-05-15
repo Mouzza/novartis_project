@@ -103,6 +103,33 @@ namespace JPP.BL
             return agendaAntwoorden.OrderByDescending(o => o.titel).ToList();
         }
 
+
+        #region sortAntwoorden
+        public List<Antwoord> sortAntwoordNieuwOud(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderByDescending(o => o.datum).ToList();
+        }
+        public List<Antwoord> sortAntwoordMeesteLikes(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
+        }
+
+        public List<Antwoord> sortAntwoordMinsteLikes(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderBy(o => o.aantalStemmen).ToList();
+        }
+
+        public List<Antwoord> sortAntwoordAZ(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderBy(o => o.titel).ToList();
+        }
+
+        public List<Antwoord> sortAntwoordZA(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderByDescending(o => o.titel).ToList();
+        }
+
+        #endregion
         #region sortDossierAntwoord
         public List<DossierAntwoord> sortDossierAntwoordNieuwOud(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {

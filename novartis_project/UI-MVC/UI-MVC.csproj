@@ -199,6 +199,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AndroidAccountController.cs" />
     <Compile Include="Controllers\AndroidAntwoordController.cs" />
     <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
@@ -564,7 +565,6 @@
     <Content Include="Views\Antwoord\DossierModelThree.cshtml" />
     <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
-    <Content Include="Views\Admin\Menu.cshtml" />
     <Content Include="Views\Antwoord\CreateDossier.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelOne.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelTwo.cshtml" />
@@ -575,6 +575,17 @@
     <Content Include="Views\Module\_Create.cshtml" />
     <Content Include="Views\Module\_Delete.cshtml" />
     <Content Include="Views\Module\_Edit.cshtml" />
+    <Content Include="Views\Module\DossModules.cshtml" />
+    <Content Include="Views\Module\AgdModules.cshtml" />
+    <Content Include="Views\Module\GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Module\GeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\VolgOp.cshtml" />
+    <Content Include="Views\Module\_GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\_GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\_GeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\_GeplandeDossierModules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

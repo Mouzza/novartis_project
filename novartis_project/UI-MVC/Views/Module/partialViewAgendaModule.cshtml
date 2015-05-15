@@ -1,16 +1,17 @@
-﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.AgendaModule>
-@using PagedList
-@using PagedList.Mvc
+﻿@model JPP.BL.Domain.Modules.AgendaModule
+
 @{
     ViewBag.Title = "";
     Layout = "";
 }
 
-<h2>Agenda modules</h2>
+<h2>Actieve agendamodule</h2>
 
 <p>
     @Html.ActionLink("Agenda module aanmaken", "_Create")
 </p>
+@if (Model.naam != null)
+{
 <table class="table">
     <tr>
         <th>
@@ -41,62 +42,54 @@
         <th id="settingsLayout">Instellingen</th>
     </tr>
 
-@foreach (var item in Model) {
+
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.adminNaam)
+            @Html.DisplayFor(modelItem => Model.adminNaam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.naam)
+            @Html.DisplayFor(modelItem => Model.naam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.beginDatum)
+            @Html.DisplayFor(modelItem => Model.beginDatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.eindDatum)
+            @Html.DisplayFor(modelItem => Model.eindDatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+            @Html.DisplayFor(modelItem => Model.centraleVraag.inhoud)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.status)
+            @Html.DisplayFor(modelItem => Model.status)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.thema.naam)
+            @Html.DisplayFor(modelItem => Model.thema.naam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.beloning.naam)
+            @Html.DisplayFor(modelItem => Model.beloning.naam)
         </td>
         <td>
-            @Html.ActionLink("Wijzig", "_Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "_Details", new { id=item.ID }) |
-            @Html.ActionLink("Verwijder", "_Delete", new { id=item.ID }) |
-            <h4>@Html.ActionLink("Beheer alle antwoorden(" + item.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = item.ID }, null)</h4>
-        </td>
+            @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID }) |
+            @Html.ActionLink("Details", "_Details", new { id = Model.ID }) |
+            @Html.ActionLink("Verwijder", "_Delete", new { id = Model.ID }) |
+            @if (Model.agendaAntwoorden.Count == 0)
+            {
+                <h4>Geen antwoorden</h4>
+
+            }
+            else
+            {
+                <h4>@Html.ActionLink("Beheer alle antwoorden(" + Model.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = Model.ID }, null)</h4>
+
+            }
+           </td>
     </tr>
-}
 
 </table>
+}
+else
+{
+    <p>Geen actieve agendamodule gevonden.</p>
+}
 
-<div id="pager2">
-    @Html.PagedListPager(Model, page => Url.Action("partialViewAgendaModule",
-    new { page }))
-</div>
 
-<script>
-    $(function () {
-        $('#pager2').on('click', 'a', function () {
-            if (this.href == "") { return; }
-            $.ajax({
-                url: this.href,
-                type: 'GET',
-                cache: false,
-                success: function (result) {
-                    $('#agendaModules').html(result);
-                }
-            });
-            return false;
-        });
-    });
-
-</script>

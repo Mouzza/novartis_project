@@ -15,14 +15,26 @@
             </div>
 
             <input type="submit" value="" class="imgClass" />
+            @if (Request.Url.AbsoluteUri.Contains("http://localhost:44302/Home/Main"))
+            {
+                <a id="MainFilterJO" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.LikesSortParm }, null)"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" /> </a>
+                <a id="MainFilterOJ" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.NPopSortParm }, null)"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </a>
+                <a id="MainFilterZA" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.ZASortParm }, null)"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </a>
+                <a id="MainFilterAZ" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.AZSortParm }, null)"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </a>
 
 
-            <button id="MainFilterJO"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" onclick="location.href='@Url.Action("AntwoordController", "Controllers" )'"/> </button>
-            <button id="MainFilterOJ"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </button>
-            <button id="MainFilterZA"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </button>
-            <button id="MainFilterAZ"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </button>
 
-            
+            }
+            else if (Request.Url.AbsoluteUri.Contains("http://localhost:44302/"))
+            {
+                <a id="MainFilterJO" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.LikesSortParm }, null)"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" /> </a>
+                <a id="MainFilterOJ" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.NPopSortParm }, null)"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </a>
+                <a id="MainFilterZA" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.ZASortParm }, null)"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </a>
+                <a id="MainFilterAZ" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.AZSortParm }, null)"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </a>
+
+            }
+
+   
         </div>
     </p>
     
@@ -30,7 +42,7 @@
 }
 <div id="pager">
     @Html.PagedListPager(Model, page => Url.Action("homePartialAntwoorden",
-            new { page, currentFilter = ViewBag.CurrentFilter }))
+                    new { page, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.CurrentSort }))
 </div>
     <div id="homeMidContent">
 

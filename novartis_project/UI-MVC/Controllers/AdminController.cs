@@ -64,15 +64,7 @@ namespace JPP.UI.Web.MVC.Controllers
             
         }
 
-        public ActionResult Menu()
-        {
-     
-            return View();
 
-        }
-
-
-   
       
     }
 }
