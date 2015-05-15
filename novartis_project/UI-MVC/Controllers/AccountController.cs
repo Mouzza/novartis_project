@@ -24,17 +24,14 @@ namespace JPP.UI.Web.MVC.Controllers
     public class AccountController : Controller
     {
         private ApplicationUserManager _userManager;
-
         public AccountController()
         {
         }
-
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
         }
-
         public ApplicationUserManager UserManager
         {
             get
@@ -46,7 +43,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 _userManager = value;
             }
         }
-
         public ApplicationRoleManager roleManager;
         public ApplicationRoleManager RoleManager
         {
@@ -56,14 +52,11 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             private set { this.roleManager = value; }
         }
-
         private ApplicationDbContext apc = new ApplicationDbContext();
-
         public ActionResult AccessDenied()
         {
             return View();
         }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -72,9 +65,7 @@ namespace JPP.UI.Web.MVC.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
         private ApplicationSignInManager _signInManager;
-
         public ApplicationSignInManager SignInManager
         {
             get
@@ -83,7 +74,6 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             private set { _signInManager = value; }
         }
-
         //
         // POST: /Account/Login
         [HttpPost]
@@ -133,7 +123,6 @@ namespace JPP.UI.Web.MVC.Controllers
                     return View(model);
             }
         }
-
         //
         // GET: /Account/VerifyCode
         [AllowAnonymous]
@@ -153,7 +142,6 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
-
         //
         // POST: /Account/VerifyCode
         [HttpPost]
@@ -183,7 +171,6 @@ namespace JPP.UI.Web.MVC.Controllers
                     return View(model);
             }
         }
-
         // GET: /Account/Register
         [AllowAnonymous]
         [Authorize(Roles = "Admin")]
@@ -191,7 +178,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
-
         //
         // POST: /Account/Register
         [HttpPost]
@@ -230,14 +216,12 @@ namespace JPP.UI.Web.MVC.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
             return View();
         }
-
         //
         // POST: /Account/Register
         [HttpPost]
@@ -292,7 +276,6 @@ namespace JPP.UI.Web.MVC.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
         //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
@@ -305,7 +288,6 @@ namespace JPP.UI.Web.MVC.Controllers
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
-
         //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
@@ -313,7 +295,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
-
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
@@ -350,7 +331,6 @@ namespace JPP.UI.Web.MVC.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
         //
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
@@ -358,7 +338,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
-
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
@@ -366,7 +345,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return code == null ? View("Error") : View();
         }
-
         //
         // POST: /Account/ResetPassword
         [HttpPost]
@@ -392,7 +370,6 @@ namespace JPP.UI.Web.MVC.Controllers
             AddErrors(result);
             return View();
         }
-
         //
         // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
@@ -400,7 +377,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
-
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
@@ -411,7 +387,6 @@ namespace JPP.UI.Web.MVC.Controllers
             // Request a redirect to the external login provider
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
-
         //
         // GET: /Account/SendCode
         [AllowAnonymous]
@@ -426,7 +401,6 @@ namespace JPP.UI.Web.MVC.Controllers
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
-
         //
         // POST: /Account/SendCode
         [HttpPost]
@@ -446,7 +420,6 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
-
         //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
@@ -476,7 +449,6 @@ namespace JPP.UI.Web.MVC.Controllers
                     return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
-
         //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
@@ -519,9 +491,6 @@ namespace JPP.UI.Web.MVC.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
-
-       
-
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -535,7 +504,6 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]

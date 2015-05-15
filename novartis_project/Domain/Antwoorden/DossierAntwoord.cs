@@ -10,6 +10,7 @@ namespace JPP.BL.Domain.Antwoorden
 {
     public class DossierAntwoord:Antwoord
     {
+        public int layoutOption { get; set; }
         public string afbeeldingPath { get; set; }
         public string textvak2 { get; set; }
         public string textvak3 { get; set; }

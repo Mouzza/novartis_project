@@ -23,6 +23,7 @@ namespace JPP.UI.Web.MVC.Controllers
     {
         AntwoordManager antwManager = new AntwoordManager();
         ModuleManager dossManager = new ModuleManager();
+
         // GET: Antwoord
         public ActionResult Index()
         {
@@ -71,7 +72,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
-        ModuleManager modMan = new ModuleManager();
+
 
         [HttpPost]
         public ActionResult AdjustableDossierModelOne(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
@@ -84,7 +85,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
             }
             dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            //antwManager.createDossierAntwoord(dossierAntwoord);
             dossierAntwoord.comments = new List<Comment>();
             dossierAntwoord.vasteTags = new List<VasteTag>();
             dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
@@ -94,19 +94,23 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+            dossierAntwoord.layoutOption = 1;
 
+           DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+           dossierAntwoord.module = actieveDossierModule;
+           actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
+           dossManager.updateDossierModule(actieveDossierModule);
+           
+           Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
+
+            
             return RedirectToAction("DossierModelOne", new { id = createddos.ID });
         }
 
 
 
 
-        public ActionResult CreateDossier()
-        {
-            return View();
-        }
+ 
 
         public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossierAntwoord)
         {
@@ -160,8 +164,14 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+            dossierAntwoord.layoutOption = 2;
+
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+            dossierAntwoord.module = actieveDossierModule;
+            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
+            dossManager.updateDossierModule(actieveDossierModule);
+
+            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
 
             return RedirectToAction("DossierModelTwo", new { id = createddos.ID });
         }
@@ -218,8 +228,14 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+            dossierAntwoord.layoutOption = 3;
+
+             DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+            dossierAntwoord.module = actieveDossierModule;
+            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
+            dossManager.updateDossierModule(actieveDossierModule);
+
+            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
 
             return RedirectToAction("DossierModelThree", new { id = createddos.ID });
         }
@@ -276,9 +292,14 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+            dossierAntwoord.layoutOption = 5;
 
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+            dossierAntwoord.module = actieveDossierModule;
+            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
+            dossManager.updateDossierModule(actieveDossierModule);
+
+            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
             return RedirectToAction("DossierModelFive", new { id = createddos.ID });
         }
 
@@ -334,8 +355,14 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+            dossierAntwoord.layoutOption = 6;
+
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+            dossierAntwoord.module = actieveDossierModule;
+            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
+            dossManager.updateDossierModule(actieveDossierModule);
+
+            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
 
             return RedirectToAction("DossierModelSix", new { id = createddos.ID });
         }
@@ -699,58 +726,7 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-        // POST: Antwoord/Create
-        [HttpPost]
-        public ActionResult Create(DossierAntwoord dossierAntwoord)
-        {
-            try
-            {
-
-                DossierModule dossiermodule = dossManager.readActieveDossierModule();
-
-                
-                dossierAntwoord.datum = DateTime.Now;
-                dossierAntwoord.aantalFlags = 0;  
-                dossierAntwoord.aantalStemmen = 0;
-                dossierAntwoord.statusOnline = true;
-                dossierAntwoord.module = dossiermodule;
-                dossierAntwoord.gebruikersNaam= User.Identity.GetUserName();
-
-                antwManager.createDossierAntwoord(dossierAntwoord);
-                //dossiermodule.dossierAntwoorden.Add(dossierAntwoord);
-                //dossManager.updateModule(dossiermodule);
-                return RedirectToAction("Index","Home");
-                 
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-
-
         
-
-
-
-
-        //[HttpPost]
-        //public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file)
-        //{
-
-        //    if (file.ContentLength > 0)
-        //    {
-        //        var fileName = Path.GetFileName(file.FileName);
-        //        var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-        //        file.SaveAs(path);
-        //    }
-
-        //    return RedirectToAction("AdjustableDossierModelOne");
-        //}
-
-
-
         // GET: Antwoord/Edit/5
         public ActionResult Edit(int id)
         {

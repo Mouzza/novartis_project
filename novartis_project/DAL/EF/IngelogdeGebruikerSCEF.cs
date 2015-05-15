@@ -17,11 +17,7 @@ namespace JPP.DAL.EF
 {
    public class IngelogdeGebruikerSCEF : NietIngelogdeGebruikerSCEF, IngelogdeGebruikerHC
     {
-        EFDbContext dbcontext;
-        public IngelogdeGebruikerSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+       EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
 
         public Beheerder createBeheerder(Beheerder gebruiker)
         {

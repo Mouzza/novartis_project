@@ -135,13 +135,13 @@ namespace JPP.BL
         {
 
 
-            return dossierAntwoorden.OrderBy(o => o.datum).ToList();
+            return dossierAntwoorden.OrderByDescending(o => o.datum).ToList();
         }
         public List<DossierAntwoord> sortDossierAntwoordOudNieuw(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
 
-            return dossierAntwoorden.OrderByDescending(o => o.datum).ToList();
+            return dossierAntwoorden.OrderBy(o => o.datum).ToList();
         }
         public List<DossierAntwoord> sortDossierAntwoordMeesteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
@@ -229,12 +229,7 @@ namespace JPP.BL
 
         public Antwoord createDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            //ModuleManager modMan = new ModuleManager();
-
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            //DossierModule module = (DossierModule)inlog.getModule(dossierAntwoord.module.ID);
-            //module.dossierAntwoorden.Add(dossierAntwoord);
-
+            
             return inlog.maakDossierAntwoord(dossierAntwoord);
 
         }

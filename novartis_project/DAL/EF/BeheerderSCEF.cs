@@ -17,11 +17,7 @@ namespace JPP.DAL.EF
     public class BeheerderSCEF : MedebeheerderSCEF, BeheerderHC
     {
 
-        EFDbContext dbcontext;
-        public BeheerderSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
         public Medebeheerder createMedeBeheerder(Medebeheerder medebeheerder)
         {
 
