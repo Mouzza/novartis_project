@@ -368,6 +368,11 @@
     <Content Include="Images\buttonAgenda.png" />
     <Content Include="Images\buttonDossier.png" />
     <Content Include="Images\dossier-white.png" />
+    <Content Include="Images\DossierModel\Layout 1.png" />
+    <Content Include="Images\DossierModel\Layout 2.png" />
+    <Content Include="Images\DossierModel\Layout 3.png" />
+    <Content Include="Images\DossierModel\Layout 4.png" />
+    <Content Include="Images\DossierModel\Layout 5.png" />
     <Content Include="Images\filter.png" />
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />

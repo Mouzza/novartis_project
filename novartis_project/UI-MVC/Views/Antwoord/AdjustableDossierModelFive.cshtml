@@ -21,30 +21,33 @@
 </script>
 
 <div id="AdjustableButtonWrapper">
-    <div id="OptionsbarTitle">Kies je Layout</div>
-    <button id="AdjButtonSix"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" onclick="location.href='@Url.Action("AdjustableDossierModelSix", "Antwoord")'" /> </button>
-    <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/sort.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
-    <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
-    <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
-</div>
+    <div id="OptionsbarTitle">1. Kies je Layout</div>
+    <div id="AdjButtonWrapper">
+        <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/DossierModel/Layout 1.png" onclick="location.href='@Url.Action("AdjustableDossierModelOne", "Antwoord")'" /> </button>
+        <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/DossierModel/Layout 2.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
+        <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 3.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
+        <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 4.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
+        <button id="AdjButtonSix"> <img id="MainFilterImgJO" src="~/Images/DossierModel/Layout 5.png" onclick="location.href='@Url.Action("AdjustableDossierModelSix", "Antwoord")'" /> </button>
+    </div>
+    </div>
 
 @using (Html.BeginForm("", "Antwoord/AdjustableDossierModelFive", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
     <div id="OptionsBar">
-        <div id="OptionsbarTitle">Personaliseer</div>
+        <div id="OptionsbarTitle">2. Personaliseer</div>
         <div id="AdjCleanUp">
 
             <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress) @Html.ValidationMessageFor(model => model.googleMapsAdress)</div>
             <!--<input type="text" name="googleMaps" />-->
             <div id="persoonlijkeTags">Persoonlijke Tags: @Html.TextBoxFor(model => model.persoonlijkeTags)</div>
-            <div id="foregroundColor">tekstkleur: @Html.TextBoxFor(model => model.foregroundColor)</div>
-            <div id="backgroundColor">achtergrondKleur: @Html.TextBoxFor(model => model.backgroundColor)</div>
+            <div id="foregroundColor">Kleur van tekst: @Html.TextBoxFor(model => model.foregroundColor)</div>
+            <div id="backgroundColor">Kleur van achtergrond: @Html.TextBoxFor(model => model.backgroundColor)</div>
 
 
         </div>
     </div>
 
-    <div id="OptionsbarTitleHead">Creëer je eigen pagina!</div>
+    <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
 
     @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
     @Html.ValidationMessageFor(model => model.titel)
@@ -55,7 +58,7 @@
 
 <div id="TextWrapperFive">
 
-        @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelThreeTextVakEen" })
+        @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelFiveTextVakEen" })
         @Html.ValidationMessageFor(model => model.inhoud)
 
         <div id="TweeTextvakWrapperTwo">
@@ -74,7 +77,7 @@
         </div>
     </div>
 
-    <div id="DossierModelTwoAfbeelding">
+    <div id="DossierModelFiveAfbeelding">
         <img src="@Url.Content(Model.afbeeldingPath)" />
 
         <div id="map-canvasTwo"></div>
@@ -86,4 +89,10 @@
     <input id="fileUploadInput" type="file" name="file" />
 
 <div id="DossierModelTwoTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
-}
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Bevestig" class="btn btn-default" />
+        </div>
+    </div>
+    }
