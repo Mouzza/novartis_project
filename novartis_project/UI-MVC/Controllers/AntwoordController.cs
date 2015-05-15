@@ -101,10 +101,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
 
-        public ActionResult AdjustableDossierModelSix()
-        {
-            return View();
-        }
+
 
         public ActionResult CreateDossier()
         {
@@ -282,7 +279,65 @@ namespace JPP.UI.Web.MVC.Controllers
             //dossierAntwoord.module = modMan.readActieveDossierModule();
             Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
 
-            return RedirectToAction("DossierModelThree", new { id = createddos.ID });
+            return RedirectToAction("DossierModelFive", new { id = createddos.ID });
+        }
+
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord)
+        {
+
+            //if (!Request.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Login","Account");
+            //}
+
+            if (dossierAntwoord.titel != null)
+            {
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "~/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
+        {
+            if (file != null && file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                file.SaveAs(path);
+                dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
+            }
+            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
+            //antwManager.createDossierAntwoord(dossierAntwoord);
+            dossierAntwoord.comments = new List<Comment>();
+            dossierAntwoord.vasteTags = new List<VasteTag>();
+            dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
+            dossierAntwoord.datum = DateTime.Now;
+            dossierAntwoord.aantalStemmen = 0;
+            dossierAntwoord.percentageVolledigheid = 95;
+            dossierAntwoord.statusOnline = true;
+            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
+            dossierAntwoord.aantalFlags = 0;
+            //dossierAntwoord.module = modMan.readActieveDossierModule();
+            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord);  // CreateDossier geeft problemen
+
+            return RedirectToAction("DossierModelSix", new { id = createddos.ID });
         }
 
 
@@ -395,9 +450,31 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
-        public ActionResult DossierModelSix()
+        public ActionResult DossierModelSix(int id)
         {
-            return View();
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
+            {
+                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
         }
 
         public ActionResult homePartialAntwoorden(string searchString, string currentFilter, string sortOrder, int? page)
@@ -648,20 +725,6 @@ namespace JPP.UI.Web.MVC.Controllers
 
         //    return RedirectToAction("AdjustableDossierModelOne");
         //}
-
-        [HttpPost]
-        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file)
-        {
-
-            if (file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("AdjustableDossierModelOne");
-        }
 
 
 
