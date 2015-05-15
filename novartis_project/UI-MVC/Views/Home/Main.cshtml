@@ -39,8 +39,31 @@
     <button id="hide"><span>Verberg</span></button>
     <button id="show"><span>Toon</span></button>
     <p>
-        <span>Populairste pagina's</span>
+        @if (Request.Url.AbsoluteUri.Contains("AZ"))
+        {
+            <span>Pagina's gesorteerd op titel(A-Z)</span>
+        }
+        else if (Request.Url.AbsoluteUri.Contains("ZA"))
+        {
+            <span>Pagina's gesorteerd op titel(Z-A)</span>
+        }
+        else if (Request.Url.AbsoluteUri.Contains("Likes"))
+        {
+            <span>Populairste pagina's</span>
+        }
+        else if (Request.Url.AbsoluteUri.Contains("NPop"))
+        {
+            <span>Minst populairste pagina's</span>
+        }
+        else
+        {
+            <span>Meest recente pagina's</span>
+        }
+
     </p>
+
+
+
 
   
 
