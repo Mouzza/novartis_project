@@ -203,6 +203,17 @@ namespace JPP.BL
         {
            return inlog.getAntwoord(id);
         }
+
+        public DossierAntwoord readDossierAntwoord(int id)
+        {
+            return inlog.getDossierAntwoord(id);
+        }
+
+        public AgendaAntwoord readAgendaAntwoord(int id)
+        {
+            return inlog.getAgendaAntwoord(id);
+        }
+
         public List<DossierAntwoord> readAllDossierAntwoorden()
         {
             List<DossierAntwoord> dossierReturn = inlog.getAllDossierAntwoorden();
@@ -247,11 +258,11 @@ namespace JPP.BL
         }
         public void stemOpComment(int id)
         {
-            beheerder.stemOpComment(id);
+            inlog.stemOpComment(id);
         }
         public void stemOpAntwoord(int id)
         {
-            beheerder.stemOpAntwoord(id);
+            inlog.stemOpAntwoord(id);
         }
 
          

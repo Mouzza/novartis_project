@@ -14,7 +14,7 @@ using System.Configuration;
 
 namespace JPP.DAL.EF
 {
-   public class MedebeheerderSCEF : IngelogdeGebruikerSCEF, MedebeheerderHC
+   public class MedebeheerderSCEF : MedebeheerderHC
     {
         EFDbContext dbcontext;
         public MedebeheerderSCEF()
@@ -32,6 +32,7 @@ namespace JPP.DAL.EF
         {
             dbcontext.Entry(dossierAntwoord).State = System.Data.Entity.EntityState.Modified;
             dbcontext.SaveChanges();
+            dbcontext.Database.Connection.Close();
         }
         public void wijzigAgendaAntwoord(AgendaAntwoord agendeaAntwoord)
         {

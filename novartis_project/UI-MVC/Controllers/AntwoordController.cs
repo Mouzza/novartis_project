@@ -91,7 +91,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -157,7 +157,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -215,7 +215,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -273,7 +273,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -331,7 +331,7 @@ namespace JPP.UI.Web.MVC.Controllers
             dossierAntwoord.datum = DateTime.Now;
             dossierAntwoord.aantalStemmen = 0;
             dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = true;
+            dossierAntwoord.statusOnline = false;
             //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
             dossierAntwoord.aantalFlags = 0;
             //dossierAntwoord.module = modMan.readActieveDossierModule();
@@ -347,7 +347,7 @@ namespace JPP.UI.Web.MVC.Controllers
             DossierAntwoord dossierAntwoord = new DossierAntwoord();
             if (id != null)
             {
-                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                dossierAntwoord = (DossierAntwoord)antwManager.readDossierAntwoord(id);
                 return View(dossierAntwoord);
             }
             else
@@ -367,6 +367,17 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 return View(dossierAntwoord);
             }
+        }
+
+        [HttpPost]
+        public ActionResult DossierModelOne(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+            
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelOne", new { id = dossierAntwoord.ID });
+
         }
 
         public ActionResult DossierModelTwo(int id)
@@ -784,6 +795,52 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord)
+        {
+
+            //if (!Request.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Login","Account");
+            //}
+
+            if (agendaAntwoord.titel != null)
+            {
+                return View(agendaAntwoord);
+            }
+            else
+            {
+
+                agendaAntwoord = new AgendaAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+
+                };
+
+                return View(agendaAntwoord);
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection collection)
+        {
+            agendaAntwoord.gebruikersNaam = User.Identity.GetUserName();
+            //antwManager.createDossierAntwoord(dossierAntwoord);
+            agendaAntwoord.vasteTags = new List<VasteTag>();
+            agendaAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
+            agendaAntwoord.datum = DateTime.Now;
+            agendaAntwoord.aantalStemmen = 0;
+            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
+            agendaAntwoord.aantalFlags = 0;
+            //dossierAntwoord.module = modMan.readActieveDossierModule();
+            Antwoord createddos = antwManager.createAgendaAntwoord(agendaAntwoord);  // CreateDossier geeft problemen
+
+            return RedirectToAction("Agenda", new { id = createddos.ID });
         }
     }
 }
