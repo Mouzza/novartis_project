@@ -23,6 +23,64 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
 
 
+        public ActionResult DossModules()
+        {
+            return View();
+        }
+        public ActionResult AgdModules()
+        {
+            return View();
+
+        }
+
+        public ActionResult GeplandeDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeplandeModules().OfType<DossierModule>();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult GeplandeAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeplandeModules().OfType<AgendaModule>();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+        public ActionResult GeslotenDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+     
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeslotenDossiers();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult GeslotenAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+     
+       
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeslotenAgendas();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
 
         public ActionResult CommingSoon()
         {
@@ -48,23 +106,21 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-       public ActionResult partialViewDossierModule(int? page)
+       public ActionResult partialViewDossierModule()
        {
-           int pageSize = 5;
-           int pageNumber = (page ?? 1);
 
-           IEnumerable<DossierModule> DossierModules = moduleManager.readAllDossierModules();
 
-           return PartialView(DossierModules.ToPagedList(pageNumber, pageSize));
+          DossierModule dossierModule = moduleManager.readActieveDossierModule();
+
+           return PartialView(dossierModule);
 
        }
-       public ActionResult partialViewAgendaModule(int? page)
+       public ActionResult partialViewAgendaModule()
        {
-           int pageSize = 5;
-           int pageNumber = (page ?? 1);
+          
 
-           IEnumerable<AgendaModule> AgendaModules = moduleManager.readAllAgendaModules();
-           return PartialView(AgendaModules.ToPagedList(pageNumber, pageSize));
+           AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
+           return PartialView(agendaModule);
        }
        public ActionResult Dossier()
        {
@@ -125,8 +181,8 @@ namespace JPP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-                moduleManager.removeModule(id);
-                return RedirectToAction("Index", "Module");
+                moduleManager.removeDossierModule(id);
+                return RedirectToAction("DossModules", "Module");
             }
             catch
             {
@@ -149,8 +205,8 @@ namespace JPP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-                moduleManager.removeModule(id);
-                return RedirectToAction("Index", "Module");
+                moduleManager.removeAgendaModule(id);
+                return RedirectToAction("AgdModules", "Module");
             }
             catch
             {
@@ -177,7 +233,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 // TODO: Add update logic here
 
                 moduleManager.updateDossierModule(DossierModule);
-                return RedirectToAction("Index");
+                return RedirectToAction("DossModules", "Module");
             }
             catch
             {
@@ -205,7 +261,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 // TODO: Add update logic here
 
                 moduleManager.updateAgendaModule(agendaModule);
-                return RedirectToAction("Index");
+                return RedirectToAction("AgdModules", "Module");
             }
             catch
             {

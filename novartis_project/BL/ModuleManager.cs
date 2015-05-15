@@ -222,9 +222,14 @@ namespace JPP.BL
             admin.wijzigAgendaModule(agendaModule);
         }
 
-        public void removeModule(int id)
+        public void removeDossierModule(int id)
         {
-            admin.deleteModule(id);
+            admin.deleteDossierModule(id);
+        }
+
+        public void removeAgendaModule(int id)
+        {
+            admin.deleteAgendaModule(id);
         }
 
         public List<DossierModule> readGeslotenDossiers()

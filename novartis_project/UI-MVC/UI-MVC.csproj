@@ -565,7 +565,6 @@
     <Content Include="Views\Antwoord\DossierModelThree.cshtml" />
     <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
-    <Content Include="Views\Admin\Menu.cshtml" />
     <Content Include="Views\Antwoord\CreateDossier.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelOne.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelTwo.cshtml" />
@@ -576,6 +575,12 @@
     <Content Include="Views\Module\_Create.cshtml" />
     <Content Include="Views\Module\_Delete.cshtml" />
     <Content Include="Views\Module\_Edit.cshtml" />
+    <Content Include="Views\Module\DossModules.cshtml" />
+    <Content Include="Views\Module\AgdModules.cshtml" />
+    <Content Include="Views\Module\GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Module\GeplandeAgendaModules.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

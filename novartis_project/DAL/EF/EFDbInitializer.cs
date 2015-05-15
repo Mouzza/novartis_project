@@ -22,14 +22,21 @@ namespace JPP.DAL.EF
        protected override void Seed(EFDbContext context)
         {
 
-            VasteVraagAntwoord vasteVraagAntwoord = new VasteVraagAntwoord()
+
+            #region actieve modules
+
+            VasteVraagAntwoord vasteVraagAntwoord1 = new VasteVraagAntwoord()
             {
-                inhoud="Zorgt voor een positieve en gezonde bezigheid voor de buurtbewoners.",  
+                inhoud = "Zorgt voor een positieve en gezonde bezigheid voor de buurtbewoners.",
             };
-            VasteVraag vasteVraag = new VasteVraag()
+
+            VasteVraagAntwoord vasteVraagAntwoord2 = new VasteVraagAntwoord()
+            {
+                inhoud = "Zorgt voor een positieve en gezonde bezigheid voor de buurtbewoners.",
+            };
+            VasteVraag vasteVraag1 = new VasteVraag()
             {
 
-             
                 inhoud = "Wat voor impact heeft dit voor de gebruikers van uw idee?",
                 extraInfo = "Dit is extra info en is verplicht in te vullen",
 
@@ -37,14 +44,24 @@ namespace JPP.DAL.EF
                 vasteVraagAntwoorden = new List<VasteVraagAntwoord>()
 
             };
-          
+            VasteVraag vasteVraag2 = new VasteVraag()
+            {
+
+                inhoud = "Wat voor impact heeft dit voor de gebruikers van uw idee?",
+                extraInfo = "Dit is extra info en is verplicht in te vullen",
+
+                boolVerplicht = true,
+                vasteVraagAntwoorden = new List<VasteVraagAntwoord>()
+
+            };
+
             CentraleVraag centraleVraag = new CentraleVraag()
             {
-                    inhoud="Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?",
-                    extraInfo="Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
-                    datum= new DateTime(2015, 9, 10, 15, 5, 59),
-                    aantalWinAntwoorden = 1,
-                   
+                inhoud = "Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?",
+                extraInfo = "Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
+                datum = new DateTime(2015, 9, 10, 15, 5, 59),
+                aantalWinAntwoorden = 1,
+
 
             };
 
@@ -57,30 +74,47 @@ namespace JPP.DAL.EF
 
 
             };
-            Thema thema = new Thema()
+            Thema thema1 = new Thema()
             {
-                naam="Sport",
-               
-                modules = new List<Module>()
-         
-             
-            };
-            Beloning beloning = new Beloning()
-            {
-                naam="Reis naar barcelona",
-                beschrijving="Win een reis naar barcelona!",
+                naam = "Sport",
+
                 modules = new List<Module>()
 
 
             };
-          
+            Thema thema2 = new Thema()
+            {
+                naam = "Plezier",
+
+                modules = new List<Module>()
+
+
+            };
+            Beloning beloning1 = new Beloning()
+            {
+                naam = "Cinema tickets",
+                beschrijving = "UGC!",
+                modules = new List<Module>()
+
+
+            };
+            Beloning beloning2 = new Beloning()
+            {
+                naam = "Reis naar Madrid",
+                beschrijving = "Madrid vliegticket!",
+                modules = new List<Module>()
+
+
+            };
+
+
             DossierModule dossierModule = new DossierModule()
             {
-                  
+
                 adminNaam = "Admin",
                 naam = "Rivierenhof categorie",
-                beginDatum= new DateTime(2014, 03, 10, 15, 5, 59),
-                eindDatum= new DateTime(2018, 10, 10, 15, 5, 59),
+                beginDatum = new DateTime(2014, 03, 10, 15, 5, 59),
+                eindDatum = new DateTime(2016, 10, 10, 15, 5, 59),
                 verplichteVolledigheidsPercentage = 90.5,
                 dossierAntwoorden = new List<DossierAntwoord>(),
                 status = true
@@ -89,11 +123,11 @@ namespace JPP.DAL.EF
             };
             AgendaModule agendaModule = new AgendaModule()
             {
-              
+
                 adminNaam = "Admin",
-                naam = "Rivierenhof categorie",
+                naam = "Sporthal antwerpen",
                 beginDatum = new DateTime(2014, 03, 10, 15, 5, 59),
-                eindDatum = new DateTime(2018, 10, 10, 15, 5, 59),
+                eindDatum = new DateTime(2016, 10, 10, 15, 5, 59),
                 agendaAntwoorden = new List<AgendaAntwoord>(),
                 status = true
 
@@ -113,7 +147,7 @@ namespace JPP.DAL.EF
 
                 naam = "Sport",
                 antwoorden = new List<Antwoord>(),
-          
+
                 voorstellen = new List<Voorstel>()
             };
 
@@ -125,11 +159,303 @@ namespace JPP.DAL.EF
 
             };
 
+
+            for (int i = 0; i < 32; i++)
+            {
+
+                DossierAntwoord dossierAntwoord = new DossierAntwoord()
+                {
+
+
+                    gebruikersNaam = "Gebruiker1",
+                    titel = "Mijn oplossing (dossier)" + i,
+                    subtitel = "Een plein met fitness toestellen",
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Ik voeg wat extra tekst toe om de tekstvak in te vullen, Lol. Ik hoop dat ik dit vandaag af krijg. nog een paar woorden en we zijn klaar, ok klaar. Mvg, antw nummer: " + i,
+                    extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
+                    datum = DateTime.Now,
+                    aantalStemmen = i,
+                    percentageVolledigheid = 95,
+                    statusOnline = true,
+                    extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
+                    aantalFlags = 0,
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    afbeeldingPath = "~/uploads/Jellyfish.jpg",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium."
+                };
+
+                AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
+                {
+
+
+                    gebruikersNaam = "Gebruiker2",
+                    titel = "Mijn oplossing (agenda)" + i,
+                    subtitel = "Heraanleg rivierenhof",
+                    inhoud = "Heraanleg rivierenhof!blablablablablablablablablablablablablablablablablabla ! Mvg, antw nummer: " + i,
+                    extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
+                    datum = DateTime.Now,
+                    aantalStemmen = i,
+                    aantalFlags = 0,
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>()
+
+
+                };
+
+                agendaModule.agendaAntwoorden.Add(agendaAntwoord);
+                agendaAntwoord.module = agendaModule;
+                dossierModule.dossierAntwoorden.Add(dossierAntwoord);
+                dossierAntwoord.module = dossierModule;
+
+                //Tags
+                //tag.antwoorden.Add(dossierAntwoord);
+                //pTag.antwoorden.Add(dossierAntwoord);
+
+                //DossierAntwoord
+
+                //dossierAntwoord.vasteTags.Add(tag);
+                //dossierAntwoord.persoonlijkeTags.Add(pTag);
+
+            }
+
+            vasteVraagAntwoord1.vasteVraag = vasteVraag1;
+            vasteVraag1.vasteVraagAntwoorden.Add(vasteVraagAntwoord1);
+
+            //DossierModule
+            dossierModule.beloning = beloning1;
+            dossierModule.thema = thema1;
+            dossierModule.centraleVraag = centraleVraag;
+            dossierModule.vasteVraagEen = vasteVraag1;
+            dossierModule.organisatie = organisatieLeuven;
+            organisatieLeuven.modules.Add(dossierModule);
+            context.modules.Add(dossierModule);
+
+            //AgendaModule
+            agendaModule.beloning = beloning2;
+            agendaModule.thema = thema2;
+            agendaModule.organisatie = organisatieLeuven;
+            agendaModule.centraleVraag = centraleVraag2;
+            organisatieLeuven.modules.Add(dossierModule);
+
+    
+            context.modules.Add(agendaModule);
+
+            #endregion
+            #region geplande modules
+            //geplande modules
+            int jaar = 2015;
+            int jaar2 = 2016;
+            for (int x = 0; x < 10; x++)
+            {
+
+                jaar += 1;
+                jaar2 += 1;
+
+                CentraleVraag cvA = new CentraleVraag()
+                {
+                    inhoud = "Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?" + x,
+                    extraInfo = "Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
+                    datum = new DateTime(2015, 9, 10, 15, 5, 59),
+                    aantalWinAntwoorden = 1,
+
+
+                };
+                VasteVraag vvA = new VasteVraag()
+                {
+
+
+                    inhoud = "Wat voor impact heeft dit voor de gebruikers van uw idee?" + x,
+                    extraInfo = "Dit is extra info en is verplicht in te vullen",
+
+                    boolVerplicht = true,
+                    vasteVraagAntwoorden = new List<VasteVraagAntwoord>()
+
+                };
+
+                Thema themaA = new Thema()
+                {
+                    naam = "Sport" + x,
+
+                    modules = new List<Module>()
+
+
+                };
+                Beloning beloningA = new Beloning()
+                {
+                    naam = "Reis naar barcelona" + x,
+                    beschrijving = "Win een reis naar barcelona!",
+                    modules = new List<Module>()
+
+
+                };
+
+                CentraleVraag cvB = new CentraleVraag()
+                {
+                    inhoud = "Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?" + x,
+                    extraInfo = "Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
+                    datum = new DateTime(2015, 9, 10, 15, 5, 59),
+                    aantalWinAntwoorden = 1,
+
+
+                };
+                VasteVraag vvB = new VasteVraag()
+                {
+
+
+                    inhoud = "Wat voor impact heeft dit voor de gebruikers van uw idee?" + x,
+                    extraInfo = "Dit is extra info en is verplicht in te vullen",
+
+                    boolVerplicht = true,
+                    vasteVraagAntwoorden = new List<VasteVraagAntwoord>()
+
+                };
+
+                Thema themaB = new Thema()
+                {
+                    naam = "Sport" + x,
+
+                    modules = new List<Module>()
+
+
+                };
+                Beloning beloningB = new Beloning()
+                {
+                    naam = "Reis naar barcelona" + x,
+                    beschrijving = "Win een reis naar barcelona!",
+                    modules = new List<Module>()
+
+
+                };
+
+                DossierModule geplandeDossierModule = new DossierModule()
+                {
+
+                    adminNaam = "Admin",
+                    naam = "Rivierenhof speeltuin",
+                    beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
+                    eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
+                    verplichteVolledigheidsPercentage = 90.5,
+
+                    dossierAntwoorden = new List<DossierAntwoord>(),
+                    status = false
+
+
+                };
+                geplandeDossierModule.beloning = beloningA;
+                geplandeDossierModule.centraleVraag = cvA;
+                geplandeDossierModule.thema = themaA;
+                geplandeDossierModule.organisatie = organisatieLeuven;
+                geplandeDossierModule.vasteVraagEen = vvA;
+                context.modules.Add(geplandeDossierModule);
+
+
+                AgendaModule geplandeAgendaModule = new AgendaModule()
+                {
+
+                    adminNaam = "Admin",
+                    naam = "Hoe creatief ben jij?!",
+                    beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
+                    eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
+                    agendaAntwoorden = new List<AgendaAntwoord>(),
+                    status = false
+
+
+                };
+                geplandeAgendaModule.centraleVraag = cvB;
+                geplandeAgendaModule.beloning = beloningB;
+                geplandeAgendaModule.thema = themaB;
+                geplandeAgendaModule.organisatie = organisatieLeuven;
+                context.modules.Add(geplandeAgendaModule);
+
+
+
+            }
+
+
+            #endregion
+            #region gesloten modules
             //gesloten modules
             int oldJaar = 1950;
             int oldJaar2 = 1951;
             for (int x = 0; x < 4; x++)
             {
+                CentraleVraag cvX = new CentraleVraag()
+                {
+                    inhoud = "Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?" + x,
+                    extraInfo = "Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
+                    datum = new DateTime(2015, 9, 10, 15, 5, 59),
+                    aantalWinAntwoorden = 1,
+
+
+                };
+                VasteVraag vvX = new VasteVraag()
+                {
+
+
+                    inhoud = "Wat voor impact heeft dit voor de gebruikers van uw idee?" + x,
+                    extraInfo = "Dit is extra info en is verplicht in te vullen",
+
+                    boolVerplicht = true,
+                    vasteVraagAntwoorden = new List<VasteVraagAntwoord>()
+
+                };
+
+                Thema themaX = new Thema()
+                {
+                    naam = "Sport" + x,
+
+                    modules = new List<Module>()
+
+
+                };
+                Beloning beloningX = new Beloning()
+                {
+                    naam = "Reis naar barcelona" + x,
+                    beschrijving = "Win een reis naar barcelona!",
+                    modules = new List<Module>()
+
+
+                };
+
+                CentraleVraag cvY = new CentraleVraag()
+                {
+                    inhoud = "Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?" + x,
+                    extraInfo = "Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
+                    datum = new DateTime(2015, 9, 10, 15, 5, 59),
+                    aantalWinAntwoorden = 1,
+
+
+                };
+                VasteVraag vvY = new VasteVraag()
+                {
+
+
+                    inhoud = "Wat voor impact heeft dit voor de gebruikers van uw idee?" + x,
+                    extraInfo = "Dit is extra info en is verplicht in te vullen",
+
+                    boolVerplicht = true,
+                    vasteVraagAntwoorden = new List<VasteVraagAntwoord>()
+
+                };
+
+                Thema themaY = new Thema()
+                {
+                    naam = "Sport" + x,
+
+                    modules = new List<Module>()
+
+
+                };
+                Beloning beloningY = new Beloning()
+                {
+                    naam = "Reis naar barcelona" + x,
+                    beschrijving = "Win een reis naar barcelona!",
+                    modules = new List<Module>()
+
+
+                };
 
                 oldJaar += 1;
                 oldJaar2 += 1;
@@ -148,11 +474,11 @@ namespace JPP.DAL.EF
 
 
                 };
-                geslotenDossierModule.beloning = beloning;
-                geslotenDossierModule.centraleVraag = centraleVraag;
-                geslotenDossierModule.thema = thema;
+                geslotenDossierModule.beloning = beloningX;
+                geslotenDossierModule.centraleVraag = cvX;
+                geslotenDossierModule.thema = themaX;
                 geslotenDossierModule.organisatie = organisatieLeuven;
-                geslotenDossierModule.vasteVraagEen = vasteVraag;
+                geslotenDossierModule.vasteVraagEen = vvX;
                 context.modules.Add(geslotenDossierModule);
 
 
@@ -168,9 +494,9 @@ namespace JPP.DAL.EF
 
 
                 };
-                geslotenAgendaModule.centraleVraag = centraleVraag2;
-                geslotenAgendaModule.beloning = beloning;
-                geslotenAgendaModule.thema = thema;
+                geslotenAgendaModule.centraleVraag = cvY;
+                geslotenAgendaModule.beloning = beloningY;
+                geslotenAgendaModule.thema = themaY;
                 geslotenAgendaModule.organisatie = organisatieLeuven;
                 context.modules.Add(geslotenAgendaModule);
 
@@ -220,150 +546,14 @@ namespace JPP.DAL.EF
 
                     geslotenAgendaModule.agendaAntwoorden.Add(agendaAntwoord);
                     agendaAntwoord.module = geslotenAgendaModule;
-                    dossierModule.dossierAntwoorden.Add(dossierAntwoord);
-                    dossierAntwoord.module = dossierModule;
+                    geslotenDossierModule.dossierAntwoorden.Add(dossierAntwoord);
+                    dossierAntwoord.module = geslotenDossierModule;
 
                 }
             }
 
-            for (int i = 0; i < 32; i++)
-            {
-               
-                DossierAntwoord dossierAntwoord = new DossierAntwoord()
-                {
 
-                
-                    gebruikersNaam = "Gebruiker1",
-                    titel ="Mijn oplossing (dossier)" + i ,
-                    subtitel ="Een plein met fitness toestellen",
-                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Ik voeg wat extra tekst toe om de tekstvak in te vullen, Lol. Ik hoop dat ik dit vandaag af krijg. nog een paar woorden en we zijn klaar, ok klaar. Mvg, antw nummer: " + i,
-                    extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
-                    datum = DateTime.Now,
-                    aantalStemmen = i,
-                    percentageVolledigheid = 95,
-                    statusOnline = true,
-                    extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
-                    aantalFlags = 0,
-                    comments = new List<Comment>(),
-                    vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
-                    afbeeldingPath="~/uploads/Jellyfish.jpg",
-                    textvak2="Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    textvak3= "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium."
-                };
-
-                AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
-                {
-
-
-                    gebruikersNaam = "Gebruiker2",
-                    titel = "Mijn oplossing (agenda)" + i,
-                    subtitel="Heraanleg rivierenhof",
-                    inhoud = "Heraanleg rivierenhof!blablablablablablablablablablablablablablablablablabla ! Mvg, antw nummer: " + i,
-                    extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
-                    datum = DateTime.Now,
-                    aantalStemmen = i,             
-                    aantalFlags = 0,
-                    vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>()
-
-
-                };
-                
-                agendaModule.agendaAntwoorden.Add(agendaAntwoord);
-                agendaAntwoord.module = agendaModule;
-                dossierModule.dossierAntwoorden.Add(dossierAntwoord);
-                dossierAntwoord.module = dossierModule;
-
-                //Tags
-                //tag.antwoorden.Add(dossierAntwoord);
-                //pTag.antwoorden.Add(dossierAntwoord);
-
-                //DossierAntwoord
-        
-                //dossierAntwoord.vasteTags.Add(tag);
-                //dossierAntwoord.persoonlijkeTags.Add(pTag);
-
-            }
-
-            vasteVraagAntwoord.vasteVraag = vasteVraag;
-            vasteVraag.vasteVraagAntwoorden.Add(vasteVraagAntwoord);
-
-
-
-            //geplande modules
-            int jaar = 2015;
-            int jaar2 = 2016;
-            for (int x = 0; x < 10; x++)
-            {
-          
-                jaar+=1;
-                jaar2+=1;
-
-                DossierModule geplandeDossierModule = new DossierModule()
-                {
-                 
-                    adminNaam = "Admin",
-                    naam = "Rivierenhof speeltuin",
-                    beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
-                    eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
-                    verplichteVolledigheidsPercentage = 90.5,
-                   
-                    dossierAntwoorden = new List<DossierAntwoord>(),
-                    status = false
-
-
-                };
-                geplandeDossierModule.beloning = beloning;
-                geplandeDossierModule.centraleVraag = centraleVraag;
-                geplandeDossierModule.thema = thema;
-                geplandeDossierModule.organisatie = organisatieLeuven;
-                geplandeDossierModule.vasteVraagEen=vasteVraag;
-                context.modules.Add(geplandeDossierModule);
-
-
-                AgendaModule geplandeAgendaModule = new AgendaModule()
-                {
-                  
-                    adminNaam = "Admin",
-                    naam = "Hoe creatief ben jij?!",
-                    beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
-                    eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
-                    agendaAntwoorden = new List<AgendaAntwoord>(),
-                    status = false
-
-
-                };
-                geplandeAgendaModule.centraleVraag = centraleVraag2;
-                geplandeAgendaModule.beloning = beloning;
-                geplandeAgendaModule.thema = thema;
-                geplandeAgendaModule.organisatie = organisatieLeuven;
-                context.modules.Add(geplandeAgendaModule);
-
-                
-
-            }
-
-            
-
-            //DossierModule
-            dossierModule.beloning = beloning;
-            dossierModule.thema = thema;
-            dossierModule.centraleVraag = centraleVraag;
-            dossierModule.vasteVraagEen = vasteVraag;
-            dossierModule.organisatie = organisatieLeuven;
-            organisatieLeuven.modules.Add((Module)dossierModule);
-       
-           //AgendaModule
-
-            agendaModule.beloning = beloning;
-            agendaModule.thema = thema;
-            agendaModule.organisatie = organisatieLeuven;
-            agendaModule.centraleVraag = centraleVraag2;
-
-         
-            context.modules.Add(dossierModule);
-            context.modules.Add(agendaModule);
+            #endregion
             
             context.SaveChanges();
 
