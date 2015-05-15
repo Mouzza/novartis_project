@@ -68,3 +68,11 @@
 <div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
 
 
+
+    @using (Html.BeginForm("DossierModelOne", "Antwoord", new { id = Model.ID }, FormMethod.Post))
+    {
+        if (Model.statusOnline == false)
+        {
+            <button type="submit">Publish!</button>
+        }
+    }

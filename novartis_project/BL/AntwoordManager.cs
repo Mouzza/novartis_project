@@ -258,11 +258,11 @@ namespace JPP.BL
         }
         public void stemOpComment(int id)
         {
-            beheerder.stemOpComment(id);
+            inlog.stemOpComment(id);
         }
         public void stemOpAntwoord(int id)
         {
-            beheerder.stemOpAntwoord(id);
+            inlog.stemOpAntwoord(id);
         }
 
          

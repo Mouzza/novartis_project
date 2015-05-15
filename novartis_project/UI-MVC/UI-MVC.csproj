@@ -586,6 +586,7 @@
     <Content Include="Views\Module\_GeslotenAgendaModules.cshtml" />
     <Content Include="Views\Module\_GeplandeAgendaModules.cshtml" />
     <Content Include="Views\Module\_GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Antwoord\AdjAgendaAntwoord.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
