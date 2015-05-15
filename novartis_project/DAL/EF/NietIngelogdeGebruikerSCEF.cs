@@ -72,6 +72,19 @@ namespace JPP.DAL.EF
             return antwoord;
         }
 
+        public DossierAntwoord getDossierAntwoord(int ID)
+        {
+            DossierAntwoord antwoord = (DossierAntwoord)dbcontext.antwoord.Find(ID);
+            return antwoord;
+        }
+
+        public AgendaAntwoord getAgendaAntwoord(int ID)
+        {
+            AgendaAntwoord antwoord = (AgendaAntwoord)dbcontext.antwoord.Find(ID);
+            return antwoord;
+        }
+
+
         public IEnumerable<DossierAntwoord> getDossierAntwoorden()
         {
             return dbcontext.antwoord.OfType<DossierAntwoord>().ToList();

@@ -203,6 +203,17 @@ namespace JPP.BL
         {
            return inlog.getAntwoord(id);
         }
+
+        public DossierAntwoord readDossierAntwoord(int id)
+        {
+            return inlog.getDossierAntwoord(id);
+        }
+
+        public AgendaAntwoord readAgendaAntwoord(int id)
+        {
+            return inlog.getAgendaAntwoord(id);
+        }
+
         public List<DossierAntwoord> readAllDossierAntwoorden()
         {
             List<DossierAntwoord> dossierReturn = inlog.getAllDossierAntwoorden();
