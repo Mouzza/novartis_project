@@ -172,21 +172,13 @@ namespace JPP.UI.Web.MVC.Controllers
                 editable = agendaAntwoord.editable,
                 extraInfo = agendaAntwoord.extraInfo,
                 gebruikersNaam = agendaAntwoord.gebruikersNaam,
-                ID = agendaAntwoord.ID,
                 inhoud = agendaAntwoord.inhoud,
                 subtitel = agendaAntwoord.subTitel,
                 titel = agendaAntwoord.titel,
-                module = new Module(),
+                module = moduleManager.readAllAgendaModules().Find(o => o.ID==agendaAntwoord.moduleID),
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
             };
-            foreach (var module in moduleManager.readAllAgendaModules())
-            {
-                if (module.ID == agendaAntwoord.moduleID)
-                {
-                    agAntwoord.module = module;
-                }
-            }
             antwoordManager.createAgendaAntwoord(agAntwoord);
         }
         [HttpPost]
@@ -205,7 +197,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 inhoud = dossierAntwoord.inhoud,
                 subtitel = dossierAntwoord.subtitel,
                 titel = dossierAntwoord.titel,
-                module = new Module(),
+                module = moduleManager.readAllDossierModules().Find(o=>o.ID==dossierAntwoord.moduleID),
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
                 comments = new List<Comment>(),
@@ -213,7 +205,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 googleMapsAdress = dossierAntwoord.googleMapsAdress,
                 backgroundColor = dossierAntwoord.backgroundColor,
                 backgroundImage = dossierAntwoord.backgroundImage,
-                evenement=new Evenement(),
+                evenement=new Evenement(), //kan evenement niet oproepen
                 extraVraag = dossierAntwoord.extraVraag,
                 foregroundColor = dossierAntwoord.foregroundColor,
                 percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
@@ -221,6 +213,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 textvak2 = dossierAntwoord.textvak2,
                 textvak3 = dossierAntwoord.textvak3
             };
+            
             foreach(var vtag in dossierAntwoord.vasteTags)
             {
                 VasteTag tag = new VasteTag()
@@ -241,12 +234,17 @@ namespace JPP.UI.Web.MVC.Controllers
                 };
                 dosAntwoord.persoonlijkeTags.Add(tag);
             }
-            foreach (var module in moduleManager.readAllDossierModules())
+            foreach (var comment in dossierAntwoord.comments)
             {
-                if (module.ID == dossierAntwoord.moduleID)
+                Comment com = new Comment()
                 {
-                    dosAntwoord.module = module;
-                }
+                    ID = comment.ID,
+                    aantalStemmen=comment.aantalStemmen,
+                    datum=comment.datum,
+                    gebruikersNaam=comment.gebruikersNaam,
+                    inhoud=comment.inhoud
+                };
+                dosAntwoord.comments.Add(com);
             }
             antwoordManager.createDossierAntwoord(dosAntwoord);
         }
