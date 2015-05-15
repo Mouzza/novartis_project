@@ -400,8 +400,15 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, int? page)
+        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, string sortOrder, int? page)
         {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.LikesSortParm = sortOrder == "Likes" ? "" : "Likes";
+            ViewBag.NPopSortParm = sortOrder == "NPop" ? "" : "NPop";
+            ViewBag.AZSortParm = sortOrder == "AZ" ? "" : "AZ";
+            ViewBag.ZASortParm = sortOrder == "ZA" ? "" : "ZA";
+
             if (searchString != null)
             {
                 page = 1;
@@ -422,7 +429,29 @@ namespace JPP.UI.Web.MVC.Controllers
                 antwoorden = antwoorden.Where(antw => antw.inhoud.Contains(searchString)
                                        || antw.titel.Contains(searchString));
             }
+            switch (sortOrder)
+            {
+                case "AZ":
+                    antwoorden = antwManager.sortAntwoordAZ(antwoorden);
+                 
+                    break;
+                case "ZA":
+                    antwoorden = antwManager.sortAntwoordZA(antwoorden);
+                
+                    break;
+                case "NPop":
+                    antwoorden = antwManager.sortAntwoordMinsteLikes(antwoorden);
+            
+                    break;
+                case "Likes":
+                    antwoorden = antwManager.sortAntwoordMeesteLikes(antwoorden);
+              
+                    break;
+                default:
+                    antwoorden = antwManager.sortAntwoordNieuwOud(antwoorden);
          
+                    break;
+            }
             return PartialView(antwoorden.ToPagedList(pageNumber, pageSize));
         }
 
