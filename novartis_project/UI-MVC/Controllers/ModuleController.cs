@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using JPP.UI.Web.MVC.Models;
 using JPP.BL.Domain.Modules;
+using JPP.BL.Domain.Antwoorden;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using PagedList;
@@ -21,10 +22,55 @@ namespace JPP.UI.Web.MVC.Controllers
     {
 
         ModuleManager moduleManager = new ModuleManager();
+        AntwoordManager antwManager = new AntwoordManager();
+
+        public ActionResult VoteUp(int id)
+        {
+            DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
+            dossierAntwoord.aantalStemmen = (dossierAntwoord.aantalStemmen + 1);
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("Dossier", "Module");
+            
+        }
+
+        public ActionResult VoteUpAgenda(int id)
+        {
+            AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
+            agendaAntwoord.aantalStemmen = (agendaAntwoord.aantalStemmen + 1);
+            antwManager.updateAgendaAntwoord(agendaAntwoord);
+            return RedirectToAction("Agenda", "Module");
+
+        }
 
         public ActionResult VolgOp()
         {
             return View();
+        }
+
+        public ActionResult DossierModuleUitleg()
+        {
+            DossierModule dossierModule = moduleManager.readActieveDossierModule();
+            if (dossierModule.beloning.naam == null)
+            {
+                Beloning beloning = new Beloning();
+                beloning.naam = " ";
+                beloning.beschrijving = " ";
+                dossierModule.beloning = beloning;
+            }
+            return View(dossierModule);
+        }
+
+        public ActionResult AgendaModuleUitleg()
+        {
+            AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
+            if (agendaModule.beloning.naam == null)
+            {
+                Beloning beloning = new Beloning();
+                beloning.naam = " ";
+                beloning.beschrijving = " ";
+                agendaModule.beloning = beloning;
+            }
+            return View(agendaModule);
         }
 
         public ActionResult DossModules()

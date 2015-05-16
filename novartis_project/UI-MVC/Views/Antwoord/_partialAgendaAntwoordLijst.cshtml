@@ -90,11 +90,18 @@
 
                     <tr>
                         <td id="aantalStemmen">
-                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                            @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                            <img src="~/Images/oplosing2.png" />
                         </td>
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)
+                            <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                <a href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                            </div>
+                            <br />
+                            <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
 
                         </td>
 
@@ -112,11 +119,18 @@
 
                     <tr>
                         <td id="aantalStemmen">
-                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                            @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                            <img src="~/Images/oplosing2.png" />
                         </td>
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)
+                            <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                            </div>
+                            <br />
+                            <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
 
                         </td>
 
