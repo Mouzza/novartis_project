@@ -1651,7 +1651,17 @@ textarea {
     margin-right: auto;
     max-width: 80%;
     width: 80%;
-    height: 300px;
+    height: 200px;
     border: #FFF;
     overflow: hidden;
+}
+
+#ValidatieError{
+    color:red;
+    font-size:20px;
+    text-align:center;
+}
+
+.activeLayout{
+    border:2px solid red;
 }

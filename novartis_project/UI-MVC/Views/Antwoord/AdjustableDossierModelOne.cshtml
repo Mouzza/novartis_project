@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout2.cshtml";
-    ViewBag.Title = "eigenpagina";
+    ViewBag.Title = "Maak een dossier";
 }
 <link rel="stylesheet" type="text/css" href="~/Content/DossierModel.css">
 
@@ -27,7 +27,7 @@
 <div id="AdjustableButtonWrapper">
     <div id="OptionsbarTitle">1. Kies je Layout</div>
     <div id="AdjButtonWrapper">
-        <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/DossierModel/Layout 1.png" onclick="location.href='@Url.Action("AdjustableDossierModelOne", "Antwoord")'" /> </button>
+        <button id="AdjButtonFive" class="activeLayout"> <img id="MainFilterImgOJ" src="~/Images/DossierModel/Layout 1.png" onclick="location.href='@Url.Action("AdjustableDossierModelOne", "Antwoord")'" /> </button>
         <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/DossierModel/Layout 2.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
         <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 3.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
         <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 4.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
@@ -36,18 +36,18 @@
         
         
     </div>
-    </div>
+</div>
     
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AdjustableDossierModelOne", "Antwoord", FormMethod.Post))
     {
             <div id="OptionsBar">
                 <div id="OptionsbarTitle">2. Personaliseer</div>
                 <div id="AdjCleanUp">
         
-                    <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress) @Html.ValidationMessageFor(model => model.googleMapsAdress)</div> 
+                    <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress)</div> 
                      <!--<input type="text" name="googleMaps" />-->
                     <div id="persoonlijkeTags">Persoonlijke Tags: @Html.TextBoxFor(model => model.persoonlijkeTags)</div>
                     <div id="foregroundColor">Kleur van tekst @Html.TextBoxFor(model => model.foregroundColor)</div>
@@ -56,20 +56,25 @@
                     
                 </div>
                 </div>
-    <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
+            <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
 
-            @*<textarea id="AdjDossierModelTitle">Mijn favoriete feestzaal</textarea>*@<!--Hier moet de titel van de pagina komen-->
-            @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
-            @Html.ValidationMessageFor(model => model.titel)
-            @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
-            @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
-            @Html.ValidationMessageFor(model => model.subtitel)
+                <div>
+                    <!--Hier moet de titel van de pagina komen-->
+                    @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
+                    <p id="ValidatieError">@Html.ValidationMessageFor(model => model.titel)</p>
+                    @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+                    @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+                    <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
+
+                </div>
+          
             <div id="DossierModelAfbeelding">
                 <img src="@Url.Content(Model.afbeeldingPath)" />
                 @*<textarea id="DossierModelTextVakEen" name="backgroundColor" wrap="soft" cols="500" rows="10">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.</textarea>*@
-                @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelTextVakEen" })
-                @Html.ValidationMessageFor(model => model.inhoud)
+                <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>           
+                  @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelTextVakEen" })
+              
 
                 <!--Hier moet de eerste textvak van de pagina komen-->
 
@@ -88,13 +93,13 @@
 
                 Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de tweedetextvak van de pagina komen-->
             @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTextVakTwee" })
-            @Html.ValidationMessageFor(model => model.textvak2)
+           
 
             @*<textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
 
                 Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de derde textvak van de pagina komen-->
             @Html.TextAreaFor(model => model.textvak3, new { @class = "AdjDossierModelTextVakDrie" })
-            @Html.ValidationMessageFor(model => model.textvak3)
+
 
         </div>
 
@@ -108,3 +113,8 @@
             </div>
         </div>
     }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

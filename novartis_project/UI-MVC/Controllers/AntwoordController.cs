@@ -41,13 +41,10 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(agendaAntwoord);
         }
 
+ 
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
 
             if (dossierAntwoord.titel != null)
             {
@@ -55,6 +52,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             else
             {
+
 
                 dossierAntwoord = new DossierAntwoord()
                 {
@@ -69,42 +67,93 @@ namespace JPP.UI.Web.MVC.Controllers
                 };
 
                 return View(dossierAntwoord);
+
             }
+           
         }
 
 
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelOne(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
-            if (file != null && file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                file.SaveAs(path);
-                dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
-            }
-            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            dossierAntwoord.comments = new List<Comment>();
-            dossierAntwoord.vasteTags = new List<VasteTag>();
-            dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
-            dossierAntwoord.datum = DateTime.Now;
-            dossierAntwoord.aantalStemmen = 0;
-            dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = false;
-            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
-            dossierAntwoord.aantalFlags = 0;
-            dossierAntwoord.layoutOption = 1;
 
-           DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
-           dossierAntwoord.module = actieveDossierModule;
-           actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
-           dossManager.updateDossierModule(actieveDossierModule);
-           
-           Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelOne",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
+                       
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+                    
+                    
+                    
+                    
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+                  
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 1,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelOne", new { id = createddos.ID });
 
             
-            return RedirectToAction("DossierModelOne", new { id = createddos.ID });
+            }
+ 
         }
 
 
@@ -144,36 +193,82 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            if (file != null && file.ContentLength > 0)
+            
+            if (!Request.IsAuthenticated)
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                file.SaveAs(path);
-                dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
+                return RedirectToAction("Login", "Account");
             }
-            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            //antwManager.createDossierAntwoord(dossierAntwoord);
-            dossierAntwoord.comments = new List<Comment>();
-            dossierAntwoord.vasteTags = new List<VasteTag>();
-            dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
-            dossierAntwoord.datum = DateTime.Now;
-            dossierAntwoord.aantalStemmen = 0;
-            dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = false;
-            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
-            dossierAntwoord.aantalFlags = 0;
-            dossierAntwoord.layoutOption = 2;
 
-            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
-            dossierAntwoord.module = actieveDossierModule;
-            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
-            dossManager.updateDossierModule(actieveDossierModule);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelTwo",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
 
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
 
-            return RedirectToAction("DossierModelTwo", new { id = createddos.ID });
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 2,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelTwo", new { id = createddos.ID });
+            }
         }
 
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
@@ -208,46 +303,88 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            if (file != null && file.ContentLength > 0)
+           
+            if (!Request.IsAuthenticated)
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                file.SaveAs(path);
-                dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
+                return RedirectToAction("Login", "Account");
             }
-            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            //antwManager.createDossierAntwoord(dossierAntwoord);
-            dossierAntwoord.comments = new List<Comment>();
-            dossierAntwoord.vasteTags = new List<VasteTag>();
-            dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
-            dossierAntwoord.datum = DateTime.Now;
-            dossierAntwoord.aantalStemmen = 0;
-            dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = false;
-            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
-            dossierAntwoord.aantalFlags = 0;
-            dossierAntwoord.layoutOption = 3;
 
-             DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
-            dossierAntwoord.module = actieveDossierModule;
-            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
-            dossManager.updateDossierModule(actieveDossierModule);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelThree",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
 
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
 
-            return RedirectToAction("DossierModelThree", new { id = createddos.ID });
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 3,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelThree", new { id = createddos.ID });
+            }
         }
 
         public ActionResult AdjustableDossierModelFive(DossierAntwoord dossierAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
-
+        
             if (dossierAntwoord.titel != null)
             {
                 return View(dossierAntwoord);
@@ -272,35 +409,82 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            if (file != null && file.ContentLength > 0)
+
+            if (!Request.IsAuthenticated)
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                file.SaveAs(path);
-                dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
+                return RedirectToAction("Login", "Account");
             }
-            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            //antwManager.createDossierAntwoord(dossierAntwoord);
-            dossierAntwoord.comments = new List<Comment>();
-            dossierAntwoord.vasteTags = new List<VasteTag>();
-            dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
-            dossierAntwoord.datum = DateTime.Now;
-            dossierAntwoord.aantalStemmen = 0;
-            dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = false;
-            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
-            dossierAntwoord.aantalFlags = 0;
-            dossierAntwoord.layoutOption = 5;
 
-            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
-            dossierAntwoord.module = actieveDossierModule;
-            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
-            dossManager.updateDossierModule(actieveDossierModule);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelFive",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
 
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
-            return RedirectToAction("DossierModelFive", new { id = createddos.ID });
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 5,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelFive", new { id = createddos.ID });
+            }
         }
 
         public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord)
@@ -335,36 +519,84 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            if (file != null && file.ContentLength > 0)
+
+            if (!Request.IsAuthenticated)
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                file.SaveAs(path);
-                dossierAntwoord.afbeeldingPath = "/uploads/" + fileName;
+                return RedirectToAction("Login", "Account");
             }
-            dossierAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            //antwManager.createDossierAntwoord(dossierAntwoord);
-            dossierAntwoord.comments = new List<Comment>();
-            dossierAntwoord.vasteTags = new List<VasteTag>();
-            dossierAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
-            dossierAntwoord.datum = DateTime.Now;
-            dossierAntwoord.aantalStemmen = 0;
-            dossierAntwoord.percentageVolledigheid = 95;
-            dossierAntwoord.statusOnline = false;
-            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
-            dossierAntwoord.aantalFlags = 0;
-            dossierAntwoord.layoutOption = 6;
 
-            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
-            dossierAntwoord.module = actieveDossierModule;
-            actieveDossierModule.dossierAntwoorden.Add(dossierAntwoord);
-            dossManager.updateDossierModule(actieveDossierModule);
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelSix",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
 
-            Antwoord createddos = antwManager.createDossierAntwoord(dossierAntwoord); 
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
 
-            return RedirectToAction("DossierModelSix", new { id = createddos.ID });
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 6,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelSix", new { id = createddos.ID });
+
+
+              }
         }
 
 
@@ -776,47 +1008,72 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
+          
 
-            if (agendaAntwoord.titel != null)
+              if (agendaAntwoord.titel != null)
+              {
+
+                 return View(agendaAntwoord);
+              }else{
+
+                   agendaAntwoord = new AgendaAntwoord()
+                    {
+
+                        titel = "Geef titel",
+                        subtitel = "Geef subtitel",
+                        inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+
+                    };
+
+                   return View(agendaAntwoord);
+              }
+                  
+
+        }
+
+
+        [HttpPost]
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection formCollection)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login","Account");
+            }
+
+            if (!ModelState.IsValid)
             {
                 return View(agendaAntwoord);
             }
             else
             {
-
-                agendaAntwoord = new AgendaAntwoord()
+                AgendaAntwoord agendaAntwoordX = new AgendaAntwoord()
                 {
-
-                    titel = "Geef titel",
-                    subtitel = "Geef subtitel",
-                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    datum = DateTime.Now,
+                    aantalStemmen = 0,
+                    aantalFlags = 0,
+                    statusOnline = true,
+                    inhoud = agendaAntwoord.inhoud,
+                    subtitel = agendaAntwoord.subtitel,
+                    titel = agendaAntwoord.titel
 
                 };
 
-                return View(agendaAntwoord);
-            }
-        }
+                //Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                AgendaModule actieveAgendaModule = dossManager.readActieveAgendaModule();
+                agendaAntwoordX.module = actieveAgendaModule;
+                AgendaAntwoord createddos = antwManager.createAgendaAntwoord(agendaAntwoordX);
+
+                actieveAgendaModule.agendaAntwoorden.Add(createddos);
+
+                dossManager.updateAgendaModule(actieveAgendaModule);
 
 
-        [HttpPost]
-        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection collection)
-        {
-            agendaAntwoord.gebruikersNaam = User.Identity.GetUserName();
-            //antwManager.createDossierAntwoord(dossierAntwoord);
-            agendaAntwoord.vasteTags = new List<VasteTag>();
-            agendaAntwoord.persoonlijkeTags = new List<PersoonlijkeTag>();
-            agendaAntwoord.datum = DateTime.Now;
-            agendaAntwoord.aantalStemmen = 0;
-            //dossierAntwoord.extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?";
-            agendaAntwoord.aantalFlags = 0;
-            //dossierAntwoord.module = modMan.readActieveDossierModule();
-            Antwoord createddos = antwManager.createAgendaAntwoord(agendaAntwoord);  // CreateDossier geeft problemen
+                return RedirectToAction("Agenda", new { id = createddos.ID });
 
-            return RedirectToAction("Agenda", new { id = createddos.ID });
+              
+
+            }    
         }
     }
 }

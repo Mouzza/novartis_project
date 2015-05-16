@@ -18,7 +18,6 @@ namespace JPP.BL.Domain.Antwoorden
         public string backgroundColor {get; set; }
         public string backgroundImage { get; set; }
         public int percentageVolledigheid { get; set; }
-        public Boolean statusOnline { get; set; }
         public string extraVraag { get; set; }
         public string googleMapsAdress{ get; set; }
 

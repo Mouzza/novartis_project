@@ -227,13 +227,13 @@ namespace JPP.BL
 
 
 
-        public Antwoord createDossierAntwoord(DossierAntwoord dossierAntwoord)
+        public DossierAntwoord createDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
             
             return inlog.maakDossierAntwoord(dossierAntwoord);
 
         }
-        public Antwoord createAgendaAntwoord(AgendaAntwoord agendaAntwoord)
+        public AgendaAntwoord createAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
             
 

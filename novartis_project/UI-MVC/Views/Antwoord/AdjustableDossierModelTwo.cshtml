@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout2.cshtml";
-    ViewBag.Title = "DosierModelTwo";
+    ViewBag.Title = "Maak een dossier";
 }
 
 
@@ -25,7 +25,7 @@
     <div id="OptionsbarTitle">1. Kies je Layout</div>
     <div id="AdjButtonWrapper">
         <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/DossierModel/Layout 1.png" onclick="location.href='@Url.Action("AdjustableDossierModelOne", "Antwoord")'" /> </button>
-        <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/DossierModel/Layout 2.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
+        <button id="AdjButtonTwo" class="activeLayout"> <img id="MainFilterImgAZ" src="~/Images/DossierModel/Layout 2.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
         <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 3.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
         <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 4.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
         <button id="AdjButtonSix"> <img id="MainFilterImgJO" src="~/Images/DossierModel/Layout 5.png" onclick="location.href='@Url.Action("AdjustableDossierModelSix", "Antwoord")'" /> </button>
@@ -33,7 +33,7 @@
 </div>
 
 
-@using (Html.BeginForm("", "Antwoord/AdjustableDossierModelTwo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("AdjustableDossierModelTwo", "Antwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
     <div id="OptionsBar">
         <div id="OptionsbarTitle">2. Personaliseer</div>
@@ -54,11 +54,11 @@
 
     @*<textarea id="AdjDossierModelTitle">Mijn favoriete feestzaal</textarea>*@<!--Hier moet de titel van de pagina komen-->
     @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
-    @Html.ValidationMessageFor(model => model.titel)
+    <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
     @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
                 @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
-                @Html.ValidationMessageFor(model => model.subtitel)
+                <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
 
 
     <div id="DossierModelTwoAfbeelding">
@@ -75,7 +75,7 @@
 <div id="TextWrapperTwo">
 
     @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelTwoTextVakEen" })
-    @Html.ValidationMessageFor(model => model.inhoud)
+    <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
 
     <div id="TweeTextvakWrapperTwo">
         @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTwoTextVakTwee" })
