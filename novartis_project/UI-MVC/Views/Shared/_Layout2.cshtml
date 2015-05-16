@@ -122,6 +122,12 @@
         controle = true;
 
     }
+    @if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/?sortOrder"))
+    {
+        @RenderBody()
+        controle = true;
+
+    }
 
     @if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/Home/Main"))
     {
