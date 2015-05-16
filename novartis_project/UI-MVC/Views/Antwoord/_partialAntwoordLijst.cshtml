@@ -99,6 +99,10 @@
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)<br />
+                            <div class="DossierVoteUpwrap">
+                                <div class="votes">138</div>
+                                <div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div>
+                            </div> 
                             <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
                         </td>
 
@@ -123,7 +127,7 @@
                             @Html.DisplayFor(modelItem => item.titel)
                             <div class="DossierVoteUpwrap">
                                 <div class="votes">138</div>
-                                <div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up now</div>
+                                <div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div>
                             </div> 
                             <br />
                             <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>

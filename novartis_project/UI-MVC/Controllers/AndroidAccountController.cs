@@ -21,7 +21,7 @@ namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidAccountController : ApiController
     {
-<<<<<<< HEAD
+
         public ApplicationRoleManager roleManager;
         public ApplicationRoleManager RoleManager
         {
@@ -89,7 +89,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(model);
         }
-=======
+
         //public ApplicationRoleManager roleManager;
         //public ApplicationRoleManager RoleManager
         //{
@@ -163,7 +163,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         //    return (model);
         //}
->>>>>>> origin/master
+
 
     }
 }

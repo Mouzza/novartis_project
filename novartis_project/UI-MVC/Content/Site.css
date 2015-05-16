@@ -1763,7 +1763,53 @@ textarea {
           transition-timing-function: cubic-bezier(1, 0, 0, 1);
 }
 
-body {
-  font-family: 'Lato', sans-serif;
+/*###################################################################################################################################*/
+
+.DossierFlagwrap {
+    display: table-cell;
+    float: right;
+  width: 50px;
+  min-width: 250px;
+  height: 60px;
+  position: relative;
+  display: table;
 }
 
+.DossierFlagwrap .DossierFlagbutton {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 0 3px 3px 0;
+  display: table-cell;
+  text-align: center;
+  color: #fff;
+  line-height: 60px;
+  min-height: 60px;
+  background: #3498db;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border-left: 1px solid #3498db;
+}
+.DossierFlagwrap .DossierFlagbutton i {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+          transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  margin: 0 10px 0 0;
+}
+.DossierFlagwrap .DossierFlagbutton:hover {
+  background: #2980b9;
+}
+.DossierFlagwrap .DossierFlagbutton:hover i {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+          transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
