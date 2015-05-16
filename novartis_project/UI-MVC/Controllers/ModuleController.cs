@@ -33,6 +33,15 @@ namespace JPP.UI.Web.MVC.Controllers
             
         }
 
+        public ActionResult VoteUpAgenda(int id)
+        {
+            AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
+            agendaAntwoord.aantalStemmen = (agendaAntwoord.aantalStemmen + 1);
+            antwManager.updateAgendaAntwoord(agendaAntwoord);
+            return RedirectToAction("Agenda", "Module");
+
+        }
+
         public ActionResult VolgOp()
         {
             return View();
