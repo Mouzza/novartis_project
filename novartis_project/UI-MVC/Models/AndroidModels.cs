@@ -157,6 +157,29 @@ namespace JPP.UI.Web.MVC.Models
     }
 
     //*********************************************
+
+    public class AndroidGebruiker
+    {
+        [Required]
+        public int id { get; set; }
+        [Required]
+        public string gebruikersnaam { get; set; }
+        [Required]
+        public string voornaam { get; set; }
+        [Required]
+        public string achternaam { get; set; }
+        [Required]
+        public DateTime geboorteDatum { get; set;}
+        [Required]
+        public int postcode { get; set; }
+        [Required]
+        public string wachtwoord { get; set; }
+        [Required]
+        public string email { get; set; }
+        [Required]
+        public string telefoonnummer { get; set; }
+        public Boolean active { get; set; }
+    }
 }
 
 
