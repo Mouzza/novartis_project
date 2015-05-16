@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using JPP.UI.Web.MVC.Models;
 using JPP.BL.Domain.Modules;
+using JPP.BL.Domain.Antwoorden;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using PagedList;
@@ -21,6 +22,16 @@ namespace JPP.UI.Web.MVC.Controllers
     {
 
         ModuleManager moduleManager = new ModuleManager();
+        AntwoordManager antwManager = new AntwoordManager();
+
+        public ActionResult VoteUp(int id)
+        {
+            DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
+            dossierAntwoord.aantalStemmen = (dossierAntwoord.aantalStemmen + 1);
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("Dossier", "Module");
+            
+        }
 
         public ActionResult VolgOp()
         {
