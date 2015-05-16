@@ -27,6 +27,32 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
+        public ActionResult DossierModuleUitleg()
+        {
+            DossierModule dossierModule = moduleManager.readActieveDossierModule();
+            if (dossierModule.beloning.naam == null)
+            {
+                Beloning beloning = new Beloning();
+                beloning.naam = " ";
+                beloning.beschrijving = " ";
+                dossierModule.beloning = beloning;
+            }
+            return View(dossierModule);
+        }
+
+        public ActionResult AgendaModuleUitleg()
+        {
+            AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
+            if (agendaModule.beloning.naam == null)
+            {
+                Beloning beloning = new Beloning();
+                beloning.naam = " ";
+                beloning.beschrijving = " ";
+                agendaModule.beloning = beloning;
+            }
+            return View(agendaModule);
+        }
+
         public ActionResult DossModules()
         {
             return View();
