@@ -4,20 +4,19 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "Antwoord";
 }
-<link rel="stylesheet" type="text/css" href="~/Content/DossierModel.css">
+@*<link rel="stylesheet" type="text/css" href="~/Content/DossierModel.css">*@
 
+@using (Html.BeginForm("", "Antwoord/AdjAgendaAntwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
 <div id="AgendaAntwoordWrapper">
-    <div id="DossierModelTitle"> <h1>@Html.TextBoxFor(model => model.titel) @Html.ValidationMessageFor(model => model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
+    <div id="DossierModelTitle"> @Html.TextAreaFor(model => model.titel, new { @class = "AdjAgendaModelTitle" }) @Html.ValidationMessageFor(model => model.titel)</div><!--Hier moet de titel van de pagina komen-->
     <div id="DossierModelSubTitle" >
-        <h2>
-            @Html.TextBoxFor(model => model.subtitel) @Html.ValidationMessageFor(model => model.subtitel)
-        </h2>
+        @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjAgendaModelSubTitle" })
+        @Html.ValidationMessageFor(model => model.subtitel)
     </div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
     <div id="AgendaModelTextVakEen">
-        <p>
-            @Html.TextBoxFor(model => model.inhoud) @Html.ValidationMessageFor(model => model.inhoud)
-        </p>
-
+        @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjAgendaModelTextVakEen" })
+        @Html.ValidationMessageFor(model => model.inhoud)
     </div><!--Hier moet de eerste textvak van de pagina komen-->
 </div>
 
@@ -30,3 +29,10 @@
     }
 
 </p>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Publish" class="btn btn-default" />
+    </div>
+</div>
+}

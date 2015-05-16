@@ -16,11 +16,8 @@ namespace JPP.DAL.EF
 {
    public class ModeratorSCEF : IngelogdeGebruikerSCEF, ModeratorHC
     {
-        EFDbContext dbcontext;
-        public ModeratorSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+       EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
+    
         public Tag createTag(Tag tag)
         {
             dbcontext.tags.Add(tag);

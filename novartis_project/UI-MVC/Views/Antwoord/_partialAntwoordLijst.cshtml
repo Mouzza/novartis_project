@@ -12,9 +12,9 @@
 <div id="moduleLeftMenuSection">
 
     <ul>
-        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top5SortParm }, null)">Top 5</a></li>
-        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
-        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
+        <li><a href="@Url.Action("Dossier", "Module", new { sortOrder = ViewBag.Top5SortParm }, null)">Top 5</a></li>
+        <li><a href="@Url.Action("Dossier", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
+        <li><a href="@Url.Action("Dossier", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
 
     </ul>
 
@@ -36,7 +36,7 @@
 
     <p id="antwoordlijstCreateSection">
         <img src="~/Images/page icons/new.png" alt="Alternate Text" />
-        @Html.ActionLink("Nieuw oplossing", "Create")
+        @Html.ActionLink("Nieuw oplossing", "AdjustableDossierModelOne", "Antwoord")
     </p>
 
     <div id="pager">
