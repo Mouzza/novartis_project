@@ -1672,9 +1672,10 @@ textarea {
     text-align:center;
 }
 
-.activeLayout{
-    border:2px solid red;
-=======
+.activeLayout {
+    border: 2px solid red;
+}
+
 #uitlegWrapper {
     position: relative;
     margin-left: 15%;
@@ -1844,5 +1845,5 @@ textarea {
 
 #DossierVoteUpbuttonWrapper{
     text-decoration: none;
->>>>>>> origin/master
+
 }
