@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
-using System.Globalization;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using JPP.UI.Web.MVC.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Drawing;
-
 using System.IO;
 
 
@@ -28,7 +26,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             get
             {
-                return this.roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+                return this.roleManager ?? HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
             }
             private set { this.roleManager = value; }
         }
@@ -45,7 +43,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                return _userManager ?? HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             }
             private set
             {
@@ -58,63 +56,37 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             get
             {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+                return _signInManager ?? HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>();
             }
             private set { _signInManager = value; }
         }
-
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        [HttpGet]
+        [ActionName("Register")]
+        public async Task<IHttpActionResult> Register(AndroidGebruiker model)
         {
             if (ModelState.IsValid)
             {
                 var user = new User
                 {
-                    UserName = model.Name,
-                    Email = model.Email,
+                    UserName = model.gebruikersnaam,
+                    Email = model.email,
                     Created = DateTime.Now,
                     profilePublic = true,
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Birthday = model.Birthday,
-                    Zipcode = model.Zipcode
+                    FirstName = model.voornaam,
+                    LastName = model.achternaam,
+                    Birthday = model.geboorteDatum,
+                    Zipcode = model.postcode,
+                    PhoneNumber = model.telefoonnummer
                 };
-
-                var result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user, model.wachtwoord);
                 if (result.Succeeded)
                 {
-                    //Geef "Gebruiker" role aan user
                     var role = RoleManager.FindByName("Gebruiker");
 
                     if (user != null) UserManager.AddToRole(user.Id, role.Name);
-
-
-                    //  Comment the following line to prevent log in until the user is confirmed.
-                    //  await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account",
-                    //  new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-
-                    /* Dit is nodig om echt een email te kunnen verzenden 
-         await UserManager.SendEmailAsync(user.Id, "Confirm your account",
-            "Please confirm your account by copy & paste the folowing link:  " + callbackUrl);
-          
-                    */
-
-                    // to debug locally 
-                    //ViewBag.Link = callbackUrl;
-
-                    //ViewBag.Message = "Bezoek uw email and confirmeer uw account, u moet geconfirmeerd zijn "
-                    //                 + "voordat u kan inloggen.";
-
-                    // return View("Info");
-                    //return RedirectToAction("Index", "Home");
                 }
-                //AddErrors(result);
             }
-
-            // If we got this far, something failed, redisplay form
-            return (model);
+            return Ok(model);
         }
 
     }

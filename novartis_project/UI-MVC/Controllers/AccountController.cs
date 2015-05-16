@@ -32,6 +32,7 @@ namespace JPP.UI.Web.MVC.Controllers
             UserManager = userManager;
             SignInManager = signInManager;
         }
+        //var
         public ApplicationUserManager UserManager
         {
             get
