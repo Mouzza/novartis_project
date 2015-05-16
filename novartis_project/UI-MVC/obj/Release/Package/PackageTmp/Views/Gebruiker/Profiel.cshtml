@@ -1,0 +1,154 @@
+﻿@model JPP.UI.Web.MVC.Models.UserRoleViewModel
+@{var tekstRollen = "";
+  
+  
+
+
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+
+
+@if(Model.user.LockoutEndDateUtc==null){
+    ViewBag.title = Model.user.UserName + " profiel";
+ 
+    <h2>Profiel</h2>
+    if (Model.user.profilePublic == false && !User.IsInRole("Admin"))
+    {
+        <h4>Bepaalde gegevens worden niet weergegeven(profiel is private)</h4>
+
+    }
+    <div>
+        <h4>@Model.user.UserName</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Gebruikersnaam:
+            </dt>
+
+            <dd>
+                @Model.user.UserName
+
+            </dd>
+            <br>
+        @if (Model.user.profilePublic == true || User.IsInRole("Admin"))
+        {
+            <dt>
+                Voornaam:
+            </dt>
+
+            <dd>
+                @Model.user.FirstName
+
+            </dd>
+            <dt>
+                Achternaam:
+            </dt>
+
+            <dd>
+                @Model.user.LastName
+
+            </dd>
+            <dt>
+                Geboortedatum:
+            </dt>
+
+            <dd>
+                @Model.user.Birthday
+
+            </dd>
+            <dt>
+                Postcode:
+            </dt>
+
+            <dd>
+                @Model.user.Zipcode
+
+            </dd>
+                <dt>
+                Gsm-nummer:
+            </dt>
+           
+            if (Model.user.PhoneNumber == null)
+                {
+                <dd>Geen</dd>
+                }
+                else
+                {
+                    <dd>Html.DisplayFor(model => Model.user.PhoneNumber)</dd>
+               
+                }
+
+
+            <dt>
+                Email:
+            </dt>
+
+            <dd>
+                @Model.user.Email
+            </dd>
+
+}
+          <br>
+            <dt>
+                Role(s):
+            </dt>
+            <dd>
+                @{var laatsteRol = Model.roles.Last(); tekstRollen = "";}
+                @foreach (var role in Model.roles)
+                {
+                    if (role.Equals(laatsteRol))
+                    {
+
+                        tekstRollen = tekstRollen + role.Name;
+                    }
+                    else
+                    {
+                        tekstRollen = tekstRollen + role.Name + ", ";
+
+                    }
+
+                 }
+
+                @tekstRollen
+
+            </dd>
+            <dt>
+                Lid sinds:
+            </dt>
+
+            <dd>
+                @Model.user.Created
+            </dd>
+            <dt>
+                Profiel is:
+            </dt>
+            @if (Model.user.profilePublic==true)
+            {
+                    <dd>
+                        Public
+                    </dd>
+            }
+            else
+            {
+                    <dd>
+                        Private
+                    </dd>
+            }
+
+        </dl>
+    </div>
+
+
+}
+else
+{
+
+    <hgroup>
+        <h1 class="text-danger">Geblokt.</h1>
+        <h2 class="text-danger">Dit account werd geblokeert, probeer later nog eens aub.</h2>
+    </hgroup>
+}
+
+

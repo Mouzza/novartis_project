@@ -1,0 +1,20 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Error";
+}
+
+<h1 class="text-danger">Error.</h1>
+@{
+    if (String.IsNullOrEmpty(ViewBag.errorMessage))
+    {
+        <h2 class="text-danger">Je moet ingelogd zijn !.</h2>
+      
+    }
+    else
+    {
+        <h2 class="text-danger">@ViewBag.errorMessage</h2>
+        <h2 class="text-danger">@Model.Exception</h2>
+    }
+}
