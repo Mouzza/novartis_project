@@ -67,8 +67,8 @@ namespace JPP.DAL.EF
 
             CentraleVraag centraleVraag2 = new CentraleVraag()
             {
-                inhoud = "Deel u idee mee, wat zou er veranderd worden in de hogeschool?",
-                extraInfo = "Wij zijn op zoek naar ideen, deel uw idee met ons en maak kans op prijzen!",
+                inhoud = "Wat zou er moeten veranderen aan de hogescholen van vandaag?",
+                extraInfo = "Wij zijn op zoek naar ideëen, deel uw idee met ons en maak kans op prijzen!",
                 datum = new DateTime(2015, 9, 10, 15, 5, 59),
                 aantalWinAntwoorden = 1,
 
