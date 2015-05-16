@@ -1676,10 +1676,11 @@ textarea {
 #UitlegTextWrapper {
     margin-top: 100px;
     text-align: center;
+    color: #686868;
 }
 
 #UitlegStyleWrapper{
-    background-color: #D3D3D3;
+    background-color: #FFF;
     margin-left: 20%;
     margin-right: 20%;
     height: 100%;
