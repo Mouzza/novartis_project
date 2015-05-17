@@ -25,6 +25,7 @@ namespace JPP.UI.Web.MVC.Controllers
     {
         AntwoordManager antwoordManager = new AntwoordManager();
         ModuleManager moduleManager = new ModuleManager();
+
         [HttpGet]
         [ActionName("test")]
         public IHttpActionResult test()
@@ -266,16 +267,18 @@ namespace JPP.UI.Web.MVC.Controllers
             //}
         }
         #endregion
+
         #region UPDATE dossier/agenda
         [HttpPut]
         [ActionName("updateAgenda")]
-        public void updateAgendaAntwoord(Antwoord antwoord)
+        public void updateAgendaAntwoord(AgendaAntwoord antwoord)
         {
+            antwoord.module = moduleManager.readActieveAgendaModule();
             antwoordManager.updateAgendaAntwoord(antwoord);
         }
         [HttpPut]
         [ActionName("updateDossier")]
-        public void updateDossierAntwoord(Antwoord antwoord)
+        public void updateDossierAntwoord(DossierAntwoord antwoord)
         {
             antwoordManager.updateDossierAntwoord(antwoord);
         }
