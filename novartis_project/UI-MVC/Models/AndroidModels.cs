@@ -89,7 +89,6 @@ namespace JPP.UI.Web.MVC.Models
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
         public int aantalStemmen { get; set; }
-        public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
         public string subTitel { get; set; }
@@ -114,7 +113,6 @@ namespace JPP.UI.Web.MVC.Models
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
         public int aantalStemmen { get; set; }
-        public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
         public int moduleID { get; set; }

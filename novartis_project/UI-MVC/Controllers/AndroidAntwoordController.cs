@@ -207,11 +207,8 @@ namespace JPP.UI.Web.MVC.Controllers
                 comments = new List<Comment>(),
                 afbeeldingPath = dossierAntwoord.afbeeldingPath,
                 googleMapsAdress = dossierAntwoord.googleMapsAdress,
-                backgroundColor = dossierAntwoord.backgroundColor,
-                backgroundImage = dossierAntwoord.backgroundImage,
                 evenement=new Evenement(), //kan evenement niet oproepen
                 extraVraag = dossierAntwoord.extraVraag,
-                foregroundColor = dossierAntwoord.foregroundColor,
                 percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
                 statusOnline = dossierAntwoord.statusOnline,
                 textvak2 = dossierAntwoord.textvak2,
