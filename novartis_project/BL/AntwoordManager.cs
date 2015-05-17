@@ -224,28 +224,21 @@ namespace JPP.BL
             List<AgendaAntwoord> agendaReturn = inlog.getAllAgendaAntwoorden();
             return agendaReturn;
         }
-
-
-
         public DossierAntwoord createDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            
             return inlog.maakDossierAntwoord(dossierAntwoord);
-
         }
         public AgendaAntwoord createAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
-            
-
             return inlog.maakAgendaAntwoord(agendaAntwoord);
         }
-        public void updateAgendaAntwoord(Antwoord antwoord)
+        public void updateAgendaAntwoord(AgendaAntwoord antwoord)
         {
-            beheerder.wijzigAgendaAntwoord((AgendaAntwoord)antwoord);
+            beheerder.wijzigAgendaAntwoord(antwoord);
         }
-        public void updateDossierAntwoord(Antwoord antwoord)
+        public void updateDossierAntwoord(DossierAntwoord antwoord)
         {
-            beheerder.wijzigDossierAntwoord((DossierAntwoord)antwoord);
+            beheerder.wijzigDossierAntwoord(antwoord);
         }
         public void removeAntwoord(int id)
         {
