@@ -89,13 +89,12 @@ namespace JPP.UI.Web.MVC.Models
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
         public int aantalStemmen { get; set; }
-        public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
         public string subTitel { get; set; }
         public int moduleID { get; set; }
-        public List<ANDROIDVasteTag> vasteTags { get; set; }
-        public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
+       // public List<ANDROIDVasteTag> vasteTags { get; set; }
+       // public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
 
     }
     public class ANDROIDComment
@@ -114,12 +113,11 @@ namespace JPP.UI.Web.MVC.Models
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
         public int aantalStemmen { get; set; }
-        public Boolean editable { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
         public int moduleID { get; set; }
-        public List<ANDROIDVasteTag> vasteTags { get; set; }
-        public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
+        //public List<ANDROIDVasteTag> vasteTags { get; set; }
+        //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
         public string afbeeldingPath { get; set; }
         //public byte[] afbeeldingBytes { get; set; }
         public int percentageVolledigheid { get; set; }
@@ -127,13 +125,13 @@ namespace JPP.UI.Web.MVC.Models
         public List<ANDROIDComment> comments { get; set; }
         public string textvak2 { get; set; }
         public string textvak3 { get; set; }
-        public string foregroundColor { get; set; }
-        public string backgroundColor { get; set; }
-        public string backgroundImage { get; set; }
         public string extraVraag { get; set; }
         public int evenementID { get; set; }
         public string googleMapsAdress { get; set; }
         public string subtitel { get; set; }
+        public string foregroundColor { get; set; }
+        public string backgroundColor { get; set; }
+        public string backgroundImage { get; set; }
     }
 
     //***********************************************************
@@ -161,24 +159,34 @@ namespace JPP.UI.Web.MVC.Models
     public class AndroidGebruiker
     {
         [Required]
-        public int id { get; set; }
+        [StringLength(12, ErrorMessage = "{0} moet minstens {2} karakters en max 12 karakters lang zijn. ", MinimumLength = 6)]
+        [Display(Name = "Gebruikersnaam")]
+        public string Name { get; set; }
         [Required]
-        public string gebruikersnaam { get; set; }
+        [Display(Name = "Voornaam")]
+        public string FirstName { get; set; }
         [Required]
-        public string voornaam { get; set; }
+        [Display(Name = "Achternaam")]
+        public string LastName { get; set; }
         [Required]
-        public string achternaam { get; set; }
+        [Display(Name = "Geboortedatum")]
+        public DateTime Birthday { get; set; }
         [Required]
-        public DateTime geboorteDatum { get; set;}
+        [Display(Name = "Postcode")]
+        public int Zipcode { get; set; }
         [Required]
-        public int postcode { get; set; }
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
         [Required]
-        public string wachtwoord { get; set; }
-        [Required]
-        public string email { get; set; }
-        [Required]
-        public string telefoonnummer { get; set; }
-        public Boolean active { get; set; }
+        [StringLength(100, ErrorMessage = "{0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Wachtwoord")]
+        public string Password { get; set; }
+        [DataType(DataType.Password)]
+        [Display(Name = "Herhaal wachtwoord")]
+        [Compare("Password", ErrorMessage = "Het wachtwoord en confirmatie wachtwoord komen niet overeen.")]
+        public string ConfirmPassword { get; set; }
     }
 }
 

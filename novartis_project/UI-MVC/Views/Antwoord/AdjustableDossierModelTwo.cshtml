@@ -73,11 +73,12 @@
     <input id="fileUploadInput" type="file" name="file" />
 
 <div id="DossierModelTwoTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
-
+    
+    <p id="ValidatieError2">@Html.ValidationMessageFor(model => model.inhoud)</p>
 <div id="TextWrapperTwo">
-
+  
     @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelTwoTextVakEen" })
-    <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
+
 
     <div id="TweeTextvakWrapperTwo">
         @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTwoTextVakTwee" })

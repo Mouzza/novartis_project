@@ -56,11 +56,12 @@
         Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
         @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
         <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
-
+    
+ <p id="ValidatieError3">@Html.ValidationMessageFor(model => model.inhoud)</p>
 <div id="TextWrapperFive">
 
         @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelFiveTextVakEen" })
-        <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
+      
 
         <div id="TweeTextvakWrapperTwo">
                 @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTwoTextVakTwee" })

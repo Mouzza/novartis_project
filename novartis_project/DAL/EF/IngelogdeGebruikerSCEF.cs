@@ -115,5 +115,13 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
+        public void flagAntwoord(int id)
+        {
+            Antwoord antwoord = dbcontext.antwoord.Find(id);
+            antwoord.aantalFlags++;
+            dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.SaveChanges();
+        }
+
     }
 }

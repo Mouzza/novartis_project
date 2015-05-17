@@ -260,6 +260,9 @@ namespace JPP.BL
             inlog.stemOpAntwoord(id);
         }
 
-         
+        public void flagAntwoord(int id)
+        {
+            inlog.flagAntwoord(id);
+        }
     }
 }
