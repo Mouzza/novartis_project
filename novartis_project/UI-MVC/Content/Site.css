@@ -725,6 +725,9 @@ textarea {
     cursor: pointer;
     height: 100px;
 }
+#tableAntwoord table:hover{
+    box-shadow: 0px 0px 60px rgba(255,129,0,0.8);
+}
 
 #tableAntwoord .table>tbody>tr>td{
     padding-top: 20px;
@@ -1418,10 +1421,17 @@ textarea {
     display: none;
 }
 
-#adminMenuButton {
+#adminMenuButton1 {
     background-image: none;
     font-size: 40px;
+    background-color:orange;
 }
+#adminMenuButton2 {
+    background-image: none;
+    font-size: 40px;
+    background-color:orangered;
+}
+
 
 /*###################################################################################*/
 #MainFilterAZ, #MainFilterZA, #MainFilterOJ, #MainFilterJO {
@@ -1856,4 +1866,13 @@ textarea {
 #DossierVoteUpbuttonWrapper{
     text-decoration: none;
 
+}
+
+#menuItemFocus a{
+
+    color:#E94E09;
+}
+#menuItemFocus a:hover{
+
+    color:white;
 }

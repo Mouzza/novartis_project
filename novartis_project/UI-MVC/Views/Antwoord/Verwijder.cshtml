@@ -1,9 +1,7 @@
 ﻿@model JPP.BL.Domain.Antwoorden.Antwoord
-
 @{
     ViewBag.title = "Antwoord verwijderen";
 }
-
 @if (User.Identity.Name == Model.gebruikersNaam || User.IsInRole("Admin") || User.IsInRole("Moderator"))
 {
     <h3>Bent u zeker dat u deze antwoord wilt verwijderen?</h3>
@@ -11,7 +9,7 @@
         <h4>Antwoord</h4>
         <hr />
         <dl class="dl-horizontal">
-         
+
 
             <dt>
                 Titel
@@ -79,7 +77,6 @@
 }
 else
 {
-    
+
     <h2>Access denied! o.O</h2>
 }
-   
