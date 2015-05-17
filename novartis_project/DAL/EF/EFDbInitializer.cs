@@ -67,8 +67,8 @@ namespace JPP.DAL.EF
 
             CentraleVraag centraleVraag2 = new CentraleVraag()
             {
-                inhoud = "Deel u idee mee, wat zou er veranderd worden in de hogeschool?",
-                extraInfo = "Wij zijn op zoek naar ideen, deel uw idee met ons en maak kans op prijzen!",
+                inhoud = "Wat zou er moeten veranderen aan de hogescholen van vandaag?",
+                extraInfo = "Wij zijn op zoek naar ideëen, deel uw idee met ons en maak kans op prijzen!",
                 datum = new DateTime(2015, 9, 10, 15, 5, 59),
                 aantalWinAntwoorden = 1,
 
@@ -170,7 +170,7 @@ namespace JPP.DAL.EF
                     gebruikersNaam = "Gebruiker1",
                     titel = "Mijn oplossing (dossier)" + i,
                     subtitel = "Een plein met fitness toestellen",
-                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Ik voeg wat extra tekst toe om de tekstvak in te vullen, Lol. Ik hoop dat ik dit vandaag af krijg. nog een paar woorden en we zijn klaar, ok klaar. Mvg, antw nummer: " + i,
+                    inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg, antw nummer: " + i,
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     aantalStemmen = i,
@@ -184,7 +184,8 @@ namespace JPP.DAL.EF
                     afbeeldingPath = "~/uploads/Jellyfish.jpg",
                     textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    layoutOption = 1
+                    layoutOption = 1,
+                    
                 };
 
                 AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
@@ -200,8 +201,8 @@ namespace JPP.DAL.EF
                     aantalStemmen = i,
                     aantalFlags = 0,
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>()
-
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    statusOnline=true
 
                 };
 
@@ -469,7 +470,7 @@ namespace JPP.DAL.EF
                     beginDatum = new DateTime(oldJaar, 03, 10, 15, 5, 59),
                     eindDatum = new DateTime(oldJaar2, 10, 10, 15, 5, 59),
                     verplichteVolledigheidsPercentage = 90.5,
-
+                    
                     dossierAntwoorden = new List<DossierAntwoord>(),
                     status = false
 
@@ -511,7 +512,7 @@ namespace JPP.DAL.EF
                         gebruikersNaam = "Gebruiker1",
                         titel = "Mijn oplossing (dossier)" + i,
                         subtitel = "Een plein met fitness toestellen",
-                        inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! blablablablablablablablabla Ik voeg wat extra tekst toe om de tekstvak in te vullen, Lol. Ik hoop dat ik dit vandaag af krijg. nog een paar woorden en we zijn klaar, ok klaar. Mvg, antw nummer: " + i,
+                        inhoud = "Een plein met fitness toestellen zou heel nuttig zijn voor de sportieve bewoners/bezoekers! Mvg, antw nummer: " + i,
                         extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                         datum = DateTime.Now,
                         aantalStemmen = i,
@@ -541,8 +542,8 @@ namespace JPP.DAL.EF
                         aantalStemmen = i,
                         aantalFlags = 0,
                         vasteTags = new List<VasteTag>(),
-                        persoonlijkeTags = new List<PersoonlijkeTag>()
-
+                        persoonlijkeTags = new List<PersoonlijkeTag>(),
+                        statusOnline=true
 
                     };
 

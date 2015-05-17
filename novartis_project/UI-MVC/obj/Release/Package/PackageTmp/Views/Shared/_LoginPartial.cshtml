@@ -1,0 +1,114 @@
+﻿@using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <div id="bar">
+            <div id="container">
+
+                <!-- Profiel -->
+                <div id="loginContainer"> 
+                    <a id="loginButton">
+                         <i class="icon-user"></i>
+                        <span>Hallo @User.Identity.GetUserName() ! </span>
+                    </a>
+                    <div style="clear:both"></div>
+                    <div id="loginBox">
+                        <form id="loginForm">
+                            <fieldset id="body">
+                                <fieldset>
+                                    <p id="loginNaam"><a href="@Url.Action("Index","Manage")">@User.Identity.GetUserName()</a></p>
+                                </fieldset>
+                                <fieldset>
+                                    <p><a href="@Url.Action("Profiel", "Manage", new { id = User.Identity.GetUserId() })">Profiel</a> - <a href="@Url.Action("AccountInstellingen", "Manage")">Account instelligen</a></p>
+                                </fieldset>
+                                <fieldset>
+                                    <p><a class="btn btn-default" href="javascript:document.getElementById('logoutForm').submit()">Afmelden</a></p>
+                                 </fieldset>
+                           
+                            </fieldset>
+                       
+                        </form>
+                    </div>
+                </div>
+                <!-- Profiel -->
+            </div>
+        </div>
+
+        @*
+            <ul class="nav navbar-nav navbar-right">
+             @if (User.IsInRole("Admin"))
+            {
+                <li>@Html.ActionLink("Maak account", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+
+            }
+            </ul>
+        *@
+       
+    
+        
+    }
+    }
+    else
+    {
+        using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+                <div id="bar">
+                    <div id="container">
+                        <!-- Login -->
+        
+                            @Html.AntiForgeryToken()
+                       
+                            @model JPP.UI.Web.MVC.Models.LoginViewModel
+                            <div id="loginContainer">
+                                
+                                <a href="#" id="loginButton">
+                                    <i class="icon-user"></i>
+                                    <span>Login</span>
+                                </a>
+                                <div style="clear:both"></div>
+                                <div id="loginBox">
+                                    <form id="loginForm">
+                                        <fieldset id="body">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <fieldset>
+                                                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                            </fieldset>
+                                            <fieldset>
+                                                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                                            </fieldset>
+                                            <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <div class="checkbox">
+                                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                                    @Html.LabelFor(m => m.RememberMe)
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                        <br>
+                                        <input type="submit" id="login" value="Log in" class="btn btn-default" />
+
+
+                                         <br>
+                                         <span>@Html.ActionLink("Wachtwoord vergeten?", "ForgotPassword","Account")</span>
+
+                                       <p>@Html.ActionLink("Registreer je als een nieuwe gebruiker", "Register", "Account")</p> 
+
+                                     </fieldset>
+                                   </form>
+                                 </div>
+                                 </div>
+                                <!-- Profiel -->  
+                          </div>
+                         </div>
+          
+        }
+     }

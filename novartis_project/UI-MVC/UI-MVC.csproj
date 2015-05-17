@@ -468,10 +468,12 @@
     <Content Include="Scripts\TimeLine.js" />
     <Content Include="Scripts\websiteAnimation.js" />
     <Content Include="Scripts\websiteRouting.js" />
+    <Content Include="uploads\379465.png" />
     <Content Include="uploads\389631_343833325673042_120674037988973_959634_1081499447_n.jpg" />
     <Content Include="uploads\ae0K8gv_460s.jpg" />
     <Content Include="uploads\archlinux-sticker-powered-by-arch.png" />
     <Content Include="uploads\Arch_Linux_Start_Icons_by_gabriela2400.png" />
+    <Content Include="uploads\Jellyfish.jpg" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -587,6 +589,8 @@
     <Content Include="Views\Module\_GeplandeAgendaModules.cshtml" />
     <Content Include="Views\Module\_GeplandeDossierModules.cshtml" />
     <Content Include="Views\Antwoord\AdjAgendaAntwoord.cshtml" />
+    <Content Include="Views\Module\DossierModuleUitleg.cshtml" />
+    <Content Include="Views\Module\AgendaModuleUitleg.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

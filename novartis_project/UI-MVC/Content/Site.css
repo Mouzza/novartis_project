@@ -620,6 +620,8 @@ textarea {
     width: 60%;
     margin: 1% auto;
     margin-bottom: 1%;
+    font-weight: bold;
+    color: #686868;
 }
 
 #moduleInhoud {
@@ -710,15 +712,22 @@ textarea {
 }
 
 #antwoordInhoud {
+    float:left;
     font-size: 23px;
     font-weight: bold;
     border: #D3D3D3;
+    width: 100%;
 }
 
 #tableAntwoord table {
     border: #D3D3D3;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
     cursor: pointer;
+    height: 100px;
+}
+
+#tableAntwoord .table>tbody>tr>td{
+    padding-top: 20px;
 }
 
 #tableAntwoordWinnaar table {
@@ -846,9 +855,9 @@ textarea {
 
 #DossierModelTextVakEen {
     float: right;
-    max-width: 500px;
-    width: 500px;
-    height: 300px;
+    max-width: 38%;
+    width: 38%;
+    height: 100%;
     margin-right: 15%;
     border: #FFF;
     overflow: hidden;
@@ -868,8 +877,8 @@ textarea {
 }
 
     #DossierModelAfbeelding img {
-        width: 500px;
-        height: 300px;
+        width: 38%;
+        height: 100%;
         float: left;
         box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     }
@@ -882,22 +891,22 @@ textarea {
 }
 
 #DossierModelTextVakTwee {
-    width: 500px;
-    height: 120px;
-    max-height: 120px;
+    width: 38%;
+    height: 100%;
+    max-height: 100%;
     float: left;
-    max-width: 500px;
+    max-width: 38%;
     border: #FFF;
     overflow: hidden;
 }
 
 #DossierModelTextVakDrie {
-    width: 500px;
-    height: 120px;
+    width: 38%;
+    height: 100%;
     float: right;
-    max-height: 120px;
+    max-height: 100%;
     margin-right: 15%;
-    max-width: 500px;
+    max-width: 38%;
     border: #FFF;
     overflow: hidden;
 }
@@ -1023,10 +1032,10 @@ textarea {
 
 #DossierModelTwoTextVakEen {
     float: left;
-    width: 500px;
+    width: 38%;
     height: 300px;
     margin-left: 1%;
-    max-width: 500px;
+    max-width: 38%;
     overflow: hidden;
     border: #FFF;
 }
@@ -1052,23 +1061,23 @@ textarea {
 }
 
     #DossierModelTwoAfbeelding img {
-        width: 500px;
-        height: 300px;
+        width: 38%;
+        height: 100%;
         float: left;
         box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     }
 
 #TweeTextvakWrapperTwo {
-    width: 500px;
+    width: 38%;
     height: 200px;
     float: right;
     margin-right: 13%;
 }
 
 #DossierModelTwoTextVakTwee {
-    width: 500px;
+    width: 100%;
     height: 100px;
-    max-width: 500px;
+    max-width: 100%;
     overflow: hidden;
     border: #FFF;
 }
@@ -1080,11 +1089,11 @@ textarea {
 }
 
 #DossierModelTwoTextVakDrie {
-    width: 500px;
+    width: 100%;
     height: 100px;
     margin-top: 20px;
     margin-right: 15%;
-    max-width: 500px;
+    max-width: 100%;
     overflow: hidden;
     border: #FFF;
 }
@@ -1101,8 +1110,8 @@ textarea {
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     position: relative;
     margin-right: 15%;
-    width: 500px;
-    height: 300px;
+    width: 38%;
+    height: 100%;
 }
 
 /*#################################################################################################################################################################*/
@@ -1185,15 +1194,15 @@ textarea {
 #TweeTextvakWrapperThree {
     height: 200px;
     float: left;
-    width: 500px;
+    width: 38%;
     margin-left: 19%;
     margin-top: 25px;
 }
 
 #DossierModelThreeTextVakTwee {
-    width: 500px;
+    width: 100%;
     height: 100px;
-    max-width: 500px;
+    max-width: 100%;
     border: #FFF;
     overflow: hidden;
 }
@@ -1204,10 +1213,10 @@ textarea {
 }
 
 #DossierModelThreeTextVakDrie {
-    width: 500px;
+    width: 100%;
     height: 100px;
     margin-top: 20px;
-    max-width: 500px;
+    max-width: 100%;
     border: #FFF;
     overflow: hidden;
 }
@@ -1223,7 +1232,7 @@ textarea {
     float: right;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     position: relative;
-    width: 500px;
+    width: 38%;
     height: 300px;
 }
 
@@ -1357,9 +1366,9 @@ textarea {
     margin-top: 50px;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     position: relative;
-    margin-left: 31%;
+    margin-left: 26%;
     margin-right: auto;
-    width: 700px;
+    width: 44%;
     height: 400px;
 }
 
@@ -1651,7 +1660,190 @@ textarea {
     margin-right: auto;
     max-width: 80%;
     width: 80%;
-    height: 300px;
+    height: 200px;
     border: #FFF;
     overflow: hidden;
+}
+
+
+#ValidatieError{
+    color:red;
+    font-size:20px;
+    text-align:center;
+}
+
+.activeLayout {
+    border: 2px solid red;
+}
+
+#uitlegWrapper {
+    position: relative;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 80%;
+    margin-bottom: 100px;
+}
+
+#UitlegTextWrapper {
+    margin-top: 100px;
+    text-align: center;
+    color: #686868;
+}
+
+#UitlegStyleWrapper{
+    background-color: #FFF;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 100%;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+}
+
+#tableAntwoord{
+    height: 150px;
+    display: table;
+    width: 100%;
+}
+
+#DossierWrapperLayout{
+    width:90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+}
+
+/*#################################################################################################################################################################################*/
+/*#####################################################################################################################################################################################*/
+
+
+.DossierVoteUpwrap {
+    display: table-cell;
+    float: right;
+  width: 300px;
+  min-width: 250px;
+  height: 60px;
+  position: relative;
+  display: table;
+}
+.DossierVoteUpwrap .votes {
+  border-radius: 3px 0 0 3px;
+  display: table-cell;
+  min-width: 50px;
+  min-height: 60px;
+  background: #2980b9;
+  text-align: center;
+  color: #fff;
+  line-height: 60px;
+  font-weight: 700;
+}
+.DossierVoteUpwrap .DossierVoteUpbutton {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 0 3px 3px 0;
+  display: table-cell;
+  text-align: center;
+  color: #fff;
+  line-height: 60px;
+  min-height: 60px;
+  background: #3498db;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border-left: 1px solid #3498db;
+  width: 200px;
+}
+.DossierVoteUpwrap .DossierVoteUpbutton i {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+          transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  margin: 0 10px 0 0;
+}
+.DossierVoteUpwrap .DossierVoteUpbutton:hover {
+  background: #2980b9;
+}
+.DossierVoteUpwrap .DossierVoteUpbutton:hover i {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+          transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*###################################################################################################################################*/
+
+.DossierFlagwrap {
+    display: table-cell;
+    float: right;
+  width: 50px;
+  min-width: 250px;
+  height: 60px;
+  position: relative;
+  display: table;
+}
+
+.DossierFlagwrap .DossierFlagbutton {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 0 3px 3px 0;
+  display: table-cell;
+  text-align: center;
+  color: #fff;
+  line-height: 60px;
+  min-height: 60px;
+  background: #3498db;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  border-left: 1px solid #3498db;
+}
+.DossierFlagwrap .DossierFlagbutton i {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+          transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+  margin: 0 10px 0 0;
+}
+.DossierFlagwrap .DossierFlagbutton:hover {
+  background: #2980b9;
+
+}
+.DossierFlagwrap .DossierFlagbutton:hover i {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transition: all 800ms cubic-bezier(1, 0, 0, 1);
+          transition: all 800ms cubic-bezier(1, 0, 0, 1);
+  -webkit-transition-timing-function: cubic-bezier(1, 0, 0, 1);
+          transition-timing-function: cubic-bezier(1, 0, 0, 1);
+
+}
+
+.DossierVoteUpbutton a{
+    color: #FFF;
+}
+
+.DossierVoteUpbutton a:hover{
+    text-decoration: none;
+}
+
+#aantalStemmen img{
+    height: 50px;
+    width: 50px;
+    margin-left:3%;
+}
+
+#DossierVoteUpbuttonWrapper{
+    text-decoration: none;
+
 }

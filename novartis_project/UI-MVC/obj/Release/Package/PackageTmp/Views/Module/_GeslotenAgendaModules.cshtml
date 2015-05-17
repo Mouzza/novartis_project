@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.AgendaModule>
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "";
+    Layout = "";
+}
+
+<h2>Gesloten agendamodules</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Admin naam
+        </th>
+        <th>
+            Inhoud
+        </th>
+        <th>
+            Begin datum
+        </th>
+        <th>
+            Eind datum
+        </th>
+        <th>
+            Vraag
+        </th>
+        <th>
+            Thema
+        </th>
+        <th>
+            Beloning
+        </th>
+
+        <th id="settingsLayout">Instellingen</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.adminNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beginDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.eindDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.thema.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.beloning.naam)
+            </td>
+            <td>
+               
+                @Html.ActionLink("Details", "_Details", new { id = item.ID }) |
+              
+          
+                    <h4>Aantal antwoorden: @item.agendaAntwoorden.Count</h4>
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div id="pager3">
+    @Html.PagedListPager(Model, page => Url.Action("_GeslotenAgendaModules",
+    new { page }))
+</div>
+
+<script>
+    $(function () {
+        $('#pager3').on('click', 'a', function () {
+            if (this.href == "") { return; }
+            $.ajax({
+                url: this.href,
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#geslotenAgendaModules').html(result);
+                }
+            });
+            return false;
+        });
+    });
+
+</script>

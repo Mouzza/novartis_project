@@ -34,6 +34,25 @@
 
             }
 
+            @*@if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/Home/Main"))
+            {
+                <a id="MainFilterJO" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.LikesSortParm }, null)"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" /> </a>
+                <a id="MainFilterOJ" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.NPopSortParm }, null)"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </a>
+                <a id="MainFilterZA" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.ZASortParm }, null)"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </a>
+                <a id="MainFilterAZ" href="@Url.Action("Main", "Home", new { sortOrder = ViewBag.AZSortParm }, null)"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </a>
+
+
+
+            }
+            else if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/"))
+            {
+                <a id="MainFilterJO" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.LikesSortParm }, null)"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" /> </a>
+                <a id="MainFilterOJ" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.NPopSortParm }, null)"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </a>
+                <a id="MainFilterZA" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.ZASortParm }, null)"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </a>
+                <a id="MainFilterAZ" href="@Url.Action("Index", "Home", new { sortOrder = ViewBag.AZSortParm }, null)"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </a>
+
+            }*@
+
    
         </div>
     </p>
@@ -48,7 +67,7 @@
 
         @foreach (var item in Model)
         {
-            if (item.GetType().Name.Substring(0, 15) == "DossierAntwoord")
+            if (item.GetType().Name.Substring(0, 7) == "Dossier")
             {
 
                 <div id="homeTable">

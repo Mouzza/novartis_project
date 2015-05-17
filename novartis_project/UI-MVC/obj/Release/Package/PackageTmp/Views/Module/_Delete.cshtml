@@ -1,0 +1,116 @@
+﻿
+@model JPP.BL.Domain.Modules.AgendaModule
+
+@{
+    ViewBag.Title = "Verwijder agendamodule";
+}
+
+<h2>@Model.naam</h2>
+
+<h3>De agendamodule wordt verwijdert, bent u zeker?</h3>
+<div>
+    <h4>Verwijderen</h4>
+    <h4 class="text-danger">Opgelet: alle agendaantwoorden(@Model.agendaAntwoorden.Count) van deze dossiermodule worden mee verwijderd!</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Admin naam:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.adminNaam)
+        </dd>
+
+        <dt>
+            Module naam:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naam)
+        </dd>
+
+        <dt>
+            Begin datum:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beginDatum)
+        </dd>
+
+        <dt>
+            Eind datum:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.eindDatum)
+        </dd>
+
+ 
+        <br />
+        <dt>
+            Status:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            Thema:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.thema.naam)
+        </dd>
+
+        <dt>
+            Central vraag:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.centraleVraag.inhoud)
+        </dd>
+        <br />
+        <dt>
+            Beloning naam:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beloning.naam)
+        </dd>
+
+        <dt>
+            Beloning beschrijving:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beloning.beschrijving)
+        </dd>
+        <br />
+        <dt>
+            Aantal winnaars:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.centraleVraag.aantalWinAntwoorden)
+        </dd>
+        <dt>
+            Aantal antwoorden:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agendaAntwoorden.Count)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijder" class="btn btn-default" /> |
+            @Html.ActionLink("Ga terug", "AgdModules")
+        </div>
+    }
+</div>
