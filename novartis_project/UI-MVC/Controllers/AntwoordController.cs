@@ -89,7 +89,6 @@ namespace JPP.UI.Web.MVC.Controllers
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-                       
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
@@ -193,7 +192,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
             
             if (!Request.IsAuthenticated)
@@ -274,11 +273,7 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
-
+     
             if (dossierAntwoord.titel != null)
             {
                 return View(dossierAntwoord);
@@ -303,7 +298,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
            
             if (!Request.IsAuthenticated)
@@ -409,7 +404,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
 
             if (!Request.IsAuthenticated)
@@ -519,7 +514,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
 
             if (!Request.IsAuthenticated)
