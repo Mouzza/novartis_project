@@ -88,7 +88,6 @@ namespace JPP.UI.Web.MVC.Controllers
             //}
             return Ok(model);
         }
-<<<<<<< HEAD
 
         //public ApplicationRoleManager roleManager;
         //public ApplicationRoleManager RoleManager
@@ -163,9 +162,6 @@ namespace JPP.UI.Web.MVC.Controllers
 
         //    return (model);
         //}
-=======
-
->>>>>>> origin/master
 
     }
 }

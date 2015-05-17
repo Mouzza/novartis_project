@@ -127,9 +127,6 @@ namespace JPP.UI.Web.MVC.Models
         public List<ANDROIDComment> comments { get; set; }
         public string textvak2 { get; set; }
         public string textvak3 { get; set; }
-        public string foregroundColor { get; set; }
-        public string backgroundColor { get; set; }
-        public string backgroundImage { get; set; }
         public string extraVraag { get; set; }
         public int evenementID { get; set; }
         public string googleMapsAdress { get; set; }

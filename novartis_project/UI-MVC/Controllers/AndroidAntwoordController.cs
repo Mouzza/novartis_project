@@ -49,7 +49,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     moduleID = agenda.module.ID,
                     vasteTags = new List<ANDROIDVasteTag>(),
                     persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    titel = agenda.titel
+                    titel = agenda.titel,
+                    subTitel=agenda.subtitel
                 };
 
                 foreach (var vTag in agenda.vasteTags)
@@ -105,7 +106,10 @@ namespace JPP.UI.Web.MVC.Controllers
                     evenementID = 10/*dossier.evenement.ID*/,
                     comments = new List<ANDROIDComment>(),
                     titel = dossier.titel,
-                    googleMapsAdress = dossier.googleMapsAdress
+                    googleMapsAdress = dossier.googleMapsAdress,
+                    subtitel=dossier.subtitel,
+                    textvak2 = dossier.textvak2,
+                    textvak3=dossier.textvak3
                 };
 
                 //Image tmpimg = null;
