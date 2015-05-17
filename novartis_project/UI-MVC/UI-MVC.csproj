@@ -199,6 +199,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AndroidAccountController.cs" />
     <Compile Include="Controllers\AndroidAntwoordController.cs" />
     <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
@@ -368,6 +369,11 @@
     <Content Include="Images\buttonAgenda.png" />
     <Content Include="Images\buttonDossier.png" />
     <Content Include="Images\dossier-white.png" />
+    <Content Include="Images\DossierModel\Layout 1.png" />
+    <Content Include="Images\DossierModel\Layout 2.png" />
+    <Content Include="Images\DossierModel\Layout 3.png" />
+    <Content Include="Images\DossierModel\Layout 4.png" />
+    <Content Include="Images\DossierModel\Layout 5.png" />
     <Content Include="Images\filter.png" />
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
@@ -462,6 +468,12 @@
     <Content Include="Scripts\TimeLine.js" />
     <Content Include="Scripts\websiteAnimation.js" />
     <Content Include="Scripts\websiteRouting.js" />
+    <Content Include="uploads\379465.png" />
+    <Content Include="uploads\389631_343833325673042_120674037988973_959634_1081499447_n.jpg" />
+    <Content Include="uploads\ae0K8gv_460s.jpg" />
+    <Content Include="uploads\archlinux-sticker-powered-by-arch.png" />
+    <Content Include="uploads\Arch_Linux_Start_Icons_by_gabriela2400.png" />
+    <Content Include="uploads\Jellyfish.jpg" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -555,13 +567,30 @@
     <Content Include="Views\Antwoord\DossierModelThree.cshtml" />
     <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
-    <Content Include="Views\Admin\Menu.cshtml" />
     <Content Include="Views\Antwoord\CreateDossier.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelOne.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelTwo.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelThree.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelFive.cshtml" />
     <Content Include="Views\Antwoord\AdjustableDossierModelSix.cshtml" />
+    <Content Include="Views\Shared\Error2.cshtml" />
+    <Content Include="Views\Module\_Create.cshtml" />
+    <Content Include="Views\Module\_Delete.cshtml" />
+    <Content Include="Views\Module\_Edit.cshtml" />
+    <Content Include="Views\Module\DossModules.cshtml" />
+    <Content Include="Views\Module\AgdModules.cshtml" />
+    <Content Include="Views\Module\GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Module\GeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\VolgOp.cshtml" />
+    <Content Include="Views\Module\_GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\_GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\_GeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\_GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Antwoord\AdjAgendaAntwoord.cshtml" />
+    <Content Include="Views\Module\DossierModuleUitleg.cshtml" />
+    <Content Include="Views\Module\AgendaModuleUitleg.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

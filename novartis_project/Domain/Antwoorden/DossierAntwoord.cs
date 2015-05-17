@@ -10,6 +10,7 @@ namespace JPP.BL.Domain.Antwoorden
 {
     public class DossierAntwoord:Antwoord
     {
+        public int layoutOption { get; set; }
         public string afbeeldingPath { get; set; }
         public string textvak2 { get; set; }
         public string textvak3 { get; set; }
@@ -17,9 +18,8 @@ namespace JPP.BL.Domain.Antwoorden
         public string backgroundColor {get; set; }
         public string backgroundImage { get; set; }
         public int percentageVolledigheid { get; set; }
-        public Boolean statusOnline { get; set; }
         public string extraVraag { get; set; }
-        
+        public string googleMapsAdress{ get; set; }
 
         public virtual Evenement evenement { get; set; }
         public virtual ICollection<Comment> comments { get; set; }

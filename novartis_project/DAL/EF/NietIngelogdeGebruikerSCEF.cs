@@ -16,11 +16,8 @@ namespace JPP.DAL.EF
 {
     public class NietIngelogdeGebruikerSCEF
     {
-        EFDbContext dbcontext;
-        public NietIngelogdeGebruikerSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+        public static EFDbContext dbcontext = new EFDbContext();
+       
         public Gebruiker createGebruiker(Gebruiker gebruiker)
         {
             dbcontext.gebruiker.Add(gebruiker);
@@ -71,6 +68,19 @@ namespace JPP.DAL.EF
             Antwoord antwoord = dbcontext.antwoord.Find(ID);
             return antwoord;
         }
+
+        public DossierAntwoord getDossierAntwoord(int ID)
+        {
+            DossierAntwoord antwoord = (DossierAntwoord)dbcontext.antwoord.Find(ID);
+            return antwoord;
+        }
+
+        public AgendaAntwoord getAgendaAntwoord(int ID)
+        {
+            AgendaAntwoord antwoord = (AgendaAntwoord)dbcontext.antwoord.Find(ID);
+            return antwoord;
+        }
+
 
         public IEnumerable<DossierAntwoord> getDossierAntwoorden()
         {
@@ -165,32 +175,8 @@ namespace JPP.DAL.EF
 
         public List<DossierModule> getDossierModules()
         {
-
-            List<Module> antwoordlist = dbcontext.modules.ToList();
-            List<DossierModule> AgendaAntwoordList = new List<DossierModule>();
-            DossierModule agmod = new DossierModule();
-            foreach (var antwoord in antwoordlist)
-            {
-                if (antwoord is DossierModule)
-                {
-                    AgendaAntwoordList.Add((DossierModule)antwoord);
-                }
-            }
-
-            //List<Module> antwoordlist = dbcontext.modules.ToList();
-            //List<DossierModule> AgendaAntwoordList = new List<DossierModule>();
-            //DossierModule agmod = new DossierModule();
-            //foreach(var antwoord in antwoordlist){
-            //    if (antwoord.GetType() == agmod.GetType())
-            //    {
-            //        AgendaAntwoordList.Add((DossierModule)antwoord);
-            //    }
-
-                
-            //}
-            //return AgendaAntwoordList;
             List<DossierModule> dossierModule = dbcontext.modules.OfType<DossierModule>().ToList();
-                return dossierModule;
+            return dossierModule;
         }
         
 

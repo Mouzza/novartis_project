@@ -103,18 +103,45 @@ namespace JPP.BL
             return agendaAntwoorden.OrderByDescending(o => o.titel).ToList();
         }
 
+
+        #region sortAntwoorden
+        public List<Antwoord> sortAntwoordNieuwOud(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderByDescending(o => o.datum).ToList();
+        }
+        public List<Antwoord> sortAntwoordMeesteLikes(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
+        }
+
+        public List<Antwoord> sortAntwoordMinsteLikes(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderBy(o => o.aantalStemmen).ToList();
+        }
+
+        public List<Antwoord> sortAntwoordAZ(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderBy(o => o.titel).ToList();
+        }
+
+        public List<Antwoord> sortAntwoordZA(IEnumerable<Antwoord> antwoorden)
+        {
+            return antwoorden.OrderByDescending(o => o.titel).ToList();
+        }
+
+        #endregion
         #region sortDossierAntwoord
         public List<DossierAntwoord> sortDossierAntwoordNieuwOud(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
 
-            return dossierAntwoorden.OrderBy(o => o.datum).ToList();
+            return dossierAntwoorden.OrderByDescending(o => o.datum).ToList();
         }
         public List<DossierAntwoord> sortDossierAntwoordOudNieuw(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
 
-            return dossierAntwoorden.OrderByDescending(o => o.datum).ToList();
+            return dossierAntwoorden.OrderBy(o => o.datum).ToList();
         }
         public List<DossierAntwoord> sortDossierAntwoordMeesteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
@@ -176,6 +203,17 @@ namespace JPP.BL
         {
            return inlog.getAntwoord(id);
         }
+
+        public DossierAntwoord readDossierAntwoord(int id)
+        {
+            return inlog.getDossierAntwoord(id);
+        }
+
+        public AgendaAntwoord readAgendaAntwoord(int id)
+        {
+            return inlog.getAgendaAntwoord(id);
+        }
+
         public List<DossierAntwoord> readAllDossierAntwoorden()
         {
             List<DossierAntwoord> dossierReturn = inlog.getAllDossierAntwoorden();
@@ -189,14 +227,17 @@ namespace JPP.BL
 
 
 
-        public Antwoord createDossierAntwoord(DossierAntwoord antwoord)
+        public DossierAntwoord createDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            return inlog.maakDossierAntwoord(antwoord);
+            
+            return inlog.maakDossierAntwoord(dossierAntwoord);
 
         }
-        public Antwoord createAgendaAntwoord(Antwoord antwoord)
+        public AgendaAntwoord createAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
-            return inlog.maakAgendaAntwoord((AgendaAntwoord)antwoord);
+            
+
+            return inlog.maakAgendaAntwoord(agendaAntwoord);
         }
         public void updateAgendaAntwoord(Antwoord antwoord)
         {
@@ -212,11 +253,11 @@ namespace JPP.BL
         }
         public void stemOpComment(int id)
         {
-            beheerder.stemOpComment(id);
+            inlog.stemOpComment(id);
         }
         public void stemOpAntwoord(int id)
         {
-            beheerder.stemOpAntwoord(id);
+            inlog.stemOpAntwoord(id);
         }
 
          

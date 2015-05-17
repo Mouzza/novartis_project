@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using JPP.UI.Web.MVC.Models;
 using JPP.BL.Domain.Modules;
+using JPP.BL.Domain.Antwoorden;
 using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 using PagedList;
@@ -21,8 +22,166 @@ namespace JPP.UI.Web.MVC.Controllers
     {
 
         ModuleManager moduleManager = new ModuleManager();
+        AntwoordManager antwManager = new AntwoordManager();
+
+        public ActionResult VoteUp(int id)
+        {
+            DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
+            dossierAntwoord.aantalStemmen = (dossierAntwoord.aantalStemmen + 1);
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("Dossier", "Module");
+            
+        }
+
+        public ActionResult VoteUpAgenda(int id)
+        {
+            AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
+            agendaAntwoord.aantalStemmen = (agendaAntwoord.aantalStemmen + 1);
+            antwManager.updateAgendaAntwoord(agendaAntwoord);
+            return RedirectToAction("Agenda", "Module");
+
+        }
+
+        public ActionResult VolgOp()
+        {
+            return View();
+        }
+
+        public ActionResult DossierModuleUitleg()
+        {
+            DossierModule dossierModule = moduleManager.readActieveDossierModule();
+            if (dossierModule.beloning.naam == null)
+            {
+                Beloning beloning = new Beloning();
+                beloning.naam = " ";
+                beloning.beschrijving = " ";
+                dossierModule.beloning = beloning;
+            }
+            return View(dossierModule);
+        }
+
+        public ActionResult AgendaModuleUitleg()
+        {
+            AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
+            if (agendaModule.beloning.naam == null)
+            {
+                Beloning beloning = new Beloning();
+                beloning.naam = " ";
+                beloning.beschrijving = " ";
+                agendaModule.beloning = beloning;
+            }
+            return View(agendaModule);
+        }
+
+        public ActionResult DossModules()
+        {
+            return View();
+        }
+        public ActionResult AgdModules()
+        {
+            return View();
+
+        }
+
+        public ActionResult _GeplandeDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
 
 
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeplandeModules().OfType<DossierModule>();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _GeplandeAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeplandeModules().OfType<AgendaModule>();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult GeplandeDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeplandeModules().OfType<DossierModule>();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult GeplandeAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeplandeModules().OfType<AgendaModule>();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+        public ActionResult GeslotenDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+     
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeslotenDossiers();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+
+        public ActionResult GeslotenAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+     
+       
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeslotenAgendas();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _GeslotenDossierModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeslotenDossiers();
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _GeslotenAgendaModules(int? page)
+        {
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeslotenAgendas();
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
 
         public ActionResult CommingSoon()
         {
@@ -48,23 +207,21 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-       public ActionResult partialViewDossierModule(int? page)
+       public ActionResult partialViewDossierModule()
        {
-           int pageSize = 5;
-           int pageNumber = (page ?? 1);
 
-           IEnumerable<DossierModule> DossierModules = moduleManager.readAllDossierModules();
 
-           return PartialView(DossierModules.ToPagedList(pageNumber, pageSize));
+          DossierModule dossierModule = moduleManager.readActieveDossierModule();
+
+           return PartialView(dossierModule);
 
        }
-       public ActionResult partialViewAgendaModule(int? page)
+       public ActionResult partialViewAgendaModule()
        {
-           int pageSize = 5;
-           int pageNumber = (page ?? 1);
+          
 
-           IEnumerable<AgendaModule> AgendaModules = moduleManager.readAllAgendaModules();
-           return PartialView(AgendaModules.ToPagedList(pageNumber, pageSize));
+           AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
+           return PartialView(agendaModule);
        }
        public ActionResult Dossier()
        {
@@ -125,8 +282,32 @@ namespace JPP.UI.Web.MVC.Controllers
             try
             {
                 // TODO: Add delete logic here
-                moduleManager.removeModule(id);
-                return RedirectToAction("Index", "Module");
+                moduleManager.removeDossierModule(id);
+                return RedirectToAction("DossModules", "Module");
+            }
+            catch
+            {
+                return View("Error");
+            }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Delete(int id)
+        {
+            AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
+
+            return View(agendaModule);
+        }
+        // POST: Module/_Delete/5
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+                moduleManager.removeAgendaModule(id);
+                return RedirectToAction("AgdModules", "Module");
             }
             catch
             {
@@ -152,14 +333,43 @@ namespace JPP.UI.Web.MVC.Controllers
                 
                 // TODO: Add update logic here
 
-                moduleManager.updateModule(DossierModule);
-                return RedirectToAction("Index");
+                moduleManager.updateDossierModule(DossierModule);
+                return RedirectToAction("DossModules", "Module");
             }
             catch
             {
-                return View("Error");
+                return View();
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Edit(int id)
+        {
+
+            AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
+
+            return View(agendaModule);
+        }
+        // POST: Module/_Edit/5
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Edit(AgendaModule agendaModule)
+        {
+
+            try
+            {
+
+                // TODO: Add update logic here
+
+                moduleManager.updateAgendaModule(agendaModule);
+                return RedirectToAction("AgdModules", "Module");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         // GET: Module/Create
         [Authorize(Roles = "Admin")]
@@ -176,14 +386,9 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             try
             {
-<<<<<<< HEAD
-                dosModule.dossiermodule.vasteVragen.Add(dosModule.vasteVraag);
-=======
-
-
+              
                 dosModule.adminNaam = User.Identity.GetUserName();
-             
->>>>>>> origin/master
+
                 // TODO: Add insert logic here
                 moduleManager.createDossierModule(dosModule);
 
@@ -191,7 +396,35 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             catch
             {
-                return View("Error");
+                return View();
+            }
+        }
+        // GET: Module/_Create
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Create()
+        {
+
+            return View();
+        }
+
+        // POST: Module/_Create
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public ActionResult _Create(AgendaModule agModule)
+        {
+            try
+            {
+
+                agModule.adminNaam = User.Identity.GetUserName();
+
+                // TODO: Add insert logic here
+                moduleManager.createAgendaModule(agModule);
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
             }
         }
 

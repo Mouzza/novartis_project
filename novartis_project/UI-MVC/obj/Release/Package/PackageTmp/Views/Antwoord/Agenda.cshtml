@@ -1,0 +1,36 @@
+﻿@model JPP.BL.Domain.Antwoorden.AgendaAntwoord
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Antwoord";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/DossierModel.css">
+
+<div id="AgendaAntwoordWrapper">
+    <div class="AdjAgendaModelTitle">
+
+            @Model.titel
+
+    </div><!--Hier moet de titel van de pagina komen-->
+    <div id="DossierModelSubTitle">
+        <h2>
+            @Model.subtitel
+        </h2>
+    </div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+        <div id="AgendaModelTextVakEen">
+            <p>
+                @Model.inhoud
+            </p>
+
+        </div><!--Hier moet de eerste textvak van de pagina komen-->
+</div>
+
+
+<p>
+    @*@if (User.Identity.Name == Model.gebruikersNaam)
+    {
+
+        @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+    }*@
+    @Html.ActionLink("Ga terug", "Agenda", "Module")
+</p>

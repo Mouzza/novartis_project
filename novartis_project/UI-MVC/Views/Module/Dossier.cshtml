@@ -5,12 +5,13 @@
 
 }
 
+<div id="DossierWrapperLayout">
+    @{ Html.RenderAction("Actief", "Module");}
 
-@{ Html.RenderAction("Actief", "Module");}
 
 
+    <div id="antwoorden">
+        @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord"); }
 
-<div id="antwoorden">
-    @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord"); }
-
+    </div>
 </div>

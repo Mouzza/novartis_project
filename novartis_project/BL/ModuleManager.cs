@@ -34,9 +34,6 @@ namespace JPP.BL
             admin = new AdminSCEF();
         }
 
-
-        
-
         public Module readModule(int id)
         {
             return nietInlog.getModule(id);
@@ -145,7 +142,7 @@ namespace JPP.BL
                 };
          
 
-            DossierModule moduleX = new DossierModule()
+            DossierModule dossierModuleX = new DossierModule()
             {
 
                
@@ -160,22 +157,107 @@ namespace JPP.BL
 
             };
 
-            moduleX.beloning = beloning;
+            dossierModuleX.beloning = beloning;
             //dossierModule.vasteVragen = vasteVragen;
-            moduleX.centraleVraag = centraleVraag;
-            moduleX.thema = thema;
+            dossierModuleX.centraleVraag = centraleVraag;
+            dossierModuleX.thema = thema;
 
-            return admin.createDossierModule(moduleX);
+            return admin.maakDossierModule(dossierModuleX);
         }
 
-        public void updateModule(Module module)
+        public AgendaModule createAgendaModule(AgendaModule agendaModule)
         {
-            admin.wijzigModule(module);
+            CentraleVraag centraleVraag = new CentraleVraag()
+            {
+                inhoud = agendaModule.centraleVraag.inhoud,
+                aantalWinAntwoorden = agendaModule.centraleVraag.aantalWinAntwoorden,
+                extraInfo = agendaModule.centraleVraag.extraInfo,
+                datum = DateTime.Now
+
+
+            };
+
+            Thema thema = new Thema()
+            {
+                beschrijving = agendaModule.thema.beschrijving,
+                naam = agendaModule.thema.naam,
+
+            };
+  
+            Beloning beloning = new Beloning()
+            {
+                naam = agendaModule.beloning.naam,
+                beschrijving = agendaModule.beloning.beschrijving
+
+
+            };
+
+
+            AgendaModule agendaModuleX = new AgendaModule()
+            {
+
+
+                status = agendaModule.status,
+                adminNaam = agendaModule.adminNaam,
+                beginDatum = agendaModule.beginDatum,
+                eindDatum = agendaModule.eindDatum,          
+                naam = agendaModule.naam
+
+
+            };
+
+            agendaModuleX.beloning = beloning;
+            agendaModuleX.centraleVraag = centraleVraag;
+            agendaModuleX.thema = thema;
+
+            return admin.maakAgendaModule(agendaModuleX);
         }
 
-        public void removeModule(int id)
+        public void updateDossierModule(DossierModule dossierModule)
         {
-            admin.deleteModule(id);
+            admin.wijzigDossierModule(dossierModule);
+        }
+        public void updateAgendaModule(AgendaModule agendaModule)
+        {
+            admin.wijzigAgendaModule(agendaModule);
+        }
+
+        public void removeDossierModule(int id)
+        {
+            admin.deleteDossierModule(id);
+        }
+
+        public void removeAgendaModule(int id)
+        {
+            admin.deleteAgendaModule(id);
+        }
+
+        public List<DossierModule> readGeslotenDossiers()
+        {
+            List<DossierModule> dossierModules = nietInlog.getDossierModules();
+            List<DossierModule> moduleTussen = new List<DossierModule>();
+            for (int i = 0; i < dossierModules.Count; i++)
+            {
+                if (dossierModules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(dossierModules[i]);
+                }
+            }
+            return moduleTussen;
+        }
+
+        public List<AgendaModule> readGeslotenAgendas()
+        {
+            List<AgendaModule> agendaModules = nietInlog.getAgendaModules();
+            List<AgendaModule> moduleTussen = new List<AgendaModule>();
+            for (int i = 0; i < agendaModules.Count; i++)
+            {
+                if (agendaModules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(agendaModules[i]);
+                }
+            }
+            return moduleTussen;
         }
     }
 }

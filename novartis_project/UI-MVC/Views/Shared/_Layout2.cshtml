@@ -122,14 +122,20 @@
         controle = true;
 
     }
-
-    @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/Home/Main")
+    @if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/?sortOrder"))
     {
         @RenderBody()
         controle = true;
 
     }
-     @if (Request.Url.AbsoluteUri == "http://10.134.216.25:8014/Home/Index")
+
+    @if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/Home/Main"))
+    {
+        @RenderBody()
+        controle = true;
+
+    }
+     @if (Request.Url.AbsoluteUri.Contains("http://10.134.216.25:8014/Home/Index"))
     {
         @RenderBody()
         controle = true;
@@ -200,14 +206,20 @@
         controle = true;
 
     }
-    @if (Request.Url.AbsoluteUri == "http://localhost:44302/Home/Index")
+    @if (Request.Url.AbsoluteUri.Contains("http://localhost:44302/?sortOrder"))
+    {
+        @RenderBody()
+        controle = true;
+
+    }
+    @if (Request.Url.AbsoluteUri.Contains("http://localhost:44302/Home/Index"))
     {
         @RenderBody()
         controle = true;
 
     }
 
-    @if (Request.Url.AbsoluteUri == "http://localhost:44302/Home/Main")
+    @if (Request.Url.AbsoluteUri.Contains("http://localhost:44302/Home/Main"))
     {
         @RenderBody()
         controle = true;

@@ -23,6 +23,7 @@ namespace JPP.UI.Web.MVC.Controllers
     {
         AntwoordManager antwManager = new AntwoordManager();
         ModuleManager dossManager = new ModuleManager();
+
         // GET: Antwoord
         public ActionResult Index()
         {
@@ -40,63 +41,721 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(agendaAntwoord);
         }
 
-        public ActionResult AdjustableDossierModelOne()
+ 
+        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
-            return View();
+
+
+            if (dossierAntwoord.titel != null)
+            {
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "~/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+
+            }
+           
         }
 
-        public ActionResult AdjustableDossierModelSix()
+
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
-            return View();
+
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelOne",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
+                       
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+                    
+                    
+                    
+                    
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+                  
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 1,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelOne", new { id = createddos.ID });
+
+            
+            }
+ 
         }
 
-        public ActionResult AdjustableDossierModelThree()
+
+
+
+ 
+
+        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossierAntwoord)
         {
-            return View();
+
+            //if (!Request.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Login","Account");
+            //}
+
+            if (dossierAntwoord.titel != null)
+            {
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "~/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
         }
 
-        public ActionResult AdjustableDossierModelFive()
+        [HttpPost]
+        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            return View();
+            
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelTwo",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
+
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 2,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelTwo", new { id = createddos.ID });
+            }
         }
 
-        public ActionResult CreateDossier()
+        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
         {
-            return View();
+
+            //if (!Request.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Login","Account");
+            //}
+
+            if (dossierAntwoord.titel != null)
+            {
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "~/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
         }
 
-        public ActionResult AdjustableDossierModelTwo()
+        [HttpPost]
+        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            return View();
+           
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelThree",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
+
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 3,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelThree", new { id = createddos.ID });
+            }
         }
 
-        public ActionResult DossierModelOne()
+        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossierAntwoord)
         {
-            return View();
+
+        
+            if (dossierAntwoord.titel != null)
+            {
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "~/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
         }
 
-        public ActionResult DossierModelTwo()
+        [HttpPost]
+        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            return View();
+
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelFive",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
+
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 5,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelFive", new { id = createddos.ID });
+            }
         }
 
-        public ActionResult DossierModelThree()
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord)
         {
-            return View();
+
+            //if (!Request.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Login","Account");
+            //}
+
+            if (dossierAntwoord.titel != null)
+            {
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "~/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
         }
 
-        public ActionResult DossierModelFive()
+        [HttpPost]
+        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
         {
-            return View();
+
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdjustableDossierModelSix",
+                    new
+                    {
+                        inhoud = dossAntwoord.inhoud,
+
+                        textvak2 = dossAntwoord.textvak2,
+                        textvak3 = dossAntwoord.textvak3,
+                        googleMapsAdress = dossAntwoord.googleMapsAdress,
+                        afbeeldingPath = dossAntwoord.afbeeldingPath,
+                        foregroundColor = dossAntwoord.foregroundColor,
+                        backgroundColor = dossAntwoord.backgroundColor
+
+
+
+
+                    });
+            }
+            else
+            {
+                var fileName = "";
+                if (file != null && file.ContentLength > 0)
+                {
+                    fileName = Path.GetFileName(file.FileName);
+                    var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
+                    file.SaveAs(path);
+
+                }
+                DossierAntwoord dossierAntwoordX = new DossierAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    comments = new List<Comment>(),
+                    vasteTags = new List<VasteTag>(),
+                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    datum = DateTime.Now,
+                    aantalFlags = 0,
+                    aantalStemmen = 0,
+                    percentageVolledigheid = 50,
+                    statusOnline = false,
+                    layoutOption = 6,
+                    subtitel = dossAntwoord.subtitel,
+                    titel = dossAntwoord.titel,
+                    inhoud = dossAntwoord.inhoud,
+                    textvak2 = dossAntwoord.textvak2,
+                    textvak3 = dossAntwoord.textvak3,
+                    googleMapsAdress = dossAntwoord.googleMapsAdress,
+                    afbeeldingPath = "/uploads/" + fileName,
+                    foregroundColor = dossAntwoord.foregroundColor,
+                    backgroundColor = dossAntwoord.backgroundColor
+
+                };
+
+
+
+                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+
+                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+                dossierAntwoordX.module = actieveDossierModule;
+                DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
+                actieveDossierModule.dossierAntwoorden.Add(createddos);
+                dossManager.updateDossierModule(actieveDossierModule);
+
+
+
+
+                return RedirectToAction("DossierModelSix", new { id = createddos.ID });
+
+
+              }
         }
 
-        public ActionResult DossierModelSix()
+
+
+        public ActionResult DossierModelOne(int id)
         {
-            return View();
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
+            {
+                dossierAntwoord = (DossierAntwoord)antwManager.readDossierAntwoord(id);
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
         }
 
-        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, int? page)
+        [HttpPost]
+        public ActionResult DossierModelOne(int id, FormCollection collection)
         {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+            
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelOne", new { id = dossierAntwoord.ID });
+
+        }
+
+        public ActionResult DossierModelTwo(int id)
+        {
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
+            {
+                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
+        }
+
+        public ActionResult DossierModelThree(int id)
+        {
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
+            {
+                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
+        }
+
+        public ActionResult DossierModelFive(int id)
+        {
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
+            {
+                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
+        }
+
+        public ActionResult DossierModelSix(int id)
+        {
+            DossierAntwoord dossierAntwoord = new DossierAntwoord();
+            if (id != null)
+            {
+                dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                return View(dossierAntwoord);
+            }
+            else
+            {
+
+                dossierAntwoord = new DossierAntwoord()
+                {
+
+                    titel = "Geef titel",
+                    subtitel = "Geef subtitel",
+                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    afbeeldingPath = "/uploads/379465.png"
+
+                };
+
+                return View(dossierAntwoord);
+            }
+        }
+
+        public ActionResult homePartialAntwoorden(string searchString, string currentFilter, string sortOrder, int? page)
+        {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.LikesSortParm = sortOrder == "Likes" ? "" : "Likes";
+            ViewBag.NPopSortParm = sortOrder == "NPop" ? "" : "NPop";
+            ViewBag.AZSortParm = sortOrder == "AZ" ? "" : "AZ";
+            ViewBag.ZASortParm = sortOrder == "ZA" ? "" : "ZA";
+
             if (searchString != null)
             {
                 page = 1;
@@ -117,7 +776,29 @@ namespace JPP.UI.Web.MVC.Controllers
                 antwoorden = antwoorden.Where(antw => antw.inhoud.Contains(searchString)
                                        || antw.titel.Contains(searchString));
             }
+            switch (sortOrder)
+            {
+                case "AZ":
+                    antwoorden = antwManager.sortAntwoordAZ(antwoorden);
+                 
+                    break;
+                case "ZA":
+                    antwoorden = antwManager.sortAntwoordZA(antwoorden);
+                
+                    break;
+                case "NPop":
+                    antwoorden = antwManager.sortAntwoordMinsteLikes(antwoorden);
+            
+                    break;
+                case "Likes":
+                    antwoorden = antwManager.sortAntwoordMeesteLikes(antwoorden);
+              
+                    break;
+                default:
+                    antwoorden = antwManager.sortAntwoordNieuwOud(antwoorden);
          
+                    break;
+            }
             return PartialView(antwoorden.ToPagedList(pageNumber, pageSize));
         }
 
@@ -137,9 +818,15 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageNumber = (page ?? 1);
 
             DossierModule dossiermodule = dossManager.readActieveDossierModule();
-            List<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+            List<DossierAntwoord> dossierAntwoorden = new List<DossierAntwoord>();
+            if (dossiermodule.naam != null)
+            {
+                dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+
             List<DossierAntwoord> dossierAntwoorden2 = new List<DossierAntwoord>();
-            ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+
 
             switch (sortOrder)
             {
@@ -185,10 +872,16 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageNumber = (page ?? 1);
 
             AgendaModule agendaModule = dossManager.readActieveAgendaModule();
-            List<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+            List<AgendaAntwoord> agendaAntwoorden = new List<AgendaAntwoord>();
+            if (agendaModule.naam != null)
+            {
+                agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+         
             List<AgendaAntwoord> agendaAntwoorden2 = new List<AgendaAntwoord>();
 
-            ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+           
 
 
 
@@ -265,107 +958,7 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
-        // POST: Antwoord/Create
-        [HttpPost]
-        public ActionResult Create(DossierAntwoord dossierAntwoord)
-        {
-            try
-            {
-
-                DossierModule dossiermodule = dossManager.readActieveDossierModule();
-
-                
-                dossierAntwoord.datum = DateTime.Now;
-                dossierAntwoord.aantalFlags = 0;  
-                dossierAntwoord.aantalStemmen = 0;
-                dossierAntwoord.statusOnline = true;
-                dossierAntwoord.module = dossiermodule;
-                dossierAntwoord.gebruikersNaam= User.Identity.GetUserName();
-
-                antwManager.createDossierAntwoord(dossierAntwoord);
-                //dossiermodule.dossierAntwoorden.Add(dossierAntwoord);
-                //dossManager.updateModule(dossiermodule);
-                return RedirectToAction("Index","Home");
-                 
-            }
-            catch
-            {
-                return View("Error");
-            }
-        }
-
-        [HttpPost]
-        public ActionResult AdjustableDossierModelOne(HttpPostedFileBase file, DossierAntwoord dossierAntwoord)
-        {
-
-            if (file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/")+ fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("AdjustableDossierModelOne");
-        }
-
-        [HttpPost]
-        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file)
-        {
-
-            if (file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("AdjustableDossierModelOne");
-        }
-
-        [HttpPost]
-        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file)
-        {
-
-            if (file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("AdjustableDossierModelOne");
-        }
-
-        [HttpPost]
-        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file)
-        {
-
-            if (file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("AdjustableDossierModelOne");
-        }
-
-        [HttpPost]
-        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file)
-        {
-
-            if (file.ContentLength > 0)
-            {
-                var fileName = Path.GetFileName(file.FileName);
-                var path = Path.GetFullPath(Server.MapPath("~/App_Data/uploads/") + fileName);
-                file.SaveAs(path);
-            }
-
-            return RedirectToAction("AdjustableDossierModelOne");
-        }
-
-
-
+        
         // GET: Antwoord/Edit/5
         public ActionResult Edit(int id)
         {
@@ -410,6 +1003,77 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 return View();
             }
+        }
+
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord)
+        {
+
+          
+
+              if (agendaAntwoord.titel != null)
+              {
+
+                 return View(agendaAntwoord);
+              }else{
+
+                   agendaAntwoord = new AgendaAntwoord()
+                    {
+
+                        titel = "Geef titel",
+                        subtitel = "Geef subtitel",
+                        inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
+
+                    };
+
+                   return View(agendaAntwoord);
+              }
+                  
+
+        }
+
+
+        [HttpPost]
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection formCollection)
+        {
+            if (!Request.IsAuthenticated)
+            {
+                return RedirectToAction("Login","Account");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View(agendaAntwoord);
+            }
+            else
+            {
+                AgendaAntwoord agendaAntwoordX = new AgendaAntwoord()
+                {
+                    gebruikersNaam = User.Identity.GetUserName(),
+                    datum = DateTime.Now,
+                    aantalStemmen = 0,
+                    aantalFlags = 0,
+                    statusOnline = true,
+                    inhoud = agendaAntwoord.inhoud,
+                    subtitel = agendaAntwoord.subtitel,
+                    titel = agendaAntwoord.titel
+
+                };
+
+                //Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                AgendaModule actieveAgendaModule = dossManager.readActieveAgendaModule();
+                agendaAntwoordX.module = actieveAgendaModule;
+                AgendaAntwoord createddos = antwManager.createAgendaAntwoord(agendaAntwoordX);
+
+                actieveAgendaModule.agendaAntwoorden.Add(createddos);
+
+                dossManager.updateAgendaModule(actieveAgendaModule);
+
+
+                return RedirectToAction("Agenda", new { id = createddos.ID });
+
+              
+
+            }    
         }
     }
 }

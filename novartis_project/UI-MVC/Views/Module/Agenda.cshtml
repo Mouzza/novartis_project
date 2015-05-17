@@ -4,15 +4,16 @@
 
 }
 
+<div id="DossierWrapperLayout">
+    @{ Html.RenderAction("ActiefAgenda", "Module");}
 
-@{ Html.RenderAction("ActiefAgenda", "Module");}
-
-<div id="antwoorden">
-
-    
-    @{ Html.RenderAction("_partialAgendaAntwoordLijst", "Antwoord"); }
-
-   
+    <div id="antwoorden">
 
 
+        @{ Html.RenderAction("_partialAgendaAntwoordLijst", "Antwoord"); }
+
+
+
+
+    </div>
 </div>

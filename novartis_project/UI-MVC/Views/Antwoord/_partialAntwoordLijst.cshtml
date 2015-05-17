@@ -7,15 +7,20 @@
     Layout = "";
     var zelfdeGebruiker = false;
 }
+
+
+
+
+
+@if (Model.Count != 0) {
 <div id="moduleLeftMenuSection">
 
     <ul>
-        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top5SortParm }, null)">Top 5</a></li>
-        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
-        <li><a href="@Url.Action("Agenda", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
+        <li><a href="@Url.Action("Dossier", "Module", new { sortOrder = ViewBag.Top5SortParm }, null)">Top 5</a></li>
+        <li><a href="@Url.Action("Dossier", "Module", new { sortOrder = ViewBag.Top25SortParm }, null)">Top 25</a></li>
+        <li><a href="@Url.Action("Dossier", "Module", new { sortOrder = ViewBag.RecentSortParm }, null)">Meest recente</a></li>
 
     </ul>
-
 
 </div>
 <div id="antwoordlijstWrapper">
@@ -34,15 +39,17 @@
 
     <p id="antwoordlijstCreateSection">
         <img src="~/Images/page icons/new.png" alt="Alternate Text" />
-        @Html.ActionLink("Nieuw oplossing", "Create")
+        @Html.ActionLink("Nieuw oplossing", "AdjustableDossierModelOne", "Antwoord")
     </p>
 
     <div id="pager">
         @Html.PagedListPager(Model, page => Url.Action("_partialAntwoordLijst",
              new { page, sortOrder = ViewBag.CurrentSort }))
     </div>
+
     @foreach (var item in Model)
     {
+        
         if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
         {
             zelfdeGebruiker = true;
@@ -59,7 +66,7 @@
                 Voorlopige winnaar!
             </span>
         }
-        
+
         <p id="extraInfoParagraaf">
             <span id="extrainfoSpan">
                 Gebruiker:
@@ -78,6 +85,7 @@
             | <span id="extrainfoSpan">Datum: </span> @item.datum
         </p>
 
+
         if (zelfdeGebruiker)
         {
             @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
@@ -89,12 +97,18 @@
 
                     <tr>
                         <td id="aantalStemmen">
-                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                            @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                            <img src="~/Images/dossier-white.png"/>
                         </td>
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)
-
+                            <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                            </div>
+                            <br />
+                            <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
                         </td>
 
                     </tr>
@@ -106,16 +120,24 @@
         }
         else
         {
-            <div id="tableAntwoord" onclick="goToPagina(this)">
+            <div id="tableAntwoord" onclick="goToPagina(this)" >
                 <table class="table">
 
                     <tr>
                         <td id="aantalStemmen">
-                            +@Html.DisplayFor(modelItem => item.aantalStemmen)
+                            @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                            <img src="~/Images/dossier-white.png"/>
                         </td>
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)
+                            <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                            </div> 
+                            <br />
+                            <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
+
 
                         </td>
 
@@ -126,9 +148,6 @@
 
             </div>
         }
-
-
-
         <script>
 
             function goToPagina(element) {
@@ -136,6 +155,7 @@
                 return false;
             };
         </script>
+
     }
 
 
@@ -161,3 +181,4 @@
         });
 
     </script>
+}

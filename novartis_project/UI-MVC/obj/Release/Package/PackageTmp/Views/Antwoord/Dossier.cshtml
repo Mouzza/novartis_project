@@ -1,0 +1,31 @@
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+@{
+    Layout = "";
+        
+ }
+
+@if (Model.layoutOption == null)
+{
+    { Html.RenderAction("DossierModelOne", "Antwoord", new { id = Model.ID }); }
+}
+
+@if (Model.layoutOption == 1)
+{
+    { Html.RenderAction("DossierModelOne", "Antwoord", new { id = Model.ID }); }
+}
+@if (Model.layoutOption == 2)
+{
+    { Html.RenderAction("DossierModelTwo", "Antwoord", new { id = Model.ID }); }
+}
+@if (Model.layoutOption == 3)
+{
+    { Html.RenderAction("DossierModelThree", "Antwoord", new { id = Model.ID }); }
+}
+@if (Model.layoutOption == 5)
+{
+    { Html.RenderAction("DossierModelFive", "Antwoord", new { id = Model.ID }); }
+}
+@if (Model.layoutOption == 6)
+{
+    { Html.RenderAction("DossierModelSix", "Antwoord", new { id = Model.ID }); }
+}

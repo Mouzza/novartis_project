@@ -1,0 +1,78 @@
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "eigenpagina";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/DossierModel.css">
+
+
+<script type="text/javascript">
+    @*var gecoder;
+
+
+        geocoder = new google.maps.Geocoder();
+        //var mapCanvas = document.getElementById('map-canvas');
+        //var mapOptions = {
+        //    center: new google.maps.(44.5403, -78.5463),
+        //    zoom: 8,
+        //    mapTypeId: google.maps.MapTypeId.ROADMAP
+        //}
+        //var map = new google.maps.Map(mapCanvas, mapOptions)
+        @*var sAddress = @(Model.googleMapsAdress);
+        geocoder.geocode( { 'address': sAddress}, function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK){
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+                
+            });
+            alert("Gelukt!");
+        } else{
+            alert("Geocode was not successfull for the following reason: " + status);
+        } });*@
+    
+    var adress
+
+    
+</script>
+
+<div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
+<div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+<div id="DossierModelAfbeelding"> <img src=@(Model.afbeeldingPath) />
+    <div id="DossierModelTextVakEen"> <p>@(Model.inhoud)</p>
+    
+</div><!--Hier moet de eerste textvak van de pagina komen-->
+    
+    </div><!--Hier moet de afbeelding van de pagina komen-->
+
+
+<div id="TweeTextvakWrapper">
+    <div id="DossierModelTextVakTwee">
+        <p>
+            @(Model.textvak2)
+        </p>
+    </div><!--Hier moet de tweedetextvak van de pagina komen-->
+
+    <div id="DossierModelTextVakDrie">
+        <p>
+            @(Model.textvak3)
+        </p>
+    </div><!--Hier moet de derde textvak van de pagina komen-->
+</div>
+
+
+@*<div id="map-canvas"></div>*@
+<iframe id="map-canvas" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
+<div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+
+
+
+    @using (Html.BeginForm("DossierModelOne", "Antwoord", new { id = Model.ID }, FormMethod.Post))
+    {
+        if (Model.statusOnline == false)
+        {
+            <button type="submit">Publish!</button>
+        }
+    }

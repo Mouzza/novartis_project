@@ -16,16 +16,17 @@ namespace JPP.BL.Domain.Modules
 
         [Key]
         public int ID { get; set; }
+        [Required]
         public string naam { get; set; }
         public Boolean status { get; set; }
+        [Required]
         public DateTime beginDatum { get; set; }
+        [Required]
         public DateTime eindDatum { get; set; }
 
         public string adminNaam { get; set; }
 
-        
-        public int centraleVraagID { get; set; }
-        [ForeignKey("centraleVraagID")]
+
         public virtual CentraleVraag centraleVraag { get; set; }
         public virtual Beloning beloning { get; set; }
         public virtual Organisatie organisatie { get; set; }

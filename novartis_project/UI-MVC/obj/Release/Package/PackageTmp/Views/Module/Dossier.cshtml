@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Dossier";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+
+}
+
+<div id="DossierWrapperLayout">
+    @{ Html.RenderAction("Actief", "Module");}
+
+
+
+    <div id="antwoorden">
+        @{ Html.RenderAction("_partialAntwoordLijst", "Antwoord"); }
+
+    </div>
+</div>

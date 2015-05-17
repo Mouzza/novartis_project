@@ -1,35 +1,21 @@
-﻿@{
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+
+@{
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "DosierModelTwo";
 }
 
 
 <script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-    function initialize() {
-        var mapCanvasTwo = document.getElementById('map-canvasTwo');
-        var mapOptionsTwo = {
-            center: new google.maps.LatLng(44.5403, -78.5463),
-            zoom: 5,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        }
-        var map = new google.maps.Map(mapCanvasTwo, mapOptionsTwo)
-    }
-    google.maps.event.addDomListener(window, 'load', initialize);
-</script>
 
-<div id="DossierModelTwoTitle"> <h1>Mijn favoriete feestzaal</h1></div><!--Hier moet de titel van de pagina komen-->
-<div id="DossierModelTwoSubTitle">
-    <h2>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br />
-        Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.
-    </h2>
-</div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+
+<div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
+<div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div>
 
 <div id="DossierModelTwoAfbeelding">
-    <img src="~/Images/afbeeldingen/homeImage.jpg" />
+    <img src=@(Model.afbeeldingPath) />
 
-    <div id="map-canvasTwo"></div>
+  <iframe id="map-canvasTwo" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
 
 </div><!--Hier moet de afbeelding van de pagina komen-->
 <div id="DossierModelTwoTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
@@ -37,45 +23,25 @@
 <div id="TextWrapperTwo">
 
 
-<div id="DossierModelTwoTextVakEen">
-    <p>
-        Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-        vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui.
-        Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit.
-        Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu,
-        nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat.
-        Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.
-        Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque,
-        augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien
-        facilisis a.
-    </p>
+    <div id="DossierModelTwoTextVakEen">
+        <p>@(Model.inhoud)</p>
 
-</div><!--Hier moet de eerste textvak van de pagina komen-->
+    </div>
 
     <div id="TweeTextvakWrapperTwo">
         <div id="DossierModelTwoTextVakTwee">
             <p>
-                Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-                vel pretium nulla posuere sit amet.
-                <br />
-                <br />
-                Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-                vel pretium nulla posuere sit amet.
+                @(Model.textvak2)
             </p>
         </div><!--Hier moet de tweedetextvak van de pagina komen-->
 
         <div id="DossierModelTwoTextVakDrie">
             <p>
-                Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-                vel pretium nulla posuere sit amet.
-                <br />
-                <br />
-                Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,
-                vel pretium nulla posuere sit amet.
+                @(Model.textvak3)
             </p>
         </div><!--Hier moet de derde textvak van de pagina komen-->
     </div>
-</div>
+    </div>
 
 
 

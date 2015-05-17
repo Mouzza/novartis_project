@@ -1,12 +1,12 @@
-﻿ @{
-     ViewBag.Title = "Beheer modules";
-     
- }
-<div id="dossierModules">
-    @{ Html.RenderAction("partialViewDossierModule", "Module"); }
-</div>
+﻿@{
+    ViewBag.Title = "Admin module menu";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
 
-<div id="agendaModules">
-
-    @{ Html.RenderAction("partialViewAgendaModule", "Module"); }
+<link rel="stylesheet" type="text/css" href="~/Content/KeuzePagina.css">
+<div class="containerButton">
+    <p>
+        <a href="@Url.Action("DossModules","Module")" id="adminMenuButton" class="ButtonDossier">Beheer Dossiermodules</a>
+        <a href="@Url.Action("AgdModules", "Module")" id="adminMenuButton" class="ButtonAgenda">Beheer Agendamodules</a>
+    </p>
 </div>
