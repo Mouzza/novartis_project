@@ -55,6 +55,18 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(agendaAntwoord);
         }
 
+        public ActionResult ModuleBeslissing(int id)
+        {
+            int identity = id;
+            if (antwManager.readAntwoord(id) is DossierAntwoord){
+                return RedirectToAction("Dossier", new { id = identity});
+            }
+            else
+            {
+                return RedirectToAction("Agenda", new { id = identity });
+            }
+            
+        }
  
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
@@ -310,6 +322,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
+        
         [HttpPost]
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
