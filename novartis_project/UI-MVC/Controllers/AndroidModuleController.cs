@@ -260,9 +260,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     naam = dos.naam,
                     status = dos.status,
                     beloning=new ANDROIDBeloning(),
-                    vasteVraagDrie=dos.vasteVraagDrie.inhoud,
+                    vasteVraagDrie="aaa",//dos.vasteVraagDrie.inhoud,
                     vasteVraagEen=dos.vasteVraagEen.inhoud,
-                    vasteVraagTwee=dos.vasteVraagTwee.inhoud,
+                    vasteVraagTwee="aaa",//dos.vasteVraagTwee.inhoud,
                     verplichteVolledigheidsPercentage=dos.verplichteVolledigheidsPercentage
                 };
 
@@ -297,9 +297,9 @@ namespace JPP.UI.Web.MVC.Controllers
                         status = dos.status,
                         centralevraag = dos.centraleVraag.inhoud,
                         beloning=new ANDROIDBeloning(),
-                        vasteVraagDrie = dos.vasteVraagDrie.inhoud,
+                        vasteVraagDrie = "aaaa",//dos.vasteVraagDrie.inhoud,
                         vasteVraagEen = dos.vasteVraagEen.inhoud,
-                        vasteVraagTwee = dos.vasteVraagTwee.inhoud,
+                        vasteVraagTwee = "aaaa",//dos.vasteVraagTwee.inhoud,
                         verplichteVolledigheidsPercentage = dos.verplichteVolledigheidsPercentage
 
                     };
@@ -364,9 +364,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     ID = dos.ID,
                     naam = dos.naam,
                     status = dos.status,
-                    vasteVraagDrie = dos.vasteVraagDrie.inhoud,
+                    vasteVraagDrie = "aaaaa",//dos.vasteVraagDrie.inhoud,
                     vasteVraagEen = dos.vasteVraagEen.inhoud,
-                    vasteVraagTwee = dos.vasteVraagTwee.inhoud,
+                    vasteVraagTwee = "aaa",//dos.vasteVraagTwee.inhoud,
                     verplichteVolledigheidsPercentage = dos.verplichteVolledigheidsPercentage,
                     beloning=new ANDROIDBeloning()
                     
@@ -420,7 +420,9 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(androidAgendas);
         }
+        
         #endregion
+
         #region TOEKOMSTIGE modules
         [HttpGet]
         [ActionName("getToekomst")]

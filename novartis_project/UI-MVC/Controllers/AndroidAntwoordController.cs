@@ -250,7 +250,6 @@ namespace JPP.UI.Web.MVC.Controllers
             antwoordManager.createDossierAntwoord(dosAntwoord);
         }
         #endregion
-
         #region UPDATE dossier/agenda
         [HttpPut]
         [ActionName("updateAgenda")]
@@ -266,7 +265,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
 
-        #region STEM
+        #region STEM FLAG
         [HttpGet]
         [ActionName("stemCommentID")]
         public IHttpActionResult stemOpComment(int id)
@@ -279,6 +278,13 @@ namespace JPP.UI.Web.MVC.Controllers
         public IHttpActionResult stemOpAntwoord(int id)
         {
             antwoordManager.stemOpAntwoord(id);
+            return Ok("ok");
+        }
+        [HttpGet]
+        [ActionName("flagAntwoord")]
+        public IHttpActionResult flagAntwoord(int id)
+        {
+            antwoordManager.flagAntwoord(id);
             return Ok("ok");
         }
         #endregion
