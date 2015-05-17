@@ -605,7 +605,7 @@ textarea {
     color: #1A9ADD;
     text-align: center;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 370%;
 }
 
 #moduleNaam {
@@ -628,16 +628,17 @@ textarea {
     margin-bottom: 1%;
     float: left;
     margin-left: 13%;
+    width: 55%;
 }
 
 #moduleIcon {
     float: left;
-    width: 250px;
-    height: 250px;
+    width: 15%;
+    height: 15%;
 }
 
 #moduleInhoud p {
-    font-size: 20px;
+    font-size: 150%;
     text-align: left;
 }
 
@@ -825,7 +826,7 @@ textarea {
     float: left;
 }
 
-#DossierModelTitle {
+/*#DossierModelTitle {
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -919,11 +920,11 @@ textarea {
     width: 500px;
     height: 100px;
     margin-left: 60%;
-}
+}*/
 
 
 /*############################AdjustableDosierModelOne################################################*/
-#AdjDossierModelTitle {
+/*#AdjDossierModelTitle {
     width: 100%;
     max-width: 100%;
     color: #0099cc;
@@ -1009,12 +1010,12 @@ textarea {
     max-width: 500px;
     border: #FFF;
     overflow: hidden;
-}
+}*/
 
 
 /*###########################################DossierModelTwo#############################################*/
 
-.AdjDossierModelTwoTextVakDrie {
+/*.AdjDossierModelTwoTextVakDrie {
     width: 500px;
     height: 120px;
     margin-top: 20px;
@@ -1115,12 +1116,12 @@ textarea {
     margin-right: 15%;
     width: 38%;
     height: 100%;
-}
+}*/
 
 /*#################################################################################################################################################################*/
 
 /*##################################################################DossierModelThree##############################################################################*/
-#DossierModelThreeTitle {
+/*#DossierModelThreeTitle {
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -1143,7 +1144,7 @@ textarea {
     text-align: center;
     color: #666666;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;DossierModelFiveAfbeelding
 }
 
     #DossierModelThreeSubTitle h2 {
@@ -1237,11 +1238,11 @@ textarea {
     position: relative;
     width: 38%;
     height: 300px;
-}
+}*/
 
 /*################################################################################################################################################*/
 
-.AdjDossierModelThreeTextVakEen {
+/*.AdjDossierModelThreeTextVakEen {
     max-width: 500px;
     border: #FFF;
     float: right;
@@ -1290,11 +1291,11 @@ textarea {
     height: 150px;
     margin-left: auto;
     margin-right: auto;
-}
+}*/
 
 /*################################################################################################################################################*/
 
-#TweeTextvakWrapperSix {
+/*#TweeTextvakWrapperSix {
     height: 200px;
     margin-top: 25px;
     margin-left: 15%;
@@ -1360,7 +1361,7 @@ textarea {
     max-width: 500px;
     overflow: hidden;
     border: #FFF;
-}
+}*/
 
 /*##################################################################################################################################################*/
 
@@ -1479,7 +1480,7 @@ textarea {
     margin-left: 15%;
 }
 
-#OptionsBar {
+/*#OptionsBar {
     background-color: #D3D3D3;
     box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
     width: 100%;
@@ -1536,15 +1537,15 @@ textarea {
     float: right;
     clear: left;
     margin-top: 20px;
-}
+}*/
 
-#AdjCleanUp {
+/*#AdjCleanUp {
     margin-top: 25px;
     margin-left: 2%;
     margin-right: 2%;
-}
+}*/
 
-#OptionsbarTitle {
+/*#OptionsbarTitle {
     text-align: center;
     font-size: 30px;
     color: #0099CC;
@@ -1557,17 +1558,17 @@ textarea {
     width: 100%;
     height: 150px;
     display: table;
-}
+}*/
 
-#OptionsbarTitleHead {
+/*#OptionsbarTitleHead {
     margin-top: 50px;
     text-align: center;
     font-size: 30px;
     color: #0099CC;
     font-weight: bold;
-}
+}*/
 
-#AdjButtonWrapper {
+/*#AdjButtonWrapper {
     margin-left: 37.5%;
 }
 
@@ -1609,7 +1610,7 @@ textarea {
     #AdjButtonSix img {
         width: 65px;
         height: 70px;
-    }
+    }*/
 
 #AgendaAntwoordWrapper {
     width: 90%;
@@ -1633,47 +1634,6 @@ textarea {
 }
 
 
-.AdjAgendaModelTitle {
-    width: 100%;
-    max-width: 100%;
-    color: #0099cc;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-weight: bold;
-    font-size: 50px;
-    overflow: hidden;
-    border: #FFF;
-    height: 80px;
-    margin-top: 50px;
-}
-
-
-
-.AdjAgendaModelSubTitle {
-    width: 100%;
-    max-width: 100%;
-    text-align: center;
-    color: #666666;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 30px;
-    font-weight: bold;
-    overflow: hidden;
-    border: #FFF;
-}
-
-.AdjAgendaModelTextVakEen {
-    text-align: center;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 80%;
-    width: 80%;
-    height: 200px;
-    border: #FFF;
-    overflow: hidden;
-}
 
 
 #ValidatieError{
@@ -1868,6 +1828,7 @@ textarea {
 
 }
 
+<<<<<<< HEAD
 #menuItemFocus a{
 
     color:#E94E09;
@@ -1875,4 +1836,186 @@ textarea {
 #menuItemFocus a:hover{
 
     color:white;
+=======
+
+
+/*#####################################################################   VolgOp.CSS   ###########################################################################*/
+
+#VolgOpWrapper{
+    width: 80%;
+    height: 100%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+
+div.table-title {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+  padding: 5px;
+  margin-left: 20%;
+  width: 100%;
+}
+
+.table-title h3 {
+    
+        margin-top: 10%;
+  color: #666666;
+  font-size: 30px;
+  font-weight: Bold;
+  font-style: normal;
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  text-transform: uppercase;
+}
+
+.table-fill {
+  background: white;
+  border-radius: 3px;
+  border-collapse: collapse;
+  height: 65%;
+  margin: auto;
+  max-width: 65%;
+  padding: 5px;
+  width: 80%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+
+.table-fill th {
+  color: #D5DDE5;
+  background: #1b1e24;
+  border-bottom: 4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size: 23px;
+  font-weight: 100;
+  padding: 24px;
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+.table-fill th:first-child {
+  border-top-left-radius: 3px;
+}
+
+.table-fill th:last-child {
+  border-top-right-radius: 3px;
+  border-right: none;
+}
+
+.table-fill tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  color: #666B85;
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+.table-fill tr:hover td {
+  background: #4E5066;
+  color: #FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
+
+.table-fill tr:first-child {
+  border-top: none;
+}
+
+.table-fill tr:last-child {
+  border-bottom: none;
+}
+
+.table-fill tr:nth-child(odd) td {
+  background: #EBEBEB;
+}
+
+.table-fill tr:nth-child(odd):hover td {
+  background: #4E5066;
+}
+
+.table-fill tr:last-child td:first-child {
+  border-bottom-left-radius: 3px;
+}
+
+.table-fill tr:last-child td:last-child {
+  border-bottom-right-radius: 3px;
+}
+
+.table-fill td {
+  background: #FFFFFF;
+  padding: 20px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+.table-fill td:last-child {
+  border-right: 0px;
+}
+
+.table-fill th.text-left {
+  text-align: left;
+}
+
+.table-fill th.text-center {
+  text-align: center;
+}
+
+.table-fill th.text-right {
+  text-align: right;
+}
+
+.table-fill td.text-left {
+  text-align: left;
+}
+
+.table-fill td.text-center {
+  text-align: center;
+}
+
+.table-fill td.text-right {
+  text-align: right;
+}
+
+#VolgOpLayout table{
+    margin-top: 2%;
+    border: none;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+}
+
+#VolgOpLayout table tr{
+    height: 100px;
+    border: 0 none;
+}
+
+#VolgOpLayout table tr td{
+    border: 0 none;
+}
+
+#VolgOpLayout table tr:hover td a{
+    color: #FFF;
+
+}
+
+#VolgOpLayout table tr td a:hover{
+    color: #FFF;
+    text-decoration: none;
+}
+
+#VolgOpLayout table tr th{
+    border: 0 none;
+}
+
+#geplandeDossierModules{
+    margin-top: 10%;
+>>>>>>> origin/master
 }

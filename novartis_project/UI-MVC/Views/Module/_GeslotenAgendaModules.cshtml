@@ -8,69 +8,42 @@
 
 <h2>Gesloten agendamodules</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            Admin naam
-        </th>
-        <th>
-            Inhoud
-        </th>
-        <th>
-            Begin datum
-        </th>
-        <th>
-            Eind datum
-        </th>
-        <th>
-            Vraag
-        </th>
-        <th>
-            Thema
-        </th>
-        <th>
-            Beloning
-        </th>
 
-        <th id="settingsLayout">Instellingen</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div id="VolgOpLayout">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.adminNaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.beginDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.eindDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.thema.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.beloning.naam)
-            </td>
-            <td>
-               
-                @Html.ActionLink("Details", "_Details", new { id = item.ID }) |
-              
-          
-                    <h4>Aantal antwoorden: @item.agendaAntwoorden.Count</h4>
 
-            </td>
+            <th>
+                Begin datum
+            </th>
+            <th>
+                Eind datum
+            </th>
+            <th>
+                Vraag
+            </th>
+
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a>@Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)</a>
+
+                </td>
+                <td>
+                    <a>@Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
 
 <div id="pager3">
     @Html.PagedListPager(Model, page => Url.Action("_GeslotenAgendaModules",

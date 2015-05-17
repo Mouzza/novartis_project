@@ -276,6 +276,11 @@
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\AdjustableDossierModelFive.css" />
+    <Content Include="Content\AdjustableDossierModelOne.css" />
+    <Content Include="Content\AdjustableDossierModelSix.css" />
+    <Content Include="Content\AdjustableDossierModelThree.css" />
+    <Content Include="Content\AdjustableDossierModelTwo.css" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -289,6 +294,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DossierModel.css" />
+    <Content Include="Content\DossierModelOne.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
     <Content Include="Content\KeuzePagina.css" />

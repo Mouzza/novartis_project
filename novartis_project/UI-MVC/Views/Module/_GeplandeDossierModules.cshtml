@@ -1,73 +1,49 @@
-﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.DossierModule>
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.Module>
 @using PagedList
 @using PagedList.Mvc
 @{
 
     Layout = "";
 }
-<h2>Geplande dossiermodules</h2>
+<div class="table-title">
+    <h3>Toekomstige Modules</h3>
+</div>
 
-<table class="table">
-    <tr>
-        <th>
-            Admin naam
-        </th>
-        <th>
-            Inhoud
-        </th>
-        <th>
-            Start datum
-        </th>
-        <th>
-            Eind datum
-        </th>
-        <th>
-            Verplichte volledigheids %
-        </th>
-        <th>Vraag</th>
-        <th>Open</th>
-        <th>Thema</th>
-        <th>Bel</th>
-        <th id="settingsLayout">Instellingen</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.adminNaam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.beginDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.eindDatum)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.verplichteVolledigheidsPercentage) %
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.thema.naam)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.beloning.naam)
-            </td>
-            <td>
-                
-                @Html.ActionLink("Details", "Details", new { id = item.ID })
-               
-            </td>
-        </tr>
-    }
-</table>
+<div id="VolgOpLayout">
+    <table class="table-fill">
+        <thead>
+            <tr>
+                <th class="text-left">
+                    Begin datum
+                </th>
+                <th class="text-left">
+                    Eind datum
+                </th>
+                <th>
+                    Vraag
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left">
+                        <a>@Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)</a>
+
+                    </td>
+                    <td class="text-left">
+                        <a>@Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)</a>
+                    </td>
+                    <td class="text-left">
+                        @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
 
 <div id="pager1">
     @Html.PagedListPager(Model, page => Url.Action("_GeplandeDossierModules",
