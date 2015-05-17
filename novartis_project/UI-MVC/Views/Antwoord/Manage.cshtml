@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.title = "Beheer uw antwoorden";
+
+}
+@if (Request.IsAuthenticated)
+{
+    <h1 id="paginaTitel">Beheer uw antwoorden</h1>
+
+    <div class="col-md-4 centraal">
+
+        <a href="@Url.Action("MijnDossiers", "Antwoord")"><img src="~/Images/menu logos/moduleLogo.png"></a>
+        <h2>Mijn dossiers</h2>
+    </div>
+
+
+    <div class="col-md-4 centraal">
+
+        <a href="@Url.Action("MijnAntwoorden", "Antwoord")"><img src="~/Images/menu logos/antwoordLogo.png"></a>
+        <h2>Mijn antwoorden</h2>
+    </div>
+
+   
+}

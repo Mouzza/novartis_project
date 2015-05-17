@@ -91,5 +91,14 @@
 <p>
     @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Ga terug", "AgdModules")
-    <h4>@Html.ActionLink("Beheer de antwoorden("+@Model.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = @Model.ID }, null)</h4>
+    @if (Model.agendaAntwoorden.Count == 0)
+    {
+        <h4>Aantal antwoorden: @Model.agendaAntwoorden.Count </h4>
+
+    }
+    else
+    {
+        <h4>@Html.ActionLink("Beheer de antwoorden("+@Model.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = @Model.ID }, null)</h4>
+    }
+    
 </p>

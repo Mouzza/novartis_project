@@ -86,12 +86,12 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult _GeplandeDossierModules(int? page)
         {
 
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
 
 
-            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeplandeModules().OfType<DossierModule>();
-            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+            IEnumerable<Module> geslotenModules = moduleManager.readGeplandeModules().OrderBy(o=> o.beginDatum);
+            return PartialView(geslotenModules.ToPagedList(pageNumber, pageSize));
 
         }
 
@@ -161,12 +161,12 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult _GeslotenDossierModules(int? page)
         {
 
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
 
 
-            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeslotenDossiers();
-            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+            IEnumerable<Module> geslotenModules = moduleManager.readGeslotenModules();
+            return PartialView(geslotenModules.ToPagedList(pageNumber, pageSize));
 
         }
 
