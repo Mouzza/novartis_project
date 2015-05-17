@@ -21,7 +21,7 @@ namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidAccountController : ApiController
     {
-
+        #region REGISTER
         public ApplicationRoleManager roleManager;
         public ApplicationRoleManager RoleManager
         {
@@ -51,7 +51,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 _userManager = value;
             }
         }
-
         private ApplicationSignInManager _signInManager;
         public ApplicationSignInManager SignInManager
         {
@@ -65,8 +64,7 @@ namespace JPP.UI.Web.MVC.Controllers
         [ActionName("Register")]
         public async Task<IHttpActionResult> Register(AndroidGebruiker model)
         {
-        //    if (ModelState.IsValid)
-        //    {
+     
                 var user = new User
                 {
                     UserName = model.Name,
@@ -85,83 +83,10 @@ namespace JPP.UI.Web.MVC.Controllers
 
                     if (user != null) UserManager.AddToRole(user.Id, role.Name);
                 }
-            //}
+          
             return Ok(model);
         }
-
-        //public ApplicationRoleManager roleManager;
-        //public ApplicationRoleManager RoleManager
-        //{
-        //    get
-        //    {
-        //        return this.roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-        //    }
-        //    private set { this.roleManager = value; }
-        //}
-        //private ApplicationUserManager _userManager;
-        //public AndroidAccountController()
-        //{
-        //}
-        //public AndroidAccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-        //{
-        //    UserManager = userManager;
-        //    SignInManager = signInManager;
-        //}
-        //public ApplicationUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        //    }
-        //    private set
-        //    {
-        //        _userManager = value;
-        //    }
-        //}
-
-        //private ApplicationSignInManager _signInManager;
-        //public ApplicationSignInManager SignInManager
-        //{
-        //    get
-        //    {
-        //        return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-        //    }
-        //    private set { _signInManager = value; }
-        //}
-
-        //public async Task<ActionResult> Register(RegisterViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new User
-        //        {
-        //            UserName = model.Name,
-        //            Email = model.Email,
-        //            Created = DateTime.Now,
-        //            profilePublic = true,
-        //            FirstName = model.FirstName,
-        //            LastName = model.LastName,
-        //            Birthday = model.Birthday,
-        //            Zipcode = model.Zipcode
-        //        };
-
-        //        var result = await UserManager.CreateAsync(user, model.Password);
-        //        if (result.Succeeded)
-        //        {
-        //            //Geef "Gebruiker" role aan user
-        //            var role = RoleManager.FindByName("Gebruiker");
-
-        //            if (user != null) UserManager.AddToRole(user.Id, role.Name);
-
-
-                    
-        //        }
-              
-        //    }
-
-
-        //    return (model);
-        //}
+        #endregion
 
     }
 }

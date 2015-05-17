@@ -66,31 +66,31 @@ namespace JPP.UI.Web.MVC.Controllers
                     textvak2=dosAntwoord.textvak2,
                     textvak3=dosAntwoord.textvak3,
                     comments = new List<ANDROIDComment>(),
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    vasteTags=new List<ANDROIDVasteTag>(),
+                    //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    //vasteTags=new List<ANDROIDVasteTag>(),
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel
                 };
-                foreach (var vTag in dosAntwoord.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
-                    {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
-                    };
-                    dos.vasteTags.Add(vasteTag);
-                }
-                foreach (var pTag in dosAntwoord.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
-                    {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    dos.persoonlijkeTags.Add(persTag);
-                }
+                //foreach (var vTag in dosAntwoord.vasteTags)
+                //{
+                //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                //    {
+                //        ID = vTag.ID,
+                //        naam = vTag.naam,
+                //        beschrijving = vTag.beschrijving
+                //    };
+                //    dos.vasteTags.Add(vasteTag);
+                //}
+                //foreach (var pTag in dosAntwoord.persoonlijkeTags)
+                //{
+                //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                //    {
+                //        ID = pTag.ID,
+                //        naam = pTag.naam,
+                //        beschrijving = pTag.beschrijving
+                //    };
+                //    dos.persoonlijkeTags.Add(persTag);
+                //}
 
                 foreach (var comment in dosAntwoord.comments)
                 {
@@ -159,32 +159,32 @@ namespace JPP.UI.Web.MVC.Controllers
                     ID = agAntwoord.ID,
                     inhoud = agAntwoord.inhoud,
                     moduleID = agAntwoord.module.ID,
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agAntwoord.titel,
-                    vasteTags = new List<ANDROIDVasteTag>()
+                    //vasteTags = new List<ANDROIDVasteTag>()
                 };
 
-                foreach (var pTag in agAntwoord.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
-                    {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    ag.persoonlijkeTags.Add(persTag);
-                }
+                //foreach (var pTag in agAntwoord.persoonlijkeTags)
+                //{
+                //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                //    {
+                //        ID = pTag.ID,
+                //        naam = pTag.naam,
+                //        beschrijving = pTag.beschrijving
+                //    };
+                //    ag.persoonlijkeTags.Add(persTag);
+                //}
 
-                foreach (var vTag in agAntwoord.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
-                    {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
-                    };
-                    ag.vasteTags.Add(vasteTag);
-                }
+                //foreach (var vTag in agAntwoord.vasteTags)
+                //{
+                //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                //    {
+                //        ID = vTag.ID,
+                //        naam = vTag.naam,
+                //        beschrijving = vTag.beschrijving
+                //    };
+                //    ag.vasteTags.Add(vasteTag);
+                //}
                 agendaModule.agendaAntwoorden.Add(ag);
             }
 
