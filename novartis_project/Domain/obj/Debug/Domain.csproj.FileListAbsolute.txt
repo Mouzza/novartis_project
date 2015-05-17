@@ -91,3 +91,4 @@ C:\Users\Michiel\Desktop\novartis_project\novartis_project\Domain\bin\Debug\Newt
 >>>>>>> origin/master
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\Newtonsoft.Json.dll
