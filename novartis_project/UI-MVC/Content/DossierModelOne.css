@@ -1,1 +1,371 @@
-﻿
+﻿#DossierModelTitle {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #0099cc;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #DossierModelTitle h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+#DossierModelSubTitle {
+    width: 100%;
+    text-align: center;
+    color: #666666;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #DossierModelSubTitle h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+#DossierModelAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 15%;
+    margin-top: 50px;
+}
+
+    #DossierModelAfbeelding img {
+        width: 38%;
+        height: 100%;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+    #DossierModelTextVakEen {
+    float: right;
+    max-width: 38%;
+    width: 38%;
+    height: 100%;
+    margin-right: 15%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+
+    #TweeTextvakWrapper {
+    width: 80%;
+    height: 100px;
+    margin-left: 15%;
+    margin-top: 50px;
+}
+
+#DossierModelTextVakTwee {
+    width: 38%;
+    height: 100%;
+    max-height: 100%;
+    float: left;
+    max-width: 38%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+#DossierModelTextVakDrie {
+    width: 38%;
+    height: 100%;
+    float: right;
+    max-height: 100%;
+    margin-right: 15%;
+    max-width: 38%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+#DossierModelTag {
+    margin-top: 20px;
+    width: 500px;
+    height: 100px;
+    margin-left: 60%;
+}
+
+
+/*##DossierModelTwo*/
+
+#DossierModelTwoTextVakEen {
+    float: left;
+    width: 38%;
+    height: 300px;
+    margin-left: 1%;
+    max-width: 38%;
+    overflow: hidden;
+    border: #FFF;
+}
+
+.AdjDossierModelTwoTextVakEen {
+    float: left;
+    width: 500px;
+    height: 300px;
+    margin-left: 1%;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
+}
+
+
+
+
+#DossierModelTwoAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 50px;
+}
+
+    #DossierModelTwoAfbeelding img {
+        width: 38%;
+        height: 100%;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+#TweeTextvakWrapperTwo {
+    width: 38%;
+    height: 200px;
+    float: right;
+    margin-right: 13%;
+}
+
+#DossierModelTwoTextVakTwee {
+    width: 100%;
+    height: 100px;
+    max-width: 100%;
+    overflow: hidden;
+    border: #FFF;
+}
+
+#TextWrapperTwo {
+    width: 80%;
+    height: 100px;
+    margin-left: 15%;
+}
+
+#DossierModelTwoTextVakDrie {
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    margin-right: 15%;
+    max-width: 100%;
+    overflow: hidden;
+    border: #FFF;
+}
+
+#DossierModelTwoTag {
+    margin-top: 20px;
+    width: 500px;
+    height: 100px;
+    margin-left: 60%;
+}
+
+#map-canvasTwo {
+    float: right;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    position: relative;
+    margin-right: 15%;
+    width: 38%;
+    height: 100%;
+}
+
+/*DossierModelThree*/
+
+#DossierModelThreeTitle {
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    color: #0099cc;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #DossierModelThreeTitle h1 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+#DossierModelThreeSubTitle {
+    width: 100%;
+    text-align: center;
+    color: #666666;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #DossierModelThreeSubTitle h2 {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+#DossierModelThreeTextVakEen {
+    max-width: 500px;
+    border: #FFF;
+    float: right;
+    width: 500px;
+    height: 300px;
+    margin-left: 1%;
+    overflow: hidden;
+}
+
+#DossierModelFiveAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 90px;
+}
+
+    #DossierModelFiveAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+
+
+#DossierModelThreeTextVakEen p {
+}
+
+#DossierModelThreeAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 50px;
+}
+
+    #DossierModelThreeAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+#TweeTextvakWrapperThree {
+    height: 200px;
+    float: left;
+    width: 38%;
+    margin-left: 19%;
+    margin-top: 25px;
+}
+
+#DossierModelThreeTextVakTwee {
+    width: 100%;
+    height: 100px;
+    max-width: 100%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+#TextWrapperThree {
+    width: 83%;
+    height: 100px;
+}
+
+#DossierModelThreeTextVakDrie {
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    max-width: 100%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+#DossierModelThreeTag {
+    margin-top: 220px;
+    width: 500px;
+    height: 100px;
+    margin-left: 60%;
+}
+
+#map-canvasThree {
+    float: right;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    position: relative;
+    width: 38%;
+    height: 300px;
+}
+
+/*DossierModelFive*/
+
+#TextWrapperFive {
+    margin-left: 16%;
+    width: 83%;
+    height: 250px;
+}
+
+
+#TweeTextvakWrapperFive {
+    width: 82%;
+    height: 200px;
+    margin-left: 15%;
+}
+
+#DossierModelFiveTextVakEen {
+    text-align: center;
+    position: relative;
+    width: 70%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*DossierModelSix*/
+
+#TweeTextvakWrapperSix {
+    height: 200px;
+    margin-top: 25px;
+    margin-left: 15%;
+}
+
+
+#DossierModelSixTextVakEen {
+    position: relative;
+    width: 70%;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#DossierModelSixTextVakEen p {
+}
+
+
+
+#TextWrapperSix {
+    width: 80%;
+    height: 100px;
+    margin-left: 15%;
+}
+
+
+#DossierModelSixTextVakTwee {
+    width: 500px;
+    height: 100px;
+    float: left;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
+}
+
+#DossierModelSixTextVakDrie {
+    width: 500px;
+    height: 100px;
+    margin-right: 15%;
+    float: right;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
+}
