@@ -1637,11 +1637,11 @@ textarea {
     margin-left:18%;
 }
 
-#ValidatieError3{
+/*#ValidatieError3{
     color:red;
     font-size:20px;
     margin-left:15%;
-}
+}*/
 .activeLayout {
     border: 2px solid red;
 }
