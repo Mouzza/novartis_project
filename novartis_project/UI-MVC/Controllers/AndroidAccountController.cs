@@ -21,7 +21,7 @@ namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidAccountController : ApiController
     {
-<<<<<<< HEAD
+
         public ApplicationRoleManager roleManager;
         public ApplicationRoleManager RoleManager
         {
@@ -61,35 +61,34 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             private set { _signInManager = value; }
         }
-        [HttpGet]
+        [HttpPost]
         [ActionName("Register")]
         public async Task<IHttpActionResult> Register(AndroidGebruiker model)
         {
-            if (ModelState.IsValid)
-            {
+        //    if (ModelState.IsValid)
+        //    {
                 var user = new User
                 {
-                    UserName = model.gebruikersnaam,
-                    Email = model.email,
+                    UserName = model.Name,
+                    Email = model.Email,
                     Created = DateTime.Now,
                     profilePublic = true,
-                    FirstName = model.voornaam,
-                    LastName = model.achternaam,
-                    Birthday = model.geboorteDatum,
-                    Zipcode = model.postcode,
-                    PhoneNumber = model.telefoonnummer
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Birthday = model.Birthday,
+                    Zipcode = model.Zipcode,
                 };
-                var result = await UserManager.CreateAsync(user, model.wachtwoord);
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     var role = RoleManager.FindByName("Gebruiker");
 
                     if (user != null) UserManager.AddToRole(user.Id, role.Name);
                 }
-            }
+            //}
             return Ok(model);
         }
-=======
+
         //public ApplicationRoleManager roleManager;
         //public ApplicationRoleManager RoleManager
         //{
@@ -163,7 +162,6 @@ namespace JPP.UI.Web.MVC.Controllers
 
         //    return (model);
         //}
->>>>>>> origin/master
 
     }
 }
