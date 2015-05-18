@@ -609,9 +609,9 @@
     <Content Include="Views\Antwoord\Verwijder.cshtml" />
     <Content Include="Views\Module\MijnAgendaModules.cshtml" />
     <Content Include="Views\Module\MijnDossierModules.cshtml" />
-<<<<<<< HEAD
+
     <Content Include="Views\Module\WinnaarVanModule.cshtml" />
-=======
+
     <Content Include="Views\Module\Manage.cshtml" />
     <Content Include="Views\Module\MijnGeplandeAgendaModules.cshtml" />
     <Content Include="Views\Module\MijnGeplandeDossierModules.cshtml" />
@@ -619,7 +619,7 @@
     <Content Include="Views\Module\MijnGeslotenDossierModules.cshtml" />
     <Content Include="Views\Module\partialViewMijnAgendaModule.cshtml" />
     <Content Include="Views\Module\partialViewMijnDossierModule.cshtml" />
->>>>>>> origin/master
+
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
