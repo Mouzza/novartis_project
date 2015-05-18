@@ -54,13 +54,13 @@
                         }
                         @if (User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Mijn modules", "Index", "Admin")</li>
-                            <li>@Html.ActionLink("Admin paneel", "Index", "Admin")</li>
+                            <li id="menuItemFocus2">@Html.ActionLink("Mijn modules", "Manage", "Module")</li>
+                             <li id="menuItemFocus2">@Html.ActionLink("Admin paneel", "Index", "Admin")</li>
 
                         }
                         @if (User.IsInRole("Moderator"))
                         {
-                            <li id="specialMenuItem">@Html.ActionLink("Moderator paneel", "Index", "Admin")</li>
+                            <li id="menuItemFocus2">@Html.ActionLink("Moderator paneel", "Index", "Admin")</li>
 
 
                         }

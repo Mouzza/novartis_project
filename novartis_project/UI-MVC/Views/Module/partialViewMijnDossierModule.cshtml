@@ -1,0 +1,100 @@
+﻿@model JPP.BL.Domain.Modules.DossierModule
+
+@{
+
+    Layout = "";
+}
+
+@if (Model.adminNaam != User.Identity.Name)
+{
+    <div class="table-title">
+        <h3>Geen actieve dossiermodule</h3>
+    </div>
+
+
+}
+else
+{
+
+
+<div class="table-title">
+    <h3>Mijn actieve dossiermodules</h3>
+</div>
+
+
+<div id="VolgOpLayout">
+    <div onclick="goToPagina(this)">
+        <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">
+                        Begin datum
+                    </th>
+                    <th class="text-left">
+                        Eind datum
+                    </th>
+                    <th>
+                        Vraag
+                    </th>
+                    <th>
+                        Instellingen
+
+                    </th>
+                </tr>
+            </thead>
+   
+                <tbody class="table-hover">
+                    <tr>
+                        <td class=" text-left">
+                            @Html.DisplayFor(modelItem => Model.beginDatum.Day)/@Html.DisplayFor(modelItem => Model.beginDatum.Month)/@Html.DisplayFor(modelItem => Model.beginDatum.Year)  <br /> @Html.DisplayFor(modelItem => Model.beginDatum.Hour) : @Html.DisplayFor(modelItem => Model.beginDatum.Minute)
+
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => Model.eindDatum.Day)/@Html.DisplayFor(modelItem => Model.eindDatum.Month)/@Html.DisplayFor(modelItem => Model.eindDatum.Year) <br /> @Html.DisplayFor(modelItem => Model.beginDatum.Hour) : @Html.DisplayFor(modelItem => Model.beginDatum.Minute)
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => Model.centraleVraag.inhoud)
+                        </td>
+                        <td class="mijnModuleInstellingen">
+                            @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+                            @Html.ActionLink("Verwijder", "Delete", new { id = Model.ID })
+                            @if (Model.dossierAntwoorden == null)
+                            {
+                                <h4>Geen antwoorden</h4>
+                            }
+
+                            else
+                            {
+                                if (Model.dossierAntwoorden.Count == 0)
+                                {
+                                    <h4>Geen antwoorden</h4>
+                                }
+                                else
+                                {
+                                    <h4>@Html.ActionLink("Beheer alle antwoorden(" + Model.dossierAntwoorden.Count + ")", "Lijst", "Antwoord", new { id = Model.ID }, null)</h4>
+
+                                }
+
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+                <a id="paginaLink" href="@Url.Action("Details", "Module",new { id = Model.ID }) "></a>
+
+
+        </table>
+        <a id="paginaLink" href="#"></a>
+    </div>
+
+</div>
+
+<script>
+
+    function goToPagina(element) {
+        window.location = $(element).find("#paginaLink").attr("href");
+        return false;
+    };
+</script>
+
+
+}

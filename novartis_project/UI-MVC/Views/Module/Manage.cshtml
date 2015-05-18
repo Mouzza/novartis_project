@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.title = "Beheer uw modules";
+
+}
+@if (Request.IsAuthenticated)
+{
+    <h1 id="paginaTitel">Beheer uw modules</h1>
+
+    <div class="col-md-4 centraal">
+
+        <a href="@Url.Action("MijnDossierModules", "Module")"><img id="menuLogoImg" src="~/Images/menu logos/dossier.png"></a>
+        <h2>Mijn dossiermodules</h2>
+    </div>
+
+
+    <div class="col-md-4 centraal">
+
+        <a href="@Url.Action("MijnAgendaModules", "Module")"><img src="~/Images/menu logos/oplosing.png"></a>
+        <h2>Mijn agendamodules</h2>
+    </div>
+
+
+}
+

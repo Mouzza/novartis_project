@@ -791,7 +791,7 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageSize = 8;
             int pageNumber = (page ?? 1);
 
-            IEnumerable<Antwoord> antwoorden = antwManager.readAllAntwoorden();
+            IEnumerable<Antwoord> antwoorden = antwManager.readAllAntwoorden().Where(antw=>antw.statusOnline==true);
             if (!String.IsNullOrEmpty(searchString))
             {
                 antwoorden = antwoorden.Where(antw => antw.inhoud.Contains(searchString)
@@ -847,7 +847,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             List<AgendaModule> agendamodules = dossManager.readAllAgendaModules();
 
-            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() && antw.statusOnline==true);
 
 
             if (agendaAntwoorden.ToList().Count != 0)
@@ -916,7 +916,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             List<DossierModule> dossiermodules = dossManager.readAllDossierModules();
 
-            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() && antw.statusOnline == true);
 
            
             if (dossierAntwoorden.ToList().Count != 0)
@@ -976,7 +976,7 @@ namespace JPP.UI.Web.MVC.Controllers
             List<DossierAntwoord> dossierAntwoorden = new List<DossierAntwoord>();
             if (dossiermodule.naam != null)
             {
-                dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID);
+                dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID).Where(antw => antw.statusOnline == true).ToList();
                 ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
             }
 
@@ -1030,7 +1030,7 @@ namespace JPP.UI.Web.MVC.Controllers
             List<AgendaAntwoord> agendaAntwoorden = new List<AgendaAntwoord>();
             if (agendaModule.naam != null)
             {
-                agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID);
+                agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID).Where(antw => antw.statusOnline == true).ToList();
                 ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
             }
          
