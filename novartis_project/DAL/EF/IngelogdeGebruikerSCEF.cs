@@ -72,7 +72,6 @@ namespace JPP.DAL.EF
         }
         public List<Antwoord> getAllAntwoorden()
         {
-
             return dbcontext.antwoord.ToList();
         }
         public List<AgendaAntwoord> getAllAgendaAntwoorden()
