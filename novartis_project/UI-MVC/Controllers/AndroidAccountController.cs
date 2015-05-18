@@ -64,7 +64,6 @@ namespace JPP.UI.Web.MVC.Controllers
         [ActionName("Register")]
         public async Task<IHttpActionResult> Register(AndroidGebruiker model)
         {
-     
                 var user = new User
                 {
                     UserName = model.Name,
@@ -75,6 +74,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     LastName = model.LastName,
                     Birthday = model.Birthday,
                     Zipcode = model.Zipcode,
+                    LockoutEnabled=false,
+                    EmailConfirmed=true,
+                    AccessFailedCount=0
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
