@@ -252,7 +252,7 @@ namespace JPP.UI.Web.MVC.Controllers
             return Ok(returnDossier);
         }
 
-        [HttpPost]
+        [HttpGet]
         [ActionName("topagendas")]
         public IHttpActionResult topagendas(string sorteer)
         {
@@ -301,7 +301,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(returnAnt);
         }
-        [HttpPost]
+        [HttpGet]
         [ActionName("topdossiers")]
         public IHttpActionResult topdossiers(string sorteer)
         {
