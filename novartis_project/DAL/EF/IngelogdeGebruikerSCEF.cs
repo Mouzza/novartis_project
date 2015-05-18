@@ -122,6 +122,5 @@ namespace JPP.DAL.EF
             dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
             dbcontext.SaveChanges();
         }
-
     }
 }
