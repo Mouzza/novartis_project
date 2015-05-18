@@ -47,6 +47,25 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
+        public ActionResult Manage()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult MijnDossierModules()
+        {
+            return View();
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult MijnAgendaModules()
+        {
+            return View();
+        }
+
+
         public ActionResult DossierModuleUitleg()
         {
             DossierModule dossierModule = moduleManager.readActieveDossierModule();
@@ -82,6 +101,32 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
 
         }
+
+        public ActionResult MijnGeplandeDossierModules(int? page)
+        {
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geplandeDossierModules = moduleManager.readGeplandeModules().OfType<DossierModule>().OrderBy(o => o.beginDatum).Where(mod => mod.adminNaam == User.Identity.GetUserName());
+            return PartialView(geplandeDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult MijnGeplandeAgendaModules(int? page)
+        {
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeplandeModules().OfType<AgendaModule>().Where(mod=>mod.adminNaam==User.Identity.GetUserName());
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
 
         public ActionResult _GeplandeDossierModules(int? page)
         {
@@ -132,10 +177,37 @@ namespace JPP.UI.Web.MVC.Controllers
             return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
 
         }
-        public ActionResult GeslotenDossierModules(int? page)
+
+        public ActionResult MijnGeslotenDossierModules(int? page)
         {
 
             int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+
+            IEnumerable<DossierModule> geslotenDossierModules = moduleManager.readGeslotenDossiers().Where(dos => dos.adminNaam == User.Identity.GetUserName());
+            return PartialView(geslotenDossierModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+
+        public ActionResult MijnGeslotenAgendaModules(int? page)
+        {
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+
+
+            IEnumerable<AgendaModule> geslotenAgendaModules = moduleManager.readGeslotenAgendas().Where(dos => dos.adminNaam == User.Identity.GetUserName());
+            return PartialView(geslotenAgendaModules.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult GeslotenDossierModules(int? page)
+        {
+
+            int pageSize = 4;
             int pageNumber = (page ?? 1);
 
      
@@ -223,6 +295,24 @@ namespace JPP.UI.Web.MVC.Controllers
            AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
            return PartialView(agendaModule);
        }
+       public ActionResult partialViewMijnDossierModule()
+       {
+
+
+           DossierModule dossierModule = moduleManager.readActieveDossierModule();
+           
+
+           return PartialView(dossierModule);
+
+       }
+       public ActionResult partialViewMijnAgendaModule()
+       {
+
+
+           AgendaModule agendaModule = moduleManager.readActieveAgendaModule();
+           return PartialView(agendaModule);
+       }
+
        public ActionResult Dossier()
        {
 
@@ -252,6 +342,7 @@ namespace JPP.UI.Web.MVC.Controllers
             AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
             return View(actieveAgendaModule);
         }
+
 
        [Authorize(Roles = "Admin")]
         public ActionResult Details(int id)

@@ -90,7 +90,6 @@
 </div>
 <p>
     @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Ga terug", "AgdModules")
     @if (Model.agendaAntwoorden.Count == 0)
     {
         <h4>Aantal antwoorden: @Model.agendaAntwoorden.Count </h4>
