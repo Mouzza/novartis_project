@@ -88,7 +88,7 @@
 
         if (zelfdeGebruiker)
         {
-            @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
+            @Html.ActionLink("Wijzig", "Wijzig", new { id = item.ID, type="ActieveDossierModule"})
         }
         if (ViewBag.winnaar == item.aantalStemmen)
         {

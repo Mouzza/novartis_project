@@ -1,4 +1,4 @@
-﻿@model JPP.BL.Domain.Antwoorden.AgendaAntwoord
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
 
 
 @{
@@ -19,7 +19,7 @@ else
 }
 
 <div>
-    <h4>Agenda Antwoord</h4>
+    <h4>Dossier Antwoord</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -70,13 +70,13 @@ else
             @Html.DisplayFor(model => model.aantalStemmen)
         </dd>
         <dt>
-           Aantal flags
+            Aantal flags
         </dt>
 
         <dd>
-           @Model.aantalFlags
+            @Model.aantalFlags
         </dd>
-        
+
     </dl>
 
     @using (Html.BeginForm())
@@ -96,7 +96,7 @@ else
                 <input type="submit" value="Deblokkeer" class="btn btn-default" />
             }
 
-    
+
         </div>
     }
 </div>
