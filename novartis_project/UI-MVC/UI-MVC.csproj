@@ -334,6 +334,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="Content\TimeLine.css" />
+    <Content Include="Content\WinnaarPagina.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -429,6 +430,9 @@
     <Content Include="Images\websitePage logos\iconSamenwerken.png" />
     <Content Include="Images\websitePage logos\iconVolgOp.png" />
     <Content Include="Images\websitePage logos\verder.png" />
+    <Content Include="Images\Winnaars\NumberOne.png" />
+    <Content Include="Images\Winnaars\NumberThree.png" />
+    <Content Include="Images\Winnaars\NumberTwo.png" />
     <Content Include="obj\Debug\UI-MVC.csproj.FileListAbsolute.txt" />
     <Content Include="Project_Readme.html" />
     <Content Include="obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache" />
@@ -605,6 +609,9 @@
     <Content Include="Views\Antwoord\Verwijder.cshtml" />
     <Content Include="Views\Module\MijnAgendaModules.cshtml" />
     <Content Include="Views\Module\MijnDossierModules.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Module\WinnaarVanModule.cshtml" />
+=======
     <Content Include="Views\Module\Manage.cshtml" />
     <Content Include="Views\Module\MijnGeplandeAgendaModules.cshtml" />
     <Content Include="Views\Module\MijnGeplandeDossierModules.cshtml" />
@@ -612,8 +619,12 @@
     <Content Include="Views\Module\MijnGeslotenDossierModules.cshtml" />
     <Content Include="Views\Module\partialViewMijnAgendaModule.cshtml" />
     <Content Include="Views\Module\partialViewMijnDossierModule.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Antwoord\_Lijst2.cshtml" />
     <Content Include="Views\Antwoord\BlokkeerAgendaAntwoord.cshtml" />
+=======
+>>>>>>> origin/master
+>>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -388,7 +388,7 @@ namespace JPP.DAL.EF
                     inhoud = "Wat zou er moeten gebeuren in het park Rivierenhof volgens jullie?" + x,
                     extraInfo = "Wij zijn van plan om extra ideeen toe te voegen , deel uw idee met ons en maak kans op prijzen!",
                     datum = new DateTime(2015, 9, 10, 15, 5, 59),
-                    aantalWinAntwoorden = 1,
+                    aantalWinAntwoorden = 3,
 
 
                 };
@@ -502,7 +502,7 @@ namespace JPP.DAL.EF
                 geslotenAgendaModule.organisatie = organisatieLeuven;
                 context.modules.Add(geslotenAgendaModule);
 
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i <= 2; i++)
                 {
 
                     DossierAntwoord dossierAntwoord = new DossierAntwoord()
