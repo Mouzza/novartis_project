@@ -72,7 +72,7 @@ namespace JPP.UI.Web.MVC.Models
     public class RegisterViewModel
     {
         [Required]
-        [StringLength(12, ErrorMessage = "{0} moet minstens {2} karakters en max 12 karakters lang zijn. ", MinimumLength = 6)]
+        [StringLength(10, ErrorMessage = "{0} moet minstens {2} karakters en max 10 karakters lang zijn. ", MinimumLength = 6)]
         [Display(Name = "Gebruikersnaam")]
         public string Name { get; set; }
 

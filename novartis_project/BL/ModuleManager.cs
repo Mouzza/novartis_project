@@ -246,6 +246,20 @@ namespace JPP.BL
             return moduleTussen;
         }
 
+        public List<Module> readGeslotenModules()
+        {
+            List<Module> Modules = nietInlog.getModules();
+            List<Module> moduleTussen = new List<Module>();
+            for (int i = 0; i < Modules.Count; i++)
+            {
+                if (Modules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(Modules[i]);
+                }
+            }
+            return moduleTussen;
+        }
+
         public List<AgendaModule> readGeslotenAgendas()
         {
             List<AgendaModule> agendaModules = nietInlog.getAgendaModules();

@@ -5,6 +5,7 @@
     ViewBag.Title = "Maak een dossier";
 }
 
+<link rel="stylesheet" type="text/css" href="~/Content/AdjustableDossierModelOne.css">
 
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 <script>
@@ -55,14 +56,14 @@
         Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
         @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
         <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
-
+    
+ <p id="ValidatieError3">@Html.ValidationMessageFor(model => model.inhoud)</p>
 <div id="TextWrapperFive">
 
         @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelFiveTextVakEen" })
-        <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
+      
 
         <div id="TweeTextvakWrapperTwo">
-            <div id="TweeTextvakWrapperTwo">
                 @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTwoTextVakTwee" })
                 @Html.ValidationMessageFor(model => model.textvak2)
 
@@ -71,7 +72,6 @@
         Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de derde textvak van de pagina komen-->
                 @Html.TextAreaFor(model => model.textvak3, new { @class = "AdjDossierModelTwoTextVakDrie" })
                 @Html.ValidationMessageFor(model => model.textvak3)
-            </div>
 
 
         </div>

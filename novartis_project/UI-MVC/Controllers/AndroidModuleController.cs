@@ -31,11 +31,12 @@ namespace JPP.UI.Web.MVC.Controllers
                 adminNaam = actieveDossierModule.adminNaam,
                 status = actieveDossierModule.status,
                 centralevraag = actieveDossierModule.centraleVraag.inhoud,
+                beloning=new ANDROIDBeloning(),
                 dossierAntwoorden=new List<ANDROIDDossierAntwoord>(),
                 vasteVraagEen = actieveDossierModule.vasteVraagEen.inhoud,
                 vasteVraagTwee = "aaaa" /*actieveDossierModule.vasteVraagTwee.inhoud*/,
                 vasteVraagDrie = "aaaa"/*actieveDossierModule.vasteVraagDrie.inhoud*/,
-                verplichteVolledigheidsPercentage = actieveDossierModule.verplichteVolledigheidsPercentage
+                verplichteVolledigheidsPercentage = actieveDossierModule.verplichteVolledigheidsPercentage,
                 /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
@@ -62,36 +63,34 @@ namespace JPP.UI.Web.MVC.Controllers
                     statusOnline=dosAntwoord.statusOnline,
                     titel=dosAntwoord.titel,
                     afbeeldingPath = dosAntwoord.afbeeldingPath,
-                    backgroundColor=dosAntwoord.backgroundColor,
-                    backgroundImage=dosAntwoord.backgroundImage,
-                    foregroundColor=dosAntwoord.foregroundColor,
                     textvak2=dosAntwoord.textvak2,
                     textvak3=dosAntwoord.textvak3,
                     comments = new List<ANDROIDComment>(),
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    vasteTags=new List<ANDROIDVasteTag>(),
-                    googleMapsAdress=dosAntwoord.googleMapsAdress
+                    //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    //vasteTags=new List<ANDROIDVasteTag>(),
+                    googleMapsAdress=dosAntwoord.googleMapsAdress,
+                    subtitel=dosAntwoord.subtitel
                 };
-                foreach (var vTag in dosAntwoord.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
-                    {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
-                    };
-                    dos.vasteTags.Add(vasteTag);
-                }
-                foreach (var pTag in dosAntwoord.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
-                    {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    dos.persoonlijkeTags.Add(persTag);
-                }
+                //foreach (var vTag in dosAntwoord.vasteTags)
+                //{
+                //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                //    {
+                //        ID = vTag.ID,
+                //        naam = vTag.naam,
+                //        beschrijving = vTag.beschrijving
+                //    };
+                //    dos.vasteTags.Add(vasteTag);
+                //}
+                //foreach (var pTag in dosAntwoord.persoonlijkeTags)
+                //{
+                //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                //    {
+                //        ID = pTag.ID,
+                //        naam = pTag.naam,
+                //        beschrijving = pTag.beschrijving
+                //    };
+                //    dos.persoonlijkeTags.Add(persTag);
+                //}
 
                 foreach (var comment in dosAntwoord.comments)
                 {
@@ -138,7 +137,8 @@ namespace JPP.UI.Web.MVC.Controllers
                 adminNaam = actieveAgendaModule.adminNaam,
                 status = actieveAgendaModule.status,
                 centraleVraag = actieveAgendaModule.centraleVraag.inhoud,
-                agendaAntwoorden = new List<ANDROIDAgendaAntwoord>()
+                agendaAntwoorden = new List<ANDROIDAgendaAntwoord>(),
+                beloning=new ANDROIDBeloning()
                 /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
@@ -159,32 +159,32 @@ namespace JPP.UI.Web.MVC.Controllers
                     ID = agAntwoord.ID,
                     inhoud = agAntwoord.inhoud,
                     moduleID = agAntwoord.module.ID,
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agAntwoord.titel,
-                    vasteTags = new List<ANDROIDVasteTag>()
+                    //vasteTags = new List<ANDROIDVasteTag>()
                 };
 
-                foreach (var pTag in agAntwoord.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
-                    {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    ag.persoonlijkeTags.Add(persTag);
-                }
+                //foreach (var pTag in agAntwoord.persoonlijkeTags)
+                //{
+                //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                //    {
+                //        ID = pTag.ID,
+                //        naam = pTag.naam,
+                //        beschrijving = pTag.beschrijving
+                //    };
+                //    ag.persoonlijkeTags.Add(persTag);
+                //}
 
-                foreach (var vTag in agAntwoord.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
-                    {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
-                    };
-                    ag.vasteTags.Add(vasteTag);
-                }
+                //foreach (var vTag in agAntwoord.vasteTags)
+                //{
+                //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                //    {
+                //        ID = vTag.ID,
+                //        naam = vTag.naam,
+                //        beschrijving = vTag.beschrijving
+                //    };
+                //    ag.vasteTags.Add(vasteTag);
+                //}
                 agendaModule.agendaAntwoorden.Add(ag);
             }
 
@@ -225,7 +225,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     eindDatum = agenda.eindDatum,
                     ID = agenda.ID,
                     naam = agenda.naam,
-                    status = agenda.status
+                    status = agenda.status,
+                    beloning=new ANDROIDBeloning()
                 };
 
                 ANDROIDBeloning beloning = new ANDROIDBeloning()
@@ -257,7 +258,12 @@ namespace JPP.UI.Web.MVC.Controllers
                     eindDatum = dos.eindDatum,
                     ID = dos.ID,
                     naam = dos.naam,
-                    status = dos.status
+                    status = dos.status,
+                    beloning=new ANDROIDBeloning(),
+                    vasteVraagDrie="aaa",//dos.vasteVraagDrie.inhoud,
+                    vasteVraagEen=dos.vasteVraagEen.inhoud,
+                    vasteVraagTwee="aaa",//dos.vasteVraagTwee.inhoud,
+                    verplichteVolledigheidsPercentage=dos.verplichteVolledigheidsPercentage
                 };
 
                 ANDROIDBeloning beloning = new ANDROIDBeloning()
@@ -290,6 +296,12 @@ namespace JPP.UI.Web.MVC.Controllers
                         naam = dos.naam,
                         status = dos.status,
                         centralevraag = dos.centraleVraag.inhoud,
+                        beloning=new ANDROIDBeloning(),
+                        vasteVraagDrie = "aaaa",//dos.vasteVraagDrie.inhoud,
+                        vasteVraagEen = dos.vasteVraagEen.inhoud,
+                        vasteVraagTwee = "aaaa",//dos.vasteVraagTwee.inhoud,
+                        verplichteVolledigheidsPercentage = dos.verplichteVolledigheidsPercentage
+
                     };
                     ANDROIDBeloning bel = new ANDROIDBeloning()
                     {
@@ -320,7 +332,8 @@ namespace JPP.UI.Web.MVC.Controllers
                         ID = ag.ID,
                         naam = ag.naam,
                         status = ag.status,
-                        centraleVraag = ag.centraleVraag.inhoud
+                        centraleVraag = ag.centraleVraag.inhoud,
+                        beloning=new ANDROIDBeloning()
                     };
                     ANDROIDBeloning bel = new ANDROIDBeloning()
                     {
@@ -350,7 +363,13 @@ namespace JPP.UI.Web.MVC.Controllers
                     eindDatum = dos.eindDatum,
                     ID = dos.ID,
                     naam = dos.naam,
-                    status = dos.status
+                    status = dos.status,
+                    vasteVraagDrie = "aaaaa",//dos.vasteVraagDrie.inhoud,
+                    vasteVraagEen = dos.vasteVraagEen.inhoud,
+                    vasteVraagTwee = "aaa",//dos.vasteVraagTwee.inhoud,
+                    verplichteVolledigheidsPercentage = dos.verplichteVolledigheidsPercentage,
+                    beloning=new ANDROIDBeloning()
+                    
                 };
                 ANDROIDBeloning bel = new ANDROIDBeloning()
                 {
@@ -383,7 +402,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     eindDatum = ag.eindDatum,
                     ID = ag.ID,
                     naam = ag.naam,
-                    status = ag.status
+                    status = ag.status,
+                    beloning=new ANDROIDBeloning()
                 };
                 ANDROIDBeloning bel = new ANDROIDBeloning()
                 {
@@ -400,8 +420,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(androidAgendas);
         }
-
-
+        
         #endregion
 
         #region TOEKOMSTIGE modules
@@ -417,13 +436,13 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     adminNaam = mod.adminNaam,
                     beginDatum = mod.beginDatum,
-
                     centraleVraag = mod.centraleVraag.inhoud,
                     eindDatum = mod.eindDatum,
                     ID = mod.ID,
                     naam = mod.naam,
                     status = mod.status,
-                    type = mod.GetType().BaseType.Name
+                    type = mod.GetType().BaseType.Name,
+                    beloning=new ANDROIDBeloning()
                 };
                 ANDROIDBeloning beloning = new ANDROIDBeloning()
                 {

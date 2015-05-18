@@ -20,5 +20,3 @@ C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Relea
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Release\JPP.DAL.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Release\JPP.DAL.pdb
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Release\Newtonsoft.Json.dll
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Release\Newtonsoft.Json.xml

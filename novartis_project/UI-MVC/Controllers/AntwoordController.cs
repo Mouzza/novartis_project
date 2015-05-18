@@ -30,6 +30,20 @@ namespace JPP.UI.Web.MVC.Controllers
             return View();
         
         }
+
+        public ActionResult MijnAntwoorden()
+        {
+            return View();
+        }
+        public ActionResult MijnDossiers()
+        {
+            return View();
+        }
+        public ActionResult Manage()
+        {
+
+            return View();
+        }
         public ActionResult Dossier(int id)
         {
             DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
@@ -41,6 +55,18 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(agendaAntwoord);
         }
 
+        public ActionResult ModuleBeslissing(int id)
+        {
+            int identity = id;
+            if (antwManager.readAntwoord(id) is DossierAntwoord){
+                return RedirectToAction("Dossier", new { id = identity});
+            }
+            else
+            {
+                return RedirectToAction("Agenda", new { id = identity });
+            }
+            
+        }
  
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
@@ -89,7 +115,6 @@ namespace JPP.UI.Web.MVC.Controllers
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-                       
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
@@ -137,8 +162,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 };
 
 
-
-                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
                 dossierAntwoordX.module = actieveDossierModule;
@@ -193,7 +217,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelTwo(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
             
             if (!Request.IsAuthenticated)
@@ -256,7 +280,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
                 dossierAntwoordX.module = actieveDossierModule;
@@ -274,11 +298,7 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
-
+     
             if (dossierAntwoord.titel != null)
             {
                 return View(dossierAntwoord);
@@ -302,8 +322,9 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
+        
         [HttpPost]
-        public ActionResult AdjustableDossierModelThree(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
            
             if (!Request.IsAuthenticated)
@@ -366,7 +387,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
                 dossierAntwoordX.module = actieveDossierModule;
@@ -409,7 +430,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelFive(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
 
             if (!Request.IsAuthenticated)
@@ -472,7 +493,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
                 dossierAntwoordX.module = actieveDossierModule;
@@ -519,7 +540,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelSix(HttpPostedFileBase file, DossierAntwoord dossAntwoord)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
 
             if (!Request.IsAuthenticated)
@@ -582,7 +603,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-                ////Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
+                ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
                 dossierAntwoordX.module = actieveDossierModule;
@@ -802,8 +823,142 @@ namespace JPP.UI.Web.MVC.Controllers
             return PartialView(antwoorden.ToPagedList(pageNumber, pageSize));
         }
 
-        //Antwoord/Lijst
+        public ActionResult _partialMijnAgendaAntwoorden(string searchString, string currentFilter, string sortOrder, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.LikesSortParm = sortOrder == "Likes" ? "" : "Likes";
+            ViewBag.NPopSortParm = sortOrder == "NPop" ? "" : "NPop";
+            ViewBag.AZSortParm = sortOrder == "AZ" ? "" : "AZ";
+            ViewBag.ZASortParm = sortOrder == "ZA" ? "" : "ZA";
 
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+            List<AgendaModule> agendamodules = dossManager.readAllAgendaModules();
+
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
+
+
+            if (agendaAntwoorden.ToList().Count != 0)
+            {
+                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                agendaAntwoorden = agendaAntwoorden.Where(antw => antw.inhoud.Contains(searchString)
+                                       || antw.titel.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "AZ":
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordAZ(agendaAntwoorden);
+
+                    break;
+                case "ZA":
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordZA(agendaAntwoorden);
+
+                    break;
+                case "NPop":
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordMinsteLikes(agendaAntwoorden);
+
+                    break;
+                case "Likes":
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordMeesteLikes(agendaAntwoorden);
+
+                    break;
+                default:
+                    agendaAntwoorden = antwManager.sortAgendaAntwoordNieuwOud(agendaAntwoorden);
+
+                    break;
+            }
+
+
+            ViewBag.Aantal = agendaAntwoorden.Count();
+
+            return PartialView(agendaAntwoorden.ToPagedList(pageNumber, pageSize));
+
+        }
+
+        public ActionResult _partialMijnDossierAntwoorden(string searchString, string currentFilter, string sortOrder, int? page)
+        {
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.LikesSortParm = sortOrder == "Likes" ? "" : "Likes";
+            ViewBag.NPopSortParm = sortOrder == "NPop" ? "" : "NPop";
+            ViewBag.AZSortParm = sortOrder == "AZ" ? "" : "AZ";
+            ViewBag.ZASortParm = sortOrder == "ZA" ? "" : "ZA";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            int pageSize = 4;
+            int pageNumber = (page ?? 1);
+
+            List<DossierModule> dossiermodules = dossManager.readAllDossierModules();
+
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
+
+           
+            if (dossierAntwoorden.ToList().Count != 0)
+            {
+                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dossierAntwoorden = dossierAntwoorden.Where(antw => antw.inhoud.Contains(searchString)
+                                       || antw.titel.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "AZ":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordTitelAZ(dossierAntwoorden);
+
+                    break;
+                case "ZA":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordTitelZA(dossierAntwoorden);
+
+                    break;
+                case "NPop":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordMinsteLikes(dossierAntwoorden);
+
+                    break;
+                case "Likes":
+                    dossierAntwoorden = antwManager.sortDossierAntwoordMeesteLikes(dossierAntwoorden);
+
+                    break;
+                default:
+                    dossierAntwoorden = antwManager.sortDossierAntwoordNieuwOud(dossierAntwoorden);
+
+                    break;
+            }
+
+
+            ViewBag.Aantal = dossierAntwoorden.Count();
+
+            return PartialView(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
+
+        }
         public ActionResult _partialAntwoordLijst(string sortOrder, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -1004,6 +1159,30 @@ namespace JPP.UI.Web.MVC.Controllers
                 return View();
             }
         }
+        // GET: Antwoord/Verwijder/5
+        public ActionResult Verwijder(int id)
+        {
+            Antwoord antwoord = antwManager.readAntwoord(id);
+            return View(antwoord);
+        }
+
+        // POST: Antwoord/Delete/5
+        [HttpPost]
+        public ActionResult Verwijder(int id, string URL)
+        {
+            try
+            {
+                // TODO: Add delete logic here
+
+                antwManager.removeAntwoord(id);
+                return Redirect(URL);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
 
         public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {

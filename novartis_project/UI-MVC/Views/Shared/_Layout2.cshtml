@@ -48,8 +48,8 @@
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         @if (Request.IsAuthenticated)
                         {
-                            <li>@Html.ActionLink("Mijn account", "Index", "Manage")</li>
-                            <li>@Html.ActionLink("Mijn dossiers", "Index", "Manage")</li>
+                            <li id="menuItemFocus">@Html.ActionLink("Mijn account", "Index", "Manage")</li>
+                            <li id="menuItemFocus">@Html.ActionLink("Mijn antwoorden", "Manage", "Antwoord")</li>
 
                         }
                         @if (User.IsInRole("Admin"))

@@ -26,6 +26,25 @@ namespace JPP.UI.Web.MVC.Controllers
         AntwoordManager antwoordManager = new AntwoordManager();
         ModuleManager moduleManager = new ModuleManager();
 
+        [HttpGet]
+        [ActionName("test")]
+        public IHttpActionResult test()
+        {
+            Image tmpimg = null;
+            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/uploads/ae0K8gv_460s.jpg");
+            HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            Stream stream = httpWebReponse.GetResponseStream();
+            tmpimg = Image.FromStream(stream);
+
+            MemoryStream ms = new MemoryStream();
+            tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
+
+            byte[] image = new byte[100000];
+            image = ms.ToArray();
+            return Ok(image);
+        }
+
+
         #region GET dossier/agenda
         [HttpGet]
         [ActionName("getAgendaAntwoordID")]
@@ -47,32 +66,33 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = agenda.gebruikersNaam,
                     aantalFlags = agenda.aantalFlags,
                     moduleID = agenda.module.ID,
-                    vasteTags = new List<ANDROIDVasteTag>(),
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    titel = agenda.titel
+                    //vasteTags = new List<ANDROIDVasteTag>(),
+                    // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    titel = agenda.titel,
+                    subTitel = agenda.subtitel
                 };
 
-                foreach (var vTag in agenda.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
-                    {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
-                    };
-                    agAntwoord.vasteTags.Add(vasteTag);
-                }
+                //foreach (var vTag in agenda.vasteTags)
+                //{
+                //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                //    {
+                //        ID = vTag.ID,
+                //        naam = vTag.naam,
+                //        beschrijving = vTag.beschrijving
+                //    };
+                //    agAntwoord.vasteTags.Add(vasteTag);
+                //}
 
-                foreach (var pTag in agenda.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
-                    {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    agAntwoord.persoonlijkeTags.Add(persTag);
-                }
+                //foreach (var pTag in agenda.persoonlijkeTags)
+                //{
+                //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                //    {
+                //        ID = pTag.ID,
+                //        naam = pTag.naam,
+                //        beschrijving = pTag.beschrijving
+                //    };
+                //    agAntwoord.persoonlijkeTags.Add(persTag);
+                //}
                 agendaAntwoorden.Add(agAntwoord);
             }
             return Ok(agendaAntwoorden);
@@ -96,8 +116,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = dossier.gebruikersNaam,
                     aantalFlags = dossier.aantalFlags,
                     moduleID = dossier.module.ID,
-                    vasteTags = new List<ANDROIDVasteTag>(),
-                    persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    // vasteTags = new List<ANDROIDVasteTag>(),
+                    // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     //afbeeldingPath = dossier.afbeeldingPath,
                     percentageVolledigheid = dossier.percentageVolledigheid,
                     statusOnline = dossier.statusOnline,
@@ -105,7 +125,10 @@ namespace JPP.UI.Web.MVC.Controllers
                     evenementID = 10/*dossier.evenement.ID*/,
                     comments = new List<ANDROIDComment>(),
                     titel = dossier.titel,
-                    googleMapsAdress = dossier.googleMapsAdress
+                    googleMapsAdress = dossier.googleMapsAdress,
+                    subtitel = dossier.subtitel,
+                    textvak2 = dossier.textvak2,
+                    textvak3 = dossier.textvak3
                 };
 
                 //Image tmpimg = null;
@@ -118,40 +141,40 @@ namespace JPP.UI.Web.MVC.Controllers
                 //tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
                 //dosAntwoord.afbeeldingBytes = ms.ToArray();
 
-                foreach (VasteTag vTag in dossier.vasteTags)
-                {
-                    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
-                    {
-                        ID = vTag.ID,
-                        naam = vTag.naam,
-                        beschrijving = vTag.beschrijving
-                    };
-                    dosAntwoord.vasteTags.Add(vasteTag);
-                }
+                //foreach (VasteTag vTag in dossier.vasteTags)
+                //{
+                //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
+                //    {
+                //        ID = vTag.ID,
+                //        naam = vTag.naam,
+                //        beschrijving = vTag.beschrijving
+                //    };
+                //    dosAntwoord.vasteTags.Add(vasteTag);
+                //}
 
-                foreach (PersoonlijkeTag pTag in dossier.persoonlijkeTags)
-                {
-                    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
-                    {
-                        ID = pTag.ID,
-                        naam = pTag.naam,
-                        beschrijving = pTag.beschrijving
-                    };
-                    dosAntwoord.persoonlijkeTags.Add(persTag);
-                }
+                //foreach (PersoonlijkeTag pTag in dossier.persoonlijkeTags)
+                //{
+                //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
+                //    {
+                //        ID = pTag.ID,
+                //        naam = pTag.naam,
+                //        beschrijving = pTag.beschrijving
+                //    };
+                //    dosAntwoord.persoonlijkeTags.Add(persTag);
+                //}
 
-                foreach (Comment comment in dossier.comments)
-                {
-                    ANDROIDComment aComment = new ANDROIDComment()
-                    {
-                        ID = comment.ID,
-                        inhoud = comment.inhoud,
-                        datum = comment.datum,
-                        aantalStemmen = comment.aantalStemmen,
-                        gebruikersNaam = comment.gebruikersNaam
-                    };
-                    dosAntwoord.comments.Add(aComment);
-                }
+                //foreach (Comment comment in dossier.comments)
+                //{
+                //    ANDROIDComment aComment = new ANDROIDComment()
+                //    {
+                //        ID = comment.ID,
+                //        inhoud = comment.inhoud,
+                //        datum = comment.datum,
+                //        aantalStemmen = comment.aantalStemmen,
+                //        gebruikersNaam = comment.gebruikersNaam
+                //    };
+                //    dosAntwoord.comments.Add(aComment);
+                //}
                 dossierAntwoorden.Add(dosAntwoord);
             }
             return Ok(dossierAntwoorden);
@@ -175,11 +198,14 @@ namespace JPP.UI.Web.MVC.Controllers
                 inhoud = agendaAntwoord.inhoud,
                 subtitel = agendaAntwoord.subTitel,
                 titel = agendaAntwoord.titel,
-                module = moduleManager.readAllAgendaModules().Find(o => o.ID==agendaAntwoord.moduleID),
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
             };
-            antwoordManager.createAgendaAntwoord(agAntwoord);
+            AgendaModule actieveAg = moduleManager.readActieveAgendaModule();
+            agAntwoord.module = actieveAg;
+            AgendaAntwoord createAg = antwoordManager.createAgendaAntwoord(agAntwoord);
+            actieveAg.agendaAntwoorden.Add(createAg);
+            moduleManager.updateAgendaModule(actieveAg);
         }
         [HttpPost]
         [ActionName("createDossier")]
@@ -187,85 +213,78 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             DossierAntwoord dosAntwoord = new DossierAntwoord()
             {
-                aantalFlags = dossierAntwoord.aantalFlags,
-                aantalStemmen = dossierAntwoord.aantalStemmen,
-                datum = dossierAntwoord.datum,
-                //editable = dossierAntwoord.editable,
-                extraInfo = dossierAntwoord.extraInfo,
                 gebruikersNaam = dossierAntwoord.gebruikersNaam,
-                ID = dossierAntwoord.ID,
-                inhoud = dossierAntwoord.inhoud,
-                subtitel = dossierAntwoord.subtitel,
-                titel = dossierAntwoord.titel,
-                module = moduleManager.readAllDossierModules().Find(o=>o.ID==dossierAntwoord.moduleID),
+                comments = new List<Comment>(),
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
-                comments = new List<Comment>(),
-                afbeeldingPath = dossierAntwoord.afbeeldingPath,
-                googleMapsAdress = dossierAntwoord.googleMapsAdress,
-                backgroundColor = dossierAntwoord.backgroundColor,
-                backgroundImage = dossierAntwoord.backgroundImage,
-                evenement=new Evenement(), //kan evenement niet oproepen
-                extraVraag = dossierAntwoord.extraVraag,
-                foregroundColor = dossierAntwoord.foregroundColor,
+                datum = dossierAntwoord.datum,
+                aantalFlags = dossierAntwoord.aantalFlags,
+                aantalStemmen = dossierAntwoord.aantalStemmen,
                 percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
                 statusOnline = dossierAntwoord.statusOnline,
+                layoutOption = 1,
+                subtitel = dossierAntwoord.subtitel,
+                titel = dossierAntwoord.titel,
+                inhoud = dossierAntwoord.inhoud,
                 textvak2 = dossierAntwoord.textvak2,
-                textvak3 = dossierAntwoord.textvak3
+                textvak3 = dossierAntwoord.textvak3,
+                googleMapsAdress = dossierAntwoord.googleMapsAdress,
+                afbeeldingPath = dossierAntwoord.afbeeldingPath,
+                backgroundColor="red",
+                foregroundColor="green",
+                //editable = dossierAntwoord.editable,
+                extraInfo = dossierAntwoord.extraInfo,
+                evenement = new Evenement(), //kan evenement niet oproepen
+                extraVraag = dossierAntwoord.extraVraag,
+                backgroundImage="tstest"
             };
-            
-            foreach(var vtag in dossierAntwoord.vasteTags)
-            {
-                VasteTag tag = new VasteTag()
-                {
-                    ID=vtag.ID,
-                    beschrijving=vtag.beschrijving,
-                    naam=vtag.naam
-                };
-                dosAntwoord.vasteTags.Add(tag);
-            }
-            foreach (var ptag in dossierAntwoord.persoonlijkeTags)
-            {
-                PersoonlijkeTag tag = new PersoonlijkeTag()
-                {
-                    ID = ptag.ID,
-                    beschrijving = ptag.beschrijving,
-                    naam = ptag.naam
-                };
-                dosAntwoord.persoonlijkeTags.Add(tag);
-            }
-            foreach (var comment in dossierAntwoord.comments)
-            {
-                Comment com = new Comment()
-                {
-                    ID = comment.ID,
-                    aantalStemmen=comment.aantalStemmen,
-                    datum=comment.datum,
-                    gebruikersNaam=comment.gebruikersNaam,
-                    inhoud=comment.inhoud
-                };
-                dosAntwoord.comments.Add(com);
-            }
-            antwoordManager.createDossierAntwoord(dosAntwoord);
+
+            DossierModule actieveDos = moduleManager.readActieveDossierModule();
+            dosAntwoord.module = actieveDos;
+            DossierAntwoord createDos = antwoordManager.createDossierAntwoord(dosAntwoord);
+            actieveDos.dossierAntwoorden.Add(createDos);
+            moduleManager.updateDossierModule(actieveDos);
+
+            //foreach(var vtag in dossierAntwoord.vasteTags)
+            //{
+            //    VasteTag tag = new VasteTag()
+            //    {
+            //        ID=vtag.ID,
+            //        beschrijving=vtag.beschrijving,
+            //        naam=vtag.naam
+            //    };
+            //    dosAntwoord.vasteTags.Add(tag);
+            //}
+            //foreach (var ptag in dossierAntwoord.persoonlijkeTags)
+            //{
+            //    PersoonlijkeTag tag = new PersoonlijkeTag()
+            //    {
+            //        ID = ptag.ID,
+            //        beschrijving = ptag.beschrijving,
+            //        naam = ptag.naam
+            //    };
+            //    dosAntwoord.persoonlijkeTags.Add(tag);
+            //}
         }
         #endregion
 
         #region UPDATE dossier/agenda
         [HttpPut]
         [ActionName("updateAgenda")]
-        public void updateAgendaAntwoord(Antwoord antwoord)
+        public void updateAgendaAntwoord(AgendaAntwoord antwoord)
         {
+            antwoord.module = moduleManager.readActieveAgendaModule();
             antwoordManager.updateAgendaAntwoord(antwoord);
         }
         [HttpPut]
         [ActionName("updateDossier")]
-        public void updateDossierAntwoord(Antwoord antwoord)
+        public void updateDossierAntwoord(DossierAntwoord antwoord)
         {
             antwoordManager.updateDossierAntwoord(antwoord);
         }
         #endregion
 
-        #region STEM
+        #region STEM FLAG
         [HttpGet]
         [ActionName("stemCommentID")]
         public IHttpActionResult stemOpComment(int id)
@@ -278,6 +297,13 @@ namespace JPP.UI.Web.MVC.Controllers
         public IHttpActionResult stemOpAntwoord(int id)
         {
             antwoordManager.stemOpAntwoord(id);
+            return Ok("ok");
+        }
+        [HttpGet]
+        [ActionName("flagAntwoord")]
+        public IHttpActionResult flagAntwoord(int id)
+        {
+            antwoordManager.flagAntwoord(id);
             return Ok("ok");
         }
         #endregion

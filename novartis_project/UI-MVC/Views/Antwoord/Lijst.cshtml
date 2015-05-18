@@ -75,10 +75,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.aantalFlags)
         </td>
+
         <td>
             @Html.ActionLink("Wijzig", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Detail", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Verwijder", "Delete", new { id=item.ID })
+            @Html.ActionLink("Verwijder", "Verwijder", new { id = item.ID, URL = Request.Url.AbsoluteUri })
         </td>
     </tr>
 }
