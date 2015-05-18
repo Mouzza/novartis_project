@@ -1,4 +1,6 @@
-﻿#DossierModelTitle {
+﻿@media all and (min-width:1400px){
+
+#DossierModelTitle {
     width: 100%;
     text-align: center;
     font-weight: bold;
@@ -102,7 +104,7 @@
     border: #FFF;
 }
 
-.AdjDossierModelTwoTextVakEen {
+#DossierModelTwoTextVakEen {
     float: left;
     width: 500px;
     height: 300px;
@@ -369,3 +371,438 @@
     overflow: hidden;
     border: #FFF;
 }
+
+}
+
+
+@media all and (min-width:300px) and (max-width:1400px){
+        #DossierModelAfbeelding{
+            width: 100%;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            height: 600px;
+        }
+
+        #DossierModelAfbeelding img{
+            width: 70%;
+            position: relative;
+            margin-left: 14%;
+            margin-right: auto;
+            height: 50%;
+        }
+
+        #DossierModelTextVakEen{
+            position: relative;
+            max-width: 70%;
+            width: 70%;
+            height: 300px;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+        }
+
+        #TweeTextvakWrapper{
+            width: 100%;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20%;
+        }
+
+    #DossierModelTextVakTwee {
+        width: 70%;
+        height: 150px;
+        max-height: 150px;
+        max-width: 70%;
+        margin-left: 14%;
+        margin-right: 14%;
+        border: #FFF;
+        overflow: hidden;
+    }
+
+        #DossierModelTextVakDrie {
+        width: 70%;
+        height: 150px;
+        max-height: 150px;
+        max-width: 70%;
+        margin-left: 14%;
+        margin-right: 14%;
+        border: #FFF;
+        overflow: hidden;
+    }
+
+    #map-canvas {
+        margin-top: 50px;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        position: relative;
+        margin-left: 14%;
+        margin-right: auto;
+        width: 70%;
+        height: 20%;
+    }
+
+        #DossierModelTitle {
+        width: 70%;
+        max-width: 70%;
+        color: #0099cc;
+        margin-left: 14%;
+        margin-right: auto;
+        text-align: center;
+        font-weight: bold;
+        font-size: 50px;
+        overflow: hidden;
+        border: #FFF;
+        height: 80px;
+        margin-top: 50px;
+    }
+
+
+    #DossierModelSubTitle {
+        width: 70%;
+        max-width: 70%;
+        text-align: center;
+        color: #666666;
+        margin-left: 14%;
+        margin-right: auto;
+        font-size: 30px;
+        font-weight: bold;
+        overflow: hidden;
+        border: #FFF;
+    }
+
+        #ButtonWrapper {
+          margin-left: 39%;
+          width: 22.5%;
+          margin-right: 39%;
+    }
+
+            #ustableButtonWrapper {
+        background-color: #D3D3D3;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        width: 100%;
+        height: 150px;
+        display: table;
+    }
+
+     #ButtonWrapper {
+          margin-left: 25%;
+          width: 50%;
+          margin-right: 25%;
+    }
+
+
+    #ButtonTwo {
+        width: 19%;
+        height: 75px;
+    }
+
+        #ButtonTwo img {
+            width: 100%;
+            height: 65px;
+        }
+
+    #ButtonThree {
+        width: 19%;
+        height: 75px;
+    }
+
+        #ButtonThree img {
+            width: 100%;
+            height: 65px;
+        }
+
+    #ButtonFive {
+        width: 19%;
+        height: 75px;
+    }
+
+        #ButtonFive img {
+            width: 100%;
+            height: 65px;
+        }
+
+    #ButtonSix {
+        width: 19%;
+        height: 75px;
+    }
+
+        #ButtonSix img {
+            width: 100%;
+            height: 65px;
+        }
+
+    #OptionsBar {
+        background-color: #D3D3D3;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        width: 100%;
+        height: 180px;
+        display: table;
+        margin-top: 50px;
+    }
+
+    #OptionsbarTitle {
+        text-align: center;
+        font-size: 30px;
+        color: #0099CC;
+        font-weight: bold;
+    }
+
+    #OptionsbarTitleHead {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 30px;
+        color: #0099CC;
+        font-weight: bold;
+    }
+
+            #googlemaps {
+    width: 370px;
+}
+
+    #googlemaps input {
+        width: 290px;
+    }
+
+       #persoonlijkeTags {
+        width: 370px;
+    }
+
+        #persoonlijkeTags input {
+            width: 290px;
+        }
+
+    #foregroundColor {
+
+        width: 370px;
+    }
+
+        #foregroundColor input {
+            width: 370px;
+        }
+
+
+    #backgroundColor {
+        width: 370px;
+    }
+
+        #backgroundColor input {
+            width: 370px;
+        }
+
+        /*###############################################################################################################################################*/
+
+        #DossierModelTwoTextVakDrie {
+        position: relative;
+            max-width: 70%;
+            width: 70%;
+            margin-left: 14%;
+            height: 120px;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+    #DossierModelTwoTextVakTwee {
+        position: relative;
+            max-width: 70%;
+            width: 70%;
+            height: 120px;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+
+    #DossierModelTwoTextVakEen {
+        position: relative;
+            max-width: 70%;
+            width: 70%;
+            height: 50%;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+    #DossierModelThreeTextVakEen {
+       position: relative;
+            max-width: 70%;
+            width: 70%;
+            height: 40%;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+    #DossierModelFiveTextVakEen {
+        position: relative;
+            max-width: 70%;
+            width: 70%;
+            margin-left: 15%;
+            height: 50%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+    #TextWrapperFive {
+        width: 100%;
+        height: 500px;
+    }
+
+    #DossierModelSixTextVakDrie {
+        position: relative;
+        max-width: 70%;
+            width: 70%;
+            height: 50%;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+    #DossierModelSixTextVakEen {
+        position: relative;
+            max-width: 70%;
+            width: 70%;
+            height: 200px;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+
+    #DossierModelTwoAfbeelding {
+        width: 100%;
+        height: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+
+        #DossierModelTwoAfbeelding img {
+            width: 70%;
+            margin-left: 14%;
+            height: 50%;
+            box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        }
+
+    #map-canvasTwo {
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        position: relative;
+        width: 70%;
+        margin-left: 14%;
+        height: 50%;
+        margin-top: 50px;
+    }
+
+
+    #TextWrapperTwo {
+        width: 100%;
+        height: 400px;
+    }
+
+
+    #DossierModelTwoTextVakEen {
+        position: relative;
+            max-width: 70%;
+            width: 70%;
+            height: 50%;
+            margin-left: 14%;
+            margin-right: auto;
+            border: #FFF;
+            overflow: hidden;
+    }
+
+    #TweeTextvakWrapperTwo {
+        width: 100%;
+        height: 400px;
+    }
+
+    #DossierModelTwoTag {
+        margin-top: 100px;
+        width: 100%;
+        height: 100px;
+    }
+
+    #TweeTextvakWrapperThree {
+        height: 300px;
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    #map-canvasThree {
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        position: relative;
+        width: 70%;
+        margin-left: 14%;
+        height: 300px;
+    }
+
+    #ValidatieError3{
+        color: red;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+    }
+
+
+    #TextWrapperThree {
+        width: 100%;
+        height: 500px;
+    }
+
+    #DossierModelThreeTag {
+        width: 100%;
+        height: 100px;
+        margin-left: 14%;
+    }
+
+    #DossierModelFiveAfbeelding {
+        width: 100%;
+        height: 600px;
+        margin-top: 100px;
+    }
+
+        #DossierModelFiveAfbeelding img {
+            width: 70%;
+            margin-left: 14%;
+            box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+        }
+
+
+
+    #TweeTextvakWrapperSix {
+        height: 300px;
+        margin-top: 25px;
+        width: 100%;
+    }
+
+    #DossierModelThreeTextVakTwee {
+    width: 70%;
+    height: 100px;
+    max-width: 70%;
+    margin-left: 14%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+#DossierModelThreeTextVakDrie {
+    width: 70%;
+    height: 100px;
+    margin-top: 20px;
+    max-width: 70%;
+    margin-left:14%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+
+}
+
+
