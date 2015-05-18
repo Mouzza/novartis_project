@@ -1828,14 +1828,22 @@ textarea {
 
 }
 
+#menuItemFocus2 a{
+    color:#0080A5;
+}
+
+#menuItemFocus2 a:hover{
+    color: white;
+}
 
 #menuItemFocus a{
 
     color:#E94E09;
 }
-    #menuItemFocus a:hover {
-        color: white;
-    }
+
+#menuItemFocus a:hover {
+    color: white;
+}
 
 /*#####################################################################   VolgOp.CSS   ###########################################################################*/
 
@@ -1881,6 +1889,24 @@ div.table-title {
   width: 80%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
+}
+
+.table-fill .mijnModuleInstellingen{
+    cursor:default;
+    font-size:15px;
+}
+
+.table-fill .mijnModuleInstellingen:hover{
+    background-color:#ebebeb;
+    cursor:default;
+}
+.table-fill .mijnModuleInstellingen a:hover{
+    cursor:default;
+    font-size:18px;
+}
+.table-fill .mijnModuleInstellingen h4 a:hover{
+    cursor:default;
+    font-size:22px;
 }
 
 .table-fill th {
@@ -2025,5 +2051,11 @@ div.table-title {
 
 #geplandeDossierModules{
     margin-top: 10%;
+
+}
+
+#menuLogoImg{
+    width:128px;
+    height:128px;
 
 }

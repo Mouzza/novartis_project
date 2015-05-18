@@ -204,6 +204,6 @@ C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\ru\Microsoft.Data.Entity.Design.Extensibility.resources.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\zh-Hans\Microsoft.Data.Entity.Design.Extensibility.resources.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\bin\Debug\zh-Hant\Microsoft.Data.Entity.Design.Extensibility.resources.dll
-C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Debug\JPP.DAL.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache

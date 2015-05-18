@@ -112,23 +112,25 @@ namespace JPP.UI.Web.MVC.Controllers
         {
 
             User user = apc.Users.Find(id);
-
-            var model = new UserRoleViewModel();
-
-
-            var roles = user.Roles;
-            var rolesCollection = new Collection<IdentityRole>();
-
-            foreach (var role in roles)
-            {
-                var role1 = RoleManager.FindById(role.RoleId);
-                rolesCollection.Add(role1);
-            }
-
-            model = new UserRoleViewModel { user = user, roles = rolesCollection };
+         
+                var model = new UserRoleViewModel();
 
 
-            return View(model);
+                var roles = user.Roles;
+                var rolesCollection = new Collection<IdentityRole>();
+
+                foreach (var role in roles)
+                {
+                    var role1 = RoleManager.FindById(role.RoleId);
+                    rolesCollection.Add(role1);
+                }
+
+                model = new UserRoleViewModel { user = user, roles = rolesCollection };
+
+
+                return View(model);
+           
+            
         }
 
 
