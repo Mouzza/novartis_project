@@ -3,10 +3,19 @@
 @using PagedList.Mvc
 @{
     ViewBag.Title = "Agenda antwoorden";
+    Layout = "";
 }
 
-<h2>Agenda antwoorden</h2>
+<h2>Geblokkeerde Agenda antwoorden</h2>
+@*@if (Model.First()== null)
+{
+    <h2>Geen geblokkeerde antwoorden</h2>
+}
+else
+{
 <h2>@Model.First().module.naam: Antwoorden(@ViewBag.Aantal)</h2>
+}*@
+
 
 
 <p>
@@ -60,9 +69,9 @@
                 @Html.ActionLink("Wijzig", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("Detail", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Verwijder", "Verwijder", new { id = item.ID, URL = Request.Url.AbsoluteUri })
-                @if (item.statusOnline == true)
+                @if (item.statusOnline == false)
                 {
-                    @Html.ActionLink("Blokkeer |", "BlokkeerAgendaAntwoord", new { id = item.ID })
+                    @Html.ActionLink("Deblokkeer |", "DeblokkeerAgendaAntwoord", new { id = item.ID })
 
                 }
             </td>
@@ -70,7 +79,5 @@
     }
 </table>
 
-@Html.PagedListPager(Model, page => Url.Action("_Lijst",
+@Html.PagedListPager(Model, page => Url.Action("_Lijst2",
     new { page }))
-
-@{Html.RenderAction("_Lijst2", "Antwoord");}
