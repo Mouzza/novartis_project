@@ -428,5 +428,57 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
+
+        public ActionResult WinnaarVanModule(int id)
+        {
+            Module module = moduleManager.readModule(id);
+
+            if (module is AgendaModule)
+            {
+                return RedirectToAction("WinnaarVanModuleAgenda", id);
+            }
+            else
+            {
+                List<DossierAntwoord> agAntwoordList = antwManager.getAllDossierAntwoordenPerModule(id);
+                int pageSize = module.centraleVraag.aantalWinAntwoorden;
+                if (pageSize < 3)
+                {
+                    pageSize = 3;
+                }
+                int pageNumber = 1;
+
+
+
+                IEnumerable<DossierAntwoord> gewonnenAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id).OrderBy(o => o.aantalStemmen);
+                List<DossierAntwoord> FirstAntwoorden = new List<DossierAntwoord>();
+
+                for (int i = 0; i < module.centraleVraag.aantalWinAntwoorden; i++)
+                {
+                    FirstAntwoorden.Add(gewonnenAntwoorden.ElementAt(i));
+                }
+                return PartialView(gewonnenAntwoorden.ToPagedList(pageNumber, pageSize));
+            }
+            
+        }
+
+        public ActionResult WinnaarVanModuleAgenda(int id)
+        {
+            Module module = moduleManager.readModule(id);
+            List<AgendaAntwoord> agAntwoordList = antwManager.getAllAgendaAntwoordenPerModule(id);
+            int pageSize = module.centraleVraag.aantalWinAntwoorden;
+            int pageNumber = 1;
+
+
+
+            IEnumerable<AgendaAntwoord> gewonnenAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id).OrderBy(o => o.aantalStemmen);
+            List<AgendaAntwoord> FirstAntwoorden = new List<AgendaAntwoord>();
+
+            for (int i=0; i<module.centraleVraag.aantalWinAntwoorden; i++)
+            {
+                FirstAntwoorden.Add(gewonnenAntwoorden.ElementAt(i));
+            }
+            return PartialView(gewonnenAntwoorden.ToPagedList(pageNumber, pageSize));
+        }
+
     }
 }
