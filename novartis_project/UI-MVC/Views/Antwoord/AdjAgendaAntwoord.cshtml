@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "Geef een antwoord";
 }
-@*<link rel="stylesheet" type="text/css" href="~/Content/DossierModel.css">*@
+<link rel="stylesheet" type="text/css" href="~/Content/AdjustableDossierModelOne.css">
 
 @using (Html.BeginForm("AdjAgendaAntwoord", "Antwoord", FormMethod.Post))
 {
@@ -12,26 +12,27 @@
 
     <div id="AgendaAntwoordWrapper">
 
-        <div id="DossierModelTitle">
-            @Html.TextAreaFor(model => model.titel, new { @class = "AdjAgendaModelTitle" })
+
+            @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
             <p id="ValidatieError">@Html.ValidationMessageFor(model => model.titel)</p>
 
-        </div><!--Hier moet de titel van de pagina komen-->
 
-        <div id="DossierModelSubTitle">
-            @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjAgendaModelSubTitle" })
+
+            @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
             <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
-        </div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
 
-        <div id="AgendaModelTextVakEen">
-            @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjAgendaModelTextVakEen" })
+
+
+            @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelSixTextVakEen" })
             <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
+
+
         @if (!Request.IsAuthenticated)
         {
             <p id="ValidatieError">Je moet ingelogd zijn om een antwoord te kunnen geven</p>
         }
        
-        </div><!--Hier moet de eerste textvak van de pagina komen-->
+
 
      
       

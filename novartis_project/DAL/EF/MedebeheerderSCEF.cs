@@ -23,15 +23,11 @@ namespace JPP.DAL.EF
             dbcontext.antwoord.Remove(antwoord);
             dbcontext.SaveChanges();
         }
-
         public void wijzigDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-
             DossierAntwoord oldDossierAntwoord = (DossierAntwoord)dbcontext.antwoord.Find(dossierAntwoord.ID);
             dbcontext.Entry(oldDossierAntwoord).CurrentValues.SetValues(dossierAntwoord);
-            
             dbcontext.SaveChanges();
-      
         }
         public void wijzigAgendaAntwoord(AgendaAntwoord agendeaAntwoord)
         {
