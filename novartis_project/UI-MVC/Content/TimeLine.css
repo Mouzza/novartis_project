@@ -3,6 +3,9 @@
 
 
 
+#TimeLineWrapper{
+    height: 200px;
+}
 
 div#timeline {
     background-color: #2980b9;
