@@ -522,16 +522,27 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult WinnaarVanModule(int id)
         {
-            Module module = moduleManager.readModule(id);
-
-            if (module is AgendaModule)
+            List<DossierModule> dosModuleList = moduleManager.readGeslotenDossiers();
+            int exist = 0;
+            int identity = id;
+            foreach (var item in dosModuleList)
             {
-                return RedirectToAction("WinnaarVanModuleAgenda", id);
+                if (item.ID == id)
+                {
+                    exist = 1;
+                   
+                }
+            }
+
+            if (exist == 0)
+            {
+                return RedirectToAction("WinnaarVanModuleAgenda", new { id = identity });
             }
             else
             {
+                DossierModule dosmod = (DossierModule)moduleManager.readModule(id);
                 List<DossierAntwoord> agAntwoordList = antwManager.getAllDossierAntwoordenPerModule(id);
-                int pageSize = module.centraleVraag.aantalWinAntwoorden;
+                int pageSize = dosmod.centraleVraag.aantalWinAntwoorden;
                 if (pageSize < 3)
                 {
                     pageSize = 3;
@@ -543,20 +554,27 @@ namespace JPP.UI.Web.MVC.Controllers
                 IEnumerable<DossierAntwoord> gewonnenAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id).OrderBy(o => o.aantalStemmen);
                 List<DossierAntwoord> FirstAntwoorden = new List<DossierAntwoord>();
 
-                for (int i = 0; i < module.centraleVraag.aantalWinAntwoorden; i++)
+                for (int i = 0; i < dosmod.centraleVraag.aantalWinAntwoorden; i++)
                 {
                     FirstAntwoorden.Add(gewonnenAntwoorden.ElementAt(i));
                 }
                 return PartialView(gewonnenAntwoorden.ToPagedList(pageNumber, pageSize));
             }
+                
+          
+       
             
         }
 
         public ActionResult WinnaarVanModuleAgenda(int id)
         {
-            Module module = moduleManager.readModule(id);
+            AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
             List<AgendaAntwoord> agAntwoordList = antwManager.getAllAgendaAntwoordenPerModule(id);
-            int pageSize = module.centraleVraag.aantalWinAntwoorden;
+            int pageSize = agendaModule.centraleVraag.aantalWinAntwoorden;
+            if (pageSize < 3)
+            {
+                pageSize = 3;
+            }
             int pageNumber = 1;
 
 
@@ -564,7 +582,7 @@ namespace JPP.UI.Web.MVC.Controllers
             IEnumerable<AgendaAntwoord> gewonnenAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id).OrderBy(o => o.aantalStemmen);
             List<AgendaAntwoord> FirstAntwoorden = new List<AgendaAntwoord>();
 
-            for (int i=0; i<module.centraleVraag.aantalWinAntwoorden; i++)
+            for (int i = 0; i < agendaModule.centraleVraag.aantalWinAntwoorden; i++)
             {
                 FirstAntwoorden.Add(gewonnenAntwoorden.ElementAt(i));
             }
