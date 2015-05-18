@@ -19,19 +19,14 @@ using System.Net.Mime;
 using JPP.UI.Web.MVC.Models;
 
 namespace JPP.UI.Web.MVC
-
 {
-
     public class ApplicationDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
-
         protected override void Seed(ApplicationDbContext context)
         {
             InitializeIdentityForEF(context);
             base.Seed(context);
         }
-
-
 
         //maak user admin@admin.be met wachtwoord Admin01! met Admin role
         public static void InitializeIdentityForEF(ApplicationDbContext db)
@@ -49,7 +44,6 @@ namespace JPP.UI.Web.MVC
             int postcode = 2000;
             DateTime geboortedatum = DateTime.Now;
 
-
             //Gebruiker
             //maak roll Gebruiker
             //Create Role Gebruiker if it does not exist
@@ -61,10 +55,6 @@ namespace JPP.UI.Web.MVC
                 role = new IdentityRole(roleName);
                 var roleresult = RoleManager.Create(role);
             }
-
-
-
-   
 
             //maak dummy gebruikers aan
             for (int i = 0; i < 6; i++)
@@ -96,9 +86,6 @@ namespace JPP.UI.Web.MVC
                 {
                     var result = UserManager.AddToRole(gebruiker.Id, roleName);
                 }
-               
-             
-
             }
 
 
@@ -123,7 +110,6 @@ namespace JPP.UI.Web.MVC
 
             if (user == null)
             {
-
                 user = new User
                 {
                     UserName = name,
@@ -147,15 +133,12 @@ namespace JPP.UI.Web.MVC
             {
                 var result = UserManager.AddToRole(user.Id, roleName);
             }
-
-      
             //Moderator ------------------------------------------
              name = "Moderator";
              email = "moderator@mod.be";
              password = "Moderator01";
 
              roleName = "Moderator";
-
 
              //Create Role Moderator if it does not exist
 
@@ -171,7 +154,6 @@ namespace JPP.UI.Web.MVC
 
             if (user == null)
             {
-
                 user = new User
                 {
                     UserName = name,
@@ -194,16 +176,12 @@ namespace JPP.UI.Web.MVC
             {
                 var result = UserManager.AddToRole(user.Id, roleName);
             }
-
             //Expert----------------------------------------------
             name = "Expert";
             email = "expert@expert.be";
             password = "Expert01";
-
             roleName = "Expert";
-
             //Create Role Expert if it does not exist
-
             role = RoleManager.FindByName(roleName);
             if (role == null)
             {
@@ -216,7 +194,6 @@ namespace JPP.UI.Web.MVC
 
             if (user == null)
             {
-
                 user = new User
                 {
                     UserName = name,
@@ -229,7 +206,6 @@ namespace JPP.UI.Web.MVC
                     LastName = achternaam,
                     Zipcode = postcode
                 };
-
                 var result = UserManager.Create(user, password);
                 result = UserManager.SetLockoutEnabled(user.Id, false);
             }
@@ -240,9 +216,6 @@ namespace JPP.UI.Web.MVC
             {
                 var result = UserManager.AddToRole(user.Id, roleName);
             }
-
-
-           
         }
     }
     public class EmailService : IIdentityMessageService
@@ -280,10 +253,7 @@ namespace JPP.UI.Web.MVC
             // Send:
             return client.SendMailAsync(mail);*/
             return Task.FromResult(0);
-
         }
-
-
     }
     public class SmsService : IIdentityMessageService
     {
