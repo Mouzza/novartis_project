@@ -37,8 +37,6 @@ namespace JPP.UI.Web.MVC.Controllers
             private set { this.roleManager = value; }
         }
 
-
-
         private ApplicationDbContext apc = new ApplicationDbContext();
 
         // GET: Gebruiker
@@ -46,10 +44,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
 
             User user = apc.Users.FirstOrDefault(u => u.UserName == UserName);
-
             var model = new UserRoleViewModel();
-
-
             var roles = user.Roles;
             var rolesCollection = new Collection<IdentityRole>();
 
@@ -58,64 +53,45 @@ namespace JPP.UI.Web.MVC.Controllers
                 var role1 = RoleManager.FindById(role.RoleId);
                 rolesCollection.Add(role1);
             }
-
             model = new UserRoleViewModel { user = user, roles = rolesCollection };
-
-
             return View(model);
         }
-
 
         // /Gebruiker/WijzigGebruiker
         public ActionResult WijzigGebruiker(string id)
         {
-
             User user = apc.Users.FirstOrDefault(u => u.Id == id);
             return View(user);
-
-
         }
 
         // /Gebruiker/WijzigGebruiker
         [HttpPost]
         public async Task<ActionResult> WijzigGebruiker(string id, User user)
         {
-
             var store = new UserStore<User>(apc);
             var userManager = new UserManager<User>(store);
-
             try
             {
                 // TODO: Add update logic here
-
                 apc.Entry(user).State = System.Data.Entity.EntityState.Modified;
-
                 await userManager.UpdateAsync(user);
                 apc.SaveChanges();
                 userManager.Update(user);
                 apc.SaveChanges();
-
                 return RedirectToAction("Index");
             }
             catch
             {
-
-
                 return RedirectToAction("Error","Admin");
             }
-
         }
 
         // /Gebruiker/VerwijderGebruiker
            [Authorize(Roles = "Admin")]
         public ActionResult VerwijderGebruiker(string id)
         {
-
             User user = apc.Users.Find(id);
-         
                 var model = new UserRoleViewModel();
-
-
                 var roles = user.Roles;
                 var rolesCollection = new Collection<IdentityRole>();
 
@@ -124,13 +100,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     var role1 = RoleManager.FindById(role.RoleId);
                     rolesCollection.Add(role1);
                 }
-
                 model = new UserRoleViewModel { user = user, roles = rolesCollection };
-
-
                 return View(model);
-           
-            
         }
 
 
