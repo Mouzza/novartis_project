@@ -67,7 +67,52 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             
         }
- 
+
+        public ActionResult BlokkeerAgendaAntwoord(int id)
+        {
+            AgendaAntwoord agendaAntwoord = (AgendaAntwoord)antwManager.readAntwoord(id);
+            return View(agendaAntwoord);
+
+        }
+
+        public ActionResult BlokkeerAgendaAntwoord(int id, FormCollection formCollection)
+        {
+            try
+            {
+                AgendaAntwoord agendaAntwoord = (AgendaAntwoord)antwManager.readAntwoord(id);
+                agendaAntwoord.statusOnline = false;
+                antwManager.updateAgendaAntwoord(agendaAntwoord);
+                return RedirectToAction("_Lijst");
+            }
+            catch
+            {
+                return RedirectToAction("Error");
+            }
+
+        }
+
+        public ActionResult BlokkeerDossierAntwoord(int id)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            return View(dossierAntwoord);
+       
+        }
+
+        public ActionResult BlokkeerDossierAntwoord(int id, FormCollection formCollection)
+        {
+            try
+            {
+                DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+                dossierAntwoord.statusOnline = false;
+                antwManager.updateDossierAntwoord(dossierAntwoord);
+                return RedirectToAction("Lijst");
+            }
+            catch
+            {
+                return RedirectToAction("Error");
+            }
+            
+        }
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
 
@@ -1080,10 +1125,24 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             
-            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id);
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id).Where(antw=>antw.statusOnline==true);
             ViewBag.Aantal = dossierAntwoorden.Count();
             return View(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
             
+
+        }
+        //Antwoord/Lijst2
+        public ActionResult Lijst2(int id, int? page)
+        {
+            //Manager moet nog gemaakt worden
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id).Where(antw => antw.statusOnline == false);
+            ViewBag.Aantal = dossierAntwoorden.Count();
+            return View(dossierAntwoorden.ToPagedList(pageNumber, pageSize));
+
 
         }
         //Antwoord/_Lijst
@@ -1094,7 +1153,21 @@ namespace JPP.UI.Web.MVC.Controllers
             int pageSize = 5;
             int pageNumber = (page ?? 1);
 
-            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id);
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id).Where(antw => antw.statusOnline == true);
+            ViewBag.Aantal = agendaAntwoorden.Count();
+            return View(agendaAntwoorden.ToPagedList(pageNumber, pageSize));
+
+
+        }
+        //Antwoord/_Lijst2
+        public ActionResult _Lijst2(int id, int? page)
+        {
+            //Manager moet nog gemaakt worden
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id).Where(antw => antw.statusOnline == false);
             ViewBag.Aantal = agendaAntwoorden.Count();
             return View(agendaAntwoorden.ToPagedList(pageNumber, pageSize));
 
