@@ -189,10 +189,9 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             AgendaAntwoord agAntwoord = new AgendaAntwoord()
             {
-                aantalFlags = agendaAntwoord.aantalFlags,
-                aantalStemmen = agendaAntwoord.aantalStemmen,
-                datum = agendaAntwoord.datum,
-                //editable = agendaAntwoord.editable,
+                aantalFlags = 0,
+                aantalStemmen = 0,
+                datum = DateTime.Now,
                 extraInfo = agendaAntwoord.extraInfo,
                 gebruikersNaam = agendaAntwoord.gebruikersNaam,
                 inhoud = agendaAntwoord.inhoud,
@@ -200,6 +199,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 titel = agendaAntwoord.titel,
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
+                statusOnline=true
             };
             AgendaModule actieveAg = moduleManager.readActieveAgendaModule();
             agAntwoord.module = actieveAg;
@@ -217,12 +217,12 @@ namespace JPP.UI.Web.MVC.Controllers
                 comments = new List<Comment>(),
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
-                datum = dossierAntwoord.datum,
-                aantalFlags = dossierAntwoord.aantalFlags,
-                aantalStemmen = dossierAntwoord.aantalStemmen,
-                percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
-                statusOnline = dossierAntwoord.statusOnline,
-                layoutOption = 1,
+                datum = DateTime.Now,//
+                aantalFlags = 0,//
+                aantalStemmen = 0,//
+                percentageVolledigheid = 50,//
+                statusOnline = true,//
+                layoutOption = 1,//
                 subtitel = dossierAntwoord.subtitel,
                 titel = dossierAntwoord.titel,
                 inhoud = dossierAntwoord.inhoud,
@@ -230,13 +230,11 @@ namespace JPP.UI.Web.MVC.Controllers
                 textvak3 = dossierAntwoord.textvak3,
                 googleMapsAdress = dossierAntwoord.googleMapsAdress,
                 afbeeldingPath = dossierAntwoord.afbeeldingPath,
-                backgroundColor="red",
-                foregroundColor="green",
-                //editable = dossierAntwoord.editable,
+                backgroundColor="red",//
+                foregroundColor="green",//
                 extraInfo = dossierAntwoord.extraInfo,
-                evenement = new Evenement(), //kan evenement niet oproepen
                 extraVraag = dossierAntwoord.extraVraag,
-                backgroundImage="tstest"
+                backgroundImage="tstest"//
             };
 
             DossierModule actieveDos = moduleManager.readActieveDossierModule();
@@ -273,14 +271,25 @@ namespace JPP.UI.Web.MVC.Controllers
         [ActionName("updateAgenda")]
         public void updateAgendaAntwoord(AgendaAntwoord antwoord)
         {
-            antwoord.module = moduleManager.readActieveAgendaModule();
-            antwoordManager.updateAgendaAntwoord(antwoord);
+            AgendaAntwoord ag= antwoordManager.readAgendaAntwoord(antwoord.ID);
+            ag.extraInfo = antwoord.extraInfo;
+            ag.persoonlijkeTags = antwoord.persoonlijkeTags;
+            ag.subtitel = antwoord.subtitel;
+            antwoordManager.updateAgendaAntwoord(ag);
         }
         [HttpPut]
         [ActionName("updateDossier")]
         public void updateDossierAntwoord(DossierAntwoord antwoord)
         {
-            antwoordManager.updateDossierAntwoord(antwoord);
+            DossierAntwoord dos = antwoordManager.readDossierAntwoord(antwoord.ID);
+            dos.googleMapsAdress = antwoord.googleMapsAdress;
+            dos.subtitel = antwoord.subtitel;
+            dos.extraInfo = antwoord.extraInfo;
+            dos.extraVraag = antwoord.extraVraag;
+            dos.persoonlijkeTags = antwoord.persoonlijkeTags;
+            dos.textvak2 = antwoord.textvak2;
+            dos.textvak3 = antwoord.textvak3;
+            antwoordManager.updateDossierAntwoord(dos);
         }
         #endregion
 
