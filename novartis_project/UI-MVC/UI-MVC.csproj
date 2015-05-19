@@ -390,6 +390,7 @@
     <Content Include="Images\iconmonstr-sort-16-icon-256.png" />
     <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
+    <Content Include="Images\IconsForPages\iconmonstr-flag-11-icon-256.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoOld.png" />
     <Content Include="Images\menu logos\adminpanelLogo.png" />
@@ -625,11 +626,18 @@
     <Content Include="Views\Antwoord\BlokkeerDossierAntwoord.cshtml" />
     <Content Include="Views\Antwoord\Wijzig.cshtml" />
     <Content Include="Views\Module\WinnaarVanModuleAgenda.cshtml" />
+<<<<<<< HEAD
+    <Content Include="Views\Module\DossierModuleToekomst.cshtml" />
+=======
     <Content Include="Views\Antwoord\_Wijzig.cshtml" />
     <Content Include="Views\Antwoord\Edit.cshtml" />
     <Content Include="Views\Antwoord\MijnAntwoordenMenu.cshtml" />
     <Content Include="Views\Module\MijnModuleMenu.cshtml" />
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
     <Content Include="Views\Antwoord\_Edit.cshtml" />
+>>>>>>> b98b6844ebef385a291193fc64f1bd2b18e6fe28
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

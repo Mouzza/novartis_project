@@ -268,8 +268,8 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult CommingSoon()
         {
-
-            return View();
+            IEnumerable<Module> module = moduleManager.readGeplandeModules().OrderBy(o => o.beginDatum);
+            return View(module.ToPagedList(1,4));
         }
 
         public ActionResult GeplandeModules(int? page)
@@ -598,6 +598,12 @@ namespace JPP.UI.Web.MVC.Controllers
                 FirstAntwoorden.Add(gewonnenAntwoorden.ElementAt(i));
             }
             return PartialView(gewonnenAntwoorden.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult DossierModuleToekomst(int id)
+        {
+            Module module = moduleManager.readModule(id);
+            return View(module);
         }
 
     }
