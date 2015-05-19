@@ -617,17 +617,13 @@
     <Content Include="Views\Module\MijnGeslotenDossierModules.cshtml" />
     <Content Include="Views\Module\partialViewMijnAgendaModule.cshtml" />
     <Content Include="Views\Module\partialViewMijnDossierModule.cshtml" />
-
     <Content Include="Views\Antwoord\_Lijst2.cshtml" />
     <Content Include="Views\Antwoord\BlokkeerAgendaAntwoord.cshtml" />
-    <Content Include="Views\Module\WinnaarVanModuleAgenda.cshtml" />
-
-
-
-    <Content Include="Views\Antwoord\_Lijst2.cshtml" />
-    <Content Include="Views\Antwoord\BlokkeerAgendaAntwoord.cshtml" />
-
-
+    <Content Include="Views\Antwoord\AgdAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\DossAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\Lijst2.cshtml" />
+    <Content Include="Views\Antwoord\BlokkeerDossierAntwoord.cshtml" />
+    <Content Include="Views\Antwoord\Wijzig.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -44,6 +44,55 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return View();
         }
+
+        public ActionResult Wijzig(int id)
+        {
+            DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
+
+            return View(dossierAntwoord);
+        }
+
+        [HttpPost]
+        public ActionResult Wijzig(DossierAntwoord dossierAntwoord, string type)
+        {
+            try
+            {
+                DossierAntwoord dossierAntwoordX = antwManager.readDossierAntwoord(dossierAntwoord.ID);
+                dossierAntwoordX.textvak3 = dossierAntwoord.textvak3;
+                dossierAntwoordX.textvak2 = dossierAntwoord.textvak2;
+                dossierAntwoordX.titel = dossierAntwoord.titel;
+                dossierAntwoordX.subtitel = dossierAntwoord.subtitel;
+                dossierAntwoordX.googleMapsAdress = dossierAntwoord.googleMapsAdress;
+                antwManager.updateDossierAntwoord(dossierAntwoordX);
+
+               if (type == "ActieveDossierModule")
+                {
+                    return RedirectToAction("Dossier", "Module");
+
+                }
+                else if (type == "ActieveAgenaModule")
+                {
+                    return RedirectToAction("Agenda", "Module");
+                }
+                else if (type == "MijnDossiers")
+                {
+                    return RedirectToAction("MijnDossiers", "Antwoord");
+                }
+                else
+                {
+                    return View();
+                }
+                
+                
+
+            }catch {
+                return View();
+            }
+         
+
+         
+        }
+
         public ActionResult Dossier(int id)
         {
             DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
@@ -74,15 +123,23 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(agendaAntwoord);
 
         }
-
-        public ActionResult BlokkeerAgendaAntwoord(int id, FormCollection formCollection)
+        [HttpPost]
+        public ActionResult BlokkeerAgendaAntwoord(int id, int moduleId)
         {
             try
             {
                 AgendaAntwoord agendaAntwoord = (AgendaAntwoord)antwManager.readAntwoord(id);
-                agendaAntwoord.statusOnline = false;
+
+                if (agendaAntwoord.statusOnline == true)
+                {
+                    agendaAntwoord.statusOnline = false;
+                }else
+                {
+                    agendaAntwoord.statusOnline = true;
+                }
+             
                 antwManager.updateAgendaAntwoord(agendaAntwoord);
-                return RedirectToAction("_Lijst");
+                return RedirectToAction("AgdAntwoorden", "Antwoord", new { id = moduleId});
             }
             catch
             {
@@ -98,14 +155,24 @@ namespace JPP.UI.Web.MVC.Controllers
        
         }
 
-        public ActionResult BlokkeerDossierAntwoord(int id, FormCollection formCollection)
+        [HttpPost]
+        public ActionResult BlokkeerDossierAntwoord(int id, int moduleId)
         {
             try
             {
                 DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
-                dossierAntwoord.statusOnline = false;
+
+                if (dossierAntwoord.statusOnline == true)
+                {
+                    dossierAntwoord.statusOnline = false;
+                }
+                else
+                {
+                    dossierAntwoord.statusOnline = true;
+                }
+
                 antwManager.updateDossierAntwoord(dossierAntwoord);
-                return RedirectToAction("Lijst");
+                return RedirectToAction("DossAntwoorden", "Antwoord", new { id = moduleId });
             }
             catch
             {
@@ -1145,6 +1212,21 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         }
+
+
+        public ActionResult AgdAntwoorden(int id)
+        {
+          AgendaModule agendaModule = (AgendaModule)dossManager.readModule(id);
+          return View(agendaModule);
+        }
+
+
+        public ActionResult DossAntwoorden(int id)
+        {
+            DossierModule dossierModule = (DossierModule)dossManager.readModule(id);
+            return View(dossierModule);
+        }
+
         //Antwoord/_Lijst
         public ActionResult _Lijst(int id, int? page)
         {
@@ -1241,19 +1323,35 @@ namespace JPP.UI.Web.MVC.Controllers
 
         // POST: Antwoord/Delete/5
         [HttpPost]
-        public ActionResult Verwijder(int id, string URL)
+        public ActionResult Verwijder(int id, int? moduleId, string type)
         {
             try
             {
-                // TODO: Add delete logic here
-
                 antwManager.removeAntwoord(id);
-                return Redirect(URL);
+
+            
+                if (type == "Dossier")
+                {
+                    return RedirectToAction("AgdAntwoorden", "Antwoord", new { id = moduleId});
+
+                }else if(type == "Agenda")
+                {
+                    return RedirectToAction("DossAntwoorden", "Antwoord", new { id = moduleId });
+                }else if(type == "MijnDossiers")
+                {
+                    return RedirectToAction("MijnDossiers", "Antwoord");
+                }
+                else
+                {
+                    return View();
+                }
+                
             }
             catch
             {
-                return View();
+                return RedirectToAction("Error");
             }
+
         }
 
 

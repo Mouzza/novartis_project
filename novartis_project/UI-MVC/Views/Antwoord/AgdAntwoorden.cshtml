@@ -1,0 +1,18 @@
+﻿@model JPP.BL.Domain.Modules.AgendaModule
+
+@{
+    ViewBag.title = "Agenda antwoorden";
+    
+}
+
+
+
+<div id="_Lijst">
+
+    @{Html.RenderAction("_Lijst", "Antwoord", new { id = Model.ID });}
+</div>
+
+<div id="_Lijst2">
+
+    @{Html.RenderAction("_Lijst2", "Antwoord", new { id = Model.ID });}
+</div>

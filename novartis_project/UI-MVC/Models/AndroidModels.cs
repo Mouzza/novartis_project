@@ -93,9 +93,8 @@ namespace JPP.UI.Web.MVC.Models
         public int aantalFlags { get; set; }
         public string subTitel { get; set; }
         public int moduleID { get; set; }
-        public Boolean statusOnline { get; set; }
-        //public List<ANDROIDVasteTag> vasteTags { get; set; }
-        //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
+       // public List<ANDROIDVasteTag> vasteTags { get; set; }
+       // public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
 
     }
     public class ANDROIDComment
@@ -134,6 +133,7 @@ namespace JPP.UI.Web.MVC.Models
         public string backgroundColor { get; set; }
         public string backgroundImage { get; set; }
     }
+
     //***********************************************************
     public class UserModel
     {
