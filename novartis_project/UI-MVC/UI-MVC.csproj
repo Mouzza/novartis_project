@@ -624,6 +624,7 @@
     <Content Include="Views\Antwoord\Lijst2.cshtml" />
     <Content Include="Views\Antwoord\BlokkeerDossierAntwoord.cshtml" />
     <Content Include="Views\Antwoord\Wijzig.cshtml" />
+    <Content Include="Views\Module\WinnaarVanModuleAgenda.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
