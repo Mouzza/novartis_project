@@ -61,7 +61,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = agenda.inhoud,
                     extraInfo = agenda.extraInfo,
                     datum = agenda.datum,
-                    aantalStemmen = agenda.aantalStemmen,
+                    aantalStemmen = agenda.stemmen.Count,
                     //editable = agenda.editable,
                     gebruikersNaam = agenda.gebruikersNaam,
                     aantalFlags = agenda.aantalFlags,
@@ -119,7 +119,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = dossier.inhoud,
                     extraInfo = dossier.extraInfo,
                     datum = dossier.datum,
-                    aantalStemmen = dossier.aantalStemmen,
+                    aantalStemmen = dossier.stemmen.Count,
                     //editable = dossier.editable,
                     gebruikersNaam = dossier.gebruikersNaam,
                     aantalFlags = dossier.aantalFlags,
@@ -211,7 +211,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         inhoud = antwoord.inhoud,
                         extraInfo = antwoord.extraInfo,
                         datum = antwoord.datum,
-                        aantalStemmen = antwoord.aantalStemmen,
+                        aantalStemmen = antwoord.stemmen.Count,
                         //editable = dossier.editable,
                         gebruikersNaam = antwoord.gebruikersNaam,
                         aantalFlags = antwoord.aantalFlags,
@@ -251,7 +251,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         inhoud = dos.inhoud,
                         extraInfo = dos.extraInfo,
                         datum = dos.datum,
-                        aantalStemmen = dos.aantalStemmen,
+                        aantalStemmen = dos.stemmen.Count,
                         //editable = dossier.editable,
                         gebruikersNaam = dos.gebruikersNaam,
                         aantalFlags = dos.aantalFlags,
@@ -318,7 +318,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = agenda.inhoud,
                     extraInfo = agenda.extraInfo,
                     datum = agenda.datum,
-                    aantalStemmen = agenda.aantalStemmen,
+                    aantalStemmen = agenda.stemmen.Count,
                     //editable = agenda.editable,
                     gebruikersNaam = agenda.gebruikersNaam,
                     aantalFlags = agenda.aantalFlags,
@@ -376,7 +376,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = dossier.inhoud,
                     extraInfo = dossier.extraInfo,
                     datum = dossier.datum,
-                    aantalStemmen = dossier.aantalStemmen,
+                    aantalStemmen = dossier.stemmen.Count,
                     //editable = dossier.editable,
                     gebruikersNaam = dossier.gebruikersNaam,
                     aantalFlags = dossier.aantalFlags,
@@ -420,7 +420,7 @@ namespace JPP.UI.Web.MVC.Controllers
             AgendaAntwoord agAntwoord = new AgendaAntwoord()
             {
                 aantalFlags = 0,
-                aantalStemmen = 0,
+                stemmen = new List<Stem>(),
                 datum = DateTime.Now,
                 extraInfo = agendaAntwoord.extraInfo,
                 gebruikersNaam = agendaAntwoord.gebruikersNaam,
@@ -449,7 +449,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
                 datum = DateTime.Now,//
                 aantalFlags = 0,//
-                aantalStemmen = 0,//
+                stemmen = new List<Stem>(),
                 percentageVolledigheid = 50,//
                 statusOnline = true,//
                 layoutOption = 1,//
@@ -531,13 +531,13 @@ namespace JPP.UI.Web.MVC.Controllers
             antwoordManager.stemOpComment(id);
             return Ok("ok");
         }
-        [HttpGet]
-        [ActionName("stemAntwoordID")]
-        public IHttpActionResult stemOpAntwoord(int id)
-        {
-            antwoordManager.stemOpAntwoord(id);
-            return Ok("ok");
-        }
+        //[HttpGet]
+        //[ActionName("stemAntwoordID")]
+        //public IHttpActionResult stemOpAntwoord(int id)
+        //{
+        //    antwoordManager.stemOpAntwoord(id);
+        //    return Ok("ok");
+        //}
         [HttpGet]
         [ActionName("flagAntwoord")]
         public IHttpActionResult flagAntwoord(int id)

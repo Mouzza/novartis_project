@@ -35,7 +35,7 @@ namespace JPP.DAL.Interface
         void deleteDossierAntwoord(int id);
         void wijzigDossierAntwoord(DossierAntwoord dossierAntwoord);
 
-        void stelInAantalStemmen(int aantalstemmen, int id);
+     
 
         void stelInVolledigheidsPercentage(int volledigheidsPercentage, int id);
 

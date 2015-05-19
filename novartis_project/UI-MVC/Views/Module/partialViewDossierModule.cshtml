@@ -6,9 +6,13 @@
 }
 
 <h2>Actieve dossiermodule</h2>
+@if (User.IsInRole("Admin"))
+{
 <p>
     @Html.ActionLink("Dossier module aanmaken", "Create")
 </p>
+    
+}
 @if (Model.naam != null)
 {
 <table class="table">
@@ -64,10 +68,16 @@
                 @Html.DisplayFor(modelItem => Model.beloning.naam)
             </td>
             <td>
-                @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = Model.ID }) |
-                @Html.ActionLink("Verwijder", "Delete", new { id = Model.ID }) |
-               
+                @if (User.IsInRole("Admin"))
+                {
+                @Html.ActionLink("Wijzig |", "Edit", new { id = Model.ID })
+                }
+                
+                @Html.ActionLink("Details", "Details", new { id = Model.ID })
+                @if (User.IsInRole("Admin"))
+                {
+                @Html.ActionLink("Verwijder | ", "Delete", new { id = Model.ID })
+                }
                     @if (Model.dossierAntwoorden.Count == 0)
                     {
                         <h4>Geen antwoorden</h4>

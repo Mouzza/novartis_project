@@ -5,7 +5,8 @@
 
 }
 
-
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
 
 <div id="Lijst">
 
@@ -16,3 +17,4 @@
 
     @{Html.RenderAction("Lijst2", "Antwoord", new { id = Model.ID });}
 </div>
+}

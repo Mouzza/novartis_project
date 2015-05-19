@@ -77,7 +77,7 @@
                     </h1>
                     <div id="likes" onclick="goToPagina(this)">
                         <p>Aantal stemmen</p>
-                        <p>@Html.DisplayFor(modelItem => item.aantalStemmen)</p>
+                        <p>@Html.DisplayFor(modelItem => item.stemmen.Count)</p>
                        
 
                             <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})">DossAntw</a>
@@ -104,7 +104,7 @@
                     </h1>
                     <div id="likes" onclick="goToPagina(this)">
                         <p>Aantal stemmen</p>
-                        <p>@Html.DisplayFor(modelItem => item.aantalStemmen)</p>
+                        <p>@Html.DisplayFor(modelItem => item.stemmen.Count)</p>
 
 
                         <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">AgendaAntw</a>

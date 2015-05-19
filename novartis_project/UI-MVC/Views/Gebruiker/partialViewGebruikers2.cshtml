@@ -6,9 +6,9 @@
     Layout = "";
 }
 
-@if (User.IsInRole("Admin"))
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
 {
-   
+
         <h2>Geblokkeerde gebruikers</h2>
         <table class="table table-striped">
             <tr class="success">
@@ -98,10 +98,18 @@
                             @Html.DisplayFor(modelItem => item.user.Created)
                         </td>
                         <td>
-                            @Html.ActionLink("Wijzig", "WijzigGebruiker", new { id = item.user.Id }) |
-                            @Html.ActionLink("Detail", "Profiel", new { UserName = item.user.UserName }) |
-                            @Html.ActionLink("Deblokkeer", "BlokkeerGebruiker", new { id = item.user.Id }) |
-                            @Html.ActionLink("Verwijder", "VerwijderGebruiker", new { id = item.user.Id })
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("Wijzig |", "WijzigGebruiker", new { id = item.user.Id }) 
+
+                        }
+                           
+                            @Html.ActionLink("Detail", "Profiel", new { UserName = item.user.UserName }) 
+                            @Html.ActionLink(" | Deblokkeer", "BlokkeerGebruiker", new { id = item.user.Id })
+                        @if (User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink(" | Verwijder", "VerwijderGebruiker", new { id = item.user.Id })
+                        }
                         </td>
                     </tr>
 

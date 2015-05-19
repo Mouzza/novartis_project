@@ -13,7 +13,7 @@
         @if (User.IsInRole("Admin"))
         {
 
-            @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+            @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID })
         }
 
     </p>

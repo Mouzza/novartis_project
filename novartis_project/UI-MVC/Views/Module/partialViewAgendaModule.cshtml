@@ -7,9 +7,12 @@
 
 <h2>Actieve agendamodule</h2>
 
+@if (User.IsInRole("Admin"))
+{
 <p>
     @Html.ActionLink("Agenda module aanmaken", "_Create")
 </p>
+}
 @if (Model.naam != null)
 {
 <table class="table">
@@ -69,9 +72,16 @@
             @Html.DisplayFor(modelItem => Model.beloning.naam)
         </td>
         <td>
-            @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID }) |
-            @Html.ActionLink("Details", "_Details", new { id = Model.ID }) |
-            @Html.ActionLink("Verwijder", "_Delete", new { id = Model.ID }) |
+            @if (User.IsInRole("Admin"))
+            {
+            @Html.ActionLink("Wijzig | ", "_Edit", new { id = Model.ID }) 
+            }
+            @Html.ActionLink("Details", "_Details", new { id = Model.ID })
+            @if (User.IsInRole("Admin"))
+            {
+            @Html.ActionLink(" | Verwijder", "_Delete", new { id = Model.ID }) 
+            }    
+                
             @if (Model.agendaAntwoorden.Count == 0)
             {
                 <h4>Geen antwoorden</h4>

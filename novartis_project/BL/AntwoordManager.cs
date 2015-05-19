@@ -22,7 +22,7 @@ namespace JPP.BL
         public List<DossierAntwoord> topDossierAntwoorden(int top)
         {
             List<DossierAntwoord> dossierList=inlog.getAllDossierAntwoorden();
-            List<DossierAntwoord> dossierTussenRes = dossierList.OrderBy(o => o.aantalStemmen).ToList();
+            List<DossierAntwoord> dossierTussenRes = dossierList.OrderBy(o => o.stemmen.Count).ToList();
             List<DossierAntwoord> dossierReturn=new List<DossierAntwoord>(); 
             for (int i = 0; i < top; i++)
             {
@@ -64,7 +64,7 @@ namespace JPP.BL
         public List<AgendaAntwoord> topAgendaAntwoorden(int top)
         {
             List<AgendaAntwoord> agendaList=inlog.getAllAgendaAntwoorden();
-            List<AgendaAntwoord> agendaTussenRes = agendaList.OrderBy(o => o.aantalStemmen).ToList();
+            List<AgendaAntwoord> agendaTussenRes = agendaList.OrderBy(o => o.stemmen.Count).ToList();
             List<AgendaAntwoord> agendaReturn=new List<AgendaAntwoord>(); 
             for (int i = 0; i < top; i++)
             {
@@ -85,12 +85,12 @@ namespace JPP.BL
 
         public List<AgendaAntwoord> sortAgendaAntwoordMeesteLikes(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return agendaAntwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
+            return agendaAntwoorden.OrderByDescending(o => o.stemmen.Count).ToList();
         }
 
         public List<AgendaAntwoord> sortAgendaAntwoordMinsteLikes(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
-            return agendaAntwoorden.OrderBy(o => o.aantalStemmen).ToList();
+            return agendaAntwoorden.OrderBy(o => o.stemmen.Count).ToList();
         }
 
         public List<AgendaAntwoord> sortAgendaAntwoordAZ(IEnumerable<AgendaAntwoord> agendaAntwoorden)
@@ -111,12 +111,12 @@ namespace JPP.BL
         }
         public List<Antwoord> sortAntwoordMeesteLikes(IEnumerable<Antwoord> antwoorden)
         {
-            return antwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
+            return antwoorden.OrderByDescending(o => o.stemmen.Count).ToList();
         }
 
         public List<Antwoord> sortAntwoordMinsteLikes(IEnumerable<Antwoord> antwoorden)
         {
-            return antwoorden.OrderBy(o => o.aantalStemmen).ToList();
+            return antwoorden.OrderBy(o => o.stemmen.Count).ToList();
         }
 
         public List<Antwoord> sortAntwoordAZ(IEnumerable<Antwoord> antwoorden)
@@ -146,12 +146,12 @@ namespace JPP.BL
         public List<DossierAntwoord> sortDossierAntwoordMeesteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
       
-            return dossierAntwoorden.OrderByDescending(o => o.aantalStemmen).ToList();
+            return dossierAntwoorden.OrderByDescending(o => o.stemmen.Count).ToList();
         }
         public List<DossierAntwoord> sortDossierAntwoordMinsteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
-            return dossierAntwoorden.OrderBy(o => o.aantalStemmen).ToList();
+            return dossierAntwoorden.OrderBy(o => o.stemmen.Count).ToList();
         }
         public List<DossierAntwoord> sortDossierAntwoordTitelAZ(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
@@ -186,13 +186,13 @@ namespace JPP.BL
         public List<Antwoord> sortGeslotenModulesMeesteLikes()
         {
             List<Antwoord> antwoordList = inlog.getAllAntwoorden();
-            List<Antwoord> antwoordRes = antwoordList.OrderByDescending(o => o.aantalStemmen).ToList();
+            List<Antwoord> antwoordRes = antwoordList.OrderByDescending(o => o.stemmen.Count).ToList();
             return antwoordRes;
         }
         public List<Antwoord> sortGeslotenModulesMinsteLikes()
         {
             List<Antwoord> antwoordList = inlog.getAllAntwoorden();
-            List<Antwoord> antwoordRes = antwoordList.OrderBy(o => o.aantalStemmen).ToList();
+            List<Antwoord> antwoordRes = antwoordList.OrderBy(o => o.stemmen.Count).ToList();
             return antwoordRes;
         }
 
@@ -248,10 +248,7 @@ namespace JPP.BL
         {
             inlog.stemOpComment(id);
         }
-        public void stemOpAntwoord(int id)
-        {
-            inlog.stemOpAntwoord(id);
-        }
+  
 
         public void flagAntwoord(int id)
         {

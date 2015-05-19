@@ -208,6 +208,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\StemController.cs" />
     <Compile Include="Extra\Startup.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -626,16 +627,13 @@
     <Content Include="Views\Antwoord\BlokkeerDossierAntwoord.cshtml" />
     <Content Include="Views\Antwoord\Wijzig.cshtml" />
     <Content Include="Views\Module\WinnaarVanModuleAgenda.cshtml" />
-
     <Content Include="Views\Module\DossierModuleToekomst.cshtml" />
-
     <Content Include="Views\Antwoord\_Wijzig.cshtml" />
     <Content Include="Views\Antwoord\Edit.cshtml" />
     <Content Include="Views\Antwoord\MijnAntwoordenMenu.cshtml" />
     <Content Include="Views\Module\MijnModuleMenu.cshtml" />
-
     <Content Include="Views\Antwoord\_Edit.cshtml" />
-
+    <Content Include="Views\Stem\StemError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

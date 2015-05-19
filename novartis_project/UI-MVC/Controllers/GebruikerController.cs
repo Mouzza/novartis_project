@@ -132,7 +132,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         // /Gebruiker/BlokkeerGebruiker
-           [Authorize(Roles = "Admin")]
+           [Authorize(Roles = "Admin, Moderator")]
         public ActionResult BlokkeerGebruiker(string id)
         {
 
@@ -156,7 +156,7 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(model);
 
         }
-        [Authorize (Roles="Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         // /Gebruiker/BlokkeerGebruiker
         public async Task<ActionResult> BlokkeerGebruiker(string id, FormCollection collection)

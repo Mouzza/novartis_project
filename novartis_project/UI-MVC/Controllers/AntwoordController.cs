@@ -390,7 +390,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
                     aantalFlags = 0,
-                    aantalStemmen = 0,
+                    stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
                     layoutOption = 1,
@@ -507,7 +507,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
                     aantalFlags = 0,
-                    aantalStemmen = 0,
+                    stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
                     layoutOption = 2,
@@ -614,7 +614,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
                     aantalFlags = 0,
-                    aantalStemmen = 0,
+                    stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
                     layoutOption = 3,
@@ -720,7 +720,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
                     aantalFlags = 0,
-                    aantalStemmen = 0,
+                    stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
                     layoutOption = 5,
@@ -830,7 +830,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
                     aantalFlags = 0,
-                    aantalStemmen = 0,
+                    stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
                     layoutOption = 6,
@@ -1097,7 +1097,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             if (agendaAntwoorden.ToList().Count != 0)
             {
-                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.stemmen.Count);
             }
 
             if (!String.IsNullOrEmpty(searchString))
@@ -1166,7 +1166,7 @@ namespace JPP.UI.Web.MVC.Controllers
            
             if (dossierAntwoorden.ToList().Count != 0)
             {
-                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.stemmen.Count);
             }
 
             if (!String.IsNullOrEmpty(searchString))
@@ -1222,7 +1222,7 @@ namespace JPP.UI.Web.MVC.Controllers
             if (dossiermodule.naam != null)
             {
                 dossierAntwoorden = antwManager.getAllDossierAntwoordenPerModule(dossiermodule.ID).Where(antw => antw.statusOnline == true).ToList();
-                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.aantalStemmen);
+                ViewBag.winnaar = dossierAntwoorden.Max(antw => antw.stemmen.Count);
             }
 
             List<DossierAntwoord> dossierAntwoorden2 = new List<DossierAntwoord>();
@@ -1299,7 +1299,7 @@ namespace JPP.UI.Web.MVC.Controllers
             if (agendaModule.naam != null)
             {
                 agendaAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(agendaModule.ID).Where(antw => antw.statusOnline == true).ToList();
-                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.aantalStemmen);
+                ViewBag.winnaar = agendaAntwoorden.Max(antw => antw.stemmen.Count);
             }
          
             List<AgendaAntwoord> agendaAntwoorden2 = new List<AgendaAntwoord>();
@@ -1569,7 +1569,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
                     datum = DateTime.Now,
-                    aantalStemmen = 0,
+                    stemmen = new List<Stem>(),
                     aantalFlags = 0,
                     statusOnline = true,
                     inhoud = agendaAntwoord.inhoud,

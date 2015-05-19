@@ -85,7 +85,7 @@
             zelfdeGebruiker = false;
         }
 
-        if (ViewBag.winnaar == item.aantalStemmen)
+        if (ViewBag.winnaar == item.stemmen.Count)
         {
             <span id="winnaarSpan">
                 Voorlopige winnaar!
@@ -116,21 +116,21 @@
             @Html.ActionLink("Wijzig", "Wijzig", new { id = item.ID, type="ActieveDossierModule"})
             @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveDossierModule" })
         }
-        if (ViewBag.winnaar == item.aantalStemmen)
+        if (ViewBag.winnaar == item.stemmen.Count)
         {
             <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
                 <table class="table">
 
                     <tr>
                         <td id="aantalStemmen">
-                            @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                     
                             <img src="~/Images/dossier-white.png"/>
                         </td>
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)
                             <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
                                 <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                             </div>
                             <br />
@@ -151,14 +151,14 @@
 
                     <tr>
                         <td id="aantalStemmen">
-                            @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+               
                             <img src="~/Images/dossier-white.png"/>
                         </td>
 
                         <td id="antwoordInhoud">
                             @Html.DisplayFor(modelItem => item.titel)
                             <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
                                 <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                             </div> 
                             <br />
