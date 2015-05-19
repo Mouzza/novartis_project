@@ -12,6 +12,7 @@ namespace JPP.BL.Domain.Antwoorden
         [Key]
         public int ID { get; set; }
         public string title { get; set; }
+        public string evenementText { get; set; }
         public string locatie { get; set; }
         public DateTime startDatum { get; set; }
         public DateTime eindDatum { get; set; }
