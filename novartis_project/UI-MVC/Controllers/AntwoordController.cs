@@ -141,6 +141,47 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
 
+        public ActionResult _Edit(int id)
+        {
+            AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
+
+            return View(agendaAntwoord);
+
+        }
+
+        [HttpPost]
+        public ActionResult _Edit(AgendaAntwoord agendaAntwoord, int? moduleId, string type)
+        {
+            try
+            {
+
+                antwManager.updateAgendaAntwoord(agendaAntwoord);
+
+                if (type == "AdminAgenda")
+                {
+                    return RedirectToAction("AgdAntwoorden", "Antwoord", new { id = moduleId });
+
+                }
+                else if (type == "MijnAgendaModules")
+                {
+                    return RedirectToAction("AgdAntwoorden", "Antwoord", new { id = moduleId });
+
+                }
+                else
+                {
+                    return View();
+                }
+
+
+
+            }
+            catch
+            {
+                return View();
+            }
+
+        }
+
         public ActionResult Wijzig(int id)
         {
             DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
