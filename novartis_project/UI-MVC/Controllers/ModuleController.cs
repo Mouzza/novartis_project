@@ -23,7 +23,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         ModuleManager moduleManager = new ModuleManager();
         AntwoordManager antwManager = new AntwoordManager();
-
+        StemManager stemManager = new StemManager();
 
         public ActionResult MijnModuleMenu()
         {
@@ -37,19 +37,94 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult VoteUp(int id)
         {
-            DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
-            dossierAntwoord.aantalStemmen = (dossierAntwoord.aantalStemmen + 1);
-            antwManager.updateDossierAntwoord(dossierAntwoord);
-            return RedirectToAction("Dossier", "Module");
+
+            if (Request.IsAuthenticated)
+            {
+                Stem stem = null;
+
+                DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
+                if (dossierAntwoord.stemmen == null || dossierAntwoord.stemmen.Count == 0)
+                {
+                    dossierAntwoord.stemmen = new List<Stem>();
+                }
+                else
+                {
+                    stem = dossierAntwoord.stemmen.FirstOrDefault(stemx => stemx.gebruikersNaam == User.Identity.GetUserName());
+                }
+
+
+
+                if (stem == null)
+                {
+                    Stem nieuwLike = new Stem()
+                    {
+                        gebruikersNaam = User.Identity.GetUserName(),
+                        antwoord = dossierAntwoord
+                    };
+
+                    Stem like = stemManager.stemOpAntwoord(nieuwLike);
+                    dossierAntwoord.stemmen.Add(like); 
+                    antwManager.updateDossierAntwoord(dossierAntwoord);
+                    return RedirectToAction("Dossier", "Module");
+                }
+                else
+                {
+                    return RedirectToAction("StemError", "Stem");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+          
+           
+          
+          
             
         }
 
         public ActionResult VoteUpAgenda(int id)
         {
-            AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
-            agendaAntwoord.aantalStemmen = (agendaAntwoord.aantalStemmen + 1);
-            antwManager.updateAgendaAntwoord(agendaAntwoord);
-            return RedirectToAction("Agenda", "Module");
+         
+
+            if (Request.IsAuthenticated)
+            {
+                Stem stem = null;
+
+                AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
+                if (agendaAntwoord.stemmen == null || agendaAntwoord.stemmen.Count == 0)
+                {
+                    agendaAntwoord.stemmen = new List<Stem>();
+                }
+                else
+                {
+                    stem = agendaAntwoord.stemmen.FirstOrDefault(stemx => stemx.gebruikersNaam == User.Identity.GetUserName());
+                }
+
+
+
+                if (stem == null)
+                {
+                    Stem nieuwLike = new Stem()
+                    {
+                        gebruikersNaam = User.Identity.GetUserName(),
+                        antwoord = agendaAntwoord
+                    };
+
+                    Stem like = stemManager.stemOpAntwoord(nieuwLike);
+                    agendaAntwoord.stemmen.Add(like);
+                    antwManager.updateAgendaAntwoord(agendaAntwoord);
+                    return RedirectToAction("Agenda", "Module");
+                }
+                else
+                {
+                    return RedirectToAction("StemError", "Stem");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
         }
 
@@ -562,7 +637,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-                IEnumerable<DossierAntwoord> gewonnenAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id).OrderBy(o => o.aantalStemmen);
+                IEnumerable<DossierAntwoord> gewonnenAntwoorden = antwManager.getAllDossierAntwoordenPerModule(id).OrderBy(o => o.stemmen.Count);
                 List<DossierAntwoord> FirstAntwoorden = new List<DossierAntwoord>();
 
                 for (int i = 0; i < dosmod.centraleVraag.aantalWinAntwoorden; i++)
@@ -590,7 +665,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-            IEnumerable<AgendaAntwoord> gewonnenAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id).OrderBy(o => o.aantalStemmen);
+            IEnumerable<AgendaAntwoord> gewonnenAntwoorden = antwManager.getAllAgendaAntwoordenPerModule(id).OrderBy(o => o.stemmen.Count);
             List<AgendaAntwoord> FirstAntwoorden = new List<AgendaAntwoord>();
 
             for (int i = 0; i < agendaModule.centraleVraag.aantalWinAntwoorden; i++)

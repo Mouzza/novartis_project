@@ -36,7 +36,7 @@ namespace JPP.DAL.EF
       
         public DbSet<Antwoord> antwoord { get; set; }
         public DbSet<Comment> comments { get; set; }
-       
+        public DbSet<Stem> stemmen { get; set; }
         public DbSet<Evenement> evenementen { get; set; }
         
         public DbSet<Tag> tags { get; set; }

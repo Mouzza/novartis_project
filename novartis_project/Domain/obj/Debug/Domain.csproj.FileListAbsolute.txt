@@ -91,9 +91,7 @@ C:\Users\Michiel\Desktop\novartis_project\novartis_project\Domain\bin\Debug\Newt
 >>>>>>> origin/master
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
-<<<<<<< HEAD
 C:\Users\Michiel\Documents\novartis_project\novartis_project\Domain\bin\Debug\Newtonsoft.Json.dll
-=======
 C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll.config
 C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.dll
 C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Debug\JPP.BL.Domain.pdb
@@ -105,4 +103,3 @@ C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\bin\De
 C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.dll
 C:\Users\MERGEN\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Debug\JPP.BL.Domain.pdb
->>>>>>> origin/master

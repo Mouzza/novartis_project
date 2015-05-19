@@ -24,11 +24,11 @@ namespace JPP.BL.Domain.Antwoorden
         public string inhoud { get; set; } //Textvak 1
         public string extraInfo { get; set; }
         public DateTime datum { get; set; }
-        public int aantalStemmen { get; set; }
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
         public Boolean statusOnline { get; set; }
         public virtual Module module { get; set; }
+        public virtual ICollection<Stem> stemmen { get; set; }
         public virtual ICollection<VasteTag> vasteTags { get; set; }
         public virtual ICollection<PersoonlijkeTag> persoonlijkeTags { get; set; }
     }
