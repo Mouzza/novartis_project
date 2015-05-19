@@ -284,24 +284,39 @@
 
     .containerButton {
         margin: 5% 0 0;
-        margin-left: 13%;
+        width: 100%;
     }
+     .ButtonDossier img{
+        margin-top:10px;
+        width:100px;
+        height: 100px;
+    }
+
+      .ButtonAgenda img {
+            margin-top:10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .ButtonDossier a, .ButtonAgenda a {
+            text-decoration: none;
+            font-size: 50px;
+        }
 
     .ButtonDossier {
         display: inline-block;
-        height: 500px;
-        width: 500px;
-        background-size: 500px;
+        height: 300px;
+        width: 300px;
+        text-align:center;
         line-height: 50px;
         padding-right: 30px;
         padding-left: 30px;
         position: relative;
-        color: rgb(255,255,255);
+        color: #666666;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-left: 10%;
-        background-image: url("../Images/buttonDossier.png");
+        margin-left: 35%;
         /* HOVER OFF*/
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
@@ -347,10 +362,10 @@
 
         .ButtonDossier:hover {
             text-decoration: none;
-            height: 550px;
-            width: 550px;
-            background-size: 550px;
-            margin-left: 6%;
+            height: 350px;
+            width: 350px;
+            background-size: 350px;
+            margin-left: 32%;
             -webkit-transition: all 500ms ease;
             -moz-transition: all 500ms ease;
             -ms-transition: all 500ms ease;
@@ -370,19 +385,19 @@
 
     .ButtonAgenda {
         display: inline-block;
-        background-image: url("../Images/buttonAgenda.png");
-        height: 500px;
-        width: 500px;
-        background-size: 500px;
+        height: 300px;
+        width: 300px;
+        background-size: 300px;
         line-height: 50px;
         padding-right: 30px;
         padding-left: 30px;
         position: relative;
-        color: rgb(255,255,255);
+        color: #666666;
+        text-align:center;
         text-decoration: none;
         text-transform: uppercase;
         letter-spacing: 1px;
-        margin-left: 10%;
+        margin-left: 35%;
         /* HOVER OFF*/
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
@@ -407,8 +422,8 @@
             position: absolute;
             left: 0;
             background-size: 500px;
-            height: 500px;
-            width: 500px;
+            height: 300px;
+            width: 300px;
             margin-left: 40%;
             background-color: rgba(0,0,0,0.5);
             margin-top: 50px;
@@ -422,10 +437,10 @@
         }
 
         .ButtonAgenda:hover {
-            height: 550px;
-            width: 550px;
+            height: 350px;
+            width: 350px;
             background-size: 550px;
-            margin-left: 6%;
+            margin-left: 32%;
             -webkit-transition: all 500ms ease;
             -moz-transition: all 500ms ease;
             -ms-transition: all 500ms ease;
