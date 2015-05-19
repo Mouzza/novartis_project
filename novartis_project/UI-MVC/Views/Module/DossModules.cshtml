@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Beheer dossiermodules";
 }
-
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
 <div id="dossierModules">
     @{ Html.RenderAction("partialViewDossierModule", "Module"); }
 </div>
@@ -16,4 +17,4 @@
     @{ Html.RenderAction("GeslotenDossierModules", "Module"); }
 </div>
 
-
+}

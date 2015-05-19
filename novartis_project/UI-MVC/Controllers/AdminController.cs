@@ -16,7 +16,8 @@ using System.Collections.ObjectModel;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
-     [CustomAuthorizeAttribute(Roles = "Admin")]
+     [CustomAuthorizeAttribute(Roles = "Admin, Moderator")]
+   
     public class AdminController : Controller
     {
 

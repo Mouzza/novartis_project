@@ -8,15 +8,15 @@
      
 }
 
-    @if (User.IsInRole("Admin"))
+    @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
     {
 
             <h2>Gebruikers</h2>
-
+          if (User.IsInRole("Admin")){
             <p>
                 @Html.ActionLink("Maak een gebruikers aan", "Register", "Account") | @Html.ActionLink("Maak een geactiveerde account", "MakeActivatedAccount", "Account")
             </p>
-
+            }
             <table class="table table-striped">
                 <tr class="success">
                     <th>
@@ -102,17 +102,23 @@
                                 @Html.DisplayFor(modelItem => item.user.Created)
                             </td>
                             <td>
-                                @Html.ActionLink("Wijzig", "WijzigGebruiker", new { id = item.user.Id }) |
-                                @Html.ActionLink("Detail", "Profiel", new { UserName = item.user.UserName }) |
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    @Html.ActionLink("Wijzig |", "WijzigGebruiker", new { id = item.user.Id }) 
+                                }
+                               
+                                @Html.ActionLink("Detail", "Profiel", new { UserName = item.user.UserName }) 
 
 
                                 @if (item.user.LockoutEnabled == true)
                                 {
-                                    @Html.ActionLink("Blokkeer |", "BlokkeerGebruiker", new { id = item.user.Id })
+                                    @Html.ActionLink(" | Blokkeer", "BlokkeerGebruiker", new { id = item.user.Id })
 
                                 }
-
-                                @Html.ActionLink("Verwijder", "VerwijderGebruiker", new { id = item.user.Id })
+                                @if (User.IsInRole("Admin"))
+                                {
+                                     @Html.ActionLink(" | Verwijder", "VerwijderGebruiker", new { id = item.user.Id })
+                                }
                             </td>
                         </tr>
 

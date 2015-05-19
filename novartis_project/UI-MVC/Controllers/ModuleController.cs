@@ -357,7 +357,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         // GET: Module
-       [Authorize(Roles = "Admin")]
+       [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Index()
         {
             return View();
@@ -428,14 +428,14 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
 
-       [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Details(int id)
         {
             DossierModule DossierModule = (DossierModule)moduleManager.readModule(id);
 
             return View(DossierModule);
         }
-       [Authorize(Roles = "Admin")]
+       [Authorize(Roles = "Admin, Moderator")]
        public ActionResult _Details(int id)
        {
            AgendaModule agendaModule = (AgendaModule)moduleManager.readModule(id);
