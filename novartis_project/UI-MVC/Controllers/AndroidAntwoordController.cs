@@ -194,7 +194,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(dossierAntwoorden);
         }
-<<<<<<< HEAD
+
         [HttpGet]
         [ActionName("getUserAgendaAntwoord")]
         public IHttpActionResult getUserAgendaAntwoord(string username)
@@ -408,8 +408,7 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(returnAnt);
         }
-=======
->>>>>>> origin/master
+
         #endregion
 
         #region CREATE dossier/agenda
