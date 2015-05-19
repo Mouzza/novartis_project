@@ -5,6 +5,9 @@
 
     Layout = "";
 }
+
+<div id="homeTitelHeader">Alle toekomstige thema's</div>
+
 <div class="table-title">
     <h3>Toekomstige Modules</h3>
 </div>
@@ -31,21 +34,21 @@
                 <tbody class="table-hover">
                     <tr>
                         <td class=" text-left">
-                            @Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)
+                            <a href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.beginDatum.Day) />@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)</a>
 
                         </td>
                         <td class="text-left">
-                           @Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)
-                        </td>
+                            <a href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)</a>
+</td>
                         <td class="text-left">
-                           @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
-                        </td>
+                            <a href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.centraleVraag.inhoud)</a>
+</td>
                     </tr>
                 </tbody>
 
             }
         </table>
-        <a id="paginaLink" href="#"></a>
+        <a id="paginaLink"></a>
     </div>
 
 </div>

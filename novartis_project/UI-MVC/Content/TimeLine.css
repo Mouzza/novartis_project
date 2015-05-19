@@ -7,6 +7,10 @@
     height: 200px;
 }
 
+#timeline h3{
+    width: 200px;
+    margin-left: -190%;
+}
 div#timeline {
     background-color: #2980b9;
     margin-top: 150px;
