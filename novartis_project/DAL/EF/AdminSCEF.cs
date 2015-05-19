@@ -118,14 +118,7 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public void stelInAantalStemmen(int aantalstemmen, int id)
-        {
-            Antwoord antwoord = dbcontext.antwoord.Find(id);
-            antwoord.aantalStemmen = aantalstemmen;
-            dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-
-        }
+     
 
         public void stelInVolledigheidsPercentage(int volledigheidsPercentage, int id)
         {

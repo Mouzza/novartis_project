@@ -77,7 +77,7 @@
                         <a href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.titel)</a>
                     </td>
                     <td class="text-left">
-                        <a href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.aantalStemmen)</a>
+                        <a href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.stemmen.Count)</a>
                     </td>
                 </tr>
             </tbody>

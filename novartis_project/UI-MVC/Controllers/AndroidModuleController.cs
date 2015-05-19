@@ -50,7 +50,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 ANDROIDDossierAntwoord dos = new ANDROIDDossierAntwoord()
                 {
                     aantalFlags = dosAntwoord.aantalFlags,
-                    aantalStemmen = dosAntwoord.aantalStemmen,
+                    aantalStemmen = dosAntwoord.stemmen.Count,
                     datum=dosAntwoord.datum,
                     //editable=dosAntwoord.editable,
                     evenementID=10/*dosAntwoord.evenement.ID*/,
@@ -160,7 +160,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 ANDROIDAgendaAntwoord ag = new ANDROIDAgendaAntwoord()
                 {
                     aantalFlags = agAntwoord.aantalFlags,
-                    aantalStemmen = agAntwoord.aantalStemmen,
+                    aantalStemmen = agAntwoord.stemmen.Count,
                     datum = agAntwoord.datum,
                     //editable = agAntwoord.editable,
                     extraInfo = agAntwoord.extraInfo,

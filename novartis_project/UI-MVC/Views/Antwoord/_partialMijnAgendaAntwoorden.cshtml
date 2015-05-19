@@ -53,7 +53,7 @@
         {
 
 
-            if (ViewBag.winnaar == item.aantalStemmen)
+            if (ViewBag.winnaar == item.stemmen.Count)
             {
                 <span id="winnaarSpan">
                     Mijn populairste antwoord
@@ -69,21 +69,21 @@
 
 
 
-            if (ViewBag.winnaar == item.aantalStemmen)
+            if (ViewBag.winnaar == item.stemmen.Count)
             {
                 <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
                     <table class="table">
 
                         <tr>
                             <td id="aantalStemmen">
-                                @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                               
                                 <img src="~/Images/oplosing2.png" />
                             </td>
 
                             <td id="antwoordInhoud">
                                 @Html.DisplayFor(modelItem => item.titel)
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                    <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
 
                                 </div>
                                 <br />
@@ -104,14 +104,14 @@
 
                         <tr>
                             <td id="aantalStemmen">
-                                @*+@Html.DisplayFor(modelItem => item.aantalStemmen)*@
+                            
                                 <img src="~/Images/oplosing2.png" />
                             </td>
 
                             <td id="antwoordInhoud">
                                 @Html.DisplayFor(modelItem => item.titel)
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                    <div class="votes">+@Html.DisplayFor(modelItem => item.aantalStemmen)</div>
+                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
 
                                 </div>
                                 <br />
