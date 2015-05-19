@@ -1,0 +1,18 @@
+﻿@model JPP.BL.Domain.Modules.DossierModule
+
+@{
+    ViewBag.title = "Dossier antwoorden";
+
+}
+
+
+
+<div id="Lijst">
+
+    @{Html.RenderAction("Lijst", "Antwoord", new { id = Model.ID });}
+</div>
+
+<div id="Lijst2">
+
+    @{Html.RenderAction("Lijst2", "Antwoord", new { id = Model.ID });}
+</div>

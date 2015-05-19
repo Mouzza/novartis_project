@@ -67,17 +67,17 @@
 
             @foreach (var item in Model)
             {
-                <tbody class="table-hover">
+                <tbody class="table-hover" onclick="@Url.Action("DossierModelOne", "Antwoord", new {id = item.ID})">
                     <tr>
                         <td class=" text-left">
-                            <a href="@Url.Action("DossierModelOne", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.gebruikersNaam)</a>
+                            <a>@Html.DisplayFor(modelItem => item.gebruikersNaam)</a>
 
                         </td>
                         <td class="text-left">
-                            <a href="@Url.Action("DossierModelOne", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.titel)</a>
+                            <a>@Html.DisplayFor(modelItem => item.titel)</a>
                         </td>
                         <td class="text-left">
-                            <a href="@Url.Action("DossierModelOne", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.aantalStemmen)</a>
+                            <a>@Html.DisplayFor(modelItem => item.aantalStemmen)</a>
                         </td>
                     </tr>
                 </tbody>
