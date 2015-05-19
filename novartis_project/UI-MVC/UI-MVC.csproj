@@ -635,10 +635,7 @@
     <Content Include="Views\Module\MijnModuleMenu.cshtml" />
 
     <Content Include="Views\Antwoord\_Edit.cshtml" />
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
