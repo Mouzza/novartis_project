@@ -69,8 +69,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     //vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agenda.titel,
-                    subTitel = agenda.subtitel
+                    subTitel = agenda.subtitel,
                 };
+                if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
+                {
+                    agAntwoord.isActieveModule = true;
+                }
+                else
+                {
+                    agAntwoord.isActieveModule = false;
+                }
 
                 //foreach (var vTag in agenda.vasteTags)
                 //{
@@ -130,7 +138,14 @@ namespace JPP.UI.Web.MVC.Controllers
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3
                 };
-
+                if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
+                {
+                    dosAntwoord.isActieveModule = true;
+                }
+                else
+                {
+                    dosAntwoord.isActieveModule = false;
+                }
                 //Image tmpimg = null;
                 //HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
                 //HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
@@ -179,6 +194,222 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(dossierAntwoorden);
         }
+<<<<<<< HEAD
+        [HttpGet]
+        [ActionName("getUserAgendaAntwoord")]
+        public IHttpActionResult getUserAgendaAntwoord(string username)
+        {
+            List<AgendaAntwoord> antwoorden = antwoordManager.readAllAgendaAntwoorden();
+            List<ANDROIDAgendaAntwoord> returnAntw = new List<ANDROIDAgendaAntwoord>();
+            foreach (var antwoord in antwoorden)
+            {
+                if (antwoord.gebruikersNaam == username)
+                {
+                    ANDROIDAgendaAntwoord antw = new ANDROIDAgendaAntwoord()
+                    {
+                        ID = antwoord.ID,
+                        inhoud = antwoord.inhoud,
+                        extraInfo = antwoord.extraInfo,
+                        datum = antwoord.datum,
+                        aantalStemmen = antwoord.aantalStemmen,
+                        //editable = dossier.editable,
+                        gebruikersNaam = antwoord.gebruikersNaam,
+                        aantalFlags = antwoord.aantalFlags,
+                        moduleID = antwoord.module.ID,
+                        //vasteTags = new List<ANDROIDVasteTag>(),
+                        //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                        //afbeeldingPath = dossier.afbeeldingPath,
+                        statusOnline = antwoord.statusOnline,
+                        titel = antwoord.titel,
+                        subTitel = antwoord.subtitel
+                    };
+                    if (antwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
+                    {
+                        antw.isActieveModule = true;
+                    }
+                    else
+                    {
+                        antw.isActieveModule = false;
+                    }
+                }
+            }
+            return Ok(returnAntw);
+        }
+        [HttpGet]
+        [ActionName("getUserDossierAntwoord")]
+        public IHttpActionResult getUserDossierAntwoord(string username)
+        {
+            List<DossierAntwoord> dossiers = antwoordManager.readAllDossierAntwoorden();
+            List<ANDROIDDossierAntwoord> returnDossier = new List<ANDROIDDossierAntwoord>();
+            foreach (var dos in dossiers)
+            {
+                if(dos.gebruikersNaam==username)
+                {
+                    ANDROIDDossierAntwoord dossier = new ANDROIDDossierAntwoord()
+                    {
+                        ID = dos.ID,
+                        inhoud = dos.inhoud,
+                        extraInfo = dos.extraInfo,
+                        datum = dos.datum,
+                        aantalStemmen = dos.aantalStemmen,
+                        //editable = dossier.editable,
+                        gebruikersNaam = dos.gebruikersNaam,
+                        aantalFlags = dos.aantalFlags,
+                        moduleID = dos.module.ID,
+                        // vasteTags = new List<ANDROIDVasteTag>(),
+                        // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                        //afbeeldingPath = dossier.afbeeldingPath,
+                        percentageVolledigheid = dos.percentageVolledigheid,
+                        statusOnline = dos.statusOnline,
+                        extraVraag = dos.extraVraag,
+                        comments = new List<ANDROIDComment>(),
+                        titel = dos.titel,
+                        googleMapsAdress = dos.googleMapsAdress,
+                        subtitel = dos.subtitel,
+                        textvak2 = dos.textvak2,
+                        textvak3 = dos.textvak3
+                    };
+                    if (dos.module.ID == moduleManager.readActieveDossierModule().ID)
+                    {
+                        dossier.isActieveModule = true;
+                    }
+                    else
+                    {
+                        dossier.isActieveModule = false;
+                    }
+                    returnDossier.Add(dossier);
+                }
+            }
+            return Ok(returnDossier);
+        }
+
+        [HttpGet]
+        [ActionName("topagendas")]
+        public IHttpActionResult topagendas(string sorteer)
+        {
+            List<AgendaAntwoord> antwoorden = new List<AgendaAntwoord>();
+            switch (sorteer)
+            {
+                case "az":
+                    antwoorden = antwoordManager.sortAgendaAntwoordAZ(moduleManager.readActieveAgendaModule().agendaAntwoorden);
+                    break;
+                case "za":
+                    antwoorden = antwoordManager.sortAgendaAntwoordZA(moduleManager.readActieveAgendaModule().agendaAntwoorden);
+                    break;
+                case "minstelikes":
+                    antwoorden = antwoordManager.sortAgendaAntwoordMinsteLikes(moduleManager.readActieveAgendaModule().agendaAntwoorden);
+                    break;
+                case "meestlikes":
+                    antwoorden = antwoordManager.sortAgendaAntwoordMeesteLikes(moduleManager.readActieveAgendaModule().agendaAntwoorden);
+                    break;
+                case "nieuwoud":
+                    antwoorden = antwoordManager.sortAgendaAntwoordNieuwOud(moduleManager.readActieveAgendaModule().agendaAntwoorden);
+                    break;
+                case "oudnieuw":
+                    antwoorden = antwoordManager.sortAgendaAntwoordOudNieuw(moduleManager.readActieveAgendaModule().agendaAntwoorden);
+                    break;
+            }
+            List<ANDROIDAgendaAntwoord> returnAnt = new List<ANDROIDAgendaAntwoord>();
+            foreach (var agenda in antwoorden)
+            {
+                ANDROIDAgendaAntwoord ag = new ANDROIDAgendaAntwoord()
+                {
+                    ID = agenda.ID,
+                    inhoud = agenda.inhoud,
+                    extraInfo = agenda.extraInfo,
+                    datum = agenda.datum,
+                    aantalStemmen = agenda.aantalStemmen,
+                    //editable = agenda.editable,
+                    gebruikersNaam = agenda.gebruikersNaam,
+                    aantalFlags = agenda.aantalFlags,
+                    moduleID = agenda.module.ID,
+                    //vasteTags = new List<ANDROIDVasteTag>(),
+                    // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    titel = agenda.titel,
+                    subTitel = agenda.subtitel
+                };
+                if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
+                {
+                    ag.isActieveModule = true;
+                }
+                else
+                {
+                    ag.isActieveModule = false;
+                }
+
+                returnAnt.Add(ag);
+            }
+            return Ok(returnAnt);
+        }
+        [HttpGet]
+        [ActionName("topdossiers")]
+        public IHttpActionResult topdossiers(string sorteer)
+        {
+            List<DossierAntwoord> antwoorden = new List<DossierAntwoord>();
+            switch (sorteer)
+            {
+                case "az":
+                    antwoorden = antwoordManager.sortDossierAntwoordTitelAZ(moduleManager.readActieveDossierModule().dossierAntwoorden);
+                    break;
+                case "za":
+                    antwoorden = antwoordManager.sortDossierAntwoordTitelZA(moduleManager.readActieveDossierModule().dossierAntwoorden);
+                    break;
+                case "minstelikes":
+                    antwoorden = antwoordManager.sortDossierAntwoordMinsteLikes(moduleManager.readActieveDossierModule().dossierAntwoorden);
+                    break;
+                case "meestlikes":
+                    antwoorden = antwoordManager.sortDossierAntwoordMeesteLikes(moduleManager.readActieveDossierModule().dossierAntwoorden);
+                    break;
+                case "nieuwoud":
+                    antwoorden = antwoordManager.sortDossierAntwoordNieuwOud(moduleManager.readActieveDossierModule().dossierAntwoorden);
+                    break;
+                case "oudnieuw":
+                    antwoorden = antwoordManager.sortDossierAntwoordOudNieuw(moduleManager.readActieveDossierModule().dossierAntwoorden);
+                    break;
+            }
+            List<ANDROIDDossierAntwoord> returnAnt = new List<ANDROIDDossierAntwoord>();
+            foreach (var dossier in antwoorden)
+            {
+                ANDROIDDossierAntwoord dos = new ANDROIDDossierAntwoord()
+                {
+                    ID = dossier.ID,
+                    inhoud = dossier.inhoud,
+                    extraInfo = dossier.extraInfo,
+                    datum = dossier.datum,
+                    aantalStemmen = dossier.aantalStemmen,
+                    //editable = dossier.editable,
+                    gebruikersNaam = dossier.gebruikersNaam,
+                    aantalFlags = dossier.aantalFlags,
+                    moduleID = dossier.module.ID,
+                    // vasteTags = new List<ANDROIDVasteTag>(),
+                    // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
+                    //afbeeldingPath = dossier.afbeeldingPath,
+                    percentageVolledigheid = dossier.percentageVolledigheid,
+                    statusOnline = dossier.statusOnline,
+                    extraVraag = dossier.extraVraag,
+                    evenementID = 10/*dossier.evenement.ID*/,
+                    comments = new List<ANDROIDComment>(),
+                    titel = dossier.titel,
+                    googleMapsAdress = dossier.googleMapsAdress,
+                    subtitel = dossier.subtitel,
+                    textvak2 = dossier.textvak2,
+                    textvak3 = dossier.textvak3
+                };
+                if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
+                {
+                    dos.isActieveModule = true;
+                }
+                else
+                {
+                    dos.isActieveModule = false;
+                }
+
+                returnAnt.Add(dos);
+            }
+            return Ok(returnAnt);
+        }
+=======
+>>>>>>> origin/master
         #endregion
 
         #region CREATE dossier/agenda
@@ -199,7 +430,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 titel = agendaAntwoord.titel,
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
-                statusOnline=true
+                statusOnline=true,
             };
             AgendaModule actieveAg = moduleManager.readActieveAgendaModule();
             agAntwoord.module = actieveAg;
