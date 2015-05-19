@@ -31,8 +31,11 @@ namespace JPP.DAL.EF
         }
         public void wijzigAgendaAntwoord(AgendaAntwoord agendeaAntwoord)
         {
-            dbcontext.Entry(agendeaAntwoord).State = System.Data.Entity.EntityState.Modified;
+            AgendaAntwoord oldDossierAntwoord = (AgendaAntwoord)dbcontext.antwoord.Find(agendeaAntwoord.ID);
+            dbcontext.Entry(oldDossierAntwoord).CurrentValues.SetValues(agendeaAntwoord);
             dbcontext.SaveChanges();
+
+           
         }
     }
 }
