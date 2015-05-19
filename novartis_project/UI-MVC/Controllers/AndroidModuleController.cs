@@ -37,6 +37,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 vasteVraagTwee = "aaaa" /*actieveDossierModule.vasteVraagTwee.inhoud*/,
                 vasteVraagDrie = "aaaa"/*actieveDossierModule.vasteVraagDrie.inhoud*/,
                 verplichteVolledigheidsPercentage = actieveDossierModule.verplichteVolledigheidsPercentage,
+                
                 /*thema = new Thema()
                 //{
                 //    ID = actieveDossierModule.thema.ID,
@@ -71,6 +72,14 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel
                 };
+                if (dosAntwoord.module.ID == moduleManager.readActieveDossierModule().ID)
+                {
+                    dos.isActieveModule = true;
+                }
+                else
+                {
+                    dos.isActieveModule = false;
+                }
                 //foreach (var vTag in dosAntwoord.vasteTags)
                 //{
                 //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
@@ -163,6 +172,14 @@ namespace JPP.UI.Web.MVC.Controllers
                     titel = agAntwoord.titel,
                     //vasteTags = new List<ANDROIDVasteTag>()
                 };
+                if (agAntwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
+                {
+                    ag.isActieveModule = true;
+                }
+                else
+                {
+                    ag.isActieveModule = false;
+                }
 
                 //foreach (var pTag in agAntwoord.persoonlijkeTags)
                 //{
@@ -205,6 +222,28 @@ namespace JPP.UI.Web.MVC.Controllers
             //return Ok(agendaModules);
             return Ok(agendaModule);
         }
+        /*[HttpGet]
+        [ActionName("getActieveID")]
+        public IHttpActionResult getActieveAgendaModule()
+        {
+            AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
+            DossierModule actieveDossier = moduleManager.readActieveDossierModule();
+            // List<ANDROIDAgendaModule> agendaModules = new List<ANDROIDAgendaModule>();
+
+            string ids = actieveAgendaModule.ID + "," + actieveDossier.ID;
+                
+
+            // agendaModules.Add(agendaModule);
+
+            //var json = JsonConvert.SerializeObject(dosModule);
+            //  json = json.Replace(@"\", @"");
+
+            //return Ok(agendaModules);
+            return Ok(ids);
+        }*/
+
+
+        
         #endregion
 
         #region ALL dossier/agenda

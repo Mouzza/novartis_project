@@ -69,8 +69,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     //vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agenda.titel,
-                    subTitel = agenda.subtitel
+                    subTitel = agenda.subtitel,
                 };
+                if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
+                {
+                    agAntwoord.isActieveModule = true;
+                }
+                else
+                {
+                    agAntwoord.isActieveModule = false;
+                }
 
                 //foreach (var vTag in agenda.vasteTags)
                 //{
@@ -130,7 +138,14 @@ namespace JPP.UI.Web.MVC.Controllers
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3
                 };
-
+                if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
+                {
+                    dosAntwoord.isActieveModule = true;
+                }
+                else
+                {
+                    dosAntwoord.isActieveModule = false;
+                }
                 //Image tmpimg = null;
                 //HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
                 //HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
@@ -207,7 +222,14 @@ namespace JPP.UI.Web.MVC.Controllers
                         titel = antwoord.titel,
                         subTitel = antwoord.subtitel
                     };
-
+                    if (antwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
+                    {
+                        antw.isActieveModule = true;
+                    }
+                    else
+                    {
+                        antw.isActieveModule = false;
+                    }
                 }
             }
             return Ok(returnAntw);
@@ -246,6 +268,14 @@ namespace JPP.UI.Web.MVC.Controllers
                         textvak2 = dos.textvak2,
                         textvak3 = dos.textvak3
                     };
+                    if (dos.module.ID == moduleManager.readActieveDossierModule().ID)
+                    {
+                        dossier.isActieveModule = true;
+                    }
+                    else
+                    {
+                        dossier.isActieveModule = false;
+                    }
                     returnDossier.Add(dossier);
                 }
             }
@@ -297,6 +327,15 @@ namespace JPP.UI.Web.MVC.Controllers
                     titel = agenda.titel,
                     subTitel = agenda.subtitel
                 };
+                if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
+                {
+                    ag.isActieveModule = true;
+                }
+                else
+                {
+                    ag.isActieveModule = false;
+                }
+
                 returnAnt.Add(ag);
             }
             return Ok(returnAnt);
@@ -355,6 +394,15 @@ namespace JPP.UI.Web.MVC.Controllers
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3
                 };
+                if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
+                {
+                    dos.isActieveModule = true;
+                }
+                else
+                {
+                    dos.isActieveModule = false;
+                }
+
                 returnAnt.Add(dos);
             }
             return Ok(returnAnt);
@@ -379,7 +427,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 titel = agendaAntwoord.titel,
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
-                statusOnline=true
+                statusOnline=true,
             };
             AgendaModule actieveAg = moduleManager.readActieveAgendaModule();
             agAntwoord.module = actieveAg;

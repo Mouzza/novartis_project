@@ -94,6 +94,7 @@ namespace JPP.UI.Web.MVC.Models
         public string subTitel { get; set; }
         public int moduleID { get; set; }
         public Boolean statusOnline { get; set; }
+        public Boolean isActieveModule { get; set; }
         //public List<ANDROIDVasteTag> vasteTags { get; set; }
         //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
 
@@ -133,6 +134,7 @@ namespace JPP.UI.Web.MVC.Models
         public string foregroundColor { get; set; }
         public string backgroundColor { get; set; }
         public string backgroundImage { get; set; }
+        public Boolean isActieveModule { get; set; }
     }
     //***********************************************************
     public class UserModel
