@@ -21,7 +21,6 @@ namespace JPP.BL.Domain.Antwoorden
         public string extraVraag { get; set; }
         public string googleMapsAdress{ get; set; }
 
-        public virtual Evenement evenement { get; set; }
         public virtual ICollection<Comment> comments { get; set; }
     }
 }

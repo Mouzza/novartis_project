@@ -28,6 +28,7 @@ namespace JPP.BL.Domain.Antwoorden
         public string gebruikersNaam { get; set; }
         public int aantalFlags { get; set; }
         public Boolean statusOnline { get; set; }
+        public virtual ICollection<Evenement> evenementen { get; set; }
         public virtual Module module { get; set; }
         public virtual ICollection<VasteTag> vasteTags { get; set; }
         public virtual ICollection<PersoonlijkeTag> persoonlijkeTags { get; set; }
