@@ -61,8 +61,8 @@
             }
             var url = Request.Url.AbsoluteUri;
             <p id="extraInfoParagraaf">
-                @Html.ActionLink("Wijzig", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Verwijder", "Verwijder", new { id = item.ID, URL=url })
+                @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "MijnAntwoorden" }) |
+                @Html.ActionLink("Verwijder", "Verwijder", new { id = item.ID, type = "MijnAntwoorden" })
                 | <span id="extrainfoSpan">Datum: </span> @item.datum
             </p>
 

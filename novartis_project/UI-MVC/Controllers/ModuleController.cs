@@ -24,6 +24,17 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
         AntwoordManager antwManager = new AntwoordManager();
 
+
+        public ActionResult MijnModuleMenu()
+        {
+            int aantal1 =moduleManager.readAllAgendaModules().Where(antw => antw.adminNaam == User.Identity.GetUserName()).Count();
+            int aantal2 = moduleManager.readAllAgendaModules().Where(antw => antw.adminNaam == User.Identity.GetUserName()).Count();
+            int totaal = aantal1 + aantal2;
+            ViewBag.Aantal = "Mijn modules(" + totaal + ")";
+            return PartialView();
+
+        }
+
         public ActionResult VoteUp(int id)
         {
             DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);

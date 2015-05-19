@@ -625,6 +625,10 @@
     <Content Include="Views\Antwoord\BlokkeerDossierAntwoord.cshtml" />
     <Content Include="Views\Antwoord\Wijzig.cshtml" />
     <Content Include="Views\Module\WinnaarVanModuleAgenda.cshtml" />
+    <Content Include="Views\Antwoord\_Wijzig.cshtml" />
+    <Content Include="Views\Antwoord\Edit.cshtml" />
+    <Content Include="Views\Antwoord\MijnAntwoordenMenu.cshtml" />
+    <Content Include="Views\Module\MijnModuleMenu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

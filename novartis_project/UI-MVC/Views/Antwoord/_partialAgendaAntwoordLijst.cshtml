@@ -81,7 +81,8 @@
 
         if (zelfdeGebruiker)
         {
-            @Html.ActionLink("Wijzig", "Edit", new { id = item.ID })
+            @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID , type="ActieveAgendaModule"})
+            @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveAgendaModule" })
         }
         if (ViewBag.winnaar == item.aantalStemmen)
         {
