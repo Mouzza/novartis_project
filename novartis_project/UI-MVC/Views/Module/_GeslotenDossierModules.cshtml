@@ -30,22 +30,22 @@
                 @foreach (var item in Model)
                 {
                     <table class="table-fill">
-                        <tbody class="table-hover" onclick="@Url.Action("DossierModelOne", "Antwoord", new {id = item.ID})">
+                        <tbody class="table-hover">
                             <tr>
                                 <td class="text-left">
-                                    <a >@Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)</a>
+                                   @Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)
 
                                 </td>
                                 <td class="text-left">
-                                    <a >@Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)</a>
+                                    @Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)
                                 </td>
                                 <td class="text-left">
-                                    <a >@Html.DisplayFor(modelItem => item.centraleVraag.inhoud)</a>
+                                  @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    @*<a id="paginaLink" href="@Url.Action("WinnaarVanModule", "Module", new { id = item.ID })"></a>*@
+                    <a id="paginaLink" href="@Url.Action("WinnaarVanModule", "Module", new { id = item.ID })"></a>
                 }
 
             

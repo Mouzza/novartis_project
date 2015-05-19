@@ -194,6 +194,10 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(dossierAntwoorden);
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
         [HttpGet]
         [ActionName("getUserAgendaAntwoord")]
         public IHttpActionResult getUserAgendaAntwoord(string username)

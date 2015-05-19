@@ -89,6 +89,7 @@
         if (zelfdeGebruiker)
         {
             @Html.ActionLink("Wijzig", "Wijzig", new { id = item.ID, type="ActieveDossierModule"})
+            @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveDossierModule" })
         }
         if (ViewBag.winnaar == item.aantalStemmen)
         {
