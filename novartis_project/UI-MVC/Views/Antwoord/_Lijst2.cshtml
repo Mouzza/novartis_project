@@ -66,7 +66,7 @@ else
                 @Html.DisplayFor(modelItem => item.aantalFlags)
             </td>
             <td>
-                @Html.ActionLink("Wijzig", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Wijzig", "_Edit", new { id = item.ID, moduleId = item.module.ID, type = "AdminAgenda" }) |
                 @Html.ActionLink("Detail", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Verwijder |", "Verwijder", new { id = item.ID, moduleId = item.module.ID, type = "AgendaModule" })
                 @if (item.statusOnline == false)
