@@ -1,0 +1,141 @@
+﻿@model JPP.BL.Domain.Modules.AgendaModule
+@{
+    ViewBag.Title = "actief";
+    Layout = "";
+
+}
+
+@if (Model.naam != null)
+{
+
+<div id="dossierModule">
+    <p>
+        @if (User.IsInRole("Admin"))
+        {
+
+            @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID })
+        }
+
+    </p>
+    <p>Auteur: <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = @Model.adminNaam })">@Model.adminNaam </a> | <span id="extrainfoSpan">Thema: </span> @Model.thema.naam | <span id="extrainfoSpan">Aantal antwoorden: </span> @Model.agendaAntwoorden.Count | <span id="extrainfoSpan">Aantal keren bekeken: </span> @ApplicationInstance.Application["Totaluser"]</p>
+
+    <img id="moduleIcon" src="~/Images/menu logos/oplosing.png" alt="Alternate Text" />
+    <div id="moduleInhoud">
+        <h1 id="moduleTitel">Maak je punt! </h1>
+        <h4>Maak je punt! Maak kans op een prijs! </h4>
+
+        <h1 id="centraleVraag">@Model.centraleVraag.inhoud</h1>
+        <p>@Model.centraleVraag.extraInfo</p>
+
+
+    </div>
+
+
+    @*<div id="dossierModuleContent">
+            <div id="beloningSection">
+                <h4>Beloning</h4>
+                <hr />
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        Beloning:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.beloning.FirstOrDefault().naam)
+                    </dd>
+
+                    <dt>
+                        Beschrijving:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.beloning.FirstOrDefault().beschrijving)
+                    </dd>
+                    <dt>
+                        Aantal mogelijke winnaars:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.centraleVraag.aantalWinAntwoorden)
+                    </dd>
+
+                </dl>
+
+
+            </div>
+            <div id="extraInfoSection">
+                <h4>Extra info</h4>
+                <hr />
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        Begin datum:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.beginDatum)
+                    </dd>
+
+                    <dt>
+                        Eind datum:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.eindDatum)
+                    </dd>
+
+                    <br />
+                    <dt>
+                        Actief:
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.status)
+                    </dd>
+
+                </dl>
+
+
+            </div>
+
+
+        </div>*@
+
+</div>
+
+
+
+}
+else
+{
+
+<div id="dossierModule">
+    <p>
+        @if (User.IsInRole("Admin"))
+        {
+
+            @Html.ActionLink("Maak een agendamodule", "_Create", "Module")
+        }
+
+    </p>
+
+
+    <img id="moduleIcon" src="~/Images/menu logos/oplosing.png" alt="Oplossing" />
+    <div id="moduleInhoud">
+        <h1 id="moduleTitel">Er is geen actieve agendamodule</h1>
+        <h4 id="centraleVraag">Bekijk gerust onze geplande modules</h4>
+        <a href="@Url.Action("CommingSoon", "Module")">Geplande modules</a>
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+}
+

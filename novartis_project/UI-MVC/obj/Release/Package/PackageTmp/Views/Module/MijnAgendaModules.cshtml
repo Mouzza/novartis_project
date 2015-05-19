@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.title = "Beheer uw agendamodules";
+
+}
+
+
+    @{ Html.RenderAction("partialViewMijnAgendaModule", "Module");}
+
+
+<div id="mijnGeplandeAgendaModules">
+    @{ Html.RenderAction("MijnGeplandeAgendaModules", "Module");}
+</div>
+
+<div id="mijnGeslotenAgendaModules">
+    @{ Html.RenderAction("MijnGeslotenAgendaModules", "Module");}
+</div>
