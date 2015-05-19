@@ -1,0 +1,175 @@
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+
+@{
+    ViewBag.Title = "Wijzig dossier antwoord";
+}
+
+<h2>Wijzig dossierantwoord</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>DossierAntwoord</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.stemmen)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Titel</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.titel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.titel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Subtitel</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.subtitel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.subtitel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Inhoud</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.inhoud, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.inhoud, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Extra info</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.extraInfo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.extraInfo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Datum</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.datum, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.datum, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Gebruikersnaam</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.gebruikersNaam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.gebruikersNaam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Aantal flags</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.aantalFlags, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.aantalFlags, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Status online</label>
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.statusOnline)
+                    @Html.ValidationMessageFor(model => model.statusOnline, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Layout optie</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.layoutOption, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.layoutOption, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Afbeelding padnaam</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.afbeeldingPath, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.afbeeldingPath, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Textvak 2</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.textvak2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.textvak2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Textvak 3</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.textvak3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.textvak3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tekst kleur</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.foregroundColor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.foregroundColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Achtergrond kleur</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.backgroundColor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.backgroundColor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.backgroundImage, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.backgroundImage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.backgroundImage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">% Volledigheid</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.percentageVolledigheid, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.percentageVolledigheid, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Extra vraag</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.extraVraag, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.extraVraag, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Google maps locatie</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.googleMapsAdress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.googleMapsAdress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Opslaan" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,34 @@
+﻿@model JPP.BL.Domain.Modules.AgendaModule
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div id="UitlegStyleWrapper">
+    <div id="uitlegWrapper">
+        <h1 id="moduleTitel">
+            <br />
+            Maak je punt
+        </h1>
+
+        <h4 id="centraleVraag">
+            @Model.centraleVraag.inhoud
+        </h4>
+
+        <div id="UitlegTextWrapper">
+            <h4>
+                In 'Maak je punt', Krijgt de gebruiker een brede thema voorgeschotelt zoals: <br /> "Op welk thema moet de schepen van Jeugd in het volgende jaar in de eerste plaats inzetten?".<br />
+                De gebruiker hier dan kort en bondig op antwoorden. en is vrij in zijn/haar voorstel, aangezien de brede thema's dit toestaan.<br />
+                <br />
+                Vertel ons jouw visie over deze thema of like de ideëen van andere gebruikers, en help zo deze organisaties of personen een beter idee vormen van wat er leeft bij de inwoners.<br />
+                <br />
+                Vergeet zeker niet vrienden en medeinwoners te overtuigen op jouw visie te stemmen, want als jouw visie wint maak je kans op leuke prijzen.
+                <br />
+                Heb je al zin? Bedenk of like dan een antwoord voor de volgende thema: <br />@(Model.centraleVraag.inhoud) .<br />
+                Wie weet win je, en krijg je een: @(Model.beloning.naam) .<br />
+                <br />
+                Wil je een oplossing bedenken voor problemen waar de stad mee kampt?<br /> wens je je oplossing uitgebreid voor te stellen op jouw eigen pagina?<br />
+                Bekijk dan zeker "Bedenk een oplossing" en laat het ons weten!<br />
+            </h4>
+        </div>
+    </div>
+</div>

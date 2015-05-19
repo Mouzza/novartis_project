@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Microsoft.AspNet.Identity.EntityFramework.IdentityRole>
+
+@{
+    ViewBag.Title = "Roles";
+}
+@if (Request.IsAuthenticated)
+{
+
+<h2>Role</h2>
+
+<p>
+    @Html.ActionLink("Maak nieuwe rol aan", "Create") | @Html.ActionLink("Beheer rollen", "ManageUserRoles")
+</p>
+
+    <table class="table table-striped">
+        <tr class="success">
+            <th>
+                Naam
+            </th>
+            <th id="settingsLayout">
+                Instellingen
+            </th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { roleName = @item.Name }) |
+                @Html.ActionLink("Details", "Details", new { roleName = @item.Name }) |
+                <span onclick="return confirm('Wilt u het zeker verwijderen')"><a href="Roles/Delete?roleName=@item.Name" class="delLink" style="color:red;">Delete</a></span>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<a href="@Url.Action("Index", "Admin")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+
+}
+

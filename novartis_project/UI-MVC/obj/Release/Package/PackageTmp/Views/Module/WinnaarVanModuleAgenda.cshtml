@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Antwoorden.AgendaAntwoord>
+@using PagedList
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Menu";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/WinnaarPagina.css">
+
+<div class="containerButton">
+
+    @if (Model.ElementAt(1).module.centraleVraag.aantalWinAntwoorden == 3)
+    {
+
+
+        <a href="@Url.Action("Dossier","Module")" class="ButtonDossier"><img src="~/Images/Winnaars/NumberTwo.png" /><h3>TweedePlaats<br />@(Model.ElementAt(1).titel)</h3></a>
+        <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda" style="box-shadow: 0 0 50px #888888"><img src="~/Images/Winnaars/NumberOne.png" /><h3>EerstePlaats<br />@(Model.ElementAt(0).titel)</h3></a>
+        <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda"><img src="~/Images/Winnaars/NumberThree.png" /><h3>DerdePlaats<br />@(Model.ElementAt(2).titel)</h3></a>
+
+
+    }
+    else if (Model.ElementAt(1).module.centraleVraag.aantalWinAntwoorden == 2)
+    {
+
+
+        <a href="@Url.Action("Dossier","Module")" class="ButtonDossier"><img src="~/Images/Winnaars/NumberTwo.png" /><h3>TweedePlaats<br />@(Model.ElementAt(1).titel)</h3></a>
+        <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda" style="box-shadow: 0 0 50px #888888"><img src="~/Images/Winnaars/NumberOne.png" /><h3>EerstePlaats<br />@(Model.ElementAt(0).titel)</h3></a>
+        <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda"><img src="~/Images/Winnaars/NumberThree.png" /><h3>Net niet gehaald!<br />@(Model.ElementAt(2).titel)</h3></a>
+
+
+    }
+    else
+    {
+
+
+        <a href="@Url.Action("Dossier","Module")" class="ButtonDossier"><img src="~/Images/Winnaars/NumberTwo.png" /><h3>Net niet gehaald!<br />@(Model.ElementAt(1).titel)</h3></a>
+        <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda" style="box-shadow: 0 0 50px #888888"><img src="~/Images/Winnaars/NumberOne.png" /><h3>EerstePlaats<br />@(Model.ElementAt(0).titel)</h3></a>
+        <a href="@Url.Action("Agenda","Module")" class="ButtonAgenda"><img src="~/Images/Winnaars/NumberThree.png" /><h3>Net niet gehaald!<br />@(Model.ElementAt(2).titel)</h3></a>
+
+
+
+    }
+
+</div>
+<div class="table-title">
+    <h3>Top @(Model.Count)</h3>
+</div>
+
+<div id="VolgOpLayout">
+    <table class="table-fill">
+        <thead>
+            <tr>
+                <th class="text-left">
+                    Gebruikersnaam
+                </th>
+                <th class="text-left">
+                    Titel
+                </th>
+                <th>
+                    AantalStemmen
+                </th>
+            </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody class="table-hover" >
+                <tr>
+                    <td class=" text-left">
+                        <a href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.gebruikersNaam)</a>
+
+                    </td>
+                    <td class="text-left">
+                        <a href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.titel)</a>
+                    </td>
+                    <td class="text-left">
+                        <a href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})">@Html.DisplayFor(modelItem => item.stemmen.Count)</a>
+                    </td>
+                </tr>
+            </tbody>
+
+        }
+    </table>
+
+</div>
+
+<script>
+
+        function goToPagina(element) {
+            window.location = $(element).find("#paginaLink").attr("href");
+            return false;
+        };
+</script>

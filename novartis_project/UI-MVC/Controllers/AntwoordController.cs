@@ -402,7 +402,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossAntwoord.googleMapsAdress,
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
-                    backgroundColor = dossAntwoord.backgroundColor
+                    backgroundColor = dossAntwoord.backgroundColor,
+                    evenementen = new List<Evenement>()
 
                 };
 
@@ -519,7 +520,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossAntwoord.googleMapsAdress,
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
-                    backgroundColor = dossAntwoord.backgroundColor
+                    backgroundColor = dossAntwoord.backgroundColor,
+                    evenementen = new List<Evenement>()
 
                 };
 
@@ -626,7 +628,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossAntwoord.googleMapsAdress,
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
-                    backgroundColor = dossAntwoord.backgroundColor
+                    backgroundColor = dossAntwoord.backgroundColor,
+                    evenementen = new List<Evenement>()
 
                 };
 
@@ -732,7 +735,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossAntwoord.googleMapsAdress,
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
-                    backgroundColor = dossAntwoord.backgroundColor
+                    backgroundColor = dossAntwoord.backgroundColor,
+                    evenementen = new List<Evenement>()
 
                 };
 
@@ -842,7 +846,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossAntwoord.googleMapsAdress,
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
-                    backgroundColor = dossAntwoord.backgroundColor
+                    backgroundColor = dossAntwoord.backgroundColor,
+                    evenementen = new List<Evenement>()
 
                 };
 
@@ -1574,7 +1579,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     statusOnline = true,
                     inhoud = agendaAntwoord.inhoud,
                     subtitel = agendaAntwoord.subtitel,
-                    titel = agendaAntwoord.titel
+                    titel = agendaAntwoord.titel,
+                    evenementen = new List<Evenement>()
+                  
 
                 };
 
