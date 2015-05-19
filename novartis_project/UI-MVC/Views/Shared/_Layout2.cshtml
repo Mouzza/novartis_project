@@ -49,12 +49,12 @@
                         @if (Request.IsAuthenticated)
                         {
                             <li id="menuItemFocus">@Html.ActionLink("Mijn account", "Index", "Manage")</li>
-                            <li id="menuItemFocus">@Html.ActionLink("Mijn antwoorden", "Manage", "Antwoord")</li>
+                            <li id="menuItemFocus">@{ Html.RenderAction("MijnAntwoordenMenu", "Antwoord");}</li>
 
                         }
                         @if (User.IsInRole("Admin"))
                         {
-                            <li id="menuItemFocus2">@Html.ActionLink("Mijn modules", "Manage", "Module")</li>
+                            <li id="menuItemFocus2">@{ Html.RenderAction("MijnModuleMenu", "Module");}</li>
                              <li id="menuItemFocus2">@Html.ActionLink("Admin paneel", "Index", "Admin")</li>
 
                         }

@@ -31,6 +31,16 @@ namespace JPP.UI.Web.MVC.Controllers
         
         }
 
+        public ActionResult MijnAntwoordenMenu()
+        {
+            int aantal = antwManager.readAllAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() & antw.statusOnline==true).Count();
+            ViewBag.Aantal = "Mijn antwoorden(" + aantal + ")";
+            return PartialView();
+
+        }
+
+     
+
         public ActionResult MijnAntwoorden()
         {
             return View();
@@ -44,6 +54,92 @@ namespace JPP.UI.Web.MVC.Controllers
 
             return View();
         }
+
+    
+        public ActionResult _Wijzig(int id)
+        {
+            AgendaAntwoord agendaAntwoord = antwManager.readAgendaAntwoord(id);
+
+            return View(agendaAntwoord);
+        }
+
+        [HttpPost]
+        public ActionResult _Wijzig(AgendaAntwoord agendaAntwoord, string type)
+        {
+            try
+            {
+                AgendaAntwoord agendaAntwoordX = antwManager.readAgendaAntwoord(agendaAntwoord.ID);
+                agendaAntwoordX.titel = agendaAntwoord.titel;
+                agendaAntwoordX.subtitel = agendaAntwoord.subtitel;
+                antwManager.updateAgendaAntwoord(agendaAntwoordX);
+
+                if (type == "ActieveAgendaModule")
+                {
+                    return RedirectToAction("Agenda", "Module");
+
+                }
+                else if (type == "MijnAntwoorden")
+                {
+                    return RedirectToAction("MijnAntwoorden", "Antwoord");
+                }
+                else
+                {
+                    return View();
+                }
+
+
+
+            }
+            catch
+            {
+                return View();
+            }
+
+
+
+        }
+
+        public ActionResult Edit(int id)
+        {
+            DossierAntwoord dossierAntwoord = antwManager.readDossierAntwoord(id);
+
+            return View(dossierAntwoord);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(DossierAntwoord dossierAntwoord, int? moduleId, string type)
+        {
+            try
+            {
+
+                antwManager.updateDossierAntwoord(dossierAntwoord);
+
+                if (type == "AdminDossier")
+                {
+                    return RedirectToAction("DossAntwoorden", "Antwoord", new { id = moduleId });
+
+                }
+                else if (type == "MijnDossierModules")
+                {
+                    return RedirectToAction("DossAntwoorden", "Antwoord", new { id = moduleId });
+
+                }
+                else
+                {
+                    return View();
+                }
+
+
+
+            }
+            catch
+            {
+                return View();
+            }
+
+        }
+
 
         public ActionResult Wijzig(int id)
         {
@@ -69,10 +165,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     return RedirectToAction("Dossier", "Module");
 
-                }
-                else if (type == "ActieveAgenaModule")
-                {
-                    return RedirectToAction("Agenda", "Module");
                 }
                 else if (type == "MijnDossiers")
                 {
@@ -1269,27 +1361,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         
-        // GET: Antwoord/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: Antwoord/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Antwoord/Delete/5
         public ActionResult Delete(int id)
@@ -1330,16 +1402,28 @@ namespace JPP.UI.Web.MVC.Controllers
                 antwManager.removeAntwoord(id);
 
             
-                if (type == "Dossier")
+                if (type == "AgendaModule")
                 {
                     return RedirectToAction("AgdAntwoorden", "Antwoord", new { id = moduleId});
 
-                }else if(type == "Agenda")
+                }else if(type == "DossierModule")
                 {
                     return RedirectToAction("DossAntwoorden", "Antwoord", new { id = moduleId });
                 }else if(type == "MijnDossiers")
                 {
                     return RedirectToAction("MijnDossiers", "Antwoord");
+                }
+                else if (type == "MijnAntwoorden")
+                {
+                    return RedirectToAction("MijnAntwoorden", "Antwoord");
+                }
+                else if (type == "ActieveDossierModule")
+                {
+                    return RedirectToAction("Dossier", "Module");
+                }
+                else if (type == "ActieveAgendaModule")
+                {
+                    return RedirectToAction("Agenda", "Module");
                 }
                 else
                 {

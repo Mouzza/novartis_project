@@ -194,7 +194,10 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(dossierAntwoorden);
         }
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/master
         [HttpGet]
         [ActionName("getUserAgendaAntwoord")]
         public IHttpActionResult getUserAgendaAntwoord(string username)
@@ -203,7 +206,7 @@ namespace JPP.UI.Web.MVC.Controllers
             List<ANDROIDAgendaAntwoord> returnAntw = new List<ANDROIDAgendaAntwoord>();
             foreach (var antwoord in antwoorden)
             {
-                if (antwoord.gebruikersNaam == username)
+                if (antwoord.gebruikersNaam.ToLower() == username.ToLower())
                 {
                     ANDROIDAgendaAntwoord antw = new ANDROIDAgendaAntwoord()
                     {
@@ -231,6 +234,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     {
                         antw.isActieveModule = false;
                     }
+                    returnAntw.Add(antw);
                 }
             }
             return Ok(returnAntw);
