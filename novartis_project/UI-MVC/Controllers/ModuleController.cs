@@ -62,9 +62,8 @@ namespace JPP.UI.Web.MVC.Controllers
                         antwoord = dossierAntwoord
                     };
 
-                    Stem like = stemManager.stemOpAntwoord(nieuwLike);
-                    dossierAntwoord.stemmen.Add(like); 
-                    antwManager.updateDossierAntwoord(dossierAntwoord);
+                    stemManager.stemOpAntwoord(nieuwLike);
+                  
                     return RedirectToAction("Dossier", "Module");
                 }
                 else
@@ -111,9 +110,8 @@ namespace JPP.UI.Web.MVC.Controllers
                         antwoord = agendaAntwoord
                     };
 
-                    Stem like = stemManager.stemOpAntwoord(nieuwLike);
-                    agendaAntwoord.stemmen.Add(like);
-                    antwManager.updateAgendaAntwoord(agendaAntwoord);
+                    stemManager.stemOpAntwoord(nieuwLike);
+                 
                     return RedirectToAction("Agenda", "Module");
                 }
                 else
