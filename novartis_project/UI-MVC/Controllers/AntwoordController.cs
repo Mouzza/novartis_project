@@ -1232,16 +1232,39 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 case "top25":
                     dossierAntwoorden = antwManager.sortDossierAntwoordMeesteLikes(dossierAntwoorden);
-                    for (int i = 0; i < 25; i++)
+
+
+                    if (dossierAntwoorden.Count < 25)
                     {
-                        dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                        for (int i = 0; i < dossierAntwoorden.Count; i++)
+                        {
+                            dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 25; i++)
+                        {
+                            dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                        }
                     }
                     break;
                 case "top5":
                     dossierAntwoorden = antwManager.sortDossierAntwoordMeesteLikes(dossierAntwoorden);
-                    for (int i = 0; i < 5; i++)
+                 
+                    if (dossierAntwoorden.Count < 5)
                     {
-                        dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                        for (int i = 0; i < dossierAntwoorden.Count; i++)
+                        {
+                            dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            dossierAntwoorden2.Add(dossierAntwoorden[i]);
+                        }
                     }
                     break;
                 case "recent":
@@ -1289,16 +1312,37 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 case "top25":
                     agendaAntwoorden = antwManager.sortAgendaAntwoordMeesteLikes(agendaAntwoorden);
-                    for (int i = 0; i < 25; i++)
+                    if (agendaAntwoorden.Count < 25)
                     {
-                        agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                        for (int i = 0; i < agendaAntwoorden.Count; i++)
+                        {
+                            agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                        }
                     }
+                    else
+                    {
+                        for (int i = 0; i < 25; i++)
+                        {
+                            agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                        }
+                    }
+                  
                         break;
                 case "top5":
                         agendaAntwoorden = antwManager.sortAgendaAntwoordMeesteLikes(agendaAntwoorden);
-                        for (int i = 0; i < 5; i++)
+                        if (agendaAntwoorden.Count < 5)
                         {
-                            agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                            for (int i = 0; i < agendaAntwoorden.Count; i++)
+                            {
+                                agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                            }
+                        }
+                        else
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                agendaAntwoorden2.Add(agendaAntwoorden[i]);
+                            }
                         }
                         break;
                 case "recent":
