@@ -93,15 +93,15 @@ namespace JPP.UI.Web.MVC.Models
         public int aantalFlags { get; set; }
         public string subTitel { get; set; }
         public int moduleID { get; set; }
-<<<<<<< HEAD
+
         public Boolean statusOnline { get; set; }
         public Boolean isActieveModule { get; set; }
         //public List<ANDROIDVasteTag> vasteTags { get; set; }
         //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
-=======
+
        // public List<ANDROIDVasteTag> vasteTags { get; set; }
        // public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
->>>>>>> origin/master
+
 
     }
     public class ANDROIDComment
