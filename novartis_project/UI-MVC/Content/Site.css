@@ -394,12 +394,19 @@ textarea {
 }
 
 #extraInfoParagraaf {
-    float: right;
+    float: left;
 }
 
 #zelfdeGebruikerSpan {
-    color: green;
+    color: white;
     font-weight: bold;
+    text-decoration:none;
+}
+
+#zelfdeGebruikerSpan:hover {
+    color: white;
+    font-weight: bold;
+    text-decoration:none;
 }
 
 .verborgen {
@@ -714,8 +721,26 @@ textarea {
     background-color: #5E889E;
 }
 
+#aantalStemmenWinnaar {
+    color: #FFF;
+    width: 6%;
+    font-size: 40px;
+    background-color: #FDD017;
+}
+
+
+
 #antwoordInhoud {
     float:left;
+    font-size: 23px;
+    font-weight: bold;
+    border: #D3D3D3;
+    width: 100%;
+}
+
+#antwoordInhoudTwo {
+    float:left;
+    color:white;
     font-size: 23px;
     font-weight: bold;
     border: #D3D3D3;
@@ -728,16 +753,14 @@ textarea {
     cursor: pointer;
     height: 100px;
 }
-#tableAntwoord table:hover{
-    box-shadow: 0px 0px 60px rgba(255,129,0,0.8);
-}
+
 
 #tableAntwoord .table>tbody>tr>td{
     padding-top: 20px;
 }
 
 #tableAntwoordWinnaar table {
-    border: 5px solid #FFD700;
+    /*border: 5px solid #FFD700;*/
     box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
     cursor: pointer;
 }
@@ -1452,6 +1475,7 @@ textarea {
     height: 100px;
     width: 100%;
     display: table;
+    height: 40px;
 }
 
 #MainFilterImgAZ, #MainFilterImgZA, #MainFilterImgOJ, #MainFilterImgJO {
@@ -1681,7 +1705,6 @@ textarea {
 }
 
 #tableAntwoord{
-    height: 150px;
     display: table;
     width: 100%;
 }
@@ -1825,6 +1848,12 @@ textarea {
     margin-left:3%;
 }
 
+#aantalStemmenWinnaar img{
+    height: 50px;
+    width: 50px;
+    margin-left:3%;
+}
+
 #DossierVoteUpbuttonWrapper{
     text-decoration: none;
 
@@ -1951,6 +1980,12 @@ div.table-title {
   color: #FFFFFF;
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
+       /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
 .table-fill tr:first-child {
@@ -2043,6 +2078,12 @@ div.table-title {
     color: #FFF;
     text-decoration: none;
     display: block;
+         /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
 
 #VolgOpLayout table tr th{
@@ -2064,3 +2105,170 @@ div.table-title {
     font-size: 150%;
     text-shadow: 0px 0px 10px #1A9ADD;
 }
+
+.table-fill-actief {
+  background: white;
+  border-radius: 3px;
+  border-collapse: collapse;
+  height: 100%;
+  margin: auto;
+  max-width: 100%;
+  padding: 5px;
+  width: 80%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+  margin-bottom: 10px;
+}
+
+.table-fill-actief .mijnModuleInstellingen{
+    cursor:default;
+    font-size:15px;
+}
+
+.table-fill-actief .mijnModuleInstellingen:hover{
+    background-color:#ebebeb;
+    cursor:default;
+}
+.table-fill-actief .mijnModuleInstellingen a:hover{
+    cursor:default;
+    font-size:18px;
+}
+.table-fill-actief .mijnModuleInstellingen h4 a:hover{
+    cursor:default;
+    font-size:22px;
+}
+
+.table-fill-actief th {
+  color: #D5DDE5;
+  background: #1b1e24;
+  border-bottom: 4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size: 23px;
+  font-weight: 100;
+  padding: 24px;
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+}
+
+.table-fill-actief th:first-child {
+  border-top-left-radius: 3px;
+}
+
+.table-fill-actief th:last-child {
+  border-top-right-radius: 3px;
+  border-right: none;
+}
+
+.table-fill-actief tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+  color: #666B85;
+  font-size: 16px;
+  font-weight: normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+ 
+}
+.table-fill-actief tbody{
+     cursor:pointer;
+}
+
+.table-fill-actief tr:hover td {
+  background: #4E5066;
+  color: #FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
+
+
+.table-fill-actief tr:first-child {
+  border-top: none;
+}
+
+.table-fill-actief tr:last-child {
+  border-bottom: none;
+}
+
+.table-fill-actief tr:nth-child(odd) td {
+  background: #EBEBEB;
+}
+
+.table-fill-actief tr:nth-child(odd):hover td {
+  background: #4E5066;
+}
+
+.table-fill-actief tr:last-child td:first-child {
+  border-bottom-left-radius: 3px;
+}
+
+.table-fill-actief tr:last-child td:last-child {
+  border-bottom-right-radius: 3px;
+}
+
+.table-fill-actief td {
+  background: #FFFFFF;
+  padding: 20px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+.table-fill-actief td:last-child {
+  border-right: 0px;
+}
+
+.table-fill-actief th.text-left {
+  text-align: left;
+}
+
+.table-fill-actief th.text-center {
+  text-align: center;
+}
+
+.table-fill-actief th.text-right {
+  text-align: right;
+}
+
+.table-fill-actief td.text-left {
+  text-align: left;
+}
+
+.table-fill-actief td.text-center {
+  text-align: center;
+}
+
+.table-fill-actief td.text-right {
+  text-align: right;
+}
+
+#ShowOnHover{
+    display: none;
+    height:145%;
+}
+.table-hover tr:hover #ShowOnHover{
+         /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+
+    display: block;
+    height:145%;
+
+
+}
+
+.table-hover tr:hover #antwoordInhoud{
+    display:none;
+     /* HOVER ON*/
+    -webkit-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
+}
+
