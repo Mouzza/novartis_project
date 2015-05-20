@@ -231,6 +231,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     {
                         antw.isActieveModule = false;
                     }
+                    returnAntw.Add(antw);
                 }
             }
             return Ok(returnAntw);
