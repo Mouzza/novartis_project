@@ -691,7 +691,7 @@ textarea {
             }
 
                 #moduleLeftMenuSection ul li a:hover {
-                    font-size: 200%;
+                    /*font-size: 200%;*/
                     color: #1A9ADD;
                 }
 
@@ -2103,7 +2103,7 @@ div.table-title {
 
 #activeSort{
     font-size: 150%;
-    text-shadow: 0px 0px 10px #1A9ADD;
+    /*text-shadow: 0px 0px 10px #1A9ADD;*/
 }
 
 .table-fill-actief {
