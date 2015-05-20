@@ -131,6 +131,8 @@
                                             </a>
                                         }
                                         | <span id="extrainfoSpan">Datum: </span> @item.datum
+                                        <br />
+                                        <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
                                     </p>
                                     <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
     <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
@@ -201,6 +203,8 @@
                                         </a>
                                     }
                                     | <span id="extrainfoSpan">Datum: </span> @item.datum
+                                    <br />
+                                    <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
                                 </p>
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                     <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>

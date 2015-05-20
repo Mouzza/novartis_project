@@ -401,6 +401,7 @@ textarea {
     color: white;
     font-weight: bold;
     text-decoration:none;
+
 }
 
 #zelfdeGebruikerSpan:hover {
@@ -739,13 +740,14 @@ textarea {
 }
 
 #antwoordInhoudTwo {
-    float:left;
     color:white;
     font-size: 23px;
     font-weight: bold;
     border: #D3D3D3;
-    width: 100%;
+    width: 30%;
 }
+
+
 
 #tableAntwoord table {
     border: #D3D3D3;
@@ -2272,3 +2274,20 @@ div.table-title {
     transition: all 500ms ease;
 }
 
+#FlagButton{
+    float:left;
+    margin-top: 1.5%;
+    height: 25px;
+    width: 25px;
+    position:relative;
+}
+
+#FlagButton img{
+    height: 25px;
+    width: 25px;
+}
+
+#FlagButton img:hover{
+    height: 28px;
+    width: 28px;
+}
