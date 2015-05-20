@@ -127,14 +127,14 @@
                                 </p>
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                     <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                                 </div>
                             </td>
                             <td id="antwoordInhoud">
                                 @Html.DisplayFor(modelItem => item.titel)
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                     <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                                 </div>
                                 <br />
                                 <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
@@ -197,7 +197,7 @@
                                 </p>
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                     <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    <a href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                                 </div>
                             </td>
 
@@ -205,7 +205,7 @@
                                 @Html.DisplayFor(modelItem => item.titel)
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                     <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    <a href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                                 </div>
                                 <br />
                                 <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
@@ -216,7 +216,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <a id="paginaLink" href="@Url.Action("Dossier", "Antwoord", new {id = item.ID})"></a>
+                <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})"></a>
 
             </div>
         }
