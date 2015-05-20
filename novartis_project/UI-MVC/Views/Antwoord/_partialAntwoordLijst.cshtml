@@ -87,7 +87,7 @@
             {
                 <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
                     <table class="table-fill-actief">
-                        <tbody class="table-hover-actief">
+                        <tbody class="table-hover">
                             <tr>
 
                                 @if (ViewBag.winnaar == item.stemmen.Count)
@@ -207,7 +207,6 @@
                                     <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUp", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
                                 </div>
                             </td>
-
                             <td id="antwoordInhoud">
                                 @Html.DisplayFor(modelItem => item.titel)
                                 <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
