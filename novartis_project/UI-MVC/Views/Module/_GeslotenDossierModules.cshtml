@@ -29,8 +29,8 @@
             
                 @foreach (var item in Model)
                 {
-                    <table class="table-fill-actief">
-                        <tbody class="table-hover-actief">
+                    <table class="table-fill">
+                        <tbody class="table-hover">
                             <tr>
                                 <td class="text-left">
                                     <a href="@Url.Action("WinnaarVanModule", "Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)</a>
