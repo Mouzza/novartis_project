@@ -98,6 +98,12 @@ namespace JPP.DAL.EF
             return gebruiker;
         }
 
+        public List<Gebruiker> getGebruikers()
+        {
+            List<Gebruiker> gebruikers = dbcontext.gebruiker.ToList();
+            return gebruikers;
+        }
+
         public Moderator getModerator(int ID)
         {
             Moderator moderator = dbcontext.moderator.Find(ID);

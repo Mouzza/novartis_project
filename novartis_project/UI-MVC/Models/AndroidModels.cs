@@ -166,6 +166,7 @@ namespace JPP.UI.Web.MVC.Models
 
     public class AndroidGebruiker
     {
+        public int id { get; set; }
         [Required]
         [StringLength(12, ErrorMessage = "{0} moet minstens {2} karakters en max 12 karakters lang zijn. ", MinimumLength = 6)]
         [Display(Name = "Gebruikersnaam")]
@@ -195,6 +196,7 @@ namespace JPP.UI.Web.MVC.Models
         [Display(Name = "Herhaal wachtwoord")]
         [Compare("Password", ErrorMessage = "Het wachtwoord en confirmatie wachtwoord komen niet overeen.")]
         public string ConfirmPassword { get; set; }
+        public Boolean active { get; set; }
     }
 }
 
