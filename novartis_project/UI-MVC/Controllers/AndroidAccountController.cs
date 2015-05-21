@@ -102,7 +102,7 @@ namespace JPP.UI.Web.MVC.Controllers
         [ActionName("login")]
         public async Task<IHttpActionResult> Login(ANDROIDLoginView model)
         {
-            User us = null;
+            ANDROIDGebruiker us = null;
             // Require the user to have a confirmed email before they can log on.
             var user = await UserManager.FindByNameAsync(model.Name);
             if (user == null)

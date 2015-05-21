@@ -406,6 +406,10 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     dossAntwoord.backgroundColor = "Black";
                 }
+                if (file == null)
+                {
+                    
+                }
 
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
