@@ -67,7 +67,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         [HttpPost]
         [ActionName("Register")]
-        public async Task<IHttpActionResult> Register(AndroidGebruiker model)
+        public async Task<IHttpActionResult> Register(ANDROIDGebruiker model)
         {
                 var user = new User
                 {
@@ -81,7 +81,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     Zipcode = model.Zipcode,
                     LockoutEnabled=false,
                     EmailConfirmed=true,
-                    AccessFailedCount=0,
+                    AccessFailedCount=0
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -94,31 +94,30 @@ namespace JPP.UI.Web.MVC.Controllers
             return Ok(model);
         }
         #endregion
-
+        private ApplicationDbContext apc = new ApplicationDbContext();
         #region login
         [HttpGet]
         [ActionName("login")]
-        public IHttpActionResult login(string user,string password)
+        public IHttpActionResult login(string userN, string pas)
         {
-            List<Gebruiker> gebruikers = modman.readGebruikers();
-            AndroidGebruiker returnGebruiker = new AndroidGebruiker();
-            foreach(var geb in gebruikers)
+            List<User> users = apc.Users.ToList();
+            ANDROIDGebruiker returnUser = new ANDROIDGebruiker();
+            foreach(var user in users)
             {
-                if (geb.gebruikersnaam == user && geb.wachtwoord == password)
+                if (user.UserName == userN && user.PasswordHash == pas)
                 {
-                    returnGebruiker.active = geb.active;
-                    returnGebruiker.Birthday = geb.geboorteDatum;
-                    returnGebruiker.ConfirmPassword = geb.wachtwoord;
-                    returnGebruiker.Email = geb.email;
-                    returnGebruiker.FirstName = geb.voornaam;
-                    returnGebruiker.id = geb.id;
-                    returnGebruiker.LastName = geb.achternaam;
-                    returnGebruiker.Name = geb.gebruikersnaam;
-                    returnGebruiker.Password = geb.wachtwoord;
-                    returnGebruiker.Zipcode = geb.postcode;
+                    returnUser.Birthday = user.Birthday;
+                    returnUser.Email = user.Id;
+                    returnUser.FirstName = user.FirstName ;
+                    returnUser.id = user.Id;
+                    returnUser.LastName = user.LastName;
+                    returnUser.Name = user.UserName;
+                    returnUser.Password = user.PasswordHash;
+                    returnUser.Zipcode = user.Zipcode;
+                    break;
                 }
             }
-            return Ok(returnGebruiker);
+            return Ok(returnUser);
         }
         #endregion
 
