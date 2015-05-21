@@ -3,6 +3,9 @@
 @{
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "eigenpagina";
+
+    var base64 = Convert.ToBase64String(Model.afbeeldingByte);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 }
 <link rel="stylesheet" type="text/css" href="~/Content/DossierModelOne.css">
 
@@ -46,15 +49,15 @@
 {
     //nothing happens
 }
-else if (Model.evenementen.ElementAt(1).title == null)
+else if (Model.evenementen.Count == 1)
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
                 <div class="dot" id="one">
                     <span id="dotSpan"></span>
-                    <h3>1280</h3>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
                 </div>
             </div>
 
@@ -71,19 +74,19 @@ else if (Model.evenementen.ElementAt(1).title == null)
 
     }
 }
-else if (Model.evenementen.ElementAt(2).title == null)
+else if (Model.evenementen.Count == 2)
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
                 <div class="dot" id="one">
                     <span id="dotSpan"></span>
-                    <h3>1280</h3>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
                 </div>
                 <div class="dot" id="two">
                     <span id="dotSpan"></span>
-                    <h3>1649</h3>
+                    <h3>@Model.evenementen.ElementAt(1).startDatum</h3>
                 </div>
 
                 <div class="inside"></div>
@@ -108,23 +111,23 @@ else if (Model.evenementen.ElementAt(2).title == null)
 
     }
 }
-else if (Model.evenementen.ElementAt(3).title == null)
+else if (Model.evenementen.Count == 3)
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
                 <div class="dot" id="one">
                     <span id="dotSpan"></span>
-                    <h3>1280</h3>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
                 </div>
                 <div class="dot" id="two">
                     <span id="dotSpan"></span>
-                    <h3>1649</h3>
+                    <h3>@Model.evenementen.ElementAt(1).startDatum</h3>
                 </div>
                 <div class="dot" id="three">
                     <span id="dotSpan"></span>
-                    <h3>1831</h3>
+                    <h3>@Model.evenementen.ElementAt(2).startDatum</h3>
                 </div>
                 <div class="inside"></div>
             </div>
@@ -156,7 +159,7 @@ else if (Model.evenementen.ElementAt(3).title == null)
 }
 else
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
@@ -213,39 +216,39 @@ else
 
 
 
+<div id="ModelOneWrapper" style="background-color:@(Model.backgroundColor)">
+
+    <div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
+    <div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+    <div id="DossierModelAfbeelding">
+        <img src="@imgSrc" />
+        <div id="DossierModelTextVakEen" style="color:@(Model.foregroundColor)">
+            <p>@(Model.inhoud)</p>
+
+        </div><!--Hier moet de eerste textvak van de pagina komen-->
 
 
-<div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
-<div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
-<div id="DossierModelAfbeelding"> <img src=@(Model.afbeeldingPath) />
-    <div id="DossierModelTextVakEen"> <p>@(Model.inhoud)</p>
-    
-</div><!--Hier moet de eerste textvak van de pagina komen-->
-    
     </div><!--Hier moet de afbeelding van de pagina komen-->
 
 
-<div id="TweeTextvakWrapper">
-    <div id="DossierModelTextVakTwee">
-        <p>
-            @(Model.textvak2)
-        </p>
-    </div><!--Hier moet de tweedetextvak van de pagina komen-->
+    <div id="TweeTextvakWrapper">
+        <div id="DossierModelTextVakTwee" style="color:@(Model.foregroundColor)">
+            <p>
+                @(Model.textvak2)
+            </p>
+        </div><!--Hier moet de tweedetextvak van de pagina komen-->
 
-    <div id="DossierModelTextVakDrie">
-        <p>
-            @(Model.textvak3)
-        </p>
-    </div><!--Hier moet de derde textvak van de pagina komen-->
-</div>
-
-
-@*<div id="map-canvas"></div>*@
-<iframe id="map-canvas" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
-<div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+        <div id="DossierModelTextVakDrie" style="color:@(Model.foregroundColor)">
+            <p>
+                @(Model.textvak3)
+            </p>
+        </div><!--Hier moet de derde textvak van de pagina komen-->
+    </div>
 
 
-
+    @*<div id="map-canvas"></div>*@
+    <iframe id="map-canvas" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
+    <div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
     @using (Html.BeginForm("DossierModelOne", "Antwoord", new { id = Model.ID }, FormMethod.Post))
     {
         if (Model.statusOnline == false)
@@ -253,3 +256,4 @@ else
             <button type="submit">Publish!</button>
         }
     }
+</div>

@@ -96,7 +96,9 @@ namespace JPP.UI.Web.MVC.Models
 
         public Boolean statusOnline { get; set; }
         public Boolean isActieveModule { get; set; }
-        //public List<ANDROIDVasteTag> vasteTags { get; set; }
+        public List<ANDROIDstem> stemmen { get; set; }
+        public List<ANDROIDEvenement> evenementen { get; set; }
+       //public List<ANDROIDVasteTag> vasteTags { get; set; }
         //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
 
        // public List<ANDROIDVasteTag> vasteTags { get; set; }
@@ -125,8 +127,8 @@ namespace JPP.UI.Web.MVC.Models
         public int moduleID { get; set; }
         //public List<ANDROIDVasteTag> vasteTags { get; set; }
         //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
-        public string afbeeldingPath { get; set; }
-        //public byte[] afbeeldingBytes { get; set; }
+
+        public byte[] afbeeldingByte { get; set; }
         public int percentageVolledigheid { get; set; }
         public Boolean statusOnline { get; set; }
         public List<ANDROIDComment> comments { get; set; }
@@ -140,63 +142,51 @@ namespace JPP.UI.Web.MVC.Models
         public string backgroundColor { get; set; }
         public string backgroundImage { get; set; }
         public Boolean isActieveModule { get; set; }
+        public List<ANDROIDstem> stemmen { get; set; }
+        public List<ANDROIDEvenement> evenementen { get; set; }
+        
     }
 
-    //***********************************************************
-    public class UserModel
+    public class ANDROIDEvenement
     {
-        [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        public string ConfirmPassword { get; set; }
+        public int ID { get; set; }
+        public string title { get; set; }
+        public string evenementText { get; set; }
+        public string locatie { get; set; }
+        public DateTime startDatum { get; set; }
+        public DateTime eindDatum { get; set; }
+        public string urlFacebookEvent { get; set; }
     }
 
     //*********************************************
 
-    public class AndroidGebruiker
+    public class ANDROIDGebruiker
+    {
+
+        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime Birthday { get; set; }
+        public int Zipcode { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        //public Boolean active { get; set; }
+    }
+    public class ANDROIDstem
+    {
+        public int antwoordid { get; set; }
+        public string gebruikersNaam { get; set; }
+    }
+    public class ANDROIDFlag
     {
         public int id { get; set; }
-        [Required]
-        [StringLength(12, ErrorMessage = "{0} moet minstens {2} karakters en max 12 karakters lang zijn. ", MinimumLength = 6)]
-        [Display(Name = "Gebruikersnaam")]
+        public int antwoordid { get; set; }
+        public string gebruikersNaam { get; set; }
+    }
+    public class ANDROIDLoginView
+    {
         public string Name { get; set; }
-        [Required]
-        [Display(Name = "Voornaam")]
-        public string FirstName { get; set; }
-        [Required]
-        [Display(Name = "Achternaam")]
-        public string LastName { get; set; }
-        [Required]
-        [Display(Name = "Geboortedatum")]
-        public DateTime Birthday { get; set; }
-        [Required]
-        [Display(Name = "Postcode")]
-        public int Zipcode { get; set; }
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "{0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Wachtwoord")]
         public string Password { get; set; }
-        [DataType(DataType.Password)]
-        [Display(Name = "Herhaal wachtwoord")]
-        [Compare("Password", ErrorMessage = "Het wachtwoord en confirmatie wachtwoord komen niet overeen.")]
-        public string ConfirmPassword { get; set; }
-        public Boolean active { get; set; }
     }
 }
 

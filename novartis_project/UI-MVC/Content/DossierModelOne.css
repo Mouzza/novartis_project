@@ -401,6 +401,9 @@
 
 
 @media all and (min-width:300px) and (max-width:1400px){
+        #ModelOneWrapper{
+            height:1400px;
+        }
         #DossierModelAfbeelding{
             width: 100%;
             position: relative;

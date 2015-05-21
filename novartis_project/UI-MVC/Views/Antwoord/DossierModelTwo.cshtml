@@ -3,6 +3,8 @@
 @{
     Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "DosierModelTwo";
+    var base64 = Convert.ToBase64String(Model.afbeeldingByte);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 }
 <link rel="stylesheet" type="text/css" href="~/Content/DossierModelOne.css">
 
@@ -12,64 +14,181 @@
 <script src="~/Scripts/TimeLine.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="~/Content/TimeLine.css">
 
-@if (@Model.module.status == false)
+
+@if (Model.evenementen.Count == 0)
 {
-    <div id="TimeLineWrapper">
-        <div id="timeline">
-            <div class="dot" id="one">
-                <span id="dotSpan"></span>
-                <h3>1280</h3>
+    //nothing happens
+}
+else if (Model.evenementen.Count == 1)
+{
+    if (Model.module.eindDatum < DateTime.Now)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
+                </div>
             </div>
-            <div class="dot" id="two">
-                <span id="dotSpan"></span>
-                <h3>1649</h3>
-            </div>
-            <div class="dot" id="three">
-                <span id="dotSpan"></span>
-                <h3>1831</h3>
-            </div>
-            <div class="dot" id="four">
-                <span id="dotSpan"></span>
-                <h3>1992</h3>
-            </div>
-            <div class="inside"></div>
+
         </div>
 
-    </div>
 
 
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
 
-    <article class='modal one'>
-        <h4>26/06 - 1280</h4>
-        <h2>Yo les gars</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-    </article>
 
-    <article class='modal two'>
-        <h4>08/09 - 1649</h4>
-        <h2>Salut les louzeurs</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-    </article>
-
-    <article class='modal three'>
-        <h4>21/07 - 1831</h4>
-        <h2>Eat 'em all !</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-    </article>
-
-    <article class='modal four'>
-        <h4>03/02 - 1992</h4>
-        <h2>Mais pourquoi?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates magnam excepturi laboriosam minima soluta, quae. Sunt repellat totam non, et sed in veniam fuga odio eius! Nesciunt amet optio recusandae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum sit dolor sint amet, corporis aperiam nihil, quas, accusantium enim suscipit rem non possimus officiis. Recusandae hic at, fugiat eos eveniet.</p>
-    </article>
-
+    }
 }
+else if (Model.evenementen.Count == 2)
+{
+    if (Model.module.eindDatum < DateTime.Now)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
+                </div>
+                <div class="dot" id="two">
+                    <span id="dotSpan"></span>
+                    <h3>@Model.evenementen.ElementAt(1).startDatum</h3>
+                </div>
+
+                <div class="inside"></div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+        <article class='modal two'>
+            <h4>@(Model.evenementen.ElementAt(1).startDatum) - @(Model.evenementen.ElementAt(1).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(1).title)</h2>
+            <p>@(Model.evenementen.ElementAt(1).locatie) <br />@(Model.evenementen.ElementAt(1).evenementText)</p>
+        </article>
+
+
+    }
+}
+else if (Model.evenementen.Count == 3)
+{
+    if (Model.module.eindDatum < DateTime.Now)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
+                </div>
+                <div class="dot" id="two">
+                    <span id="dotSpan"></span>
+                    <h3>@Model.evenementen.ElementAt(1).startDatum</h3>
+                </div>
+                <div class="dot" id="three">
+                    <span id="dotSpan"></span>
+                    <h3>@Model.evenementen.ElementAt(2).startDatum</h3>
+                </div>
+                <div class="inside"></div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+        <article class='modal two'>
+            <h4>@(Model.evenementen.ElementAt(1).startDatum) - @(Model.evenementen.ElementAt(1).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(1).title)</h2>
+            <p>@(Model.evenementen.ElementAt(1).locatie) <br />@(Model.evenementen.ElementAt(1).evenementText)</p>
+        </article>
+
+        <article class='modal three'>
+            <h4>@(Model.evenementen.ElementAt(2).startDatum) - @(Model.evenementen.ElementAt(2).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(2).title)</h2>
+            <p>@(Model.evenementen.ElementAt(2).locatie) <br />@(Model.evenementen.ElementAt(2).evenementText)</p>
+        </article>
+
+
+    }
+}
+else
+{
+    if (Model.module.eindDatum < DateTime.Now)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(0).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="dot" id="two">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(1).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="dot" id="three">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(2).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="dot" id="four">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(3).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="inside"></div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+        <article class='modal two'>
+            <h4>@(Model.evenementen.ElementAt(1).startDatum) - @(Model.evenementen.ElementAt(1).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(1).title)</h2>
+            <p>@(Model.evenementen.ElementAt(1).locatie) <br />@(Model.evenementen.ElementAt(1).evenementText)</p>
+        </article>
+
+        <article class='modal three'>
+            <h4>@(Model.evenementen.ElementAt(2).startDatum) - @(Model.evenementen.ElementAt(2).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(2).title)</h2>
+            <p>@(Model.evenementen.ElementAt(2).locatie) <br />@(Model.evenementen.ElementAt(2).evenementText)</p>
+        </article>
+
+        <article class='modal four'>
+            <h4>@(Model.evenementen.ElementAt(3).startDatum) - @(Model.evenementen.ElementAt(3).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(3).title)</h2>
+            <p>@(Model.evenementen.ElementAt(3).locatie) <br />@(Model.evenementen.ElementAt(3).evenementText)</p>
+        </article>
+
+    }
+}
+
 
 <div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
 <div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div>
 
 <div id="DossierModelTwoAfbeelding">
-    <img src=@(Model.afbeeldingPath) />
+    <img src=@imgSrc />
 
   <iframe id="map-canvasTwo" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
 
@@ -98,6 +217,12 @@
         </div><!--Hier moet de derde textvak van de pagina komen-->
     </div>
     </div>
-
+@using (Html.BeginForm("DossierModelTwo", "Antwoord", new { id = Model.ID }, FormMethod.Post))
+{
+    if (Model.statusOnline == false)
+    {
+        <button type="submit">Publish!</button>
+    }
+}
 
 

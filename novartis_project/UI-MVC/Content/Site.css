@@ -231,8 +231,35 @@ textarea {
 }
 
     .centraal2 img {
-        border: 2px solid black;
         width: 80%;
+    }
+
+
+    .centraal3 {
+        margin-top: -60px;
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+    .centraal3 img {
+        width: 80%;
+        height: 100%;
+        width: 50%;
+    }
+
+
+
+    @media screen and (min-width: 993px) and (max-width: 1250px){
+        .centraal3{
+            margin-top: -35px;
+        }
+    }
+
+        @media screen and (max-width: 992px){
+        .centraal3{
+            margin-top: 0px;
+        }
     }
 
 #mainContent {
@@ -459,6 +486,40 @@ textarea {
     -ms-transition: all 500ms ease;
     -o-transition: all 500ms ease;
     transition: all 500ms ease;
+}
+
+@media screen and (max-height: 660px) {
+
+    #eersteMenuItem h2{
+        font-size: 20px;
+
+    }
+    #eersteMenuItem h4{
+        font-size: 10px;
+
+    }
+
+    #tweedeMenuItem h2{
+        font-size: 20px;
+    }
+
+    #tweedeMenuItem h4{
+        font-size: 10px;
+    }
+
+    #eersteMenuItem:hover, #tweedeMenuItem:hover, #derdeMenuItem:hover {
+    font-size: 25px;
+}
+
+    #eersteMenuItem:hover h2, #tweedeMenuItem:hover h2, #derdeMenuItem:hover h2 {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    #eersteMenuItem:hover h4, #tweedeMenuItem:hover h4, #derdeMenuItem:hover h4 {
+        font-size: 13px;
+        font-weight: bold;
+    }
 }
 
 #tweedeMenuItem {
@@ -2248,7 +2309,7 @@ div.table-title {
 
 #ShowOnHover{
     display: none;
-    height:145%;
+    height: 100%
 }
 .table-hover tr:hover #ShowOnHover{
          /* HOVER ON*/
@@ -2259,12 +2320,11 @@ div.table-title {
     transition: all 500ms ease;
 
     display: block;
-    height:145%;
 
 
 }
 
-.table-hover tr:hover #antwoordInhoud{
+.table-hover tr:hover #HideOnHover{
     display:none;
      /* HOVER ON*/
     -webkit-transition: all 500ms ease;
@@ -2280,6 +2340,7 @@ div.table-title {
     height: 25px;
     width: 25px;
     position:relative;
+   
 }
 
 #FlagButton img{
@@ -2288,6 +2349,11 @@ div.table-title {
 }
 
 #FlagButton img:hover{
-    height: 28px;
-    width: 28px;
+    height: 35px;
+    width: 35px;
 }
+
+#ModelOneWrapper{
+    height: 1200px;
+}
+

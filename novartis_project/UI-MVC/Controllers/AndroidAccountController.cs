@@ -67,7 +67,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         [HttpPost]
         [ActionName("Register")]
-        public async Task<IHttpActionResult> Register(AndroidGebruiker model)
+        public async Task<IHttpActionResult> Register(ANDROIDGebruiker model)
         {
                 var user = new User
                 {
@@ -81,7 +81,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     Zipcode = model.Zipcode,
                     LockoutEnabled=false,
                     EmailConfirmed=true,
-                    AccessFailedCount=0,
+                    AccessFailedCount=0
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -94,33 +94,50 @@ namespace JPP.UI.Web.MVC.Controllers
             return Ok(model);
         }
         #endregion
+        private ApplicationDbContext apc = new ApplicationDbContext();
+       
 
-        #region login
-        [HttpGet]
+      
+        [HttpPost]
         [ActionName("login")]
-        public IHttpActionResult login(string user,string password)
+        public async Task<IHttpActionResult> Login(ANDROIDLoginView model)
         {
-            List<Gebruiker> gebruikers = modman.readGebruikers();
-            AndroidGebruiker returnGebruiker = new AndroidGebruiker();
-            foreach(var geb in gebruikers)
+            ANDROIDGebruiker us = null;
+            // Require the user to have a confirmed email before they can log on.
+            var user = await UserManager.FindByNameAsync(model.Name);
+            if (user == null)
             {
-                if (geb.gebruikersnaam == user && geb.wachtwoord == password)
-                {
-                    returnGebruiker.active = geb.active;
-                    returnGebruiker.Birthday = geb.geboorteDatum;
-                    returnGebruiker.ConfirmPassword = geb.wachtwoord;
-                    returnGebruiker.Email = geb.email;
-                    returnGebruiker.FirstName = geb.voornaam;
-                    returnGebruiker.id = geb.id;
-                    returnGebruiker.LastName = geb.achternaam;
-                    returnGebruiker.Name = geb.gebruikersnaam;
-                    returnGebruiker.Password = geb.wachtwoord;
-                    returnGebruiker.Zipcode = geb.postcode;
-                }
+                return Ok(us);
             }
-            return Ok(returnGebruiker);
-        }
-        #endregion
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Name, model.Password, false, shouldLockout: true);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    user.LastLogin = DateTime.Now;
+                    var store = new UserStore<User>(new ApplicationDbContext());
+                    UserManager.Update(user);
+                    var ctx = store.Context;
 
+                    ctx.SaveChanges();
+                    ANDROIDGebruiker gebruiker = new ANDROIDGebruiker()
+                    {
+                      Name=user.UserName,
+                      FirstName= user.FirstName,
+                      LastName=user.LastName,
+                      Birthday=user.Birthday,
+                      Zipcode = user.Zipcode,
+                      Email = user.Email
+     
+                    };
+
+                    return Ok(gebruiker);
+                case SignInStatus.Failure:
+                    return Ok(us);
+                default:
+                    return Ok(us);
+            }
+        }
     }
 }

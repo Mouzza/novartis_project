@@ -16,6 +16,7 @@ using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Gebruikers.Beheerder;
 using JPP.BL.Domain.Gebruikers.SuperUser;
 using JPP.UI.Web.MVC;
+using System.Drawing;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -375,13 +376,57 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
-                  
+                
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
+
                 }
+                else
+                {
+
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
+                }
+
+
+                if (dossAntwoord.googleMapsAdress == null)
+                {
+
+                    dossAntwoord.googleMapsAdress = "Leuven";
+                }
+                if (dossAntwoord.backgroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "White";
+                }
+
+                if (dossAntwoord.foregroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "Black";
+                }
+                if (file == null)
+                {
+                    
+                }
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -403,7 +448,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                     afbeeldingByte = imgByte
+                   
 
                 };
 
@@ -462,6 +509,8 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
+        
+
         [HttpPost]
         public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
         {
@@ -493,13 +542,56 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                 
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
+                else
+                {
+
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
+                }
+                
+            
+                if (dossAntwoord.googleMapsAdress == null)
+                {
+
+                    dossAntwoord.googleMapsAdress = "Leuven";
+                }
+
+                if (dossAntwoord.backgroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "White";
+                }
+
+                if (dossAntwoord.foregroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "Black";
+                }
+
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -521,8 +613,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
-                    evenementen = new List<Evenement>()
-
+                    evenementen = new List<Evenement>(),
+                    afbeeldingByte=imgByte
                 };
 
 
@@ -601,13 +693,53 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
+                else
+                {
+
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
+                }
+
+                if (dossAntwoord.googleMapsAdress == null)
+                {
+
+                    dossAntwoord.googleMapsAdress = "Leuven";
+                }
+                if (dossAntwoord.backgroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "White";
+                }
+
+                if (dossAntwoord.foregroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "Black";
+                }
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -629,7 +761,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    afbeeldingByte = imgByte
 
                 };
 
@@ -712,9 +845,35 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                    
 
                 }
+
+                byte[] imgByte;
+                using (MemoryStream ms = new MemoryStream())
+                {
+
+                    file.InputStream.CopyTo(ms);
+                    imgByte = ms.GetBuffer();
+                }
+
+
+                if (dossAntwoord.googleMapsAdress == null)
+                {
+
+                    dossAntwoord.googleMapsAdress = "Leuven";
+                }
+
+                if (dossAntwoord.backgroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "White";
+                }
+
+                if (dossAntwoord.foregroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "Black";
+                }
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -736,7 +895,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    afbeeldingByte = imgByte
 
                 };
 
@@ -819,13 +979,54 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                  
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
+                else
+                {
+
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
+                }
+
+                if (dossAntwoord.googleMapsAdress == null)
+                {
+
+                    dossAntwoord.googleMapsAdress = "Leuven";
+                }
+                if (dossAntwoord.backgroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "White";
+                }
+
+                if (dossAntwoord.foregroundColor == null)
+                {
+                    dossAntwoord.backgroundColor = "Black";
+                }
+
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -847,7 +1048,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    afbeeldingByte = imgByte
 
                 };
 
@@ -891,7 +1093,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
                     textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "/uploads/379465.png"
+                    afbeeldingPath = "/uploads/379465.png",
+                    foregroundColor = "black",
+                    backgroundColor = "white"
 
                 };
 
@@ -909,6 +1113,47 @@ namespace JPP.UI.Web.MVC.Controllers
             return RedirectToAction("DossierModelOne", new { id = dossierAntwoord.ID });
 
         }
+        [HttpPost]
+        public ActionResult DossierModelTwo(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelTwo", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelThree(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelThree", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelFive(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelFive", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelSix(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelSix", new { id = dossierAntwoord.ID });
+
+        }
+
 
         public ActionResult DossierModelTwo(int id)
         {
