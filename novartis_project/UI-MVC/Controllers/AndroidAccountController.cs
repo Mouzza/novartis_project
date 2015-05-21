@@ -15,12 +15,17 @@ using JPP.UI.Web.MVC.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Drawing;
 using System.IO;
+using JPP.BL.Domain.Gebruikers;
+using JPP.BL;
+
+
 
 
 namespace JPP.UI.Web.MVC.Controllers
 {
     public class AndroidAccountController : ApiController
     {
+        ModuleManager modman = new ModuleManager();
         #region REGISTER
         public ApplicationRoleManager roleManager;
         public ApplicationRoleManager RoleManager
@@ -76,7 +81,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     Zipcode = model.Zipcode,
                     LockoutEnabled=false,
                     EmailConfirmed=true,
-                    AccessFailedCount=0
+                    AccessFailedCount=0,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -91,7 +96,30 @@ namespace JPP.UI.Web.MVC.Controllers
         #endregion
 
         #region login
-
+        [HttpGet]
+        [ActionName("login")]
+        public IHttpActionResult login(string user,string password)
+        {
+            List<Gebruiker> gebruikers = modman.readGebruikers();
+            AndroidGebruiker returnGebruiker = new AndroidGebruiker();
+            foreach(var geb in gebruikers)
+            {
+                if (geb.gebruikersnaam == user && geb.wachtwoord == password)
+                {
+                    returnGebruiker.active = geb.active;
+                    returnGebruiker.Birthday = geb.geboorteDatum;
+                    returnGebruiker.ConfirmPassword = geb.wachtwoord;
+                    returnGebruiker.Email = geb.email;
+                    returnGebruiker.FirstName = geb.voornaam;
+                    returnGebruiker.id = geb.id;
+                    returnGebruiker.LastName = geb.achternaam;
+                    returnGebruiker.Name = geb.gebruikersnaam;
+                    returnGebruiker.Password = geb.wachtwoord;
+                    returnGebruiker.Zipcode = geb.postcode;
+                }
+            }
+            return Ok(returnGebruiker);
+        }
         #endregion
 
     }

@@ -392,6 +392,7 @@
     <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
     <Content Include="Images\IconsForPages\iconmonstr-flag-11-icon-256.png" />
+    <Content Include="Images\IconsForPages\RedFlag.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoOld.png" />
     <Content Include="Images\menu logos\adminpanelLogo.png" />
