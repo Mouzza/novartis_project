@@ -2291,3 +2291,10 @@ div.table-title {
     height: 28px;
     width: 28px;
 }
+
+@media(min-width:550px){
+    h1{
+
+        font-size:2px;
+    }
+}
