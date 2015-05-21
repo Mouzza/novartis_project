@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AndroidAntwoordController.cs" />
     <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
+    <Compile Include="Controllers\FlagController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -224,6 +225,7 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Data\Sql Scripts\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\Tag\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
@@ -632,6 +634,7 @@
     <Content Include="Views\Module\MijnModuleMenu.cshtml" />
     <Content Include="Views\Antwoord\_Edit.cshtml" />
     <Content Include="Views\Stem\StemError.cshtml" />
+    <Content Include="Views\Flag\FlagError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

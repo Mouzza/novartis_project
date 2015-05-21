@@ -244,15 +244,11 @@ namespace JPP.BL
         {
             beheerder.deleteAntwoord(id);
         }
-        public void stemOpComment(int id)
-        {
-            inlog.stemOpComment(id);
-        }
-  
 
-        public void flagAntwoord(int id)
+        public Flag flagAntwoord(Flag flag)
         {
-            inlog.flagAntwoord(id);
+            return inlog.createFlag(flag);
+
         }
     }
 }

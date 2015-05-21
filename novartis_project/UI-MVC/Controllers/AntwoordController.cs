@@ -442,9 +442,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -619,9 +618,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -779,9 +777,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -925,9 +922,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -1090,9 +1086,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -1880,7 +1875,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     datum = DateTime.Now,
                     stemmen = new List<Stem>(),
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     statusOnline = true,
                     inhoud = agendaAntwoord.inhoud,
                     subtitel = agendaAntwoord.subtitel,
@@ -1906,5 +1901,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
             }    
         }
+
+       
     }
+
+
 }

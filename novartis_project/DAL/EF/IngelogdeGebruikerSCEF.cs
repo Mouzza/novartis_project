@@ -19,28 +19,7 @@ namespace JPP.DAL.EF
     {
        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
 
-        public Beheerder createBeheerder(Beheerder gebruiker)
-        {
-            dbcontext.beheerder.Add(gebruiker);
-            dbcontext.SaveChanges();
-            return gebruiker;
-        }
 
-
-        public void deleteGebruiker(int id)
-        {
-            Gebruiker gebr = dbcontext.gebruiker.Find(id);
-            dbcontext.gebruiker.Remove(gebr);
-            dbcontext.SaveChanges();
-
-
-        }
-
-        public void wijzigGebruiker(Gebruiker gebruiker)
-        {
-            dbcontext.Entry(gebruiker).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
 
         /*
         public Antwoord maakAntwoord(Antwoord antwoord)
@@ -80,12 +59,6 @@ namespace JPP.DAL.EF
             return dbcontext.antwoord.OfType<AgendaAntwoord>().ToList();
         }
 
-        public Comment createComment(Comment comment)
-        {
-            dbcontext.comments.Add(comment);
-            dbcontext.SaveChanges();
-            return comment;
-        }
         public Stem createStem(Stem stem)
         {
             dbcontext.stemmen.Add(stem);
@@ -93,34 +66,16 @@ namespace JPP.DAL.EF
             return stem;
         }
 
-        public void wijzigComment(Comment comment)
+        public Flag createFlag(Flag flag)
         {
-            dbcontext.Entry(comment).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.flags.Add(flag);
             dbcontext.SaveChanges();
+            return flag;
         }
 
-        public void deleteComment(int id)
-        {
-            Comment comment = dbcontext.comments.Find(id);
-            dbcontext.comments.Remove(comment);
-            dbcontext.SaveChanges();
-        }
 
-        public void stemOpComment(int id)
-        {
-            Comment comment= dbcontext.comments.Find(id);
-            comment.aantalStemmen++;
-            dbcontext.Entry(comment).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
-  
 
-        public void flagAntwoord(int id)
-        {
-            Antwoord antwoord = dbcontext.antwoord.Find(id);
-            antwoord.aantalFlags++;
-            dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
+
+       
     }
 }

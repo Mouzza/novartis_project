@@ -46,7 +46,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     aantalStemmen = agenda.stemmen.Count,
                     //editable = agenda.editable,
                     gebruikersNaam = agenda.gebruikersNaam,
-                    aantalFlags = agenda.aantalFlags,
+                    aantalFlags = agenda.flags.Count,
                     moduleID = agenda.module.ID,
                     //vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
@@ -116,7 +116,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     aantalStemmen = dossier.stemmen.Count,
                     //editable = dossier.editable,
                     gebruikersNaam = dossier.gebruikersNaam,
-                    aantalFlags = dossier.aantalFlags,
+                    aantalFlags = dossier.flags.Count,
                     moduleID = dossier.module.ID,
                     // vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
@@ -217,7 +217,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         aantalStemmen = antwoord.stemmen.Count,
                         //editable = dossier.editable,
                         gebruikersNaam = antwoord.gebruikersNaam,
-                        aantalFlags = antwoord.aantalFlags,
+                        aantalFlags = antwoord.flags.Count,
                         moduleID = antwoord.module.ID,
                         //vasteTags = new List<ANDROIDVasteTag>(),
                         //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
@@ -268,7 +268,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         aantalStemmen = dos.stemmen.Count,
                         //editable = dossier.editable,
                         gebruikersNaam = dos.gebruikersNaam,
-                        aantalFlags = dos.aantalFlags,
+                        aantalFlags = dos.flags.Count,
                         moduleID = dos.module.ID,
                         // vasteTags = new List<ANDROIDVasteTag>(),
                         // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
@@ -345,7 +345,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     aantalStemmen = agenda.stemmen.Count,
                     //editable = agenda.editable,
                     gebruikersNaam = agenda.gebruikersNaam,
-                    aantalFlags = agenda.aantalFlags,
+                    aantalFlags = agenda.flags.Count,
                     moduleID = agenda.module.ID,
                     //vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
@@ -413,7 +413,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     aantalStemmen = dossier.stemmen.Count,
                     //editable = dossier.editable,
                     gebruikersNaam = dossier.gebruikersNaam,
-                    aantalFlags = dossier.aantalFlags,
+                    aantalFlags = dossier.flags.Count,
                     moduleID = dossier.module.ID,
                     // vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
@@ -464,7 +464,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             AgendaAntwoord agAntwoord = new AgendaAntwoord()
             {
-                aantalFlags = 0,
+                flags = new List<Flag>(),
                 stemmen = new List<Stem>(),
                 datum = DateTime.Now,
                 extraInfo = agendaAntwoord.extraInfo,
@@ -473,7 +473,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 subtitel = agendaAntwoord.subTitel,
                 titel = agendaAntwoord.titel,
                 vasteTags = new List<VasteTag>(),
-                persoonlijkeTags = new List<PersoonlijkeTag>(),
                 statusOnline=true,
                 
             };
@@ -492,9 +491,8 @@ namespace JPP.UI.Web.MVC.Controllers
                 gebruikersNaam = dossierAntwoord.gebruikersNaam,
                 comments = new List<Comment>(),
                 vasteTags = new List<VasteTag>(),
-                persoonlijkeTags = new List<PersoonlijkeTag>(),
                 datum = DateTime.Now,//
-                aantalFlags = 0,//
+                flags = new List<Flag>(),
                 stemmen = new List<Stem>(),
                 percentageVolledigheid = 50,//
                 statusOnline = true,//
@@ -548,7 +546,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             AgendaAntwoord ag= antwoordManager.readAgendaAntwoord(antwoord.ID);
             ag.extraInfo = antwoord.extraInfo;
-            ag.persoonlijkeTags = antwoord.persoonlijkeTags;
             ag.subtitel = antwoord.subtitel;
             ag.titel = antwoord.titel;
             antwoordManager.updateAgendaAntwoord(ag);
@@ -564,7 +561,6 @@ namespace JPP.UI.Web.MVC.Controllers
             dos.titel = antwoord.titel;
             dos.extraInfo = antwoord.extraInfo;
             dos.extraVraag = antwoord.extraVraag;
-            dos.persoonlijkeTags = antwoord.persoonlijkeTags;
             dos.textvak2 = antwoord.textvak2;
             dos.textvak3 = antwoord.textvak3;
             antwoordManager.updateDossierAntwoord(dos);

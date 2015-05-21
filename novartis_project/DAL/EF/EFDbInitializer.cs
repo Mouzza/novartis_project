@@ -146,13 +146,6 @@ namespace JPP.DAL.EF
 
             };
 
-            PersoonlijkeTag pTag = new PersoonlijkeTag()
-            {
-
-                naam = "Fun!",
-                antwoorden = new List<Antwoord>(),
-                voorstellen = new List<Voorstel>()
-            };
 
             VasteTag tag = new VasteTag()
             {
@@ -160,7 +153,7 @@ namespace JPP.DAL.EF
                 naam = "Sport",
                 antwoorden = new List<Antwoord>(),
 
-                voorstellen = new List<Voorstel>()
+   
             };
 
             Organisatie organisatieLeuven = new Organisatie()
@@ -190,16 +183,16 @@ namespace JPP.DAL.EF
                     percentageVolledigheid = 95,
                     statusOnline = true,
                     extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
-                    aantalFlags = 0,
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    flags = new List<Flag>(),
                     afbeeldingPath = "~/uploads/Jellyfish.jpg",
                     textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     layoutOption = 1,
                     evenementen=new List<Evenement>(),
-                    afbeeldingByte=imgByte
+                    afbeeldingByte=imgByte,
+                    googleMapsAdress="Leuven"
                     
                 };
 
@@ -214,11 +207,10 @@ namespace JPP.DAL.EF
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     stemmen = new List<Stem>(),
-                    aantalFlags = 0,
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     statusOnline=true,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    flags = new List<Flag>()
 
                 };
 
@@ -234,7 +226,7 @@ namespace JPP.DAL.EF
                 //DossierAntwoord
 
                 //dossierAntwoord.vasteTags.Add(tag);
-                //dossierAntwoord.persoonlijkeTags.Add(pTag);
+
 
             }
 
@@ -577,16 +569,16 @@ namespace JPP.DAL.EF
                         percentageVolledigheid = 95,
                         statusOnline = true,
                         extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
-                        aantalFlags = 0,
                         comments = new List<Comment>(),
                         vasteTags = new List<VasteTag>(),
-                        persoonlijkeTags = new List<PersoonlijkeTag>(),
                         afbeeldingPath = "~/uploads/Jellyfish.jpg",
                         textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                         textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                         layoutOption = 1,
                         evenementen = evenementenList,
-                        afbeeldingByte = imgByte
+                        afbeeldingByte = imgByte,
+                        flags = new List<Flag>(),
+                        googleMapsAdress = "Leuven"
                     };
 
                     AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
@@ -600,10 +592,9 @@ namespace JPP.DAL.EF
                         extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                         datum = DateTime.Now,
                         stemmen = new List<Stem>(),
-                        aantalFlags = 0,
                         vasteTags = new List<VasteTag>(),
-                        persoonlijkeTags = new List<PersoonlijkeTag>(),
                         statusOnline=true,
+                        flags = new List<Flag>()
                     };
 
                     

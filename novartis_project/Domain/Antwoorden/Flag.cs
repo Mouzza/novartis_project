@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace JPP.BL.Domain.Antwoorden
 {
-    public class VasteTag
+    public class Flag
     {
         [Key]
         public int ID { get; set; }
-        public string naam { get; set; }
-        public string beschrijving { get; set; }
-        public virtual ICollection<Antwoord> antwoorden { get; set; }
+
+        public Antwoord antwoord { get; set; }
+        public string gebruikersNaam { get; set; }
     }
 }

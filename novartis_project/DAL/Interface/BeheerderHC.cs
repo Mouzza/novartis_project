@@ -12,12 +12,7 @@ namespace JPP.DAL.Interface
     public interface BeheerderHC
     {
         
-        Medebeheerder createMedeBeheerder(Medebeheerder medebeheerder);
-        void DeleteMedeBeheerder(int ID);
-        void WijzigMedeBeheerder(Medebeheerder medebeheerder);
-
-        PersoonlijkeTag maakPersoonlijkeTag(PersoonlijkeTag persoonlijkeTag);
-        void deletePersoonlijkeTag(int ID);
+     
 
 
 
