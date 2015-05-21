@@ -86,8 +86,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     ANDROIDstem astem = new ANDROIDstem()
                     {
                         antwoordid=stem.antwoord.ID,
-                        gebruikersNaam=stem.gebruikersNaam,
-                        id=stem.ID
+                        gebruikersNaam=stem.gebruikersNaam
                     };
                     dos.stemmen.Add(astem);
                 }
@@ -196,8 +195,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     ANDROIDstem astem = new ANDROIDstem()
                     {
                         antwoordid = stem.antwoord.ID,
-                        gebruikersNaam = stem.gebruikersNaam,
-                        id = stem.ID
+                        gebruikersNaam = stem.gebruikersNaam
                     };
                     ag.stemmen.Add(astem);
                 }

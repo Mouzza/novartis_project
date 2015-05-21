@@ -162,10 +162,6 @@ namespace JPP.UI.Web.MVC.Models
 
     public class ANDROIDGebruiker
     {
-<<<<<<< HEAD
-=======
-      
->>>>>>> origin/master
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -177,7 +173,6 @@ namespace JPP.UI.Web.MVC.Models
     }
     public class ANDROIDstem
     {
-        public int id { get; set; }
         public int antwoordid { get; set; }
         public string gebruikersNaam { get; set; }
     }
