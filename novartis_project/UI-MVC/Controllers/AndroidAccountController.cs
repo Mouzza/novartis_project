@@ -97,7 +97,7 @@ namespace JPP.UI.Web.MVC.Controllers
         private ApplicationDbContext apc = new ApplicationDbContext();
         #region login
         [HttpGet]
-        [ActionName("login")]
+        [ActionName("login1")]
         public IHttpActionResult login(string userN, string pas)
         {
             List<User> users = apc.Users.ToList();
@@ -121,5 +121,34 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
 
+      
+        [HttpPost]
+        [ActionName("login")]
+        public async Task<IHttpActionResult> Login(ANDROIDLoginView model)
+        {
+            // Require the user to have a confirmed email before they can log on.
+            var user = await UserManager.FindByNameAsync(model.Name);
+            if (user == null)
+            {
+                return Ok("nok");
+            }
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Name, model.Password, false, shouldLockout: true);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    user.LastLogin = DateTime.Now;
+                    var store = new UserStore<User>(new ApplicationDbContext());
+                    UserManager.Update(user);
+                    var ctx = store.Context;
+                    ctx.SaveChanges();
+                    return Ok("ok");
+                case SignInStatus.Failure:
+                    return Ok("nok");
+                default:
+                    return Ok("nok");
+            }
+        }
     }
 }

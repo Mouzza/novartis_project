@@ -625,8 +625,8 @@ namespace JPP.UI.Web.MVC.Controllers
 
         }
        
-        [HttpGet]
-        [ActionName("flagAntwoord")]
+        //[HttpGet]
+        //[ActionName("flagAntwoord")]
         //public IHttpActionResult flagAntwoord(ANDROIDFlag flag)
         //{
         //    Antwoord antwoord = antwoordManager.readAllAntwoorden().Find(o=>o.ID==flag.antwoordid);

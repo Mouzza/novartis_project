@@ -147,7 +147,7 @@ namespace JPP.UI.Web.MVC.Models
         
     }
 
-    public class ANDROIDEvenementx
+    public class ANDROIDEvenement
     {
         public int ID { get; set; }
         public string title { get; set; }
@@ -205,6 +205,11 @@ namespace JPP.UI.Web.MVC.Models
         public int id { get; set; }
         public int antwoordid { get; set; }
         public string gebruikersNaam { get; set; }
+    }
+    public class ANDROIDLoginView
+    {
+        public string Name { get; set; }
+        public string Password { get; set; }
     }
 }
 
