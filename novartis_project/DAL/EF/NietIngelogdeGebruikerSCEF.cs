@@ -142,18 +142,13 @@ namespace JPP.DAL.EF
         }
 
 
-        public Tag getTag(int ID)
+        public VasteTag getVasteTag(int ID)
         {
-            Tag tag = dbcontext.tags.Find(ID);
-            return tag;
+            VasteTag vasteTag = dbcontext.tags.Find(ID);
+            return vasteTag;
         }
 
-
-        public PersoonlijkeTag getPersoonlijkeTag(int ID)
-        {
-            PersoonlijkeTag persoonlijkeTag = dbcontext.tags.OfType<PersoonlijkeTag>().Where(tag => tag.ID == ID).First();
-            return persoonlijkeTag;
-        }
+  
 
         public List<Comment> getAllComments()
         {

@@ -473,7 +473,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 subtitel = agendaAntwoord.subTitel,
                 titel = agendaAntwoord.titel,
                 vasteTags = new List<VasteTag>(),
-                persoonlijkeTags = new List<PersoonlijkeTag>(),
                 statusOnline=true,
                 
             };
@@ -492,7 +491,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 gebruikersNaam = dossierAntwoord.gebruikersNaam,
                 comments = new List<Comment>(),
                 vasteTags = new List<VasteTag>(),
-                persoonlijkeTags = new List<PersoonlijkeTag>(),
                 datum = DateTime.Now,//
                 flags = new List<Flag>(),
                 stemmen = new List<Stem>(),
@@ -548,7 +546,6 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             AgendaAntwoord ag= antwoordManager.readAgendaAntwoord(antwoord.ID);
             ag.extraInfo = antwoord.extraInfo;
-            ag.persoonlijkeTags = antwoord.persoonlijkeTags;
             ag.subtitel = antwoord.subtitel;
             ag.titel = antwoord.titel;
             antwoordManager.updateAgendaAntwoord(ag);
@@ -564,7 +561,6 @@ namespace JPP.UI.Web.MVC.Controllers
             dos.titel = antwoord.titel;
             dos.extraInfo = antwoord.extraInfo;
             dos.extraVraag = antwoord.extraVraag;
-            dos.persoonlijkeTags = antwoord.persoonlijkeTags;
             dos.textvak2 = antwoord.textvak2;
             dos.textvak3 = antwoord.textvak3;
             antwoordManager.updateDossierAntwoord(dos);

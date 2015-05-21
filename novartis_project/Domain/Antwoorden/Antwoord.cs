@@ -31,6 +31,5 @@ namespace JPP.BL.Domain.Antwoorden
         public virtual ICollection<Stem> stemmen { get; set; }
         public virtual ICollection<Flag> flags { get; set; }
         public virtual ICollection<VasteTag> vasteTags { get; set; }
-        public virtual ICollection<PersoonlijkeTag> persoonlijkeTags { get; set; }
     }
 }

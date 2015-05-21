@@ -40,7 +40,7 @@ namespace JPP.DAL.EF
         public DbSet<Stem> stemmen { get; set; }
         public DbSet<Evenement> evenementen { get; set; }
         
-        public DbSet<Tag> tags { get; set; }
+        public DbSet<VasteTag> tags { get; set; }
         public DbSet<VasteVraagAntwoord> vasteVraagAntwoorden { get; set; }
 
         //Modules

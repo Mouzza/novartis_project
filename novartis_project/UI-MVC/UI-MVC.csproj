@@ -225,6 +225,7 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Data\Sql Scripts\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\Tag\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
