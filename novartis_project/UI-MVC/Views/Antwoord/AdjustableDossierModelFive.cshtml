@@ -24,12 +24,15 @@
 <div id="AdjustableButtonWrapper">
     <div id="OptionsbarTitle">1. Kies je Layout</div>
     <div id="AdjButtonWrapper">
-        <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/DossierModel/Layout 1.png" onclick="location.href='@Url.Action("AdjustableDossierModelOne", "Antwoord")'" /> </button>
-        <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/DossierModel/Layout 2.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
-        <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 3.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
-        <button id="AdjButtonThree" class="activeLayout"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 4.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
-        <button id="AdjButtonSix"> <img id="MainFilterImgJO" src="~/Images/DossierModel/Layout 5.png" onclick="location.href='@Url.Action("AdjustableDossierModelSix", "Antwoord")'" /> </button>
-    </div>
+        <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress)</div>
+        <!--<input type="text" name="googleMaps" />-->
+        <div id="persoonlijkeTags">Persoonlijke Tags: @Html.TextBoxFor(model => model.persoonlijkeTags)</div>
+        <div id="titleColor">Kleur van de titel: @Html.TextBoxFor(model => model.TitleColor)</div>
+        <div id="foregroundColor">Kleur van tekst @Html.TextBoxFor(model => model.foregroundColor)</div>
+        <div id="backgroundColor">Kleur van achtergrond: @Html.TextBoxFor(model => model.backgroundColor)</div>
+
+        <div id="subTitleColor">Kleur van de subtitel: @Html.TextBoxFor(model => model.SubTitleColor)</div>
+       </div>
     </div>
 
 @using (Html.BeginForm("AdjustableDossierModelFive", "Antwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))

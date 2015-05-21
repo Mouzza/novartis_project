@@ -427,6 +427,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     
                 }
 
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
+                }
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -448,6 +458,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                      afbeeldingByte = imgByte
                    
@@ -591,6 +603,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.backgroundColor = "Black";
                 }
 
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
+                }
+
 
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
@@ -613,6 +635,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte=imgByte
                 };
@@ -740,6 +764,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.backgroundColor = "Black";
                 }
 
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
+                }
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -761,6 +795,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte = imgByte
 
@@ -874,6 +910,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.backgroundColor = "Black";
                 }
 
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
+                }
+
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -895,6 +941,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte = imgByte
 
@@ -1026,6 +1074,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.backgroundColor = "Black";
                 }
 
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
+                }
+
 
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
@@ -1048,6 +1106,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte = imgByte
 

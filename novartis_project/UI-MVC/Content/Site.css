@@ -168,7 +168,15 @@ textarea {
 #wrapper4 {
     min-height: 50%;
     position: relative;
-    background-color: #d3d3d3;
+    background-color: #D3D3D3;
+    padding: 50px;
+    box-shadow: 0px 0px 50px rgba(0,0,0,.8);
+}
+
+#wrapper5 {
+    min-height: 50%;
+    position: relative;
+    background-color: #FFF;
     padding: 50px;
     box-shadow: 0px 0px 50px rgba(0,0,0,.8);
 }
