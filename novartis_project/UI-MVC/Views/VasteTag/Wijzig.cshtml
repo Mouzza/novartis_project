@@ -1,0 +1,50 @@
+﻿@model JPP.BL.Domain.Antwoorden.VasteTag
+
+@{
+    ViewBag.Title = "Wijzig vaste tag";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+
+<h2>Wijzig vaste tag</h2>
+
+using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Vaste tag</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.antwoorden)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Naam</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.naam, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Beschrijving</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.beschrijving, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beschrijving, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Opslaan" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Ga terug", "Index")
+</div>
+}

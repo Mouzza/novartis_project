@@ -56,11 +56,6 @@ namespace JPP.DAL.EF
             return vvraag;
         }
 
-        public Voorstel getVoorstel(int ID)
-        {
-            Voorstel voorstel = dbcontext.voorstellen.Find(ID);
-            return voorstel;
-        }
 
 
         public Antwoord getAntwoord(int ID)

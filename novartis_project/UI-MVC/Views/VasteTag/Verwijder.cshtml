@@ -1,0 +1,52 @@
+﻿@model JPP.BL.Domain.Antwoorden.VasteTag
+
+@{
+    ViewBag.Title = "Verwijder vaste tag";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+
+<h2>Verwijder</h2>
+
+<h3>Bent u zeker dat u deze tag wilt verwijderen?</h3>
+<div>
+    <h4>Vaste tag</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Naam
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naam)
+        </dd>
+
+        <dt>
+          Beschrijving
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.beschrijving)
+        </dd>
+        <dt>
+            Aantal keren gebruikt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.antwoorden.Count)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Verwijder" class="btn btn-default" /> |
+            @Html.ActionLink("Ga terug", "Index")
+        </div>
+    }
+</div>
+}

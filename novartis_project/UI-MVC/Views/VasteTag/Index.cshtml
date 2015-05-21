@@ -1,0 +1,51 @@
+﻿@model IEnumerable<JPP.BL.Domain.Antwoorden.VasteTag>
+
+@{
+    ViewBag.Title = "Vaste tags";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+    
+
+<h2>Alle vaste tags</h2>
+
+<p>
+    @Html.ActionLink("Maak een nieuwe vaste tag", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+           Naam
+        </th>
+        <th>
+           Beschrijving
+        </th>
+        <th>
+            Aantal keer gebruikt
+        </th>
+        <th>Instellingen</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.beschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.antwoorden.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Wijzig", "Wijzig", new { id=item.ID }) |
+            @Html.ActionLink("Verwijder", "Verwijder", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+        
+}

@@ -15,6 +15,7 @@ namespace JPP.DAL.Interface
         VasteTag CreateVasteTag(VasteTag vasteTag);
         void DeleteVasteTag(int ID);
         void AlterVasteTag(VasteTag vasteTag);
-         
+        VasteTag GetVasteTag(int id);
+        List<VasteTag> GetAllVasteTags();
     }
 }

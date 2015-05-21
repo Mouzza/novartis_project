@@ -19,7 +19,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
             return View();
         }
-
+       
         public ActionResult FlagAntwoord(int id, string type)
         {
 
