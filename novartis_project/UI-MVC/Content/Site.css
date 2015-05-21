@@ -2340,6 +2340,7 @@ div.table-title {
     height: 25px;
     width: 25px;
     position:relative;
+   
 }
 
 #FlagButton img{
@@ -2348,8 +2349,8 @@ div.table-title {
 }
 
 #FlagButton img:hover{
-    height: 28px;
-    width: 28px;
+    height: 35px;
+    width: 35px;
 }
 
 
