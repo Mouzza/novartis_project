@@ -52,9 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AntwoordManager.cs" />
-    <Compile Include="CommentManager.cs" />
     <Compile Include="IAntwoordManager.cs" />
-    <Compile Include="ICommentManager.cs" />
     <Compile Include="IModuleManager.cs" />
     <Compile Include="IStemManager.cs" />
     <Compile Include="ModuleManager.cs" />

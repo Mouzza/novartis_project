@@ -60,7 +60,7 @@ else
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.aantalFlags)
+                @Html.DisplayFor(modelItem => item.flags.Count)
             </td>
             <td>
                 @Html.ActionLink("Wijzig", "_Edit", new { id = item.ID, moduleId = item.module.ID, type = "AdminAgenda" }) |

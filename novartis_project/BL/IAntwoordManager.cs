@@ -21,7 +21,9 @@ namespace JPP.BL
         List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID);
         List<AgendaAntwoord> getAllAgendaAntwoordenPerModule(int agendaID);
         void removeAntwoord(int id);
-        void stemOpComment(int id);
+
+        Flag flagAntwoord(Flag flag);
+
       
     }
 }
