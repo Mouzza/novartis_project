@@ -97,54 +97,52 @@
                             }
 
 
-                            <td id="ShowOnHover">
-                                @if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
-                                {
-                                    zelfdeGebruiker = true;
-
-                                }
-                                else
-                                {
-                                    zelfdeGebruiker = false;
-                                }
-
-
-
-                                <p id="extraInfoParagraaf">
-                                    Gebruiker:
-                                    @if (zelfdeGebruiker)
+                           
+                            <td id="antwoordInhoud">
+                                <div id="HideOnHover">
+                                    @Html.DisplayFor(modelItem => item.titel)
+                                    <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                        <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
+                                        <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    </div>
+                                    <br />
+                                    <h4 id="DossierLijstHvier">@Html.DisplayFor(modelItem => item.subtitel)</h4>
+                                </div>
+                                <div id="ShowOnHover">
+                                    @if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
                                     {
+                                        zelfdeGebruiker = true;
 
-                                        <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
                                     }
                                     else
                                     {
-                                        <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
-                                            <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
-                                        </a>
+                                        zelfdeGebruiker = false;
                                     }
-                                     |<span id="extrainfoSpan">Datum: </span> @item.datum
-                                    <br />
-                                    <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
-                                </p>
-                                
 
-                                <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+
+
+                                    <p id="extraInfoParagraaf">
+                                        Gebruiker:
+                                        @if (zelfdeGebruiker)
+                                        {
+
+                                            <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
+                                        }
+                                        else
+                                        {
+                                            <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
+                                                <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
+                                            </a>
+                                        }
+                                        | <span id="extrainfoSpan">Datum: </span> @item.datum
+                                        <br />
+                                        <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
+                                    </p>
+                                    <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                        <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
+                                        <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    </div>
                                 </div>
-
-                               
-
-                            </td>
-                            <td id="antwoordInhoud">
-                                @Html.DisplayFor(modelItem => item.titel)
-                                <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
-                                </div>
-                                <br />
-                                <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
                             </td>
 
                         </tr>
@@ -174,52 +172,53 @@
                             }
 
 
-                            <td id="ShowOnHover">
-                                @if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
-                                {
-                                    zelfdeGebruiker = true;
+                            
 
-                                }
-                                else
-                                {
-                                    zelfdeGebruiker = false;
-                                }
-
-
-
-                                <p id="extraInfoParagraaf">
-                                    Gebruiker:
-                                    @if (zelfdeGebruiker)
+                            <td id="antwoordInhoud">
+                                <div id="HideOnHover">
+                                    @Html.DisplayFor(modelItem => item.titel)
+                                    <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                        <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
+                                        <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    </div>
+                                    <br />
+                                    <h4 id="DossierLijstHvier">@Html.DisplayFor(modelItem => item.subtitel)</h4>
+                                </div>
+                                <div id="ShowOnHover">
+                                    @if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
                                     {
+                                        zelfdeGebruiker = true;
 
-                                        <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
                                     }
                                     else
                                     {
-                                        <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
-                                            <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
-                                        </a>
+                                        zelfdeGebruiker = false;
                                     }
-                                    | <span id="extrainfoSpan">Datum: </span> @item.datum
-                                    <br />
-                                    <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
-                                </p>
-                                <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+
+
+
+                                    <p id="extraInfoParagraaf">
+                                        Gebruiker:
+                                        @if (zelfdeGebruiker)
+                                        {
+
+                                            <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })"><span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span></a>
+                                        }
+                                        else
+                                        {
+                                            <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
+                                                <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
+                                            </a>
+                                        }
+                                        | <span id="extrainfoSpan">Datum: </span> @item.datum
+                                        <br />
+                                        <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
+                                    </p>
+                                    <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                        <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
+                                        <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
+                                    </div>
                                 </div>
-                            </td>
-
-                            <td id="antwoordInhoud">
-                                @Html.DisplayFor(modelItem => item.titel)
-                                <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
-                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
-                                    <a id="DossierVoteUpbuttonWrapper" href="@Url.Action("VoteUpAgenda", "Module", new { id = item.ID })"><div class="DossierVoteUpbutton"><i class="fa fa-arrow-up"></i>Vote this up</div></a>
-                                </div>
-                                <br />
-                                <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
-
-
                             </td>
 
                         </tr>

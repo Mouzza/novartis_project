@@ -70,7 +70,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     //vasteTags=new List<ANDROIDVasteTag>(),
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
-                    subtitel=dosAntwoord.subtitel
+                    subtitel=dosAntwoord.subtitel,
+                    stemmen=new List<ANDROIDstem>()
                 };
                 if (dosAntwoord.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
@@ -79,6 +80,16 @@ namespace JPP.UI.Web.MVC.Controllers
                 else
                 {
                     dos.isActieveModule = false;
+                }
+                foreach (var stem in dosAntwoord.stemmen)
+                {
+                    ANDROIDstem astem = new ANDROIDstem()
+                    {
+                        antwoordid=stem.antwoord.ID,
+                        gebruikersNaam=stem.gebruikersNaam,
+                        id=stem.ID
+                    };
+                    dos.stemmen.Add(astem);
                 }
                 //foreach (var vTag in dosAntwoord.vasteTags)
                 //{
@@ -180,7 +191,16 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     ag.isActieveModule = false;
                 }
-
+                foreach (var stem in agAntwoord.stemmen)
+                {
+                    ANDROIDstem astem = new ANDROIDstem()
+                    {
+                        antwoordid = stem.antwoord.ID,
+                        gebruikersNaam = stem.gebruikersNaam,
+                        id = stem.ID
+                    };
+                    ag.stemmen.Add(astem);
+                }
                 //foreach (var pTag in agAntwoord.persoonlijkeTags)
                 //{
                 //    ANDROIDPersoonlijkeTag persTag = new ANDROIDPersoonlijkeTag()
@@ -222,27 +242,6 @@ namespace JPP.UI.Web.MVC.Controllers
             //return Ok(agendaModules);
             return Ok(agendaModule);
         }
-        /*[HttpGet]
-        [ActionName("getActieveID")]
-        public IHttpActionResult getActieveAgendaModule()
-        {
-            AgendaModule actieveAgendaModule = moduleManager.readActieveAgendaModule();
-            DossierModule actieveDossier = moduleManager.readActieveDossierModule();
-            // List<ANDROIDAgendaModule> agendaModules = new List<ANDROIDAgendaModule>();
-
-            string ids = actieveAgendaModule.ID + "," + actieveDossier.ID;
-                
-
-            // agendaModules.Add(agendaModule);
-
-            //var json = JsonConvert.SerializeObject(dosModule);
-            //  json = json.Replace(@"\", @"");
-
-            //return Ok(agendaModules);
-            return Ok(ids);
-        }*/
-
-
         
         #endregion
 
