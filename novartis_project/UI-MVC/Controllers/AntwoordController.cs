@@ -1113,6 +1113,47 @@ namespace JPP.UI.Web.MVC.Controllers
             return RedirectToAction("DossierModelOne", new { id = dossierAntwoord.ID });
 
         }
+        [HttpPost]
+        public ActionResult DossierModelTwo(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelTwo", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelThree(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelThree", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelFive(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelFive", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelSix(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelSix", new { id = dossierAntwoord.ID });
+
+        }
+
 
         public ActionResult DossierModelTwo(int id)
         {

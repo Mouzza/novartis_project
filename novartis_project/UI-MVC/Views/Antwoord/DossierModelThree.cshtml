@@ -219,5 +219,11 @@ else
 </div>
 <div id="DossierModelThreeTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
 
-
+@using (Html.BeginForm("DossierModelThree", "Antwoord", new { id = Model.ID }, FormMethod.Post))
+{
+    if (Model.statusOnline == false)
+    {
+        <button type="submit">Publish!</button>
+    }
+}
 
