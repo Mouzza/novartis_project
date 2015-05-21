@@ -16,6 +16,7 @@ using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Gebruikers.Beheerder;
 using JPP.BL.Domain.Gebruikers.SuperUser;
 using JPP.UI.Web.MVC;
+using System.Drawing;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -375,20 +376,35 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
-                  
-                }
                 
 
-                byte[] imgByte;
-                using(MemoryStream ms = new MemoryStream()){
+                    using (MemoryStream ms = new MemoryStream())
+                    {
 
-                    file.InputStream.CopyTo(ms);
-                      imgByte = ms.GetBuffer();
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
+
+                }
+                else
+                {
+
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
 
@@ -526,22 +542,39 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                 
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
-                }
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
 
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
+                }
+                
+            
                 if (dossAntwoord.googleMapsAdress == null)
                 {
 
@@ -660,21 +693,36 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
                 if (dossAntwoord.googleMapsAdress == null)
@@ -797,7 +845,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                    
 
                 }
 
@@ -931,21 +979,36 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                  
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
                 if (dossAntwoord.googleMapsAdress == null)

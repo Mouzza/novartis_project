@@ -52,6 +52,8 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Entity.Design" />
     <Reference Include="System.Xml.Linq" />

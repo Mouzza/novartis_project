@@ -217,4 +217,10 @@ else
             </div><!--Hier moet de derde textvak van de pagina komen-->
         </div>
 
-
+@using (Html.BeginForm("DossierModelSix", "Antwoord", new { id = Model.ID }, FormMethod.Post))
+{
+    if (Model.statusOnline == false)
+    {
+        <button type="submit">Publish!</button>
+    }
+}
