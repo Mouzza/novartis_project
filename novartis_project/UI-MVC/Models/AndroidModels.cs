@@ -174,7 +174,6 @@ namespace JPP.UI.Web.MVC.Models
     }
     public class ANDROIDstem
     {
-        public int id { get; set; }
         public int antwoordid { get; set; }
         public string gebruikersNaam { get; set; }
     }
