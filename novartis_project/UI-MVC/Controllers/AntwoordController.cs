@@ -420,7 +420,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
                 }
                 if (file == null)
                 {
@@ -599,7 +599,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
                 }
 
                 if (dossAntwoord.TitleColor == null)
@@ -759,7 +759,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
                 }
 
                 if (dossAntwoord.TitleColor == null)
@@ -904,7 +904,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
                 }
 
                 if (dossAntwoord.TitleColor == null)
@@ -1067,7 +1067,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
                 }
 
                 if (dossAntwoord.TitleColor == null)

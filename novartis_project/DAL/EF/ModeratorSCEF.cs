@@ -35,8 +35,21 @@ namespace JPP.DAL.EF
 
         public void AlterVasteTag(VasteTag vasteTag)
         {
-            dbcontext.Entry(vasteTag).State = System.Data.Entity.EntityState.Modified;
+            VasteTag oldVasteTag = (VasteTag)dbcontext.tags.Find(vasteTag.ID);
+            dbcontext.Entry(oldVasteTag).CurrentValues.SetValues(vasteTag);
+      
             dbcontext.SaveChanges();
+        }
+
+        public List<VasteTag> GetAllVasteTags()
+        {
+            return dbcontext.tags.ToList();
+  
+        }
+        public VasteTag GetVasteTag(int id)
+        {
+            return dbcontext.tags.Find(id);
+
         }
 
       

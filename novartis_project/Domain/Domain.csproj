@@ -85,7 +85,6 @@
     <Compile Include="Gebruikers\Wachtwoord.cs" />
     <Compile Include="Vragen\CentraleVraag.cs" />
     <Compile Include="Vragen\VasteVraag.cs" />
-    <Compile Include="Vragen\Voorstel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

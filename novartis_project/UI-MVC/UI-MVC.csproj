@@ -210,6 +210,7 @@
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StemController.cs" />
+    <Compile Include="Controllers\VasteTagController.cs" />
     <Compile Include="Extra\Startup.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -225,7 +226,6 @@
     <Folder Include="App_Data\uploads\" />
     <Folder Include="Data\Sql Scripts\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\Tag\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
@@ -635,6 +635,10 @@
     <Content Include="Views\Antwoord\_Edit.cshtml" />
     <Content Include="Views\Stem\StemError.cshtml" />
     <Content Include="Views\Flag\FlagError.cshtml" />
+    <Content Include="Views\VasteTag\Create.cshtml" />
+    <Content Include="Views\VasteTag\Index.cshtml" />
+    <Content Include="Views\VasteTag\Wijzig.cshtml" />
+    <Content Include="Views\VasteTag\Verwijder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

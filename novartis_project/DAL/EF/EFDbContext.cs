@@ -53,7 +53,6 @@ namespace JPP.DAL.EF
 
         public DbSet<VasteVraag> vasteVragen { get; set; }
         public DbSet<CentraleVraag> centraleVragen { get; set; }
-        public DbSet<Voorstel> voorstellen { get; set; }
 
         //Gebruikers
         //beheerder
