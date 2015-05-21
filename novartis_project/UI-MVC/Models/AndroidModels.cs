@@ -163,34 +163,13 @@ namespace JPP.UI.Web.MVC.Models
     public class ANDROIDGebruiker
     {
         public string id { get; set; }
-        [Required]
-        [StringLength(12, ErrorMessage = "{0} moet minstens {2} karakters en max 12 karakters lang zijn. ", MinimumLength = 6)]
-        [Display(Name = "Gebruikersnaam")]
         public string Name { get; set; }
-        [Required]
-        [Display(Name = "Voornaam")]
         public string FirstName { get; set; }
-        [Required]
-        [Display(Name = "Achternaam")]
         public string LastName { get; set; }
-        [Required]
-        [Display(Name = "Geboortedatum")]
         public DateTime Birthday { get; set; }
-        [Required]
-        [Display(Name = "Postcode")]
         public int Zipcode { get; set; }
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
         public string Email { get; set; }
-        [Required]
-        [StringLength(100, ErrorMessage = "{0} moet minstens {2} karakters lang zijn.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Wachtwoord")]
         public string Password { get; set; }
-        [DataType(DataType.Password)]
-        [Display(Name = "Herhaal wachtwoord")]
-        [Compare("Password", ErrorMessage = "Het wachtwoord en confirmatie wachtwoord komen niet overeen.")]
         public string ConfirmPassword { get; set; }
         //public Boolean active { get; set; }
     }

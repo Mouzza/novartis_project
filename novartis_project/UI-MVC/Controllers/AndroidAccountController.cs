@@ -126,11 +126,12 @@ namespace JPP.UI.Web.MVC.Controllers
         [ActionName("login")]
         public async Task<IHttpActionResult> Login(ANDROIDLoginView model)
         {
+            User us = null;
             // Require the user to have a confirmed email before they can log on.
             var user = await UserManager.FindByNameAsync(model.Name);
             if (user == null)
             {
-                return Ok("nok");
+                return Ok(us);
             }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -143,11 +144,11 @@ namespace JPP.UI.Web.MVC.Controllers
                     UserManager.Update(user);
                     var ctx = store.Context;
                     ctx.SaveChanges();
-                    return Ok("ok");
+                    return Ok(user);
                 case SignInStatus.Failure:
-                    return Ok("nok");
+                    return Ok(us);
                 default:
-                    return Ok("nok");
+                    return Ok(us);
             }
         }
     }
