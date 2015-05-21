@@ -17,6 +17,8 @@ namespace JPP.BL.Domain.Antwoorden
         public string textvak3 { get; set; }
         public string foregroundColor { get; set; }
         public string backgroundColor {get; set; }
+        public string TitleColor { get; set; }
+        public string SubTitleColor { get; set; }
         public string backgroundImage { get; set; }
         public int percentageVolledigheid { get; set; }
         public string extraVraag { get; set; }

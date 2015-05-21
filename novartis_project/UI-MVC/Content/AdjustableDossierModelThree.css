@@ -382,3 +382,25 @@
     border: #FFF;
     margin-left: 9%;
 }
+
+            #titleColor {
+        display: table-cell;
+        float: left;
+        margin-left: 1%;
+        width: 370px;
+    }
+
+        #titleColor input {
+            width: 370px;
+        }
+
+            #subTitleColor {
+        display: table-cell;
+        float: left;
+        margin-left: 1%;
+        width: 370px;
+    }
+
+        #subTitleColor input {
+            width: 370px;
+        }
