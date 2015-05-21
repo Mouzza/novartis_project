@@ -162,6 +162,10 @@ namespace JPP.UI.Web.MVC.Models
 
     public class ANDROIDGebruiker
     {
+<<<<<<< HEAD
+=======
+      
+>>>>>>> origin/master
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
