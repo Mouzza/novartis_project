@@ -5,20 +5,22 @@
     ViewBag.Title = "Antwoord";
 }
 <link rel="stylesheet" type="text/css" href="~/Content/DossierModelOne.css">
+<script src="~/Scripts/TimeLine.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="~/Content/TimeLine.css">
 
 @if (Model.evenementen.Count == 0)
 {
     //nothing happens
 }
-else if (Model.evenementen.ElementAt(1).title == null)
+else if (Model.evenementen.Count == 1)
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
                 <div class="dot" id="one">
                     <span id="dotSpan"></span>
-                    <h3>1280</h3>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
                 </div>
             </div>
 
@@ -35,19 +37,19 @@ else if (Model.evenementen.ElementAt(1).title == null)
 
     }
 }
-else if (Model.evenementen.ElementAt(2).title == null)
+else if (Model.evenementen.Count == 2)
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
                 <div class="dot" id="one">
                     <span id="dotSpan"></span>
-                    <h3>1280</h3>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
                 </div>
                 <div class="dot" id="two">
                     <span id="dotSpan"></span>
-                    <h3>1649</h3>
+                    <h3>@Model.evenementen.ElementAt(1).startDatum</h3>
                 </div>
 
                 <div class="inside"></div>
@@ -72,23 +74,23 @@ else if (Model.evenementen.ElementAt(2).title == null)
 
     }
 }
-else if (Model.evenementen.ElementAt(3).title == null)
+else if (Model.evenementen.Count == 3)
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">
                 <div class="dot" id="one">
                     <span id="dotSpan"></span>
-                    <h3>1280</h3>
+                    <h3>@Model.evenementen.ElementAt(0).startDatum</h3>
                 </div>
                 <div class="dot" id="two">
                     <span id="dotSpan"></span>
-                    <h3>1649</h3>
+                    <h3>@Model.evenementen.ElementAt(1).startDatum</h3>
                 </div>
                 <div class="dot" id="three">
                     <span id="dotSpan"></span>
-                    <h3>1831</h3>
+                    <h3>@Model.evenementen.ElementAt(2).startDatum</h3>
                 </div>
                 <div class="inside"></div>
             </div>
@@ -120,7 +122,7 @@ else if (Model.evenementen.ElementAt(3).title == null)
 }
 else
 {
-    if (@Model.module.status == false)
+    if (Model.module.eindDatum < DateTime.Now)
     {
         <div id="TimeLineWrapper">
             <div id="timeline">

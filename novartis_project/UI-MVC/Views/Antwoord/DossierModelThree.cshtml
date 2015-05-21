@@ -183,41 +183,41 @@ else
 }
 
 
-    
+<div id="ModelOneWrapper" style="background-color:@(Model.backgroundColor)">
 
-<div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
-<div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
-<div id="DossierModelAfbeelding">
-    <img src=@imgSrc />
-    <div id="DossierModelTextVakEen">
-        <p>@(Model.inhoud)</p>
+    <div id="DossierModelTitle"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
+    <div id="DossierModelSubTitle"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+    <div id="DossierModelAfbeelding">
+        <img src=@imgSrc />
+        <div id="DossierModelTextVakEen" style="color:@(Model.foregroundColor)">
+            <p>@(Model.inhoud)</p>
 
-    </div><!--Hier moet de eerste textvak van de pagina komen-->
+        </div><!--Hier moet de eerste textvak van de pagina komen-->
 
-</div><!--Hier moet de afbeelding van de pagina komen-->
+    </div><!--Hier moet de afbeelding van de pagina komen-->
 
 
 
-<div id="TextWrapperThree">
+    <div id="TextWrapperThree">
 
-    <div id="TweeTextvakWrapperThree">
-        <div id="DossierModelThreeTextVakTwee">
-            <p>
-                @(Model.textvak2)
-            </p>
-        </div><!--Hier moet de tweedetextvak van de pagina komen-->
+        <div id="TweeTextvakWrapperThree">
+            <div id="DossierModelThreeTextVakTwee" style="color:@(Model.foregroundColor)">
+                <p>
+                    @(Model.textvak2)
+                </p>
+            </div><!--Hier moet de tweedetextvak van de pagina komen-->
 
-        <div id="DossierModelThreeTextVakDrie">
-            <p>
-                @(Model.textvak3)
-            </p>
-        </div><!--Hier moet de derde textvak van de pagina komen-->
+            <div id="DossierModelThreeTextVakDrie" style="color:@(Model.foregroundColor)">
+                <p>
+                    @(Model.textvak3)
+                </p>
+            </div><!--Hier moet de derde textvak van de pagina komen-->
+        </div>
+
+        <iframe id="map-canvasThree" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
+
     </div>
-
-    <iframe id="map-canvasThree" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
-    
+    <div id="DossierModelThreeTag" style="color:@(Model.foregroundColor)"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
 </div>
-<div id="DossierModelThreeTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
-
 
 

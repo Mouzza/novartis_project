@@ -574,6 +574,48 @@ namespace JPP.DAL.EF
                         evenementen = evenementenList
                     };
 
+                    Evenement evenementAA = new Evenement()
+                    {
+                        title = "Maggie De Block Ontvangt voorstel",
+                        startDatum = new DateTime(2015, 03, 01, 15, 5, 59),
+                        eindDatum = new DateTime(2015, 03, 02, 15, 5, 59),
+                        locatie = "Leuven",
+                        evenementText = "Vandaag heeft Maggie De Block onze voorstel aangenomen. 'Ik hoop zo snel mogelijk werk te kunnen maken van dit voorstel': zei Maggie De Block Vandaag"
+                    };
+
+                    Evenement evenementBB = new Evenement()
+                    {
+                        title = "Het voorstel komt in de kamer",
+                        startDatum = new DateTime(2015, 04, 01, 15, 5, 59),
+                        eindDatum = new DateTime(2015, 04, 05, 15, 5, 59),
+                        locatie = "Brussel",
+                        evenementText = "Het Voorstel is in de kamer verschenen, er wordt verwacht dat er zo snel mogelijk gestemt wordt"
+                    };
+
+                    Evenement evenementCC = new Evenement()
+                    {
+                        title = "Het voorstel is gestemd",
+                        startDatum = new DateTime(2015, 04, 10, 15, 5, 59),
+                        eindDatum = new DateTime(2015, 04, 11, 15, 5, 59),
+                        locatie = "Brussel",
+                        evenementText = "Het voorstel is gestemt"
+                    };
+
+                    Evenement evenementDD = new Evenement()
+                    {
+                        title = "ActiePlan van 2016",
+                        startDatum = new DateTime(2015, 05, 13, 15, 5, 59),
+                        eindDatum = new DateTime(2015, 05, 14, 15, 5, 59),
+                        locatie = "Brussel",
+                        evenementText = "Het voorstel maakt deel uit van het Actieplan van 2016, er wordt verwacht dat deze zo snel mogelijk wordt uitgevoerd"
+                    };
+
+                    List<Evenement> evenementenListA = new List<Evenement>();
+                    evenementenListA.Add(evenementAA);
+                    evenementenListA.Add(evenementBB);
+                    evenementenListA.Add(evenementCC);
+                    evenementenListA.Add(evenementDD);
+
                     AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
                     {
 
@@ -589,6 +631,7 @@ namespace JPP.DAL.EF
                         vasteTags = new List<VasteTag>(),
                         persoonlijkeTags = new List<PersoonlijkeTag>(),
                         statusOnline=true,
+                        evenementen = evenementenListA
                     };
 
                     
