@@ -27,25 +27,6 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
         StemManager stemManager = new StemManager();
 
-        [HttpGet]
-        [ActionName("test")]
-        public IHttpActionResult test()
-        {
-            Image tmpimg = null;
-            HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/uploads/ae0K8gv_460s.jpg");
-            HttpWebResponse httpWebReponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            Stream stream = httpWebReponse.GetResponseStream();
-            tmpimg = Image.FromStream(stream);
-
-            MemoryStream ms = new MemoryStream();
-            tmpimg.Save(ms, System.Drawing.Imaging.ImageFormat.Gif);
-
-            byte[] image = new byte[100000];
-            image = ms.ToArray();
-            return Ok(image);
-        }
-
-
         #region GET dossier/agenda
         [HttpGet]
         [ActionName("getAgendaAntwoordID")]
@@ -139,7 +120,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     moduleID = dossier.module.ID,
                     // vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    //afbeeldingPath = dossier.afbeeldingPath,
+                    afbeeldingByte = dossier.afbeeldingByte,
                     percentageVolledigheid = dossier.percentageVolledigheid,
                     statusOnline = dossier.statusOnline,
                     extraVraag = dossier.extraVraag,
@@ -293,7 +274,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         moduleID = dos.module.ID,
                         // vasteTags = new List<ANDROIDVasteTag>(),
                         // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                        //afbeeldingPath = dossier.afbeeldingPath,
+                        afbeeldingByte = dos.afbeeldingByte,
                         percentageVolledigheid = dos.percentageVolledigheid,
                         statusOnline = dos.statusOnline,
                         extraVraag = dos.extraVraag,
@@ -440,7 +421,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     moduleID = dossier.module.ID,
                     // vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    //afbeeldingPath = dossier.afbeeldingPath,
+                    afbeeldingByte = dossier.afbeeldingByte,
                     percentageVolledigheid = dossier.percentageVolledigheid,
                     statusOnline = dossier.statusOnline,
                     extraVraag = dossier.extraVraag,
@@ -529,12 +510,11 @@ namespace JPP.UI.Web.MVC.Controllers
                 textvak2 = dossierAntwoord.textvak2,
                 textvak3 = dossierAntwoord.textvak3,
                 googleMapsAdress = dossierAntwoord.googleMapsAdress,
-                afbeeldingPath = dossierAntwoord.afbeeldingPath,
-                backgroundColor="red",//
-                foregroundColor="green",//
+                afbeeldingByte = dossierAntwoord.afbeeldingByte,
+                backgroundColor="White",//
+                foregroundColor="Black",//
                 extraInfo = dossierAntwoord.extraInfo,
-                extraVraag = dossierAntwoord.extraVraag,
-                backgroundImage="tstest"//
+                extraVraag = dossierAntwoord.extraVraag
             };
 
             DossierModule actieveDos = moduleManager.readActieveDossierModule();
@@ -575,7 +555,9 @@ namespace JPP.UI.Web.MVC.Controllers
             ag.extraInfo = antwoord.extraInfo;
             ag.persoonlijkeTags = antwoord.persoonlijkeTags;
             ag.subtitel = antwoord.subtitel;
+            ag.titel = antwoord.titel;
             antwoordManager.updateAgendaAntwoord(ag);
+
         }
         [HttpPut]
         [ActionName("updateDossier")]
@@ -584,6 +566,7 @@ namespace JPP.UI.Web.MVC.Controllers
             DossierAntwoord dos = antwoordManager.readDossierAntwoord(antwoord.ID);
             dos.googleMapsAdress = antwoord.googleMapsAdress;
             dos.subtitel = antwoord.subtitel;
+            dos.titel = antwoord.titel;
             dos.extraInfo = antwoord.extraInfo;
             dos.extraVraag = antwoord.extraVraag;
             dos.persoonlijkeTags = antwoord.persoonlijkeTags;

@@ -127,8 +127,8 @@ namespace JPP.UI.Web.MVC.Models
         public int moduleID { get; set; }
         //public List<ANDROIDVasteTag> vasteTags { get; set; }
         //public List<ANDROIDPersoonlijkeTag> persoonlijkeTags { get; set; }
-        public string afbeeldingPath { get; set; }
-        //public byte[] afbeeldingBytes { get; set; }
+
+        public byte[] afbeeldingByte { get; set; }
         public int percentageVolledigheid { get; set; }
         public Boolean statusOnline { get; set; }
         public List<ANDROIDComment> comments { get; set; }
@@ -162,7 +162,6 @@ namespace JPP.UI.Web.MVC.Models
 
     public class ANDROIDGebruiker
     {
-        public string id { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -170,7 +169,6 @@ namespace JPP.UI.Web.MVC.Models
         public int Zipcode { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
         //public Boolean active { get; set; }
     }
     public class ANDROIDstem

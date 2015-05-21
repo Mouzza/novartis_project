@@ -63,7 +63,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     percentageVolledigheid=dosAntwoord.percentageVolledigheid,
                     statusOnline=dosAntwoord.statusOnline,
                     titel=dosAntwoord.titel,
-                    afbeeldingPath = dosAntwoord.afbeeldingPath,
+                    afbeeldingByte = dosAntwoord.afbeeldingByte,
                     textvak2=dosAntwoord.textvak2,
                     textvak3=dosAntwoord.textvak3,
                     comments = new List<ANDROIDComment>(),
