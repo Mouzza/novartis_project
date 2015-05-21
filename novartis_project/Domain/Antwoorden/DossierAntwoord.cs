@@ -12,6 +12,7 @@ namespace JPP.BL.Domain.Antwoorden
     {
         public int layoutOption { get; set; }
         public string afbeeldingPath { get; set; }
+        public byte[] afbeeldingByte { get; set; }
         public string textvak2 { get; set; }
         public string textvak3 { get; set; }
         public string foregroundColor { get; set; }
