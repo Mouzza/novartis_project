@@ -25,6 +25,7 @@ namespace JPP.UI.Web.MVC.Controllers
     {
         AntwoordManager antwoordManager = new AntwoordManager();
         ModuleManager moduleManager = new ModuleManager();
+        StemManager stemManager = new StemManager();
 
         [HttpGet]
         [ActionName("test")]
@@ -70,6 +71,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agenda.titel,
                     subTitel = agenda.subtitel,
+                    stemmen=new List<ANDROIDstem>(),
+                    statusOnline=agenda.statusOnline
                 };
                 if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {
@@ -78,6 +81,16 @@ namespace JPP.UI.Web.MVC.Controllers
                 else
                 {
                     agAntwoord.isActieveModule = false;
+                }
+                foreach(var stem in agenda.stemmen)
+                {
+                    ANDROIDstem aStem = new ANDROIDstem()
+                    {
+                        antwoordid=stem.antwoord.ID,
+                        gebruikersNaam=stem.gebruikersNaam,
+                        id=stem.ID
+                    };
+                    agAntwoord.stemmen.Add(aStem);
                 }
 
                 //foreach (var vTag in agenda.vasteTags)
@@ -136,7 +149,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossier.googleMapsAdress,
                     subtitel = dossier.subtitel,
                     textvak2 = dossier.textvak2,
-                    textvak3 = dossier.textvak3
+                    textvak3 = dossier.textvak3,
+                    stemmen=new List<ANDROIDstem>()
                 };
                 if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
@@ -145,6 +159,16 @@ namespace JPP.UI.Web.MVC.Controllers
                 else
                 {
                     dosAntwoord.isActieveModule = false;
+                }
+                foreach (var stem in dossier.stemmen)
+                {
+                    ANDROIDstem aStem = new ANDROIDstem()
+                    {
+                        antwoordid = stem.antwoord.ID,
+                        gebruikersNaam = stem.gebruikersNaam,
+                        id = stem.ID
+                    };
+                    dosAntwoord.stemmen.Add(aStem);
                 }
                 //Image tmpimg = null;
                 //HttpWebRequest httpWebRequest = (HttpWebRequest)HttpWebRequest.Create("~/"+dosAntwoord.afbeeldingPath);
@@ -194,7 +218,6 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             return Ok(dossierAntwoorden);
         }
-
         [HttpGet]
         [ActionName("getUserAgendaAntwoord")]
         public IHttpActionResult getUserAgendaAntwoord(string username)
@@ -221,7 +244,8 @@ namespace JPP.UI.Web.MVC.Controllers
                         //afbeeldingPath = dossier.afbeeldingPath,
                         statusOnline = antwoord.statusOnline,
                         titel = antwoord.titel,
-                        subTitel = antwoord.subtitel
+                        subTitel = antwoord.subtitel,
+                        stemmen=new List<ANDROIDstem>()
                     };
                     if (antwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
                     {
@@ -230,6 +254,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     else
                     {
                         antw.isActieveModule = false;
+                    }
+                    foreach (var stem in antwoord.stemmen)
+                    {
+                        ANDROIDstem aStem = new ANDROIDstem()
+                        {
+                            antwoordid = stem.antwoord.ID,
+                            gebruikersNaam = stem.gebruikersNaam,
+                            id = stem.ID
+                        };
+                        antw.stemmen.Add(aStem);
                     }
                     returnAntw.Add(antw);
                 }
@@ -268,8 +302,19 @@ namespace JPP.UI.Web.MVC.Controllers
                         googleMapsAdress = dos.googleMapsAdress,
                         subtitel = dos.subtitel,
                         textvak2 = dos.textvak2,
-                        textvak3 = dos.textvak3
+                        textvak3 = dos.textvak3,
+                        stemmen=new List<ANDROIDstem>()
                     };
+                    foreach (var stem in dos.stemmen)
+                    {
+                        ANDROIDstem aStem = new ANDROIDstem()
+                        {
+                            antwoordid = stem.antwoord.ID,
+                            gebruikersNaam = stem.gebruikersNaam,
+                            id = stem.ID
+                        };
+                        dossier.stemmen.Add(aStem);
+                    }
                     if (dos.module.ID == moduleManager.readActieveDossierModule().ID)
                     {
                         dossier.isActieveModule = true;
@@ -279,11 +324,11 @@ namespace JPP.UI.Web.MVC.Controllers
                         dossier.isActieveModule = false;
                     }
                     returnDossier.Add(dossier);
+                    
                 }
             }
             return Ok(returnDossier);
         }
-
         [HttpGet]
         [ActionName("topagendas")]
         public IHttpActionResult topagendas(string sorteer)
@@ -327,7 +372,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     //vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agenda.titel,
-                    subTitel = agenda.subtitel
+                    subTitel = agenda.subtitel,
+                    stemmen=new List<ANDROIDstem>()
                 };
                 if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {
@@ -336,6 +382,16 @@ namespace JPP.UI.Web.MVC.Controllers
                 else
                 {
                     ag.isActieveModule = false;
+                }
+                foreach (var stem in agenda.stemmen)
+                {
+                    ANDROIDstem aStem = new ANDROIDstem()
+                    {
+                        antwoordid = stem.antwoord.ID,
+                        gebruikersNaam = stem.gebruikersNaam,
+                        id = stem.ID
+                    };
+                    ag.stemmen.Add(aStem);
                 }
 
                 returnAnt.Add(ag);
@@ -394,8 +450,19 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress = dossier.googleMapsAdress,
                     subtitel = dossier.subtitel,
                     textvak2 = dossier.textvak2,
-                    textvak3 = dossier.textvak3
+                    textvak3 = dossier.textvak3,
+                    stemmen=new List<ANDROIDstem>()
                 };
+                foreach (var stem in dossier.stemmen)
+                {
+                    ANDROIDstem aStem = new ANDROIDstem()
+                    {
+                        antwoordid = stem.antwoord.ID,
+                        gebruikersNaam = stem.gebruikersNaam,
+                        id = stem.ID
+                    };
+                    dos.stemmen.Add(aStem);
+                }
                 if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
                     dos.isActieveModule = true;
@@ -406,6 +473,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 }
 
                 returnAnt.Add(dos);
+               
             }
             return Ok(returnAnt);
         }
@@ -431,6 +499,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 vasteTags = new List<VasteTag>(),
                 persoonlijkeTags = new List<PersoonlijkeTag>(),
                 statusOnline=true,
+                
             };
             AgendaModule actieveAg = moduleManager.readActieveAgendaModule();
             agAntwoord.module = actieveAg;
@@ -526,26 +595,43 @@ namespace JPP.UI.Web.MVC.Controllers
 
         #region STEM FLAG
         [HttpGet]
-        [ActionName("stemCommentID")]
-        public IHttpActionResult stemOpComment(int id)
+        [ActionName("stemAntwoord")]
+        public IHttpActionResult stemAntwoord(ANDROIDstem aStem)
         {
-            antwoordManager.stemOpComment(id);
+            
+            Antwoord antwoord = antwoordManager.readAllAntwoorden().Find(o=>o.ID==aStem.antwoordid);
+
+            foreach (var stem in antwoord.stemmen)
+            {
+                if(stem.gebruikersNaam==aStem.gebruikersNaam)
+                {
+                    return Ok("nok");
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+
+            Stem stemAntwoord = new Stem()
+            {
+                antwoord=antwoordManager.readAgendaAntwoord(aStem.id),
+                gebruikersNaam=aStem.gebruikersNaam
+            };
+            stemManager.stemOpAntwoord(stemAntwoord);
             return Ok("ok");
+
+
         }
+       
         //[HttpGet]
-        //[ActionName("stemAntwoordID")]
-        //public IHttpActionResult stemOpAntwoord(int id)
+        //[ActionName("flagAntwoord")]
+        //public IHttpActionResult flagAntwoord(ANDROIDFlag flag)
         //{
-        //    antwoordManager.stemOpAntwoord(id);
-        //    return Ok("ok");
+        //    Antwoord antwoord = antwoordManager.readAllAntwoorden().Find(o=>o.ID==flag.antwoordid);
+    
         //}
-        [HttpGet]
-        [ActionName("flagAntwoord")]
-        public IHttpActionResult flagAntwoord(int id)
-        {
-            antwoordManager.flagAntwoord(id);
-            return Ok("ok");
-        }
         #endregion
 
         #region DELETE antwoord
