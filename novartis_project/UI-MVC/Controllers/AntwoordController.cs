@@ -35,7 +35,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult MijnAntwoordenMenu()
         {
-            int aantal = antwManager.readAllAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() & antw.statusOnline==true).Count();
+            int aantal = antwManager.readAllAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName()).Count();
             ViewBag.Aantal = "Mijn antwoorden(" + aantal + ")";
             return PartialView();
 
@@ -1441,7 +1441,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             List<AgendaModule> agendamodules = dossManager.readAllAgendaModules();
 
-            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() && antw.statusOnline==true);
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
 
 
             if (agendaAntwoorden.ToList().Count != 0)
@@ -1510,7 +1510,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             List<DossierModule> dossiermodules = dossManager.readAllDossierModules();
 
-            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() && antw.statusOnline == true);
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
 
            
             if (dossierAntwoorden.ToList().Count != 0)
