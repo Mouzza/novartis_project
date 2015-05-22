@@ -27,6 +27,16 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
         StemManager stemManager = new StemManager();
 
+
+        [HttpGet]
+        [ActionName("getAfbeeldingByte")]
+        public IHttpActionResult getAfbeeldingByte(int id)
+        {
+            DossierAntwoord dosAntwoordtwo = antwoordManager.readDossierAntwoord(id);
+            return Ok(dosAntwoordtwo.afbeeldingByte);
+
+        }
+
         #region GET dossier/agenda
         [HttpGet]
         [ActionName("getAgendaAntwoordID")]
