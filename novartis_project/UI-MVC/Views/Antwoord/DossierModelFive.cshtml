@@ -213,7 +213,8 @@ else
     <iframe id="map-canvasTwo" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
 
 </div><!--Hier moet de afbeelding van de pagina komen-->
-<div id="DossierModelTwoTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+<div id="DossierModelTag"> <p>Tags: @foreach (var tag in @Model.vasteTags)
+{ <span>@tag.naam, </span> }</p></div> <!--Hier moet de Tag van de pagina komen-->
 @using (Html.BeginForm("DossierModelFive", "Antwoord", new { id = Model.ID }, FormMethod.Post))
 {
     if (Model.statusOnline == false)

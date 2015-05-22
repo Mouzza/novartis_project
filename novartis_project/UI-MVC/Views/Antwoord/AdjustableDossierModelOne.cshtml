@@ -53,7 +53,14 @@
 
                     <div id="titleColor">Kleur van de titel: @Html.TextBoxFor(model => model.TitleColor)</div>
 
-                    <div id="persoonlijkeTags">Tags: @Html.TextBoxFor(model => model.vasteTags)</div>
+                    <div class="editor-label">
+                   @Html.LabelFor(model => model.vasteTags, "Tags")
+                     </div>
+                    <div class="editor-field">
+                        @Html.ListBox("Tags")
+
+                    </div>
+           
 
                     <div id="foregroundColor">Kleur van tekst @Html.TextBoxFor(model => model.foregroundColor)</div>
                     <div id="backgroundColor">Kleur van achtergrond: @Html.TextBoxFor(model => model.backgroundColor)</div>
@@ -112,7 +119,17 @@
 
 
         <div id="map-canvas"></div>
-        <div id="DossierModelTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+    if (Model.vasteTags != null)
+    {
+        <div id="DossierModelTag">
+            <p>
+                Tags: @foreach (var tag in @Model.vasteTags)
+                { <span>@tag.naam, </span>
+                }
+            </p>
+        </div> <!--Hier moet de Tag van de pagina komen-->
+    }
+
 
             <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

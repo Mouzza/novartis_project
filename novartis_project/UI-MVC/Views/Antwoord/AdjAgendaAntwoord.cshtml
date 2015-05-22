@@ -26,6 +26,14 @@
             @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelSixTextVakEen" })
             <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
 
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.vasteTags, "Tags")
+                </div>
+                <div class="editor-field">
+                    @Html.ListBox("Tags")
+
+                </div>
+
 
         @if (!Request.IsAuthenticated)
         {
