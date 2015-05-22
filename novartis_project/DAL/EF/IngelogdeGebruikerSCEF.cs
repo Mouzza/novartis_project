@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.Interface;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-using JPP.BL.Domain.Gebruikers.Beheerder;
 using System.Configuration;
 
 
@@ -19,7 +16,7 @@ namespace JPP.DAL.EF
     {
        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
 
-
+       /*Add in de databank bij DossierAntwoord een meegegeven object van type dossierAntwoord*/
 
         /*
         public Antwoord maakAntwoord(Antwoord antwoord)
@@ -43,6 +40,9 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
             return agendaAntwoord;
         }
+
+       /*Geef Alle antwoorden van het type dossierAntwoord terug in een list. De databank houdt in antwoord de discriminator bij. 
+        * Deze aproach is volgens ons een performantere aproach dan simpel 2 verschillende databanken te maken met 80% dezelfde kolommen*/
 
         public List<DossierAntwoord> getAllDossierAntwoorden()
         {

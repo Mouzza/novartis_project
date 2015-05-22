@@ -8,7 +8,15 @@
     var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
 }
 <link rel="stylesheet" type="text/css" href="~/Content/DossierModelOne.css">
-
+<div>
+    @using (Html.BeginForm("DossierModelOne", "Antwoord", new { id = Model.ID }, FormMethod.Post))
+    {
+        if (Model.statusOnline == false)
+        {
+            <button type="submit">Bevestig!</button>
+        }
+    }
+</div>
 
 <script type="text/javascript">
     @*var gecoder;
@@ -217,7 +225,7 @@ else
 
 
 <div id="ModelOneWrapper" style="background-color:@(Model.backgroundColor)">
-
+    <div id="DossierModelPercent" style="color:@(Model.foregroundColor)"> <h1>Dossier volledigheid: @(Model.percentageVolledigheid) %</h1></div><!--Hier moet de titel van de pagina komen-->
     <div id="DossierModelTitle" style="color:@(Model.TitleColor)"> <h1>@(Model.titel)</h1></div><!--Hier moet de titel van de pagina komen-->
     <div id="DossierModelSubTitle" style="color:@(Model.SubTitleColor)"> <h2>@(Model.subtitel)</h2></div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
     <div id="DossierModelAfbeelding">
@@ -248,12 +256,7 @@ else
 
     @*<div id="map-canvas"></div>*@
     <iframe id="map-canvas" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCjNN44_-PQjX5l5Tl6Ys5uSi5vs9EtAHg &q=@(Model.googleMapsAdress)"></iframe>
-    <div id="DossierModelTag"> <p>Tags: @foreach (var tag in @Model.vasteTags){ <span>@tag.naam, </span> }</p></div> <!--Hier moet de Tag van de pagina komen-->
-    @using (Html.BeginForm("DossierModelOne", "Antwoord", new { id = Model.ID }, FormMethod.Post))
-    {
-        if (Model.statusOnline == false)
-        {
-            <button type="submit">Publish!</button>
-        }
-    }
+    <div id="DossierModelTag" style="color:@(Model.foregroundColor)"> <p>Tags: @foreach (var tag in @Model.vasteTags)
+    { <span>@tag.naam, </span> }</p></div> <!--Hier moet de Tag van de pagina komen-->
+
 </div>

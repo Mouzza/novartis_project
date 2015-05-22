@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.BL.Domain.Vragen;
 using System.ComponentModel.DataAnnotations;
-using JPP.BL.Domain.Gebruikers.SuperUser;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JPP.BL.Domain.Modules
 {
     public class Module
     {
-       
+       /* parent classe voor Agenda en DossierModule Zie antwoord voor meer uitleg */
 
         [Key]
         public int ID { get; set; }

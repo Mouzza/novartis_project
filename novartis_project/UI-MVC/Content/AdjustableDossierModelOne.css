@@ -255,6 +255,11 @@
         height: 100px;
         margin-left: 60%;
     }
+     #AgendaModelTag{
+        margin-top: 20px;
+        margin-left: 40%;
+    }
+
 
     #AdjCleanUp {
         margin-top: 25px;
@@ -560,11 +565,15 @@
         }
 
         #DossierModelAfbeelding img{
+             -webkit-box-sizing: border-box; /* Safari, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
             width: 70%;
             position: relative;
             margin-left: 14%;
             margin-right: auto;
             height: 50%;
+            max-width: 580px;
         }
 
         .AdjDossierModelTextVakEen{
@@ -609,6 +618,9 @@
     }
 
     #map-canvas {
+         -webkit-box-sizing: border-box; /* Safari, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
         margin-top: 50px;
         box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
         position: relative;
@@ -616,6 +628,8 @@
         margin-right: auto;
         width: 70%;
         height: 20%;
+        max-width: 580px;
+
     }
 
         .AdjDossierModelTitle {
@@ -876,19 +890,28 @@
     }
 
         #DossierModelTwoAfbeelding img {
+             -webkit-box-sizing: border-box; /* Safari, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
             width: 70%;
             margin-left: 14%;
             height: 50%;
             box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+            max-width: 580px;
         }
 
     #map-canvasTwo {
+         -webkit-box-sizing: border-box; /* Safari, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
         box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
         position: relative;
         width: 70%;
         margin-left: 14%;
         height: 50%;
         margin-top: 50px;
+        max-width: 580px;
+
     }
 
 
@@ -920,6 +943,8 @@
         height: 100px;
     }
 
+
+
     #TweeTextvakWrapperThree {
         height: 300px;
         width: 100%;
@@ -927,11 +952,15 @@
     }
 
     #map-canvasThree {
+         -webkit-box-sizing: border-box; /* Safari, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
         box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
         position: relative;
         width: 70%;
         margin-left: 14%;
         height: 300px;
+        max-width: 580px;
     }
 
     #ValidatieError3{
@@ -960,9 +989,15 @@
     }
 
         #DossierModelFiveAfbeelding img {
+             -webkit-box-sizing: border-box; /* Safari, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
             width: 70%;
+            max-width: 580px;
+            position: relative;
             margin-left: 14%;
-            box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+            margin-right: auto;
+            height: 50%;
         }
 
 
@@ -980,3 +1015,20 @@
 }
 
 
+#AgendaModelTag{
+    margin-top: 20px;
+    margin-left: 60%;
+    margin-bottom:20px;
+}
+
+@media(max-width:950px){
+    #AgendaModelTag{
+        margin-left: 30%;
+    }
+}
+
+@media(max-width:600px){
+    #AgendaModelTag{
+        margin-left: 10%;
+    }
+}

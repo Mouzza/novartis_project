@@ -34,21 +34,21 @@
                 <tbody class="table-hover">
                     <tr>
                         <td class=" text-left">
-                            <a href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.beginDatum.Day) />@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)</a>
+                            @Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)
 
                         </td>
                         <td class="text-left">
-                            <a href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)</a>
+                            @Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)
 </td>
                         <td class="text-left">
-                            <a href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})">@Html.DisplayFor(modelItem => item.centraleVraag.inhoud)</a>
+                           @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
 </td>
                     </tr>
                 </tbody>
-
+                <a id="paginaLink" href="@Url.Action("DossierModuleToekomst","Module", new {id = item.ID})"></a>
             }
         </table>
-        <a id="paginaLink"></a>
+  
     </div>
 
 </div>

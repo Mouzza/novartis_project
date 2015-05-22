@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using JPP.BL.Domain.Antwoorden;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -16,6 +17,9 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
 
         #region ACTIEVE dossier/agenda
+
+
+
         [HttpGet]
         [ActionName("getActieveDossier")]
         public IHttpActionResult getActieveDossierModule()
@@ -59,13 +63,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     percentageVolledigheid=dosAntwoord.percentageVolledigheid,
                     statusOnline=dosAntwoord.statusOnline,
                     titel=dosAntwoord.titel,
-                    afbeeldingByte = dosAntwoord.afbeeldingByte,
+                    //afbeeldingByte = dosAntwoord.afbeeldingByte,
                     textvak2=dosAntwoord.textvak2,
                     textvak3=dosAntwoord.textvak3,
                     //vasteTags=new List<ANDROIDVasteTag>(),
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel,
-                    stemmen=new List<ANDROIDstem>()
+                    stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>(),
+                    aantalFlags=dosAntwoord.flags.Count(),
+                    aantalStemmen=dosAntwoord.stemmen.Count()
                 };
                 if (dosAntwoord.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
@@ -169,6 +176,10 @@ namespace JPP.UI.Web.MVC.Controllers
                     //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agAntwoord.titel,
                     //vasteTags = new List<ANDROIDVasteTag>()
+                    aantalFlags = agAntwoord.flags.Count(),
+                    aantalStemmen = agAntwoord.stemmen.Count(),
+                    stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>()
                 };
                 if (agAntwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {

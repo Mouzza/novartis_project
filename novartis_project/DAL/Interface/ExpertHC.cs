@@ -13,6 +13,7 @@ namespace JPP.DAL.Interface
         void beantwoordExpertVraag(string antwoord, int vraagID);
         string GetExpertVraag(int vraagID);
         */
+        /* Interfaceklassen voor de EF klassen */
         
 
     }

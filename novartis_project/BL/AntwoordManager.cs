@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.DAL.EF;
 using JPP.BL.Domain.Modules;
 
@@ -19,6 +18,8 @@ namespace JPP.BL
             inlog = new IngelogdeGebruikerSCEF();
             beheerder = new BeheerderSCEF();
         }
+
+        /* vraagt alle dossierAntwoorden op ordert deze bij stemmen.count en geeft dan de opgevraagde top mee */
         public List<DossierAntwoord> topDossierAntwoorden(int top)
         {
             List<DossierAntwoord> dossierList=inlog.getAllDossierAntwoorden();
@@ -30,11 +31,15 @@ namespace JPP.BL
             }
             return dossierReturn;
         }
+
+
         public List<Antwoord> readAllAntwoorden()
         {
             List<Antwoord> antwoorden = inlog.getAllAntwoorden();
             return antwoorden;
         }
+
+        /*Vraagt alle dossierAntwoorden op en slaat enkel degene die een bepaalde module als parameter hebben op en stuurt deze terug */
         public List<DossierAntwoord> getAllDossierAntwoordenPerModule(int moduleID)
         {
             List<DossierAntwoord> dossierList = inlog.getAllDossierAntwoorden();
@@ -48,6 +53,7 @@ namespace JPP.BL
             }
             return dossierReturn;
         }
+        /* idem */
         public List<AgendaAntwoord> getAllAgendaAntwoordenPerModule(int agendaID)
         {
             List<AgendaAntwoord> agendaList = inlog.getAllAgendaAntwoorden();
@@ -61,6 +67,7 @@ namespace JPP.BL
             }
             return agendaReturn;
         }
+        /* idem */
         public List<AgendaAntwoord> topAgendaAntwoorden(int top)
         {
             List<AgendaAntwoord> agendaList=inlog.getAllAgendaAntwoorden();
@@ -72,57 +79,68 @@ namespace JPP.BL
             }
             return agendaReturn;
         }
-
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
         public List<AgendaAntwoord> sortAgendaAntwoordOudNieuw(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
             return agendaAntwoorden.OrderBy(o => o.datum).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<AgendaAntwoord> sortAgendaAntwoordNieuwOud(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
             return agendaAntwoorden.OrderByDescending(o => o.datum).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<AgendaAntwoord> sortAgendaAntwoordMeesteLikes(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
             return agendaAntwoorden.OrderByDescending(o => o.stemmen.Count).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<AgendaAntwoord> sortAgendaAntwoordMinsteLikes(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
             return agendaAntwoorden.OrderBy(o => o.stemmen.Count).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<AgendaAntwoord> sortAgendaAntwoordAZ(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
             return agendaAntwoorden.OrderBy(o => o.titel).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<AgendaAntwoord> sortAgendaAntwoordZA(IEnumerable<AgendaAntwoord> agendaAntwoorden)
         {
             return agendaAntwoorden.OrderByDescending(o => o.titel).ToList();
         }
 
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         #region sortAntwoorden
         public List<Antwoord> sortAntwoordNieuwOud(IEnumerable<Antwoord> antwoorden)
         {
             return antwoorden.OrderByDescending(o => o.datum).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<Antwoord> sortAntwoordMeesteLikes(IEnumerable<Antwoord> antwoorden)
         {
             return antwoorden.OrderByDescending(o => o.stemmen.Count).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<Antwoord> sortAntwoordMinsteLikes(IEnumerable<Antwoord> antwoorden)
         {
             return antwoorden.OrderBy(o => o.stemmen.Count).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<Antwoord> sortAntwoordAZ(IEnumerable<Antwoord> antwoorden)
         {
             return antwoorden.OrderBy(o => o.titel).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
 
         public List<Antwoord> sortAntwoordZA(IEnumerable<Antwoord> antwoorden)
         {
@@ -131,33 +149,45 @@ namespace JPP.BL
 
         #endregion
         #region sortDossierAntwoord
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<DossierAntwoord> sortDossierAntwoordNieuwOud(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
 
             return dossierAntwoorden.OrderByDescending(o => o.datum).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<DossierAntwoord> sortDossierAntwoordOudNieuw(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
 
             return dossierAntwoorden.OrderBy(o => o.datum).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<DossierAntwoord> sortDossierAntwoordMeesteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
       
             return dossierAntwoorden.OrderByDescending(o => o.stemmen.Count).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<DossierAntwoord> sortDossierAntwoordMinsteLikes(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
             return dossierAntwoorden.OrderBy(o => o.stemmen.Count).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<DossierAntwoord> sortDossierAntwoordTitelAZ(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
             return dossierAntwoorden.OrderBy(o => o.titel).ToList();
         }
+        /* sorteert de meegegeven List volgens een bepaalde structuur */
+
         public List<DossierAntwoord> sortDossierAntwoordTitelZA(IEnumerable<DossierAntwoord> dossierAntwoorden)
         {
 
@@ -166,6 +196,7 @@ namespace JPP.BL
         #endregion
 
         #region GET SORT Gesloten modules
+
         public List<Antwoord> getAllGeslotenModules()
         {
             List<Antwoord> antwoordList = inlog.getAllAntwoorden();

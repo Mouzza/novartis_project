@@ -80,21 +80,26 @@
             zelfdeGebruiker = false;
         }
 
-        if (zelfdeGebruiker)
-        {
-            <p id="WijzigVerwijderButtons">
-                @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "ActieveAgendaModule" })
-                @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveAgendaModule" })
-            </p>
-
-        }
+       
         if (ViewBag.winnaar == item.stemmen.Count)
         {
             <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
                 <table class="table-fill-actief">
                     <tbody class="table-hover">
                         <tr>
+                            @if (zelfdeGebruiker)
+                            {
+                            <p id="WijzigVerwijderButtons">
+                                @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "ActieveAgendaModule" })
+                                @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveAgendaModule" })
+                            </p>
 
+                            }
+                            else
+                            {
+                            <p id="WijzigVerwijderButtons">
+                            </p>
+                            }
                             @if (ViewBag.winnaar == item.stemmen.Count)
                             {
                                 <td id="aantalStemmenWinnaar">
@@ -137,8 +142,9 @@
                                             <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
                                                 <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
                                             </a>
-                                        }
-                                        | <span id="extrainfoSpan">Datum: </span> @item.datum
+                                        } 
+                                        <br />
+                                        <span id="extrainfoSpan">Datum: </span> @item.datum
                                         <br />
                                         <a id="FlagButton" href="@Url.Action("FlagAntwoord", "Flag", new { id = item.ID, type="Agenda" })"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
                                     </p>
@@ -162,6 +168,19 @@
                 <table class="table-fill-actief">
                     <tbody class="table-hover">
                         <tr>
+                            @if (zelfdeGebruiker)
+                            {
+                                <p id="WijzigVerwijderButtons">
+                                    @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "ActieveAgendaModule" })
+                                    @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveAgendaModule" })
+                                </p>
+
+                            }
+                            else
+                            {
+                                <p id="WijzigVerwijderButtons">
+                                </p>
+                            }
                             @if (ViewBag.winnaar == item.stemmen.Count)
                             {
                                 <td id="aantalStemmenWinnaar">
@@ -208,7 +227,7 @@
                                         }
                                         | <span id="extrainfoSpan">Datum: </span> @item.datum
                                         <br />
-                                        <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
+                                        <a id="FlagButton" href="@Url.Action("FlagAntwoord", "Flag", new { id = item.ID, type="Agenda" })"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
                                     </p>
                                     <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                         <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>

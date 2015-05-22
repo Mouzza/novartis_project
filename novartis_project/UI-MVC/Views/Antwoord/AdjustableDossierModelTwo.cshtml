@@ -42,7 +42,7 @@
 
 
 @using (Html.BeginForm("AdjustableDossierModelTwo", "Antwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
+{
     <div id="OptionsBar">
         <div id="OptionsbarTitle">2. Personaliseer</div>
         <div id="AdjCleanUp">
@@ -50,7 +50,7 @@
             <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress)</div>
             <!--<input type="text" name="googleMaps" />-->
 
-            <div id="titleColor">Kleur van de titel: @Html.TextBoxFor(model => model.TitleColor)</div>
+            <div id="titleColor">Kleur van de titel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.TitleColor)</div>
 
             <div class="editor-label">
                 @Html.LabelFor(model => model.vasteTags, "Tags")
@@ -61,10 +61,10 @@
             </div>
 
 
-            <div id="foregroundColor">Kleur van tekst @Html.TextBoxFor(model => model.foregroundColor)</div>
-            <div id="backgroundColor">Kleur van achtergrond: @Html.TextBoxFor(model => model.backgroundColor)</div>
+            <div id="foregroundColor">Kleur van tekst : (vb.: white, black of #666666) @Html.TextBoxFor(model => model.foregroundColor)</div>
+            <div id="backgroundColor">Kleur van achtergrond: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.backgroundColor)</div>
 
-            <div id="subTitleColor">Kleur van de subtitel: @Html.TextBoxFor(model => model.SubTitleColor)</div>
+            <div id="subTitleColor">Kleur van de subtitel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.SubTitleColor)</div>
 
 
         </div>
@@ -72,7 +72,8 @@
 
 
     <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
-
+    <div id="DossierModelPercent" style="color:@(Model.foregroundColor)"> <h1>Dossier volledigheid: @(Model.percentageVolledigheid) %</h1></div><!--Hier moet de titel van de pagina komen-->
+    <div>@ViewBag.PercentError</div>
     @*<textarea id="AdjDossierModelTitle">Mijn favoriete feestzaal</textarea>*@<!--Hier moet de titel van de pagina komen-->
     @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
@@ -122,7 +123,7 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Bevestig" class="btn btn-default" />
+            <input type="submit" value="Ga verder" class="btn btn-default" />
         </div>
     </div>
 

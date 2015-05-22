@@ -44,6 +44,9 @@
 
 @using (Html.BeginForm("AdjustableDossierModelOne", "Antwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
+
+
+    
             <div id="OptionsBar">
                 <div id="OptionsbarTitle">2. Personaliseer</div>
                 <div id="AdjCleanUp">
@@ -53,13 +56,15 @@
 
                     <div id="titleColor">Kleur van de titel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.TitleColor)</div>
 
-                    <div class="editor-label">
-                   @Html.LabelFor(model => model.vasteTags, "Tags")
-                     </div>
-                    <div class="editor-field">
-                        @Html.ListBox("Tags")
-
+                    <div>
+                        @Html.LabelFor(model => model.vasteTags, "Tags")
                     </div>
+           
+                    <div>@Html.ListBox("Tags")</div>
+              
+                     
+
+             
            
 
                     <div id="foregroundColor">Kleur van tekst : (vb.: white, black of #666666) @Html.TextBoxFor(model => model.foregroundColor)</div>
@@ -69,20 +74,24 @@
 
                     
                 </div>
-                </div>
+              </div>
+
             <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
 
                 <div>
                     <!--Hier moet de titel van de pagina komen-->
+                    <div id="DossierModelPercent" style="color:@(Model.foregroundColor)"> <h1>Dossier volledigheid: @(Model.percentageVolledigheid) %</h1></div><!--Hier moet de titel van de pagina komen-->
+                    <div>@ViewBag.PercentError</div>
                     @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
                     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.titel)</p>
                     @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
                     @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+
                     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
 
                 </div>
-          
+
             <div id="DossierModelAfbeelding">
                 <img src="@Url.Content(Model.afbeeldingPath)" />
                 @*<textarea id="DossierModelTextVakEen" name="backgroundColor" wrap="soft" cols="500" rows="10">Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.</textarea>*@
@@ -133,8 +142,8 @@
 
             <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Publish" class="btn btn-default" />
+                <input type="submit" value="Ga verder" class="btn btn-default" />
             </div>
-        </div>
+            </div>
 }
 

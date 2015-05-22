@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JPP.BL.Domain.Gebruikers;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace JPP.BL.Domain.Modules

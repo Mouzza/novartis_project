@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using JPP.BL.Domain.Modules;
-using JPP.BL.Domain.Gebruikers;
 
 namespace JPP.BL.Domain.Antwoorden
 {
     public class Antwoord
     {
+        /*Alle attributen voor Agenda en DossierAntwoord beide hebben de mogelijkheid om individueel extra attributen toe te voegen */
         [Key]
         public int ID { get; set; }
         [Required]

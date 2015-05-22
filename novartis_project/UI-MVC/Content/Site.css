@@ -583,6 +583,7 @@ textarea {
     border: #222222;
     width: 100%;
     font-weight: bold;
+   
 }
 
 #hide {
@@ -823,6 +824,7 @@ textarea {
     box-shadow: 0px 0px 50px rgba(0,0,0,0.3);
     cursor: pointer;
     height: 100px;
+
 }
 
 
@@ -2363,11 +2365,13 @@ div.table-title {
 }
 
 #ModelOneWrapper{
-    height: 1200px;
+    height: 1400px;
 }
 
 #WijzigVerwijderButtons{
     float:right;
+    height: 20px;
+    width: 110px;
 }
 
 @media screen and (max-width: 1300px){

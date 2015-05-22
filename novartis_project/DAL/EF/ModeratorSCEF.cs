@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.Interface;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-using JPP.BL.Domain.Gebruikers.Beheerder;
 using System.Configuration;
 
 namespace JPP.DAL.EF
@@ -17,7 +14,7 @@ namespace JPP.DAL.EF
    public class ModeratorSCEF : IngelogdeGebruikerSCEF, ModeratorHC
     {
        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
-    
+       /* Indien dit onduidelijk is wordt dit uitgelegd in AdminSCEF */
         public VasteTag CreateVasteTag(VasteTag vasteTag)
         {
             dbcontext.tags.Add(vasteTag);

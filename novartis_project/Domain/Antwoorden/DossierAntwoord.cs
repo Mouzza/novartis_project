@@ -10,6 +10,7 @@ namespace JPP.BL.Domain.Antwoorden
 {
     public class DossierAntwoord:Antwoord
     {
+        /* Erft over van antwoord maar heeft extra attributen nodig */
         public int layoutOption { get; set; }
         public string afbeeldingPath { get; set; }
         public byte[] afbeeldingByte { get; set; }
