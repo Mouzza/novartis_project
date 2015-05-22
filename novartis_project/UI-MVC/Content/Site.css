@@ -2369,6 +2369,8 @@ div.table-title {
 
 #WijzigVerwijderButtons{
     float:right;
+    height: 20px;
+    width: 110px;
 }
 
 @media screen and (max-width: 1300px){
