@@ -86,24 +86,26 @@
 
 
 
-            if (zelfdeGebruiker)
-            {
-                <p id="WijzigVerwijderButtons">
-                    @Html.ActionLink("Wijzig", "Wijzig", new { id = item.ID, type = "ActieveDossierModule" })
-                    @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveDossierModule" })
-                </p>
-            }
-            else
-            {
-                <p id="WijzigVerwijderButtons">   
-                </p>
-            }
+
             if (ViewBag.winnaar == item.stemmen.Count)
             {
                 <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
                     <table class="table-fill-actief">
                         <tbody class="table-hover">
                             <tr>
+                                @if (zelfdeGebruiker)
+                                {
+                                    <p id="WijzigVerwijderButtons">
+                                        @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "ActieveAgendaModule" })
+                                        @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveAgendaModule" })
+                                    </p>
+
+                                }
+                                else
+                                {
+                                    <p id="WijzigVerwijderButtons">
+                                    </p>
+                                }
 
                                 @if (ViewBag.winnaar == item.stemmen.Count)
                                 {
@@ -174,6 +176,19 @@
                 <table class="table-fill-actief">
                     <tbody class="table-hover">
                         <tr>
+                            @if (zelfdeGebruiker)
+                            {
+                                <p id="WijzigVerwijderButtons">
+                                    @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "ActieveAgendaModule" })
+                                    @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveAgendaModule" })
+                                </p>
+
+                            }
+                            else
+                            {
+                                <p id="WijzigVerwijderButtons">
+                                </p>
+                            }
                             @if (ViewBag.winnaar == item.stemmen.Count)
                             {
                                 <td id="aantalStemmenWinnaar">
