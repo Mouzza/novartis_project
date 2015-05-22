@@ -192,7 +192,7 @@ else
 
     </div><!--Hier moet de afbeelding van de pagina komen-->
 
-<div id="DossierModelTag">
+<div id="DossierModelTag" style="color:@(Model.foregroundColor)">
     <p>
         Tags: @foreach (var tag in @Model.vasteTags)
         { <span>@tag.naam, </span> }
