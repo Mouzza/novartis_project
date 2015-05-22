@@ -65,7 +65,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     //vasteTags=new List<ANDROIDVasteTag>(),
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel,
-                    stemmen=new List<ANDROIDstem>()
+                    stemmen=new List<ANDROIDstem>(),
+                    aantalFlags=dosAntwoord.flags.Count(),
+                    aantalStemmen=dosAntwoord.stemmen.Count()
                 };
                 if (dosAntwoord.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
@@ -169,6 +171,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agAntwoord.titel,
                     //vasteTags = new List<ANDROIDVasteTag>()
+                    aantalFlags = agAntwoord.flags.Count(),
+                    aantalStemmen = agAntwoord.stemmen.Count()
                 };
                 if (agAntwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {

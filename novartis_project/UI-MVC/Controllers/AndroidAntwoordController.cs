@@ -50,7 +50,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agenda.titel,
                     subTitel = agenda.subtitel,
-                    statusOnline=agenda.statusOnline
+                    statusOnline=agenda.statusOnline,
+                    aantalFlags = agenda.flags.Count(),
+                    aantalStemmen = agenda.stemmen.Count()
                 };
                 if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {
@@ -133,7 +135,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     subtitel = dossier.subtitel,
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3,
-                    stemmen=new List<ANDROIDstem>()
+                    stemmen=new List<ANDROIDstem>(),
+                    aantalFlags = dossier.flags.Count(),
+                    aantalStemmen = dossier.stemmen.Count()
                 };
                 if (dossier.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
@@ -200,7 +204,9 @@ namespace JPP.UI.Web.MVC.Controllers
                         statusOnline = antwoord.statusOnline,
                         titel = antwoord.titel,
                         subTitel = antwoord.subtitel,
-                        stemmen=new List<ANDROIDstem>()
+                        stemmen=new List<ANDROIDstem>(),
+                        aantalFlags = antwoord.flags.Count(),
+                        aantalStemmen = antwoord.stemmen.Count()
                     };
                     if (antwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
                     {
@@ -263,7 +269,9 @@ namespace JPP.UI.Web.MVC.Controllers
                         subtitel = dos.subtitel,
                         textvak2 = dos.textvak2,
                         textvak3 = dos.textvak3,
-                        stemmen=new List<ANDROIDstem>()
+                        stemmen=new List<ANDROIDstem>(),
+                        aantalFlags = dos.flags.Count(),
+                        aantalStemmen = dos.stemmen.Count()
                     };
                     foreach (var stem in dos.stemmen)
                     {
@@ -339,7 +347,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agenda.titel,
                     subTitel = agenda.subtitel,
-                    stemmen=new List<ANDROIDstem>()
+                    stemmen = new List<ANDROIDstem>(),
+                    aantalFlags = agenda.flags.Count(),
+                    aantalStemmen = agenda.stemmen.Count()
                 };
                 if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {
@@ -421,7 +431,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     subtitel = dossier.subtitel,
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3,
-                    stemmen=new List<ANDROIDstem>()
+                    stemmen=new List<ANDROIDstem>(),
+                    aantalFlags = dossier.flags.Count(),
+                    aantalStemmen = dossier.stemmen.Count()
                 };
                 foreach (var stem in dossier.stemmen)
                 {
@@ -475,7 +487,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 subtitel = agendaAntwoord.subTitel,
                 titel = agendaAntwoord.titel,
                 vasteTags = new List<VasteTag>(),
-                statusOnline=true                
+                statusOnline=true,
             };
             AgendaModule actieveAg = moduleManager.readActieveAgendaModule();
             agAntwoord.module = actieveAg;
@@ -599,7 +611,6 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         }
-
         [HttpGet]
         [ActionName("flagAntwoord")]
         public IHttpActionResult flagAntwoord(ANDROIDFlag aFlag)
@@ -621,13 +632,6 @@ namespace JPP.UI.Web.MVC.Controllers
             antwoordManager.flagAntwoord(flagAntw);
             return Ok("ok");
         }
-       
-        //[HttpGet]
-        //[ActionName("flagAntwoord")]
-        //public IHttpActionResult flagAntwoord(ANDROIDFlag flag)
-        //{
-        //    Antwoord antwoord = antwoordManager.readAllAntwoorden().Find(o=>o.ID==flag.antwoordid);
-        //}
         #endregion
 
         #region DELETE antwoord

@@ -84,6 +84,8 @@ namespace JPP.UI.Web.MVC.Models
         public List<ANDROIDstem> stemmen { get; set; }
         public List<ANDROIDVasteTag> vasteTags { get; set; }
         public List<ANDROIDFlag> flags { get; set; }
+        public int aantalStemmen { get; set; }
+        public int aantalFlags { get; set; }
 
     }
     public class ANDROIDDossierAntwoord
@@ -111,6 +113,8 @@ namespace JPP.UI.Web.MVC.Models
         public Boolean isActieveModule { get; set; }
         public List<ANDROIDstem> stemmen { get; set; }
         public List<ANDROIDFlag> flags { get; set; }
+        public int aantalStemmen { get; set; }
+        public int aantalFlags { get; set; }
 
     }
 
