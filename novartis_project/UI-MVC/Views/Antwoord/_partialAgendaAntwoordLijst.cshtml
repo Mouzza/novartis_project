@@ -142,8 +142,9 @@
                                             <a id="antwoordInhoudTwo" href="@Url.Action("Profiel", "Gebruiker", new { UserName = item.gebruikersNaam })">
                                                 <span id="zelfdeGebruikerSpan">@item.gebruikersNaam</span>
                                             </a>
-                                        }
-                                        | <span id="extrainfoSpan">Datum: </span> @item.datum
+                                        } 
+                                        <br />
+                                        <span id="extrainfoSpan">Datum: </span> @item.datum
                                         <br />
                                         <a id="FlagButton" href="@Url.Action("FlagAntwoord", "Flag", new { id = item.ID, type="Agenda" })"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
                                     </p>
