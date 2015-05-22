@@ -64,17 +64,6 @@
     <Compile Include="Antwoorden\VasteTag.cs" />
     <Compile Include="Antwoorden\VasteVraagAntwoord.cs" />
     <Compile Include="Vragen\ExpertVraag.cs" />
-    <Compile Include="Gebruikers\IGebruiker.cs" />
-    <Compile Include="Gebruikers\SuperUser\Admin.cs" />
-    <Compile Include="Gebruikers\Beheerder\Beheerder.cs" />
-    <Compile Include="Gebruikers\Email.cs" />
-    <Compile Include="Gebruikers\Expert.cs" />
-    <Compile Include="Gebruikers\Gebruiker.cs" />
-    <Compile Include="Gebruikers\Beheerder\Ibeheer.cs" />
-    <Compile Include="Gebruikers\SuperUser\ISuperUser.cs" />
-    <Compile Include="Gebruikers\Beheerder\Medebeheerder.cs" />
-    <Compile Include="Gebruikers\SuperUser\Moderator.cs" />
-    <Compile Include="Gebruikers\SuperUser\SuperAdmin.cs" />
     <Compile Include="Modules\AgendaModule.cs" />
     <Compile Include="Modules\Beloning.cs" />
     <Compile Include="Modules\DossierModule.cs" />
@@ -82,7 +71,6 @@
     <Compile Include="Modules\Organisatie.cs" />
     <Compile Include="Modules\Thema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Gebruikers\Wachtwoord.cs" />
     <Compile Include="Vragen\CentraleVraag.cs" />
     <Compile Include="Vragen\VasteVraag.cs" />
   </ItemGroup>

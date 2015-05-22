@@ -18,7 +18,7 @@
 
     </p>
     <p>Auteur: <a id="extrainfoSpan" href="@Url.Action("Profiel", "Gebruiker", new { UserName = @Model.adminNaam })">@Model.adminNaam </a> | <span id="extrainfoSpan">Thema: </span> @Model.thema.naam | <span id="extrainfoSpan">Aantal antwoorden: </span> @Model.agendaAntwoorden.Count | <span id="extrainfoSpan">Aantal keren bekeken: </span> @ApplicationInstance.Application["Totaluser"]</p>
-
+    <p><span id="extrainfoSpan">Eind datum: </span> @Model.eindDatum</p>
     <img id="moduleIcon" src="~/Images/menu logos/oplosing.png" alt="Alternate Text" />
     <div id="moduleInhoud">
         <h1 id="moduleTitel">Maak je punt! </h1>

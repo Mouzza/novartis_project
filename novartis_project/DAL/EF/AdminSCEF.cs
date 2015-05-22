@@ -7,10 +7,6 @@ using JPP.DAL.Interface;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-
 namespace JPP.DAL.EF
 {
     public class AdminSCEF : AdminHC
@@ -129,46 +125,6 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public Expert setExpert(Expert expert)
-        {
-            dbcontext.expert.Add(expert);
-            dbcontext.SaveChanges();
-            return expert;
-        }
-
-        public void deleteExpert(int id)
-        {
-            Expert expert = dbcontext.expert.Find(id);
-            dbcontext.expert.Remove(expert);
-            dbcontext.SaveChanges();
-
-        }
-
-        public void wijzigExpert(Expert expert)
-        {
-            dbcontext.Entry(expert).State = System.Data.Entity.EntityState.Modified;
-        }
-
-        public Moderator setModerator(Moderator moderator)
-        {
-            dbcontext.moderator.Add(moderator);
-            dbcontext.SaveChanges();
-            return moderator;
-        }
-
-        public void deleteModerator(int id)
-        {
-            Moderator moderator = dbcontext.moderator.Find(id);
-            dbcontext.moderator.Remove(moderator);
-            dbcontext.SaveChanges();
-
-        }
-
-        public void wijzigModerator(Moderator moderator)
-        {
-            dbcontext.Entry(moderator).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
 
         public DossierModule maakDossierModule(DossierModule dossierModule)
         {

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using JPP.DAL.EF;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers;
 
 namespace JPP.BL
 {
@@ -275,10 +274,6 @@ namespace JPP.BL
             return moduleTussen;
         }
 
-        public List<Gebruiker> readGebruikers()
-        {
-            List<Gebruiker> gebruikers = nietInlog.getGebruikers();
-            return gebruikers;
-        }
+      
     }
 }

@@ -12,9 +12,6 @@ using JPP.DAL.Interface;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
 using JPP.UI.Web.MVC;
 using System.Drawing;
 

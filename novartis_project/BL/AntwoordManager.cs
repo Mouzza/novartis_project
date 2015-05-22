@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.DAL.EF;
 using JPP.BL.Domain.Modules;
 
