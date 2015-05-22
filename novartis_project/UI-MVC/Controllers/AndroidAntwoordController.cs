@@ -611,11 +611,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     return Ok("nok");
                 }
-                else
-                {
-                    break;
-                }
-
             }
 
             Flag flagAntw = new Flag()
@@ -632,7 +627,6 @@ namespace JPP.UI.Web.MVC.Controllers
         //public IHttpActionResult flagAntwoord(ANDROIDFlag flag)
         //{
         //    Antwoord antwoord = antwoordManager.readAllAntwoorden().Find(o=>o.ID==flag.antwoordid);
-    
         //}
         #endregion
 
