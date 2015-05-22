@@ -3,8 +3,8 @@ $(document).ready(function () {
    
     $("#Tags").select2({
         placeholder: "Selecteer tags",
-        maximumSelectionSize: 10,
-        width: 300
+        maximumSelectionSize: 5,
+        width:280
 
     });
 
