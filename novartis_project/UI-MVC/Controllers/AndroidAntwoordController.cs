@@ -591,7 +591,7 @@ namespace JPP.UI.Web.MVC.Controllers
         #endregion
 
         #region STEM FLAG
-        [HttpGet]
+        [HttpPost]
         [ActionName("stemAntwoord")]
         public IHttpActionResult stemAntwoord(ANDROIDstem aStem)
         {
@@ -621,7 +621,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         }
-        [HttpGet]
+        [HttpPost]
         [ActionName("flagAntwoord")]
         public IHttpActionResult flagAntwoord(ANDROIDFlag aFlag)
         {
