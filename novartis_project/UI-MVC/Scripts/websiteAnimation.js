@@ -4,6 +4,7 @@ $(document).ready(function () {
     $("#Tags").select2({
         placeholder: "Selecteer tags",
         maximumSelectionSize: 5,
+        width:500
 
     });
 
