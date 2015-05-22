@@ -25,18 +25,25 @@
 
             @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelSixTextVakEen" })
             <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
-
-
-        @if (!Request.IsAuthenticated)
-        {
-            <p id="ValidatieError">Je moet ingelogd zijn om een antwoord te kunnen geven</p>
-        }
+        <div id="AgendaModelTag">
        
+                @Html.LabelFor(model => model.vasteTags, "Tags")
+   
+                @Html.ListBox("Tags")
+
+       
+        </div>
+
+            @if (!Request.IsAuthenticated)
+        {
+                <p id="ValidatieError">Je moet ingelogd zijn om een antwoord te kunnen geven</p>
+        }
 
 
-     
-      
-    </div>
+
+
+
+        </div>
 
 
 <p>

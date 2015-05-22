@@ -74,14 +74,24 @@
 
         @foreach (var item in Model)
         {
+            if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
+            {
+                zelfdeGebruiker = true;
 
+            }
+            else
+            {
+                zelfdeGebruiker = false;
+            }
 
 
 
             if (zelfdeGebruiker)
             {
-                @Html.ActionLink("Wijzig", "Wijzig", new { id = item.ID, type = "ActieveDossierModule" })
-                @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveDossierModule" })
+                <p id="WijzigVerwijderButtons">
+                    @Html.ActionLink("Wijzig", "Wijzig", new { id = item.ID, type = "ActieveDossierModule" })
+                    @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveDossierModule" })
+                </p>
             }
             if (ViewBag.winnaar == item.stemmen.Count)
             {
@@ -116,15 +126,7 @@
                         <h4 id="DossierLijstHvier">@Html.DisplayFor(modelItem => item.subtitel)</h4>
                     </div>
                     <div id="ShowOnHover">
-                        @if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
-                        {
-                            zelfdeGebruiker = true;
-
-                        }
-                        else
-                        {
-                            zelfdeGebruiker = false;
-                        }
+                       
 
 
 
@@ -193,15 +195,6 @@
                                     <h4 id="DossierLijstHvier">@Html.DisplayFor(modelItem => item.subtitel)</h4>
                                 </div>
                             <div id="ShowOnHover">
-                                @if (User.Identity.GetUserName().Equals(item.gebruikersNaam))
-                                {
-                                    zelfdeGebruiker = true;
-
-                                }
-                                else
-                                {
-                                    zelfdeGebruiker = false;
-                                }
 
 
 

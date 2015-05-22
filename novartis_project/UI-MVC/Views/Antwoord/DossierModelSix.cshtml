@@ -192,7 +192,12 @@ else
 
     </div><!--Hier moet de afbeelding van de pagina komen-->
 
-<div id="DossierModelTwoTag"> <p>Tags: Feestzaal, Fietsen, Station</p></div> <!--Hier moet de Tag van de pagina komen-->
+<div id="DossierModelTag" style="color:@(Model.foregroundColor)">
+    <p>
+        Tags: @foreach (var tag in @Model.vasteTags)
+        { <span>@tag.naam, </span> }
+    </p>
+</div> <!--Hier moet de Tag van de pagina komen-->
 
 
 

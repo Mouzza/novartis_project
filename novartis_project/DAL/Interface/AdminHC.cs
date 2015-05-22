@@ -7,8 +7,7 @@ using JPP.BL;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
-using JPP.BL.Domain.Gebruikers.SuperUser;
+
 
 namespace JPP.DAL.Interface
 {
@@ -39,13 +38,6 @@ namespace JPP.DAL.Interface
 
         void stelInVolledigheidsPercentage(int volledigheidsPercentage, int id);
 
-        Expert setExpert(Expert expert);
-        void deleteExpert(int id);
-        void wijzigExpert(Expert expert);
-
-        Moderator setModerator(Moderator moderator);
-        void deleteModerator(int id);
-        void wijzigModerator(Moderator moderator);
 
         DossierModule maakDossierModule(DossierModule dossierModule);
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using JPP.BL.Domain.Antwoorden;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -16,6 +17,9 @@ namespace JPP.UI.Web.MVC.Controllers
         ModuleManager moduleManager = new ModuleManager();
 
         #region ACTIEVE dossier/agenda
+
+
+
         [HttpGet]
         [ActionName("getActieveDossier")]
         public IHttpActionResult getActieveDossierModule()
@@ -49,11 +53,7 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 ANDROIDDossierAntwoord dos = new ANDROIDDossierAntwoord()
                 {
-                    aantalFlags = dosAntwoord.flags.Count,
-                    aantalStemmen = dosAntwoord.stemmen.Count,
                     datum=dosAntwoord.datum,
-                    //editable=dosAntwoord.editable,
-                    evenementID=10/*dosAntwoord.evenement.ID*/,
                     extraInfo=dosAntwoord.extraInfo,
                     extraVraag=dosAntwoord.extraVraag,
                     gebruikersNaam=dosAntwoord.gebruikersNaam,
@@ -63,15 +63,16 @@ namespace JPP.UI.Web.MVC.Controllers
                     percentageVolledigheid=dosAntwoord.percentageVolledigheid,
                     statusOnline=dosAntwoord.statusOnline,
                     titel=dosAntwoord.titel,
-                    afbeeldingByte = dosAntwoord.afbeeldingByte,
+                    //afbeeldingByte = dosAntwoord.afbeeldingByte,
                     textvak2=dosAntwoord.textvak2,
                     textvak3=dosAntwoord.textvak3,
-                    comments = new List<ANDROIDComment>(),
-                    //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     //vasteTags=new List<ANDROIDVasteTag>(),
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel,
-                    stemmen=new List<ANDROIDstem>()
+                    stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>(),
+                    aantalFlags=dosAntwoord.flags.Count(),
+                    aantalStemmen=dosAntwoord.stemmen.Count()
                 };
                 if (dosAntwoord.module.ID == moduleManager.readActieveDossierModule().ID)
                 {
@@ -89,6 +90,15 @@ namespace JPP.UI.Web.MVC.Controllers
                         gebruikersNaam=stem.gebruikersNaam
                     };
                     dos.stemmen.Add(astem);
+                }
+                foreach (var flag in dosAntwoord.flags)
+                {
+                    ANDROIDFlag aFlag = new ANDROIDFlag()
+                    {
+                        antwoordid = flag.antwoord.ID,
+                        gebruikersNaam = flag.gebruikersNaam
+                    };
+                    dos.flags.Add(aFlag);
                 }
                 //foreach (var vTag in dosAntwoord.vasteTags)
                 //{
@@ -110,19 +120,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 //    };
                 //    dos.persoonlijkeTags.Add(persTag);
                 //}
-
-                foreach (var comment in dosAntwoord.comments)
-                {
-                    ANDROIDComment aComment = new ANDROIDComment()
-                    {
-                        ID = comment.ID,
-                        inhoud = comment.inhoud,
-                        datum = comment.datum,
-                        aantalStemmen = comment.aantalStemmen,
-                        gebruikersNaam = comment.gebruikersNaam
-                    };
-                    dos.comments.Add(aComment);
-                }
                 dosModule.dossierAntwoorden.Add(dos);
             }
             ANDROIDBeloning beloning = new ANDROIDBeloning()
@@ -169,8 +166,6 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 ANDROIDAgendaAntwoord ag = new ANDROIDAgendaAntwoord()
                 {
-                    aantalFlags = agAntwoord.flags.Count,
-                    aantalStemmen = agAntwoord.stemmen.Count,
                     datum = agAntwoord.datum,
                     //editable = agAntwoord.editable,
                     extraInfo = agAntwoord.extraInfo,
@@ -181,6 +176,10 @@ namespace JPP.UI.Web.MVC.Controllers
                     //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     titel = agAntwoord.titel,
                     //vasteTags = new List<ANDROIDVasteTag>()
+                    aantalFlags = agAntwoord.flags.Count(),
+                    aantalStemmen = agAntwoord.stemmen.Count(),
+                    stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>()
                 };
                 if (agAntwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {
@@ -198,6 +197,15 @@ namespace JPP.UI.Web.MVC.Controllers
                         gebruikersNaam = stem.gebruikersNaam
                     };
                     ag.stemmen.Add(astem);
+                } 
+                foreach (var flag in agAntwoord.flags)
+                {
+                    ANDROIDFlag aFlag = new ANDROIDFlag()
+                    {
+                        antwoordid = flag.antwoord.ID,
+                        gebruikersNaam = flag.gebruikersNaam
+                    };
+                    ag.flags.Add(aFlag);
                 }
                 //foreach (var pTag in agAntwoord.persoonlijkeTags)
                 //{

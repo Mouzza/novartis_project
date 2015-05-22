@@ -12,9 +12,6 @@ using JPP.DAL.Interface;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
 using JPP.UI.Web.MVC;
 using System.Drawing;
 
@@ -24,6 +21,7 @@ namespace JPP.UI.Web.MVC.Controllers
     {
         AntwoordManager antwManager = new AntwoordManager();
         ModuleManager dossManager = new ModuleManager();
+        VasteTagManager vtManager = new VasteTagManager();
 
         // GET: Antwoord
         public ActionResult Index()
@@ -34,7 +32,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult MijnAntwoordenMenu()
         {
-            int aantal = antwManager.readAllAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() & antw.statusOnline==true).Count();
+            int aantal = antwManager.readAllAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName()).Count();
             ViewBag.Aantal = "Mijn antwoorden(" + aantal + ")";
             return PartialView();
 
@@ -316,7 +314,9 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
+            var list = vtManager.readAllVasteTags();
 
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
             if (dossierAntwoord.titel != null)
             {
@@ -324,7 +324,8 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             else
             {
-
+    
+       
 
                 dossierAntwoord = new DossierAntwoord()
                 {
@@ -334,10 +335,12 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
                     textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "~/uploads/379465.png"
+                    afbeeldingPath = "~/uploads/379465.png",
+                   
 
                 };
 
+             
                 return View(dossierAntwoord);
 
             }
@@ -346,10 +349,48 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-        [HttpPost]
-        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public double berekenPercentage(DossierAntwoord dossierAntwoord)
         {
+             double percentage = 0;
 
+
+                 if (dossierAntwoord.vasteTags.Count>0 || dossierAntwoord.vasteTags!=null)
+                 {
+                     percentage += 10;
+                 }
+            
+                if (dossierAntwoord.textvak3 != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.textvak2 != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.backgroundColor != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.subtitel != null)
+                {
+                    percentage += 20;
+                }
+                if (dossierAntwoord.titel != null)
+                {
+                    percentage += 20;
+                }
+                if (dossierAntwoord.inhoud != null)
+                {
+                    percentage += 40;
+                }
+              
+            return percentage;
+        }
+
+        [HttpPost]
+        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
+        {
+            
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -367,7 +408,6 @@ namespace JPP.UI.Web.MVC.Controllers
                         afbeeldingPath = dossAntwoord.afbeeldingPath,
                         foregroundColor = dossAntwoord.foregroundColor,
                         backgroundColor = dossAntwoord.backgroundColor
-                    
                     
                     
                     
@@ -437,6 +477,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.SubTitleColor = "#666666";
                 }
 
+               
+            
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
@@ -465,7 +507,16 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
+                
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
@@ -492,10 +543,10 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossierAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam"); 
+
 
             if (dossierAntwoord.titel != null)
             {
@@ -523,7 +574,7 @@ namespace JPP.UI.Web.MVC.Controllers
         
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
             
             if (!Request.IsAuthenticated)
@@ -639,6 +690,14 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingByte=imgByte
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
@@ -658,6 +717,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
         {
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
      
             if (dossierAntwoord.titel != null)
@@ -685,7 +747,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         
         [HttpPost]
-        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
            
             if (!Request.IsAuthenticated)
@@ -799,6 +861,14 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
@@ -818,7 +888,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult AdjustableDossierModelFive(DossierAntwoord dossierAntwoord)
         {
+            var list = vtManager.readAllVasteTags();
 
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
         
             if (dossierAntwoord.titel != null)
             {
@@ -844,7 +916,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
 
             if (!Request.IsAuthenticated)
@@ -858,7 +930,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-
+                        
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
@@ -961,13 +1033,12 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
-        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord, int[] Tags)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
             if (dossierAntwoord.titel != null)
             {
@@ -993,7 +1064,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
 
             if (!Request.IsAuthenticated)
@@ -1108,6 +1179,14 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
@@ -1397,7 +1476,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             List<AgendaModule> agendamodules = dossManager.readAllAgendaModules();
 
-            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() && antw.statusOnline==true);
+            IEnumerable<AgendaAntwoord> agendaAntwoorden = antwManager.readAllAgendaAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
 
 
             if (agendaAntwoorden.ToList().Count != 0)
@@ -1466,7 +1545,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             List<DossierModule> dossiermodules = dossManager.readAllDossierModules();
 
-            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName() && antw.statusOnline == true);
+            IEnumerable<DossierAntwoord> dossierAntwoorden = antwManager.readAllDossierAntwoorden().Where(antw => antw.gebruikersNaam == User.Identity.GetUserName());
 
            
             if (dossierAntwoorden.ToList().Count != 0)
@@ -1832,7 +1911,10 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
 
-          
+
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
               if (agendaAntwoord.titel != null)
               {
@@ -1857,7 +1939,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         [HttpPost]
-        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection formCollection)
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection formCollection, int[] Tags)
         {
             if (!Request.IsAuthenticated)
             {
@@ -1880,10 +1962,20 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = agendaAntwoord.inhoud,
                     subtitel = agendaAntwoord.subtitel,
                     titel = agendaAntwoord.titel,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    vasteTags=new List<VasteTag>()
                   
 
                 };
+
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        agendaAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
                 //Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
                 AgendaModule actieveAgendaModule = dossManager.readActieveAgendaModule();

@@ -53,12 +53,8 @@
         {
 
 
-            if (ViewBag.winnaar == item.stemmen.Count)
-            {
-                <span id="winnaarSpan">
-                    Mijn populairste antwoord
-                </span>
-            }
+
+            
             var url = Request.Url.AbsoluteUri;
             <p id="extraInfoParagraaf">
                 @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "MijnAntwoorden" }) |
@@ -75,10 +71,18 @@
                     <table class="table">
 
                         <tr>
-                            <td id="aantalStemmen">
-                               
-                                <img src="~/Images/oplosing2.png" />
-                            </td>
+                            @if (ViewBag.winnaar == item.stemmen.Count)
+                            {
+                                <td id="aantalStemmenWinnaar">
+                                    <img src="~/Images/Winnaars/NumberOne.png" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td id="aantalStemmen">
+                                    <img src="~/Images/dossier-white.png" />
+                                </td>
+                            }
 
                             <td id="antwoordInhoud">
                                 @Html.DisplayFor(modelItem => item.titel)

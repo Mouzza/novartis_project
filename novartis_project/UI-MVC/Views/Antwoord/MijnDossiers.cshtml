@@ -3,7 +3,12 @@
     ViewBag.title = "Mijn dossiers";
 }
 
+<div>
+    <a href="@Url.Action("Manage")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>
+
 <h1>Mijn dossiers</h1>
 <div id="mijnDossierAntwoorden">
     @{ Html.RenderAction("_partialMijnDossierAntwoorden", "Antwoord");}
 </div>
+

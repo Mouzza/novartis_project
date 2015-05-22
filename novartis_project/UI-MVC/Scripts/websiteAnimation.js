@@ -1,7 +1,13 @@
 ﻿
 $(document).ready(function () {
    
-    
+    $("#Tags").select2({
+        placeholder: "Selecteer tags",
+        maximumSelectionSize: 5,
+        width: 280,
+        height:26
+
+    });
 
     if (window.localStorage.getItem("hideMenu")=="hidden") {
         $("#homeIconMenu").css("display","none");

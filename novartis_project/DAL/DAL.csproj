@@ -72,7 +72,6 @@
     <Compile Include="EF\MedebeheerderSCEF.cs" />
     <Compile Include="EF\ModeratorSCEF.cs" />
     <Compile Include="EF\NietIngelogdeGebruikerSCEF.cs" />
-    <Compile Include="EF\SuperAdminSCEF.cs" />
     <Compile Include="IAdminRepository.cs" />
     <Compile Include="IModuleMapper.cs" />
     <Compile Include="Interface\BeheerderHC.cs" />
@@ -83,7 +82,6 @@
     <Compile Include="Interface\NietIngelogdeGebruikerHC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\AdminHC.cs" />
-    <Compile Include="Interface\SuperAdminHC.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

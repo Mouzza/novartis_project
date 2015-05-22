@@ -8,11 +8,8 @@ using System.Data.Entity.Migrations;
 using System.IO;
 using JPP.BL.Domain;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
 using System.Drawing;
 
 
@@ -609,7 +606,43 @@ namespace JPP.DAL.EF
 
 
             #endregion
-            
+
+            VasteTag vt1 = new VasteTag()
+            {
+                naam="Sport",
+                beschrijving="Sporten is gezond!",
+                antwoorden= new List<Antwoord>()
+            };
+            VasteTag vt2 = new VasteTag()
+            {
+                naam = "Algemeen",
+                beschrijving = "Vanalles een beetje!",
+                antwoorden = new List<Antwoord>()
+            };
+            VasteTag vt3 = new VasteTag()
+            {
+                naam = "Gezondheid",
+                beschrijving = "Gezondheid is belangrijk!",
+                antwoorden = new List<Antwoord>()
+            };
+            VasteTag vt4 = new VasteTag()
+            {
+                naam = "Educatie",
+                beschrijving = "Kennis is power!",
+                antwoorden = new List<Antwoord>()
+            };
+            VasteTag vt5 = new VasteTag()
+            {
+                naam = "Jeugd",
+                beschrijving = "De jeugd van tegenwoordig!",
+                antwoorden = new List<Antwoord>()
+            };
+
+            context.tags.Add(vt1);
+            context.tags.Add(vt2);
+            context.tags.Add(vt3);
+            context.tags.Add(vt4);
+            context.tags.Add(vt5);
             context.SaveChanges();
 
         }
