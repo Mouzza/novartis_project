@@ -2183,6 +2183,7 @@ div.table-title {
   border-collapse: collapse;
   height: 100%;
   margin: auto;
+  margin-right: 2%;
   max-width: 100%;
   padding: 5px;
   width: 80%;
@@ -2365,3 +2366,26 @@ div.table-title {
     height: 1200px;
 }
 
+#WijzigVerwijderButtons{
+    float:right;
+}
+
+@media screen and (max-width: 1300px){
+    #WijzigVerwijderButtons{
+        margin-left: 50%;
+    }
+    .table-fill-actief{
+        background: #fff;
+  border-radius: 3px;
+  border-collapse: collapse;
+  height: 100%;
+  margin: auto;
+  max-width: 100%;
+  padding: 5px;
+  width: 90%;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  animation: float 5s infinite;
+  margin-bottom: 10px;
+}
+    }
+}
