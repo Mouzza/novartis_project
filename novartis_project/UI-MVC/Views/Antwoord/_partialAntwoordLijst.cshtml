@@ -93,6 +93,11 @@
                     @Html.ActionLink(" | Verwijder", "Verwijder", new { id = item.ID, type = "ActieveDossierModule" })
                 </p>
             }
+            else
+            {
+                <p id="WijzigVerwijderButtons">   
+                </p>
+            }
             if (ViewBag.winnaar == item.stemmen.Count)
             {
                 <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
