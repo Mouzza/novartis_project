@@ -76,11 +76,14 @@
 
                 <div>
                     <!--Hier moet de titel van de pagina komen-->
+                    <div id="DossierModelPercent" style="color:@(Model.foregroundColor)"> <h1>Dossier volledigheid: @(Model.percentageVolledigheid) %</h1></div><!--Hier moet de titel van de pagina komen-->
+                    <div>@ViewBag.PercentError</div>
                     @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
                     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.titel)</p>
                     @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
                     @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+
                     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
 
                 </div>

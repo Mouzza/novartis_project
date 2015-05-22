@@ -43,6 +43,27 @@
         margin-right: auto;
     }
 
+    #DossierModelPercent {
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+    color: #0099cc;
+    font-size: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+    #DossierModelPercent h1 {
+        width:100%;
+        float:right;
+        font-weight: bold;
+        font-size: 30px;
+        margin-left: auto;
+        margin-right: 2%;
+        margin-bottom:5%;
+    }
+
 #DossierModelSubTitle {
     width: 100%;
     text-align: center;
@@ -402,7 +423,7 @@
 
 @media all and (min-width:300px) and (max-width:1400px){
         #ModelOneWrapper{
-            height:1400px;
+            height:1600px;
         }
         #DossierModelAfbeelding{
             width: 100%;

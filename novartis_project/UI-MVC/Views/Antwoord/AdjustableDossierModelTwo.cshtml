@@ -72,7 +72,8 @@
 
 
     <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
-
+    <div id="DossierModelPercent" style="color:@(Model.foregroundColor)"> <h1>Dossier volledigheid: @(Model.percentageVolledigheid) %</h1></div><!--Hier moet de titel van de pagina komen-->
+    <div>@ViewBag.PercentError</div>
     @*<textarea id="AdjDossierModelTitle">Mijn favoriete feestzaal</textarea>*@<!--Hier moet de titel van de pagina komen-->
     @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
