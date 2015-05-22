@@ -37,7 +37,7 @@
 </div>
 
 @using (Html.BeginForm("AdjustableDossierModelFive", "Antwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
+{
     <div id="OptionsBar">
         <div id="OptionsbarTitle">2. Personaliseer</div>
         <div id="AdjCleanUp">
@@ -45,7 +45,7 @@
             <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress)</div>
             <!--<input type="text" name="googleMaps" />-->
 
-            <div id="titleColor">Kleur van de titel: @Html.TextBoxFor(model => model.TitleColor)</div>
+            <div id="titleColor">Kleur van de titel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.TitleColor)</div>
 
             <div class="editor-label">
                 @Html.LabelFor(model => model.vasteTags, "Tags")
@@ -56,10 +56,10 @@
             </div>
 
 
-            <div id="foregroundColor">Kleur van tekst @Html.TextBoxFor(model => model.foregroundColor)</div>
-            <div id="backgroundColor">Kleur van achtergrond: @Html.TextBoxFor(model => model.backgroundColor)</div>
+            <div id="foregroundColor">Kleur van tekst : (vb.: white, black of #666666) @Html.TextBoxFor(model => model.foregroundColor)</div>
+            <div id="backgroundColor">Kleur van achtergrond: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.backgroundColor)</div>
 
-            <div id="subTitleColor">Kleur van de subtitel: @Html.TextBoxFor(model => model.SubTitleColor)</div>
+            <div id="subTitleColor">Kleur van de subtitel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.SubTitleColor)</div>
 
 
         </div>
@@ -74,7 +74,7 @@
         @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
         <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
     
- <p id="ValidatieError3">@Html.ValidationMessageFor(model => model.inhoud)</p>
+ <p id="ValidatieError2">@Html.ValidationMessageFor(model => model.inhoud)</p>
 <div id="TextWrapperFive">
 
         @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelFiveTextVakEen" })
