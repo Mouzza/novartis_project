@@ -176,4 +176,8 @@ namespace JPP.UI.Web.MVC.Models
         public string naam { get; set; }
         public string beschrijving { get; set; }
     }
+    public class ANDROIDImage
+    {
+        public string imageBytes { get; set; }
+    }
 }
