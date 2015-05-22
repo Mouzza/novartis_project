@@ -171,11 +171,11 @@ namespace JPP.DAL.EF
         {
 
             DossierModule oldDossiermodule = (DossierModule)dbcontext.modules.Find(dossierModule.ID);
-            dbcontext.Entry(oldDossiermodule).CurrentValues.SetValues(dossierModule);
+        
             dbcontext.Entry(oldDossiermodule.thema).CurrentValues.SetValues(dossierModule.thema);
             dbcontext.Entry(oldDossiermodule.beloning).CurrentValues.SetValues(dossierModule.beloning);
             dbcontext.Entry(oldDossiermodule.centraleVraag).CurrentValues.SetValues(dossierModule.centraleVraag);
-     
+            dbcontext.Entry(oldDossiermodule).CurrentValues.SetValues(dossierModule);
 
             dbcontext.SaveChanges();
         }
@@ -184,11 +184,11 @@ namespace JPP.DAL.EF
         {
 
             AgendaModule oldAgendamodule = (AgendaModule)dbcontext.modules.Find(agendaModule.ID);
-            dbcontext.Entry(oldAgendamodule).CurrentValues.SetValues(agendaModule);
+         
             dbcontext.Entry(oldAgendamodule.thema).CurrentValues.SetValues(agendaModule.thema);
             dbcontext.Entry(oldAgendamodule.beloning).CurrentValues.SetValues(agendaModule.beloning);
             dbcontext.Entry(oldAgendamodule.centraleVraag).CurrentValues.SetValues(agendaModule.centraleVraag);
-            
+            dbcontext.Entry(oldAgendamodule).CurrentValues.SetValues(agendaModule);
 
             dbcontext.SaveChanges();
         }
@@ -200,7 +200,6 @@ namespace JPP.DAL.EF
             dbcontext.themas.Remove(dossierModule.thema);
            
             dbcontext.centraleVragen.Remove(dossierModule.centraleVraag);
-            dbcontext.vasteVraagAntwoorden.RemoveRange(dossierModule.vasteVraagEen.vasteVraagAntwoorden);
             dbcontext.vasteVragen.Remove(dossierModule.vasteVraagEen);
 
             dbcontext.antwoord.RemoveRange(dossierModule.dossierAntwoorden);
