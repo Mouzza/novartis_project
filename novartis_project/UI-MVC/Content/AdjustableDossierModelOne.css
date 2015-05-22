@@ -765,6 +765,21 @@
             width: 370px;
         }
 
+                   #titleColor {
+        width: 370px;
+    }
+
+        #titleColor input {
+            width: 370px;
+        }
+
+            #subTitleColor {
+        width: 370px;
+    }
+
+        #subTitleColor input {
+            width: 370px;
+        }
         /*###############################################################################################################################################*/
 
         .AdjDossierModelTwoTextVakDrie {
@@ -956,6 +971,8 @@
         margin-top: 25px;
         width: 100%;
     }
+
+
 
 
 
