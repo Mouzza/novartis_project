@@ -7,7 +7,11 @@
 
 @if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
 {
+    <div>
+        <a href="@Url.Action("DossModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+    </div>
 
+    
 <div id="Lijst">
 
     @{Html.RenderAction("Lijst", "Antwoord", new { id = Model.ID });}

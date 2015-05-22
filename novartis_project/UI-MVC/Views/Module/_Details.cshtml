@@ -4,6 +4,7 @@
     ViewBag.Title = "Details agendamodule";
 }
 
+
 <h2>Details</h2>
 
 <div>
@@ -89,7 +90,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID }) 
     @if (Model.agendaAntwoorden.Count == 0)
     {
         <h4>Aantal antwoorden: @Model.agendaAntwoorden.Count </h4>
@@ -101,3 +102,7 @@
     }
     
 </p>
+
+<div>
+    <a href="@Url.Action("AgdModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>

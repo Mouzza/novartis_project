@@ -4,6 +4,7 @@
     ViewBag.Title = "Verwijder dossiermodule";
 }
 
+
 <h2>@Model.naam</h2>
 
 <h3>De dossiermodule wordt verwijdert, bent u zeker?</h3>
@@ -113,8 +114,12 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Verwijder" class="btn btn-default" /> |
+            <input type="submit" value="Verwijder" class="btn btn-default" /> 
            
         </div>
     }
+</div>
+
+<div>
+    <a href="@Url.Action("DossModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
 </div>

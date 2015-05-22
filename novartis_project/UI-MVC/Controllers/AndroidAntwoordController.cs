@@ -33,11 +33,13 @@ namespace JPP.UI.Web.MVC.Controllers
         public IHttpActionResult getAfbeeldingByte(int id)
         {
             DossierAntwoord dosAntwoordtwo = antwoordManager.readDossierAntwoord(id);
+            List<ANDROIDImage> lijst = new List<ANDROIDImage>();
             ANDROIDImage afbeelding = new ANDROIDImage()
             {
                 imageBytes=dosAntwoordtwo.afbeeldingByte
             };
-            return Ok(afbeelding);
+            lijst.Add(afbeelding);
+            return Ok(lijst);
 
         }
 

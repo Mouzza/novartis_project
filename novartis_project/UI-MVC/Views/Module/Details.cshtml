@@ -4,6 +4,8 @@
     ViewBag.Title = "Details dossiermodule";
 }
 
+
+
 <h2>Details</h2>
 
 <div>
@@ -111,7 +113,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) 
   
     @if (Model.dossierAntwoorden != null)
     {
@@ -133,3 +135,7 @@
     }
    
 </p>
+
+<div>
+    <a href="@Url.Action("DossModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>
