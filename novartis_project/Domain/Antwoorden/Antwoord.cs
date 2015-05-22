@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using JPP.BL.Domain.Modules;
-using JPP.BL.Domain.Gebruikers;
 
 namespace JPP.BL.Domain.Antwoorden
 {

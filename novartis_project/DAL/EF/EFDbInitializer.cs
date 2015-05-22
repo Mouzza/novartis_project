@@ -8,11 +8,8 @@ using System.Data.Entity.Migrations;
 using System.IO;
 using JPP.BL.Domain;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
 using System.Drawing;
 
 

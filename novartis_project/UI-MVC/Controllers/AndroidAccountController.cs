@@ -15,7 +15,6 @@ using JPP.UI.Web.MVC.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Drawing;
 using System.IO;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL;
 
 

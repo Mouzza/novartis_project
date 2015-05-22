@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.Interface;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-using JPP.BL.Domain.Gebruikers.Beheerder;
 using System.Configuration;
 
 namespace JPP.DAL.EF
@@ -18,13 +15,6 @@ namespace JPP.DAL.EF
     {
         public static EFDbContext dbcontext = new EFDbContext();
        
-        public Gebruiker createGebruiker(Gebruiker gebruiker)
-        {
-            dbcontext.gebruiker.Add(gebruiker);
-            dbcontext.SaveChanges();
-            return gebruiker;
-        }
-
         public Organisatie getOrganisatie(int ID)
         {
             Organisatie organ = dbcontext.organisaties.Find(ID);
@@ -85,55 +75,6 @@ namespace JPP.DAL.EF
         public IEnumerable<AgendaAntwoord> getAgendaAntwoorden()
         {
             return dbcontext.antwoord.OfType<AgendaAntwoord>().ToList();
-        }
-
-        public Gebruiker getGebruiker(int ID)
-        {
-            Gebruiker gebruiker = dbcontext.gebruiker.Find(ID);
-            return gebruiker;
-        }
-
-        public List<Gebruiker> getGebruikers()
-        {
-            List<Gebruiker> gebruikers = dbcontext.gebruiker.ToList();
-            return gebruikers;
-        }
-
-        public Moderator getModerator(int ID)
-        {
-            Moderator moderator = dbcontext.moderator.Find(ID);
-            return moderator;
-        }
-
-
-        public Beheerder getBeheerder(int ID)
-        {
-            Beheerder beheerder = dbcontext.beheerder.Find(ID);
-            return beheerder;
-        }
-
-        public Medebeheerder getMedebeheerder(int ID)
-        {
-            Medebeheerder medebeheerder = dbcontext.medebeheerder.Find(ID);
-            return medebeheerder;
-        }
-
-        public Expert getExpert(int ID)
-        {
-            Expert expert = dbcontext.expert.Find(ID);
-            return expert;
-        }
-
-        public Admin getAdmin(int ID)
-        {
-            Admin admin = dbcontext.admin.Find(ID);
-            return admin;
-        }
-
-        public SuperAdmin getSuperAdmin(int ID)
-        {
-            SuperAdmin superAdmin = dbcontext.superAdmin.Find(ID);
-            return superAdmin;
         }
 
 
