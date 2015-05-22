@@ -320,12 +320,12 @@ namespace JPP.UI.Web.MVC.Controllers
             
             if(dossierAntwoord.percentageVolledigheid < actieveDossierModule.verplichteVolledigheidsPercentage){
                 
-                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage;
+                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage + " %";
 
             }
        
 
-            if (dossierAntwoord.percentageVolledigheid != 0)
+            if (dossierAntwoord.titel != null)
             {
                 return View(dossierAntwoord);
             }
@@ -339,10 +339,18 @@ namespace JPP.UI.Web.MVC.Controllers
 
                     titel = "Geef titel",
                     subtitel = "Geef subtitel",
-                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
-                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
+                    inhoud = dossierAntwoord.inhoud,
+                    textvak2 = "Vul tekstvak1 in",
+                    textvak3 = "Vul tekstvak1 in",
+                    vasteTags=dossierAntwoord.vasteTags,
+                    googleMapsAdress = dossierAntwoord.googleMapsAdress,
+                    foregroundColor = dossierAntwoord.foregroundColor,
+                    backgroundColor = dossierAntwoord.backgroundColor,
+                    TitleColor = dossierAntwoord.TitleColor,
+                    SubTitleColor = dossierAntwoord.SubTitleColor,
                     afbeeldingPath = "~/uploads/379465.png",
+                    percentageVolledigheid=dossierAntwoord.percentageVolledigheid,
+
                    
 
                 };
@@ -435,7 +443,9 @@ namespace JPP.UI.Web.MVC.Controllers
                         foregroundColor = dossAntwoord.foregroundColor,
                         backgroundColor = dossAntwoord.backgroundColor,
                         VasteTag = dossAntwoord.vasteTags,
-                        percentageVolledigheid = percent
+                        percentageVolledigheid = percent,
+                        TitleColor = dossAntwoord.TitleColor,
+                        SubTitleColor = dossAntwoord.SubTitleColor,
                         
                     
                     
@@ -518,7 +528,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     datum = DateTime.Now,
                     flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
-                   percentageVolledigheid =percent,
+                    percentageVolledigheid =percent,
                     statusOnline = false,
                     layoutOption = 1,
                     subtitel = dossAntwoord.subtitel,
@@ -577,8 +587,15 @@ namespace JPP.UI.Web.MVC.Controllers
         {
 
             var list = vtManager.readAllVasteTags();
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
-            ViewBag.Tags = new MultiSelectList(list, "ID", "naam"); 
+            if (dossierAntwoord.percentageVolledigheid < actieveDossierModule.verplichteVolledigheidsPercentage)
+            {
+
+                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage + " %";
+
+            }
 
 
             if (dossierAntwoord.titel != null)
@@ -588,20 +605,34 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
 
+
+
                 dossierAntwoord = new DossierAntwoord()
                 {
 
                     titel = "Geef titel",
                     subtitel = "Geef subtitel",
-                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
-                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "~/uploads/379465.png"
+                    inhoud = dossierAntwoord.inhoud,
+                    textvak2 = "Vul tekstvak1 in",
+                    textvak3 = "Vul tekstvak1 in",
+                    vasteTags = dossierAntwoord.vasteTags,
+                    googleMapsAdress = dossierAntwoord.googleMapsAdress,
+                    foregroundColor = dossierAntwoord.foregroundColor,
+                    backgroundColor = dossierAntwoord.backgroundColor,
+                    TitleColor = dossierAntwoord.TitleColor,
+                    SubTitleColor = dossierAntwoord.SubTitleColor,
+                    afbeeldingPath = "~/uploads/379465.png",
+                    percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
+
+
 
                 };
 
+
                 return View(dossierAntwoord);
+
             }
+           
         }
 
         
@@ -609,25 +640,30 @@ namespace JPP.UI.Web.MVC.Controllers
         [HttpPost]
         public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
-            
+            int percent = berekenPercentage(dossAntwoord, file, Tags);
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || percent < actieveDossierModule.verplichteVolledigheidsPercentage)
             {
                 return RedirectToAction("AdjustableDossierModelTwo",
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
                         afbeeldingPath = dossAntwoord.afbeeldingPath,
                         foregroundColor = dossAntwoord.foregroundColor,
-                        backgroundColor = dossAntwoord.backgroundColor
+                        backgroundColor = dossAntwoord.backgroundColor,
+                        VasteTag = dossAntwoord.vasteTags,
+                        percentageVolledigheid = percent,
+                        TitleColor = dossAntwoord.TitleColor,
+                        SubTitleColor = dossAntwoord.SubTitleColor,
 
 
 
@@ -669,7 +705,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 }
 
-                int percent = berekenPercentage(dossAntwoord, file, Tags);
+
             
                 if (dossAntwoord.googleMapsAdress == null)
                 {
@@ -736,7 +772,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
-                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+      
                 dossierAntwoordX.module = actieveDossierModule;
                 DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
                 actieveDossierModule.dossierAntwoorden.Add(createddos);
@@ -752,10 +788,17 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
         {
             var list = vtManager.readAllVasteTags();
-
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
             ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
-     
+            if (dossierAntwoord.percentageVolledigheid < actieveDossierModule.verplichteVolledigheidsPercentage)
+            {
+
+                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage + " %";
+
+            }
+
+
             if (dossierAntwoord.titel != null)
             {
                 return View(dossierAntwoord);
@@ -763,46 +806,65 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
 
+
+
                 dossierAntwoord = new DossierAntwoord()
                 {
 
                     titel = "Geef titel",
                     subtitel = "Geef subtitel",
-                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
-                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "~/uploads/379465.png"
+                    inhoud = dossierAntwoord.inhoud,
+                    textvak2 = "Vul tekstvak1 in",
+                    textvak3 = "Vul tekstvak1 in",
+                    vasteTags = dossierAntwoord.vasteTags,
+                    googleMapsAdress = dossierAntwoord.googleMapsAdress,
+                    foregroundColor = dossierAntwoord.foregroundColor,
+                    backgroundColor = dossierAntwoord.backgroundColor,
+                    TitleColor = dossierAntwoord.TitleColor,
+                    SubTitleColor = dossierAntwoord.SubTitleColor,
+                    afbeeldingPath = "~/uploads/379465.png",
+                    percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
+
+
 
                 };
 
+
                 return View(dossierAntwoord);
+
             }
+           
         }
 
         
         [HttpPost]
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
-           
+
+            int percent = berekenPercentage(dossAntwoord, file, Tags);
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || percent < actieveDossierModule.verplichteVolledigheidsPercentage)
             {
                 return RedirectToAction("AdjustableDossierModelThree",
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
                         afbeeldingPath = dossAntwoord.afbeeldingPath,
                         foregroundColor = dossAntwoord.foregroundColor,
-                        backgroundColor = dossAntwoord.backgroundColor
-
+                        backgroundColor = dossAntwoord.backgroundColor,
+                        VasteTag = dossAntwoord.vasteTags,
+                        percentageVolledigheid = percent,
+                        TitleColor = dossAntwoord.TitleColor,
+                        SubTitleColor = dossAntwoord.SubTitleColor,
 
 
 
@@ -843,7 +905,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 }
 
-                int percent = berekenPercentage(dossAntwoord, file, Tags);
+        
 
                 if (dossAntwoord.googleMapsAdress == null)
                 {
@@ -909,7 +971,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
-                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+
                 dossierAntwoordX.module = actieveDossierModule;
                 DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
                 actieveDossierModule.dossierAntwoorden.Add(createddos);
@@ -925,9 +987,17 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelFive(DossierAntwoord dossierAntwoord)
         {
             var list = vtManager.readAllVasteTags();
-
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
             ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
-        
+
+            if (dossierAntwoord.percentageVolledigheid < actieveDossierModule.verplichteVolledigheidsPercentage)
+            {
+
+                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage + " %";
+
+            }
+
+
             if (dossierAntwoord.titel != null)
             {
                 return View(dossierAntwoord);
@@ -935,32 +1005,49 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
 
+
+
                 dossierAntwoord = new DossierAntwoord()
                 {
 
                     titel = "Geef titel",
                     subtitel = "Geef subtitel",
-                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
-                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "~/uploads/379465.png"
+                    inhoud = dossierAntwoord.inhoud,
+                    textvak2 = "Vul tekstvak1 in",
+                    textvak3 = "Vul tekstvak1 in",
+                    vasteTags = dossierAntwoord.vasteTags,
+                    googleMapsAdress = dossierAntwoord.googleMapsAdress,
+                    foregroundColor = dossierAntwoord.foregroundColor,
+                    backgroundColor = dossierAntwoord.backgroundColor,
+                    TitleColor = dossierAntwoord.TitleColor,
+                    SubTitleColor = dossierAntwoord.SubTitleColor,
+                    afbeeldingPath = "~/uploads/379465.png",
+                    percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
+
+
 
                 };
 
+
                 return View(dossierAntwoord);
+
             }
+           
         }
 
         [HttpPost]
         public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
 
+            int percent = berekenPercentage(dossAntwoord, file, Tags);
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || percent < actieveDossierModule.verplichteVolledigheidsPercentage)
             {
                 return RedirectToAction("AdjustableDossierModelFive",
                     new
@@ -1014,8 +1101,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 }
 
 
-
-                int percent = berekenPercentage(dossAntwoord, file, Tags);
+;
 
                 if (dossAntwoord.googleMapsAdress == null)
                 {
@@ -1074,7 +1160,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
-                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+    
                 dossierAntwoordX.module = actieveDossierModule;
                 DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
                 actieveDossierModule.dossierAntwoorden.Add(createddos);
@@ -1087,12 +1173,20 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
-        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord, int[] Tags)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord)
         {
 
             var list = vtManager.readAllVasteTags();
-
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
             ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
+
+            if (dossierAntwoord.percentageVolledigheid < actieveDossierModule.verplichteVolledigheidsPercentage)
+            {
+
+                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage + " %";
+
+            }
+
 
             if (dossierAntwoord.titel != null)
             {
@@ -1101,44 +1195,63 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
 
+
+
                 dossierAntwoord = new DossierAntwoord()
                 {
 
                     titel = "Geef titel",
                     subtitel = "Geef subtitel",
-                    inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
-                    textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "~/uploads/379465.png"
+                    inhoud = dossierAntwoord.inhoud,
+                    textvak2 = "Vul tekstvak1 in",
+                    textvak3 = "Vul tekstvak1 in",
+                    vasteTags = dossierAntwoord.vasteTags,
+                    googleMapsAdress = dossierAntwoord.googleMapsAdress,
+                    foregroundColor = dossierAntwoord.foregroundColor,
+                    backgroundColor = dossierAntwoord.backgroundColor,
+                    TitleColor = dossierAntwoord.TitleColor,
+                    SubTitleColor = dossierAntwoord.SubTitleColor,
+                    afbeeldingPath = "~/uploads/379465.png",
+                    percentageVolledigheid = dossierAntwoord.percentageVolledigheid,
+
+
 
                 };
 
+
                 return View(dossierAntwoord);
+
             }
+           
         }
 
         [HttpPost]
         public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
+            int percent = berekenPercentage(dossAntwoord, file, Tags);
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
 
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || percent < actieveDossierModule.verplichteVolledigheidsPercentage)
             {
                 return RedirectToAction("AdjustableDossierModelSix",
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
                         afbeeldingPath = dossAntwoord.afbeeldingPath,
                         foregroundColor = dossAntwoord.foregroundColor,
-                        backgroundColor = dossAntwoord.backgroundColor
+                        backgroundColor = dossAntwoord.backgroundColor,
+                        VasteTag = dossAntwoord.vasteTags,
+                        percentageVolledigheid = percent,
+                        TitleColor = dossAntwoord.TitleColor,
+                        SubTitleColor = dossAntwoord.SubTitleColor,
 
 
 
@@ -1180,7 +1293,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 }
 
-                int percent = berekenPercentage(dossAntwoord, file, Tags);
+
 
                 if (dossAntwoord.googleMapsAdress == null)
                 {
@@ -1247,7 +1360,6 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
-                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
                 dossierAntwoordX.module = actieveDossierModule;
                 DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
                 actieveDossierModule.dossierAntwoorden.Add(createddos);

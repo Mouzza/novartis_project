@@ -83,6 +83,7 @@
                     @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
                     @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+
                     <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
 
                 </div>
