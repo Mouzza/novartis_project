@@ -1,13 +1,14 @@
 ﻿@model JPP.BL.Domain.Modules.AgendaModule
 
 @{
-    ViewBag.Title = "Agenda module";
+    ViewBag.Title = "Details agendamodule";
 }
+
 
 <h2>Details</h2>
 
 <div>
-    <h4>Agenda module</h4>
+    <h4>Agendamodule</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -58,24 +59,21 @@
         <dt>
             Beloning naam:
         </dt>
-        @foreach (var bel in Model.beloning)
-        {
-
+       
             <dd>
-                @bel.naam ,
+                @Model.beloning.naam 
             </dd>
-        }
+        
 
         <dt>
             Beloning beschrijving:
         </dt>
-        @foreach (var bel in Model.beloning)
-        {
+      
 
             <dd>
-                @bel.beschrijving ,
+                @Model.beloning.beschrijving 
             </dd>
-        }
+        
         <br />
         <dt>
             Aantal winnaars:
@@ -92,7 +90,19 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Ga terug", "Index")
-    <h4>@Html.ActionLink("Beheer de antwoorden("+@Model.agendaAntwoorden.Count + ")", "_Lijst", "Antwoord", new { id = @Model.ID }, null)</h4>
+    @Html.ActionLink("Wijzig", "_Edit", new { id = Model.ID }) 
+    @if (Model.agendaAntwoorden.Count == 0)
+    {
+        <h4>Aantal antwoorden: @Model.agendaAntwoorden.Count </h4>
+
+    }
+    else
+    {
+        <h4>@Html.ActionLink("Beheer de antwoorden("+@Model.agendaAntwoorden.Count + ")", "AgdAntwoorden", "Antwoord", new { id = @Model.ID }, null)</h4>
+    }
+    
 </p>
+
+<div>
+    <a href="@Url.Action("AgdModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>

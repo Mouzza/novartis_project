@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Beheer agendamodules";
+    
+}
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+    <div>
+        <a href="@Url.Action("Index")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+    </div>
+    
+<div id="agendaModules">
+
+    @{ Html.RenderAction("partialViewAgendaModule", "Module"); }
+</div>
+
+<div id="geplandeAgendaModules">
+
+    @{ Html.RenderAction("GeplandeAgendaModules", "Module"); }
+</div>
+
+<div id="geslotenAgendaModules">
+
+    @{ Html.RenderAction("GeslotenAgendaModules", "Module"); }
+</div>
+}
+
+

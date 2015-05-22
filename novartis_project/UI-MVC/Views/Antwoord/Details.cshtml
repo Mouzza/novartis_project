@@ -17,6 +17,20 @@
         <dd>
             @Html.DisplayFor(model => model.inhoud)
         </dd>
+        <dt>
+            Titel
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titel)
+        </dd>
+        <dt>
+            Subtitel
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subtitel)
+        </dd>
 
         <dt>
             Extra info
@@ -39,16 +53,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.aantalStemmen)
+            @Html.DisplayFor(model => model.stemmen.Count)
         </dd>
         <br />
-        <dt>
-           Wijzigbaar
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.editable)
-        </dd>
+    
 
         <dt>
             Gebruiker
@@ -63,11 +71,9 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.aantalFlags)
+            @Html.DisplayFor(model => model.flags.Count)
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Ga terug", "Lijst", new { ID = Model.module.ID })
-</p>
+

@@ -1,0 +1,26 @@
+﻿@model JPP.BL.Domain.Modules.AgendaModule
+
+@{
+    ViewBag.title = "Agenda antwoorden";
+    
+}
+
+<div>
+    <a href="@Url.Action("AgdModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>
+
+
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+
+<div id="_Lijst">
+
+    @{Html.RenderAction("_Lijst", "Antwoord", new { id = Model.ID });}
+</div>
+
+<div id="_Lijst2">
+
+    @{Html.RenderAction("_Lijst2", "Antwoord", new { id = Model.ID });}
+</div>
+    
+}

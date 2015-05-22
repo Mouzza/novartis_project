@@ -1,0 +1,212 @@
+﻿@model JPP.BL.Domain.Antwoorden.AgendaAntwoord
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Antwoord";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/DossierModelOne.css">
+
+@if (Model.evenementen.Count == 0)
+{
+    //nothing happens
+}
+else if (Model.evenementen.ElementAt(1).title == null)
+{
+    if (@Model.module.status == false)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>1280</h3>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+
+    }
+}
+else if (Model.evenementen.ElementAt(2).title == null)
+{
+    if (@Model.module.status == false)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>1280</h3>
+                </div>
+                <div class="dot" id="two">
+                    <span id="dotSpan"></span>
+                    <h3>1649</h3>
+                </div>
+
+                <div class="inside"></div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+        <article class='modal two'>
+            <h4>@(Model.evenementen.ElementAt(1).startDatum) - @(Model.evenementen.ElementAt(1).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(1).title)</h2>
+            <p>@(Model.evenementen.ElementAt(1).locatie) <br />@(Model.evenementen.ElementAt(1).evenementText)</p>
+        </article>
+
+
+    }
+}
+else if (Model.evenementen.ElementAt(3).title == null)
+{
+    if (@Model.module.status == false)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>1280</h3>
+                </div>
+                <div class="dot" id="two">
+                    <span id="dotSpan"></span>
+                    <h3>1649</h3>
+                </div>
+                <div class="dot" id="three">
+                    <span id="dotSpan"></span>
+                    <h3>1831</h3>
+                </div>
+                <div class="inside"></div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+        <article class='modal two'>
+            <h4>@(Model.evenementen.ElementAt(1).startDatum) - @(Model.evenementen.ElementAt(1).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(1).title)</h2>
+            <p>@(Model.evenementen.ElementAt(1).locatie) <br />@(Model.evenementen.ElementAt(1).evenementText)</p>
+        </article>
+
+        <article class='modal three'>
+            <h4>@(Model.evenementen.ElementAt(2).startDatum) - @(Model.evenementen.ElementAt(2).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(2).title)</h2>
+            <p>@(Model.evenementen.ElementAt(2).locatie) <br />@(Model.evenementen.ElementAt(2).evenementText)</p>
+        </article>
+
+
+    }
+}
+else
+{
+    if (@Model.module.status == false)
+    {
+        <div id="TimeLineWrapper">
+            <div id="timeline">
+                <div class="dot" id="one">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(0).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="dot" id="two">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(1).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="dot" id="three">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(2).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="dot" id="four">
+                    <span id="dotSpan"></span>
+                    <h3>@(Model.evenementen.ElementAt(3).startDatum.ToShortDateString())</h3>
+                </div>
+                <div class="inside"></div>
+            </div>
+
+        </div>
+
+
+
+        <article class='modal one'>
+            <h4>@(Model.evenementen.ElementAt(0).startDatum) - @(Model.evenementen.ElementAt(0).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(0).title)</h2>
+            <p>@(Model.evenementen.ElementAt(0).locatie) <br />@(Model.evenementen.ElementAt(0).evenementText)</p>
+        </article>
+
+        <article class='modal two'>
+            <h4>@(Model.evenementen.ElementAt(1).startDatum) - @(Model.evenementen.ElementAt(1).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(1).title)</h2>
+            <p>@(Model.evenementen.ElementAt(1).locatie) <br />@(Model.evenementen.ElementAt(1).evenementText)</p>
+        </article>
+
+        <article class='modal three'>
+            <h4>@(Model.evenementen.ElementAt(2).startDatum) - @(Model.evenementen.ElementAt(2).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(2).title)</h2>
+            <p>@(Model.evenementen.ElementAt(2).locatie) <br />@(Model.evenementen.ElementAt(2).evenementText)</p>
+        </article>
+
+        <article class='modal four'>
+            <h4>@(Model.evenementen.ElementAt(3).startDatum) - @(Model.evenementen.ElementAt(3).eindDatum)</h4>
+            <h2>@(Model.evenementen.ElementAt(3).title)</h2>
+            <p>@(Model.evenementen.ElementAt(3).locatie) <br />@(Model.evenementen.ElementAt(3).evenementText)</p>
+        </article>
+
+    }
+}
+
+<div id="DossierWrapper">
+    <div id="DossierModelTitle">
+
+        @Model.titel
+
+    </div><!--Hier moet de titel van de pagina komen-->
+    <div id="DossierModelSubTitle">
+        <h2>
+            @Model.subtitel
+        </h2>
+    </div> <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+        <div id="AgendaModelTextVakEen">
+            <p>
+                @Model.inhoud
+            </p>
+
+        </div><!--Hier moet de eerste textvak van de pagina komen-->
+    <div id="AgendaModelTag">
+        <p>
+            Tags: @foreach (var tag in @Model.vasteTags)
+            { <span>@tag.naam, </span>
+            }
+        </p>
+    </div> <!--Hier moet de Tag van de pagina komen-->
+
+</div>
+
+
+<p>
+    @*@if (User.Identity.Name == Model.gebruikersNaam)
+    {
+
+        @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+    }*@
+
+</p>

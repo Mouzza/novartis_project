@@ -1,0 +1,103 @@
+﻿@model JPP.BL.Domain.Modules.DossierModule
+
+@{
+ 
+    Layout = "";
+}
+
+<h2>Actieve dossiermodule</h2>
+@if (User.IsInRole("Admin"))
+{
+<p>
+    @Html.ActionLink("Dossier module aanmaken", "Create")
+</p>
+    
+}
+@if (Model.naam != null)
+{
+<table class="table">
+    <tr>
+        <th>
+            Admin naam
+        </th>
+        <th>
+            Inhoud
+        </th>
+        <th>
+            Start datum
+        </th>
+        <th>
+            Eind datum
+        </th>
+        <th>
+            Verplichte volledigheids %
+        </th>
+        <th>Vraag</th>
+        <th>Open</th>
+        <th>Thema</th>
+        <th>Bel</th>
+        <th id="settingsLayout">Instellingen</th>
+    </tr>
+ 
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.adminNaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.beginDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.eindDatum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.verplichteVolledigheidsPercentage) %
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.centraleVraag.inhoud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.thema.naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => Model.beloning.naam)
+            </td>
+            <td>
+                @if (User.IsInRole("Admin"))
+                {
+                @Html.ActionLink("Wijzig |", "Edit", new { id = Model.ID })
+                }
+                
+                @Html.ActionLink("Details", "Details", new { id = Model.ID })
+                @if (User.IsInRole("Admin"))
+                {
+                @Html.ActionLink("Verwijder | ", "Delete", new { id = Model.ID })
+                }
+                    @if (Model.dossierAntwoorden.Count == 0)
+                    {
+                        <h4>Geen antwoorden</h4>
+
+                    }
+                    else
+                    {
+                        <h4>@Html.ActionLink("Beheer alle antwoorden(" + Model.dossierAntwoorden.Count + ")", "DossAntwoorden", "Antwoord", new { id = Model.ID }, null)</h4>
+
+                    }
+                
+         
+            </td>
+        </tr>
+  
+</table>
+
+}
+else
+{
+    <p>Geen actieve dossiermodule gevonden</p>
+}
+

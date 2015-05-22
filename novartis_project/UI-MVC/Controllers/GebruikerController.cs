@@ -37,8 +37,6 @@ namespace JPP.UI.Web.MVC.Controllers
             private set { this.roleManager = value; }
         }
 
-
-
         private ApplicationDbContext apc = new ApplicationDbContext();
 
         // GET: Gebruiker
@@ -46,10 +44,7 @@ namespace JPP.UI.Web.MVC.Controllers
         {
 
             User user = apc.Users.FirstOrDefault(u => u.UserName == UserName);
-
             var model = new UserRoleViewModel();
-
-
             var roles = user.Roles;
             var rolesCollection = new Collection<IdentityRole>();
 
@@ -58,77 +53,55 @@ namespace JPP.UI.Web.MVC.Controllers
                 var role1 = RoleManager.FindById(role.RoleId);
                 rolesCollection.Add(role1);
             }
-
             model = new UserRoleViewModel { user = user, roles = rolesCollection };
-
-
             return View(model);
         }
-
 
         // /Gebruiker/WijzigGebruiker
         public ActionResult WijzigGebruiker(string id)
         {
-
             User user = apc.Users.FirstOrDefault(u => u.Id == id);
             return View(user);
-
-
         }
 
         // /Gebruiker/WijzigGebruiker
         [HttpPost]
         public async Task<ActionResult> WijzigGebruiker(string id, User user)
         {
-
             var store = new UserStore<User>(apc);
             var userManager = new UserManager<User>(store);
-
             try
             {
                 // TODO: Add update logic here
-
                 apc.Entry(user).State = System.Data.Entity.EntityState.Modified;
-
                 await userManager.UpdateAsync(user);
                 apc.SaveChanges();
                 userManager.Update(user);
                 apc.SaveChanges();
-
                 return RedirectToAction("Index");
             }
             catch
             {
-
-
                 return RedirectToAction("Error","Admin");
             }
-
         }
 
         // /Gebruiker/VerwijderGebruiker
            [Authorize(Roles = "Admin")]
         public ActionResult VerwijderGebruiker(string id)
         {
-
             User user = apc.Users.Find(id);
+                var model = new UserRoleViewModel();
+                var roles = user.Roles;
+                var rolesCollection = new Collection<IdentityRole>();
 
-            var model = new UserRoleViewModel();
-
-
-            var roles = user.Roles;
-            var rolesCollection = new Collection<IdentityRole>();
-
-            foreach (var role in roles)
-            {
-                var role1 = RoleManager.FindById(role.RoleId);
-                rolesCollection.Add(role1);
-            }
-
-            model = new UserRoleViewModel { user = user, roles = rolesCollection };
-
-
-            return View(model);
+                foreach (var role in roles)
+                {
+                    var role1 = RoleManager.FindById(role.RoleId);
+                    rolesCollection.Add(role1);
+                }
+                model = new UserRoleViewModel { user = user, roles = rolesCollection };
+                return View(model);
         }
 
 
@@ -159,7 +132,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         // /Gebruiker/BlokkeerGebruiker
-           [Authorize(Roles = "Admin")]
+           [Authorize(Roles = "Admin, Moderator")]
         public ActionResult BlokkeerGebruiker(string id)
         {
 
@@ -183,7 +156,7 @@ namespace JPP.UI.Web.MVC.Controllers
             return View(model);
 
         }
-        [Authorize (Roles="Admin")]
+        [Authorize(Roles = "Admin, Moderator")]
         [HttpPost]
         // /Gebruiker/BlokkeerGebruiker
         public async Task<ActionResult> BlokkeerGebruiker(string id, FormCollection collection)
@@ -225,7 +198,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         //Gebuiker/Gebruikers
-        public ActionResult Index(int? page)
+        public ActionResult partialViewGebruikers1(int? page)
         {
             int pageSize = 5;
             int pageNumber = (page ?? 1);
@@ -248,6 +221,38 @@ namespace JPP.UI.Web.MVC.Controllers
             }
 
             return View(model.ToPagedList(pageNumber, pageSize));
+        }
+
+        public ActionResult partialViewGebruikers2(int? page)
+        {
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+
+            IEnumerable<User> users = apc.Users.ToList();
+            var model = new Collection<UserRoleViewModel>();
+
+            foreach (var user in users)
+            {
+                var roles = user.Roles;
+                var rolesCollection = new Collection<IdentityRole>();
+
+                foreach (var role in roles)
+                {
+                    var role1 = RoleManager.FindById(role.RoleId);
+                    rolesCollection.Add(role1);
+                }
+
+                model.Add(new UserRoleViewModel { user = user, roles = rolesCollection });
+            }
+
+            return View(model.ToPagedList(pageNumber, pageSize));
+        }
+
+        //Gebuiker/Gebruikers
+        public ActionResult Index()
+        {
+            
+            return View();
         }
 
           //Gebuiker/recenteGebruikers

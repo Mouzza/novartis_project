@@ -1,6 +1,7 @@
 ﻿@model System.Web.Mvc.HandleErrorInfo
 
 @{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "Error";
 }
 
@@ -9,9 +10,11 @@
     if (String.IsNullOrEmpty(ViewBag.errorMessage))
     {
         <h2 class="text-danger">Er is iets misgelopen!.</h2>
+      
     }
     else
     {
         <h2 class="text-danger">@ViewBag.errorMessage</h2>
+        <h2 class="text-danger">@Model.Exception</h2>
     }
 }

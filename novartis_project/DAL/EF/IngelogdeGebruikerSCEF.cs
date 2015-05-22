@@ -5,11 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.Interface;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-using JPP.BL.Domain.Gebruikers.Beheerder;
 using System.Configuration;
 
 
@@ -17,34 +14,9 @@ namespace JPP.DAL.EF
 {
    public class IngelogdeGebruikerSCEF : NietIngelogdeGebruikerSCEF, IngelogdeGebruikerHC
     {
-        EFDbContext dbcontext;
-        public IngelogdeGebruikerSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
+       EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
 
-        public Beheerder createBeheerder(Beheerder gebruiker)
-        {
-            dbcontext.beheerder.Add(gebruiker);
-            dbcontext.SaveChanges();
-            return gebruiker;
-        }
-
-
-        public void deleteGebruiker(int id)
-        {
-            Gebruiker gebr = dbcontext.gebruiker.Find(id);
-            dbcontext.gebruiker.Remove(gebr);
-            dbcontext.SaveChanges();
-
-
-        }
-
-        public void wijzigGebruiker(Gebruiker gebruiker)
-        {
-            dbcontext.Entry(gebruiker).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
+       /*Add in de databank bij DossierAntwoord een meegegeven object van type dossierAntwoord*/
 
         /*
         public Antwoord maakAntwoord(Antwoord antwoord)
@@ -55,10 +27,10 @@ namespace JPP.DAL.EF
 
         public DossierAntwoord maakDossierAntwoord(DossierAntwoord dossierAntwoord)
         {
-            
-            dbcontext.antwoord.Add(dossierAntwoord);
-            dbcontext.SaveChanges();
-            return dossierAntwoord;
+
+                dbcontext.antwoord.Add(dossierAntwoord);
+                dbcontext.SaveChanges();
+                return dossierAntwoord;
 
         }
 
@@ -69,44 +41,41 @@ namespace JPP.DAL.EF
             return agendaAntwoord;
         }
 
+       /*Geef Alle antwoorden van het type dossierAntwoord terug in een list. De databank houdt in antwoord de discriminator bij. 
+        * Deze aproach is volgens ons een performantere aproach dan simpel 2 verschillende databanken te maken met 80% dezelfde kolommen*/
+
         public List<DossierAntwoord> getAllDossierAntwoorden()
         {
          
             return dbcontext.antwoord.OfType<DossierAntwoord>().ToList();
+        }
+        public List<Antwoord> getAllAntwoorden()
+        {
+
+            return dbcontext.antwoord.ToList();
         }
         public List<AgendaAntwoord> getAllAgendaAntwoorden()
         {
             return dbcontext.antwoord.OfType<AgendaAntwoord>().ToList();
         }
 
-        public Comment createComment(Comment comment)
+        public Stem createStem(Stem stem)
         {
-            dbcontext.comments.Add(comment);
+            dbcontext.stemmen.Add(stem);
             dbcontext.SaveChanges();
-            return comment;
+            return stem;
         }
 
-        public void wijzigComment(Comment comment)
+        public Flag createFlag(Flag flag)
         {
-            dbcontext.Entry(comment).State = System.Data.Entity.EntityState.Modified;
+            dbcontext.flags.Add(flag);
             dbcontext.SaveChanges();
-        }
-
-        public void deleteComment(int id)
-        {
-            Comment comment = dbcontext.comments.Find(id);
-            dbcontext.comments.Remove(comment);
-            dbcontext.SaveChanges();
-        }
-
-        public void stemOpComment(int id)
-        {
-            Comment comment= dbcontext.comments.Find(id);
-            comment.aantalStemmen++;
-            dbcontext.Entry(comment).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
+            return flag;
         }
 
 
+
+
+       
     }
 }

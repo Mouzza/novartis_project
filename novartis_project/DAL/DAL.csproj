@@ -42,12 +42,18 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Data.Entity.Design.Extensibility, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
@@ -66,7 +72,6 @@
     <Compile Include="EF\MedebeheerderSCEF.cs" />
     <Compile Include="EF\ModeratorSCEF.cs" />
     <Compile Include="EF\NietIngelogdeGebruikerSCEF.cs" />
-    <Compile Include="EF\SuperAdminSCEF.cs" />
     <Compile Include="IAdminRepository.cs" />
     <Compile Include="IModuleMapper.cs" />
     <Compile Include="Interface\BeheerderHC.cs" />
@@ -77,8 +82,6 @@
     <Compile Include="Interface\NietIngelogdeGebruikerHC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Interface\AdminHC.cs" />
-    <Compile Include="Interface\SuperAdminHC.cs" />
-    <Compile Include="EF\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

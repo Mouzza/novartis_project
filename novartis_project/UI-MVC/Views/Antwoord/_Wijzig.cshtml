@@ -1,0 +1,51 @@
+﻿@model JPP.BL.Domain.Antwoorden.AgendaAntwoord
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.gebruikersNaam)
+    @Html.HiddenFor(model => model.datum)
+    @Html.HiddenFor(model => model.extraInfo)
+    @Html.HiddenFor(model => model.inhoud)
+    @Html.HiddenFor(model => model.module)
+    @Html.HiddenFor(model => model.statusOnline)
+    @Html.HiddenFor(model => model.vasteTags)
+    @Html.HiddenFor(model => model.stemmen)
+    @Html.HiddenFor(model => model.flags)
+
+
+
+    <div class="form-horizontal">
+        <h4>Wijzig uw antwoord</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Titel</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.titel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.titel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Subtitel</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.subtitel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.subtitel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Opslaan" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

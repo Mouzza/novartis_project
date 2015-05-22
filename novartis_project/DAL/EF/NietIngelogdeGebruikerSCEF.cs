@@ -5,29 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.Interface;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-using JPP.BL.Domain.Gebruikers.Beheerder;
 using System.Configuration;
 
 namespace JPP.DAL.EF
 {
     public class NietIngelogdeGebruikerSCEF
     {
-        EFDbContext dbcontext;
-        public NietIngelogdeGebruikerSCEF()
-        {
-            dbcontext = new EFDbContext();
-        }
-        public Gebruiker createGebruiker(Gebruiker gebruiker)
-        {
-            dbcontext.gebruiker.Add(gebruiker);
-            dbcontext.SaveChanges();
-            return gebruiker;
-        }
-
+        /* Indien dit onduidelijk is wordt dit uitgelegd in AdminSCEF en NietIngelogdeGebruikerSCEF*/
+        public static EFDbContext dbcontext = new EFDbContext();
+       
         public Organisatie getOrganisatie(int ID)
         {
             Organisatie organ = dbcontext.organisaties.Find(ID);
@@ -59,11 +47,6 @@ namespace JPP.DAL.EF
             return vvraag;
         }
 
-        public Voorstel getVoorstel(int ID)
-        {
-            Voorstel voorstel = dbcontext.voorstellen.Find(ID);
-            return voorstel;
-        }
 
 
         public Antwoord getAntwoord(int ID)
@@ -71,6 +54,19 @@ namespace JPP.DAL.EF
             Antwoord antwoord = dbcontext.antwoord.Find(ID);
             return antwoord;
         }
+
+        public DossierAntwoord getDossierAntwoord(int ID)
+        {
+            DossierAntwoord antwoord = (DossierAntwoord)dbcontext.antwoord.Find(ID);
+            return antwoord;
+        }
+
+        public AgendaAntwoord getAgendaAntwoord(int ID)
+        {
+            AgendaAntwoord antwoord = (AgendaAntwoord)dbcontext.antwoord.Find(ID);
+            return antwoord;
+        }
+
 
         public IEnumerable<DossierAntwoord> getDossierAntwoorden()
         {
@@ -82,62 +78,14 @@ namespace JPP.DAL.EF
             return dbcontext.antwoord.OfType<AgendaAntwoord>().ToList();
         }
 
-        public Gebruiker getGebruiker(int ID)
+
+        public VasteTag getVasteTag(int ID)
         {
-            Gebruiker gebruiker = dbcontext.gebruiker.Find(ID);
-            return gebruiker;
+            VasteTag vasteTag = dbcontext.tags.Find(ID);
+            return vasteTag;
         }
 
-        public Moderator getModerator(int ID)
-        {
-            Moderator moderator = dbcontext.moderator.Find(ID);
-            return moderator;
-        }
-
-
-        public Beheerder getBeheerder(int ID)
-        {
-            Beheerder beheerder = dbcontext.beheerder.Find(ID);
-            return beheerder;
-        }
-
-        public Medebeheerder getMedebeheerder(int ID)
-        {
-            Medebeheerder medebeheerder = dbcontext.medebeheerder.Find(ID);
-            return medebeheerder;
-        }
-
-        public Expert getExpert(int ID)
-        {
-            Expert expert = dbcontext.expert.Find(ID);
-            return expert;
-        }
-
-        public Admin getAdmin(int ID)
-        {
-            Admin admin = dbcontext.admin.Find(ID);
-            return admin;
-        }
-
-        public SuperAdmin getSuperAdmin(int ID)
-        {
-            SuperAdmin superAdmin = dbcontext.superAdmin.Find(ID);
-            return superAdmin;
-        }
-
-
-        public Tag getTag(int ID)
-        {
-            Tag tag = dbcontext.tags.Find(ID);
-            return tag;
-        }
-
-
-        public PersoonlijkeTag getPersoonlijkeTag(int ID)
-        {
-            PersoonlijkeTag persoonlijkeTag = dbcontext.tags.OfType<PersoonlijkeTag>().Where(tag => tag.ID == ID).First();
-            return persoonlijkeTag;
-        }
+  
 
         public List<Comment> getAllComments()
         {
@@ -168,6 +116,7 @@ namespace JPP.DAL.EF
             List<DossierModule> dossierModule = dbcontext.modules.OfType<DossierModule>().ToList();
             return dossierModule;
         }
+        
 
         public List<AgendaModule> getAgendaModules()
         {
@@ -175,7 +124,17 @@ namespace JPP.DAL.EF
             return agendaModules;
         }
 
+        //public List<DossierModule> getDossierModules()
+        //{
+        //    List<DossierModule> dossierModule = dbcontext.modules.OfType<DossierModule>().ToList();
+        //    return dossierModule;
+        //}
 
+        //public List<AgendaModule> getAgendaModules()
+        //{
+        //    List<AgendaModule> agendaModules = dbcontext.modules.OfType<AgendaModule>().ToList();
+        //    return agendaModules;
+        //}
     }
 }
 

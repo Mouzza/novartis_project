@@ -1,0 +1,201 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Antwoorden.Antwoord>
+@using PagedList
+@using PagedList.Mvc
+@using Microsoft.AspNet.Identity
+
+@{Layout = "";}
+
+
+
+
+@if (Model.Count != 0)
+{
+
+
+    <div>
+
+
+
+        @if (ViewBag.Aantal > 1)
+        {
+
+            <h2>@ViewBag.Aantal Antwoorden</h2>
+        }
+        else if (ViewBag.Aantal == 1)
+        {
+            <h2>@ViewBag.Aantal Antwoord</h2>
+        }
+@using (Html.BeginForm())
+        {
+        <p>
+            <div id="BoxesWrapper">
+                <div id="searchbox">
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                </div>
+
+                <input type="submit" value="" class="imgClass" />
+    
+               
+                    <a id="MainFilterJO" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.LikesSortParm }, null)"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" /> </a>
+                    <a id="MainFilterOJ" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.NPopSortParm }, null)"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </a>
+                    <a id="MainFilterZA" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.ZASortParm }, null)"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </a>
+                    <a id="MainFilterAZ" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.AZSortParm }, null)"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </a>
+
+            </div>
+        </p>
+}
+        <div id="pager">
+            @Html.PagedListPager(Model, page => Url.Action("_partialMijnAgendaAntwoorden",
+          new { page, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.CurrentSort }))
+        </div>
+
+        @foreach (var item in Model)
+        {
+
+
+
+            
+            var url = Request.Url.AbsoluteUri;
+            <p id="extraInfoParagraaf">
+                @Html.ActionLink("Wijzig", "_Wijzig", new { id = item.ID, type = "MijnAntwoorden" }) |
+                @Html.ActionLink("Verwijder", "Verwijder", new { id = item.ID, type = "MijnAntwoorden" })
+                | <span id="extrainfoSpan">Datum: </span> @item.datum
+            </p>
+
+
+
+
+            if (ViewBag.winnaar == item.stemmen.Count)
+            {
+                <div id="tableAntwoordWinnaar" onclick="goToPagina(this)">
+                    <table class="table">
+
+                        <tr>
+                            @if (ViewBag.winnaar == item.stemmen.Count)
+                            {
+                                <td id="aantalStemmenWinnaar">
+                                    <img src="~/Images/Winnaars/NumberOne.png" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td id="aantalStemmen">
+                                    <img src="~/Images/dossier-white.png" />
+                                </td>
+                            }
+
+                            <td id="antwoordInhoud">
+                                @Html.DisplayFor(modelItem => item.titel)
+                                <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
+
+                                </div>
+                                <br />
+                                <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})"></a>
+
+                </div>
+            }
+            else
+            {
+                <div id="tableAntwoord" onclick="goToPagina(this)">
+                    <table class="table">
+
+                        <tr>
+                            <td id="aantalStemmen">
+                            
+                                <img src="~/Images/oplosing2.png" />
+                            </td>
+
+                            <td id="antwoordInhoud">
+                                @Html.DisplayFor(modelItem => item.titel)
+                                <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
+                                    <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>
+
+                                </div>
+                                <br />
+                                <h4>@Html.DisplayFor(modelItem => item.subtitel)</h4>
+
+
+                            </td>
+
+                        </tr>
+
+                    </table>
+                    <a id="paginaLink" href="@Url.Action("Agenda", "Antwoord", new {id = item.ID})"></a>
+
+                </div>
+            }
+            <script>
+
+                function goToPagina(element) {
+                    window.location = $(element).find("#paginaLink").attr("href");
+                    return false;
+                };
+            </script>
+
+
+
+
+
+        }
+    </div>
+
+
+}
+else
+{
+    <h2>Geen antwoorden</h2>
+    
+    using (Html.BeginForm())
+    {
+        <p>
+            <div id="BoxesWrapper">
+                <div id="searchbox">
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                </div>
+
+                <input type="submit" value="" class="imgClass" />
+
+
+                <a id="MainFilterJO" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.LikesSortParm }, null)"> <img id="MainFilterImgJO" src="~/Images/sortFlip.png" /> </a>
+                <a id="MainFilterOJ" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.NPopSortParm }, null)"> <img id="MainFilterImgOJ" src="~/Images/sort.png" /> </a>
+                <a id="MainFilterZA" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.ZASortParm }, null)"> <img id="MainFilterImgZA" src="~/Images/iconmonstr-sort-16-icon-256.png" /> </a>
+                <a id="MainFilterAZ" href="@Url.Action("MijnAntwoorden", "Antwoord", new { sortOrder = ViewBag.AZSortParm }, null)"> <img id="MainFilterImgAZ" src="~/Images/iconmonstr-sort-14-icon-256.png" /> </a>
+
+            </div>
+        </p>
+    }
+    <div id="pager">
+        @Html.PagedListPager(Model, page => Url.Action("_partialMijnAgendaAntwoorden",
+          new { page, currentFilter = ViewBag.CurrentFilter, sortOrder = ViewBag.CurrentSort }))
+    </div>
+
+}
+
+
+<script>
+
+
+
+    $(function () {
+        $('#pager').on('click', 'a', function () {
+            if (this.href == "") { return; }
+            $.ajax({
+                url: this.href,
+                type: 'GET',
+                cache: false,
+                success: function (result) {
+                    $('#mijnAgendaAntwoorden').html(result);
+                }
+            });
+            return false;
+        });
+    });
+
+</script>

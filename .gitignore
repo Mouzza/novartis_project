@@ -8,3 +8,9 @@ novartis_project/BL/bin/Debug/JPP.BL.dll.config
 *.pdb
 novartis_project/BL/obj/Debug/BL.csproj.FileListAbsolute.txt
 *.suo
+*.suo
+*.suo
+*.cache
+novartis_project/UI-MVC/Views/Shared/_Layout2.cshtml
+novartis_project/UI-MVC/Views/Shared/_Layout2.cshtml
+novartis_project/UI-MVC/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache

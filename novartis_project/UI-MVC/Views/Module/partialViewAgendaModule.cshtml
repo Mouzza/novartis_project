@@ -1,14 +1,20 @@
-﻿@model IEnumerable<JPP.BL.Domain.Modules.AgendaModule>
+﻿@model JPP.BL.Domain.Modules.AgendaModule
 
 @{
     ViewBag.Title = "";
+    Layout = "";
 }
 
-<h2>Agenda modules</h2>
+<h2>Actieve agendamodule</h2>
 
+@if (User.IsInRole("Admin"))
+{
 <p>
-    @Html.ActionLink("Agenda module aanmaken", "Create")
+    @Html.ActionLink("Agenda module aanmaken", "_Create")
 </p>
+}
+@if (Model.naam != null)
+{
 <table class="table">
     <tr>
         <th>
@@ -18,42 +24,82 @@
             Inhoud
         </th>
         <th>
-            Status
-        </th>
-        <th>
            Begin datum
         </th>
         <th>
             Eind datum
         </th>
+        <th>
+            Vraag
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Thema
+        </th>
+        <th>
+            Beloning
+        </th>
 
         <th id="settingsLayout">Instellingen</th>
     </tr>
 
-@foreach (var item in Model) {
+
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.adminNaam)
+            @Html.DisplayFor(modelItem => Model.adminNaam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.naam)
+            @Html.DisplayFor(modelItem => Model.naam)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.status)
+            @Html.DisplayFor(modelItem => Model.beginDatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.beginDatum)
+            @Html.DisplayFor(modelItem => Model.eindDatum)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.eindDatum)
+            @Html.DisplayFor(modelItem => Model.centraleVraag.inhoud)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.thema.naam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.beloning.naam)
+        </td>
+        <td>
+            @if (User.IsInRole("Admin"))
+            {
+            @Html.ActionLink("Wijzig | ", "_Edit", new { id = Model.ID }) 
+            }
+            @Html.ActionLink("Details", "_Details", new { id = Model.ID })
+            @if (User.IsInRole("Admin"))
+            {
+            @Html.ActionLink(" | Verwijder", "_Delete", new { id = Model.ID }) 
+            }    
+                
+            @if (Model.agendaAntwoorden.Count == 0)
+            {
+                <h4>Geen antwoorden</h4>
 
-        <td>
-            @Html.ActionLink("Wijzig", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "_Details", new { id=item.ID }) |
-            @Html.ActionLink("Verwijder", "Delete", new { id=item.ID })
-        </td>
+            }
+            else
+            {
+                <h4>@Html.ActionLink("Beheer alle antwoorden(" + Model.agendaAntwoorden.Count + ")", "AgdAntwoorden", "Antwoord", new { id = Model.ID }, null)</h4>
+
+            }
+           </td>
     </tr>
-}
 
 </table>
+}
+else
+{
+    <p>Geen actieve agendamodule gevonden.</p>
+}
+
+

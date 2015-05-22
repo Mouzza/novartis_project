@@ -5,63 +5,50 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.Interface;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-using JPP.BL.Domain.Gebruikers.Beheerder;
 using System.Configuration;
 
 namespace JPP.DAL.EF
 {
    public class ModeratorSCEF : IngelogdeGebruikerSCEF, ModeratorHC
     {
-        EFDbContext dbcontext;
-        public ModeratorSCEF()
+       EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
+       /* Indien dit onduidelijk is wordt dit uitgelegd in AdminSCEF */
+        public VasteTag CreateVasteTag(VasteTag vasteTag)
         {
-            dbcontext = new EFDbContext();
-        }
-        public Tag createTag(Tag tag)
-        {
-            dbcontext.tags.Add(tag);
+            dbcontext.tags.Add(vasteTag);
             dbcontext.SaveChanges();
-            return tag;
+            return vasteTag;
         }
 
-        public void deletePersoonlijkeTag(int ID)
+ 
+        public void DeleteVasteTag(int ID)
         {
-            Tag tag = dbcontext.tags.Find(ID);
-            dbcontext.tags.Remove(tag);
+            VasteTag vasteTag = dbcontext.tags.Find(ID);
+            dbcontext.tags.Remove(vasteTag);
             dbcontext.SaveChanges();
         }
 
-        public void DeleteTag(int ID)
+        public void AlterVasteTag(VasteTag vasteTag)
         {
-            Tag tag = dbcontext.tags.Find(ID);
-            dbcontext.tags.Remove(tag);
+            VasteTag oldVasteTag = (VasteTag)dbcontext.tags.Find(vasteTag.ID);
+            dbcontext.Entry(oldVasteTag).CurrentValues.SetValues(vasteTag);
+      
             dbcontext.SaveChanges();
         }
 
-        public void AlterTag(Tag tag)
+        public List<VasteTag> GetAllVasteTags()
         {
-            dbcontext.Entry(tag).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
+            return dbcontext.tags.ToList();
+  
+        }
+        public VasteTag GetVasteTag(int id)
+        {
+            return dbcontext.tags.Find(id);
+
         }
 
-        public void setInactiefGebruiker(int ID)
-        {
-            Gebruiker gebruiker = dbcontext.gebruiker.Find(ID);
-            gebruiker.active = false;
-            dbcontext.Entry(gebruiker).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
-
-        public void setActiefGebruiker(int ID)
-        {
-            Gebruiker gebruiker = dbcontext.gebruiker.Find(ID);
-            gebruiker.active = true;
-            dbcontext.Entry(gebruiker).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
+      
     }
 }

@@ -11,6 +11,7 @@ namespace JPP.DAL.EF
 {
    public class EFDbConfiguration : DbConfiguration
     {
+        /*Connection code voor de databank*/
 
         public EFDbConfiguration()
         {

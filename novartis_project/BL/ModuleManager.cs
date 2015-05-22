@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JPP.DAL.EF;
 using JPP.BL.Domain.Modules;
+using JPP.BL.Domain.Vragen;
 
 namespace JPP.BL
 {
@@ -32,9 +33,6 @@ namespace JPP.BL
             nietInlog = new NietIngelogdeGebruikerSCEF();
             admin = new AdminSCEF();
         }
-
-
-        
 
         public Module readModule(int id)
         {
@@ -96,20 +94,189 @@ namespace JPP.BL
             }
             return moduleTussen;
         }
+
+        /*Create een Module maar zorgt ervoor dat alle relationele objecten ook worden opgevuld en gecreëerd */
         
-        public Module createModule(Module module)
+        public DossierModule createDossierModule(DossierModule dossierModule)
         {
-            return admin.createModule(module);
+            CentraleVraag centraleVraag = new CentraleVraag()
+            {
+                inhoud = dossierModule.centraleVraag.inhoud,
+                aantalWinAntwoorden = dossierModule.centraleVraag.aantalWinAntwoorden,
+                extraInfo = dossierModule.centraleVraag.extraInfo,
+                datum = DateTime.Now
+
+
+            };
+
+            Thema thema = new Thema()
+            {
+                beschrijving = dossierModule.thema.beschrijving,
+                naam = dossierModule.thema.naam,
+
+            };
+
+            //List<VasteVraag> vasteVragen = new List<VasteVraag>();
+            //foreach (var vasteVraag in dossierModule.vasteVragen)
+            //{
+            //    VasteVraag vasteVraagX = new VasteVraag()
+            //    {
+            //        boolVerplicht = vasteVraag.boolVerplicht,
+            //        inhoud = vasteVraag.inhoud,
+            //        extraInfo = vasteVraag.extraInfo,
+
+
+
+            //    };
+            //    vasteVragen.Add(vasteVraagX);
+            //}
+
+
+
+
+         
+                Beloning beloning = new Beloning()
+                {
+                    naam = dossierModule.beloning.naam,
+                    beschrijving = dossierModule.beloning.beschrijving
+                    
+
+                };
+         
+
+            DossierModule dossierModuleX = new DossierModule()
+            {
+
+               
+                status = dossierModule.status,
+                adminNaam = dossierModule.adminNaam,
+                beginDatum = dossierModule.beginDatum,
+                eindDatum = dossierModule.eindDatum,
+                //vasteVragen = new List<VasteVraag>(),
+                verplichteVolledigheidsPercentage = dossierModule.verplichteVolledigheidsPercentage,
+                naam = dossierModule.naam
+
+
+            };
+
+            dossierModuleX.beloning = beloning;
+            //dossierModule.vasteVragen = vasteVragen;
+            dossierModuleX.centraleVraag = centraleVraag;
+            dossierModuleX.thema = thema;
+
+            return admin.maakDossierModule(dossierModuleX);
+        }
+        /*Create een Module maar zorgt ervoor dat alle relationele objecten ook worden opgevuld en gecreëerd */
+
+        public AgendaModule createAgendaModule(AgendaModule agendaModule)
+        {
+            CentraleVraag centraleVraag = new CentraleVraag()
+            {
+                inhoud = agendaModule.centraleVraag.inhoud,
+                aantalWinAntwoorden = agendaModule.centraleVraag.aantalWinAntwoorden,
+                extraInfo = agendaModule.centraleVraag.extraInfo,
+                datum = DateTime.Now
+
+
+            };
+
+            Thema thema = new Thema()
+            {
+                beschrijving = agendaModule.thema.beschrijving,
+                naam = agendaModule.thema.naam,
+
+            };
+  
+            Beloning beloning = new Beloning()
+            {
+                naam = agendaModule.beloning.naam,
+                beschrijving = agendaModule.beloning.beschrijving
+
+
+            };
+
+
+            AgendaModule agendaModuleX = new AgendaModule()
+            {
+
+
+                status = agendaModule.status,
+                adminNaam = agendaModule.adminNaam,
+                beginDatum = agendaModule.beginDatum,
+                eindDatum = agendaModule.eindDatum,          
+                naam = agendaModule.naam
+
+
+            };
+
+            agendaModuleX.beloning = beloning;
+            agendaModuleX.centraleVraag = centraleVraag;
+            agendaModuleX.thema = thema;
+
+            return admin.maakAgendaModule(agendaModuleX);
         }
 
-        public void updateModule(Module module)
+        public void updateDossierModule(DossierModule dossierModule)
         {
-            admin.wijzigModule(module);
+            admin.wijzigDossierModule(dossierModule);
+        }
+        public void updateAgendaModule(AgendaModule agendaModule)
+        {
+            admin.wijzigAgendaModule(agendaModule);
         }
 
-        public void removeModule(int id)
+        public void removeDossierModule(int id)
         {
-            admin.deleteModule(id);
+            admin.deleteDossierModule(id);
         }
+
+        public void removeAgendaModule(int id)
+        {
+            admin.deleteAgendaModule(id);
+        }
+
+        public List<DossierModule> readGeslotenDossiers()
+        {
+            List<DossierModule> dossierModules = nietInlog.getDossierModules();
+            List<DossierModule> moduleTussen = new List<DossierModule>();
+            for (int i = 0; i < dossierModules.Count; i++)
+            {
+                if (dossierModules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(dossierModules[i]);
+                }
+            }
+            return moduleTussen;
+        }
+
+        public List<Module> readGeslotenModules()
+        {
+            List<Module> Modules = nietInlog.getModules();
+            List<Module> moduleTussen = new List<Module>();
+            for (int i = 0; i < Modules.Count; i++)
+            {
+                if (Modules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(Modules[i]);
+                }
+            }
+            return moduleTussen;
+        }
+
+        public List<AgendaModule> readGeslotenAgendas()
+        {
+            List<AgendaModule> agendaModules = nietInlog.getAgendaModules();
+            List<AgendaModule> moduleTussen = new List<AgendaModule>();
+            for (int i = 0; i < agendaModules.Count; i++)
+            {
+                if (agendaModules[i].eindDatum <= DateTime.Today)
+                {
+                    moduleTussen.Add(agendaModules[i]);
+                }
+            }
+            return moduleTussen;
+        }
+
+      
     }
 }

@@ -1,0 +1,11 @@
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\JPP.BL.Domain.dll.config
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\JPP.BL.Domain.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\JPP.BL.Domain.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\EntityFramework.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\EntityFramework.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Release\JPP.BL.Domain.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Release\JPP.BL.Domain.pdb
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\bin\Release\Newtonsoft.Json.dll
+C:\Users\Moussa\Documents\GitHub\novartis_project\novartis_project\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache

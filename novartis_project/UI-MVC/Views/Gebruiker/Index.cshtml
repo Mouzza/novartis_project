@@ -1,3 +1,16 @@
-﻿@{Html.RenderPartial("partialViewGebruikers1");}
-@{Html.RenderPartial("partialViewGebruikers2");}
+﻿  @{
+      ViewBag.title = "Beheer gebruikers"; 
+  }
+
+<div id="gebruikerLijst1">
+
+@{Html.RenderAction("partialViewGebruikers1");}
+</div>
+
+
+<div id="gebruikerLijst2">
+@{Html.RenderAction("partialViewGebruikers2");}
+</div>
+
+
 

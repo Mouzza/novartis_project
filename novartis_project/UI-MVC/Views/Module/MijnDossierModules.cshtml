@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.title = "Beheer uw dossiermodules";
+
+}
+
+<div>
+    <a href="@Url.Action("Manage")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>
+
+    @{ Html.RenderAction("partialViewMijnDossierModule", "Module");}
+
+
+<div id="mijnGeplandeDossierModules">
+    @{ Html.RenderAction("MijnGeplandeDossierModules", "Module");}
+</div>
+
+<div id="mijnGeslotenDossierModules">
+    @{ Html.RenderAction("MijnGeslotenDossierModules", "Module");}
+</div>

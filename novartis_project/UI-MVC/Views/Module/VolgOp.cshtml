@@ -1,0 +1,15 @@
+﻿
+    @{
+        ViewBag.Title = "Volg op";
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+
+<div>
+    <a href="@Url.Action("Index", "Home")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>
+
+    <div id="geslotenDossierModules">
+        @{ Html.RenderAction("_GeslotenDossierModules", "Module");}
+
+    </div>
+

@@ -1,0 +1,67 @@
+﻿@model JPP.BL.Domain.Antwoorden.AgendaAntwoord
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Geef een antwoord";
+}
+<link rel="stylesheet" type="text/css" href="~/Content/AdjustableDossierModelOne.css">
+
+@using (Html.BeginForm("AdjAgendaAntwoord", "Antwoord", FormMethod.Post))
+{
+  
+
+    <div id="AgendaAntwoordWrapper">
+
+
+            @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
+            <p id="ValidatieError">@Html.ValidationMessageFor(model => model.titel)</p>
+
+
+
+            @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+            <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
+
+
+
+            @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelSixTextVakEen" })
+            <p id="ValidatieError">@Html.ValidationMessageFor(model => model.inhoud)</p>
+        <div id="AgendaModelTag">
+       
+                @Html.LabelFor(model => model.vasteTags, "Tags")
+   
+                @Html.ListBox("Tags")
+
+       
+        </div>
+
+            @if (!Request.IsAuthenticated)
+        {
+                <p id="ValidatieError">Je moet ingelogd zijn om een antwoord te kunnen geven</p>
+        }
+
+
+
+
+
+        </div>
+
+
+<p>
+    @*@if (User.Identity.Name == Model.gebruikersNaam)
+    {
+
+        @Html.ActionLink("Wijzig", "Edit", new { id = Model.ID })
+    }*@
+
+</p>
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" value="Publish" class="btn btn-default" />
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

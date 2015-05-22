@@ -7,20 +7,13 @@ using JPP.DAL.Interface;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
-
 namespace JPP.DAL.EF
 {
     public class AdminSCEF : AdminHC
     {
-        public AdminSCEF()
-        {
-            dbcontext=new EFDbContext();
-        }
-
-        EFDbContext dbcontext;
+        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
+  
+        /*Add in de databank bij vaste vragen een meegegeven object van type vaste vraag*/
         public VasteVraag createVastevraag(VasteVraag vastevraag)
         {
             dbcontext.vasteVragen.Add(vastevraag);
@@ -28,6 +21,7 @@ namespace JPP.DAL.EF
             return vastevraag;
         }
 
+        /*Delete in de databank bij vaste vragen op basis van ID*/
         public void deleteVastevraag(int id)
         {
             VasteVraag vastevraag = dbcontext.vasteVragen.Find(id);
@@ -35,11 +29,14 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
+        /*Update in dbcontext de entry van de meegegeven vaste vraag en save changes*/
         public void wijzigVastevraag(VasteVraag vastevraag)
         {
             dbcontext.Entry(vastevraag).State = System.Data.Entity.EntityState.Modified;
             dbcontext.SaveChanges();
         }
+
+        /*########################## De rest van de create, delete en update doen hetzelfde maar voor andere objecten*/
 
         public CentraleVraag createCentraleVraag(CentraleVraag centralevraag)
         {
@@ -122,14 +119,8 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public void stelInAantalStemmen(int aantalstemmen, int id)
-        {
-            Antwoord antwoord = dbcontext.antwoord.Find(id);
-            antwoord.aantalStemmen = aantalstemmen;
-            dbcontext.Entry(antwoord).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-
-        }
+        /*Vindt antwoord op basis van id en verander de volledigheidspercentage door de meegegeven parameter*/
+     
 
         public void stelInVolledigheidsPercentage(int volledigheidsPercentage, int id)
         {
@@ -140,71 +131,90 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
-        public Expert setExpert(Expert expert)
+        /*Het is belangrijk ook de relaties te onderhouden, bij maakdossier moet ook de bijbehorende beloning van type beloning, thema en centralevraag worden ingevuld*/
+
+        public DossierModule maakDossierModule(DossierModule dossierModule)
         {
-            dbcontext.expert.Add(expert);
+
+
+
+          //  dbcontext.vasteVragen.AddRange(dossierModule.vasteVragen);
+           
+            dbcontext.centraleVragen.Add(dossierModule.centraleVraag);
+            dbcontext.themas.Add(dossierModule.thema);
+            dbcontext.beloningen.Add(dossierModule.beloning);
+            
+            dbcontext.modules.Add(dossierModule);
+            
             dbcontext.SaveChanges();
-            return expert;
+            return dossierModule;
         }
-
-        public void deleteExpert(int id)
+         /*Het is belangrijk ook de relaties te onderhouden, bij de rest gebeurt hetzelfde maar dan voor de bijbehorende relaties*/
+        public AgendaModule maakAgendaModule(AgendaModule agendaModule)
         {
-            Expert expert = dbcontext.expert.Find(id);
-            dbcontext.expert.Remove(expert);
+
+
+
+            //  dbcontext.vasteVragen.AddRange(dossierModule.vasteVragen);
+
+            dbcontext.centraleVragen.Add(agendaModule.centraleVraag);
+            dbcontext.themas.Add(agendaModule.thema);
+            dbcontext.beloningen.Add(agendaModule.beloning);
+
+            dbcontext.modules.Add(agendaModule);
+
             dbcontext.SaveChanges();
-
+            return agendaModule;
         }
 
-        public void wijzigExpert(Expert expert)
-        {
-            dbcontext.Entry(expert).State = System.Data.Entity.EntityState.Modified;
-        }
-
-        public Moderator setModerator(Moderator moderator)
-        {
-            dbcontext.moderator.Add(moderator);
-            dbcontext.SaveChanges();
-            return moderator;
-        }
-
-        public void deleteModerator(int id)
-        {
-            Moderator moderator = dbcontext.moderator.Find(id);
-            dbcontext.moderator.Remove(moderator);
-            dbcontext.SaveChanges();
-
-        }
-
-        public void wijzigModerator(Moderator moderator)
-        {
-            dbcontext.Entry(moderator).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
-
-        public Module createModule(Module module)
-        {
-            dbcontext.modules.Add(module);
-            dbcontext.SaveChanges();
-            return module;
-        }
-
-        public void wijzigModule(Module module)
+        public void wijzigDossierModule(DossierModule dossierModule)
         {
 
-            //alles met betrekken tot de module moet mee gewijzigd worden, bv thema, beloning enz
-            dbcontext.Entry(module.thema).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.Entry(module.beloning.First()).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.Entry(module.centraleVraag).State = System.Data.Entity.EntityState.Modified;
-
-            dbcontext.Entry(module).State = System.Data.Entity.EntityState.Modified;
+            DossierModule oldDossiermodule = (DossierModule)dbcontext.modules.Find(dossierModule.ID);
+        
+            dbcontext.Entry(oldDossiermodule.thema).CurrentValues.SetValues(dossierModule.thema);
+            dbcontext.Entry(oldDossiermodule.beloning).CurrentValues.SetValues(dossierModule.beloning);
+            dbcontext.Entry(oldDossiermodule.centraleVraag).CurrentValues.SetValues(dossierModule.centraleVraag);
+            dbcontext.Entry(oldDossiermodule).CurrentValues.SetValues(dossierModule);
 
             dbcontext.SaveChanges();
         }
 
-        public void deleteModule(int id)
+        public void wijzigAgendaModule(AgendaModule agendaModule)
         {
-            Module module = dbcontext.modules.Find(id);
-            dbcontext.modules.Remove(module);
+
+            AgendaModule oldAgendamodule = (AgendaModule)dbcontext.modules.Find(agendaModule.ID);
+         
+            dbcontext.Entry(oldAgendamodule.thema).CurrentValues.SetValues(agendaModule.thema);
+            dbcontext.Entry(oldAgendamodule.beloning).CurrentValues.SetValues(agendaModule.beloning);
+            dbcontext.Entry(oldAgendamodule.centraleVraag).CurrentValues.SetValues(agendaModule.centraleVraag);
+            dbcontext.Entry(oldAgendamodule).CurrentValues.SetValues(agendaModule);
+
+            dbcontext.SaveChanges();
+        }
+
+        public void deleteDossierModule(int id)
+        {
+            DossierModule dossierModule = (DossierModule)dbcontext.modules.Find(id);
+            dbcontext.beloningen.Remove(dossierModule.beloning);
+            dbcontext.themas.Remove(dossierModule.thema);
+           
+            dbcontext.centraleVragen.Remove(dossierModule.centraleVraag);
+            dbcontext.vasteVragen.Remove(dossierModule.vasteVraagEen);
+
+            dbcontext.antwoord.RemoveRange(dossierModule.dossierAntwoorden);
+            dbcontext.modules.Remove(dossierModule);
+            dbcontext.SaveChanges();
+        }
+
+        public void deleteAgendaModule(int id)
+        {
+            AgendaModule agendaModule = (AgendaModule)dbcontext.modules.Find(id);
+            dbcontext.antwoord.RemoveRange(agendaModule.agendaAntwoorden);
+            dbcontext.centraleVragen.Remove(agendaModule.centraleVraag);
+            dbcontext.beloningen.Remove(agendaModule.beloning);
+            dbcontext.themas.Remove(agendaModule.thema);
+            dbcontext.modules.Remove(agendaModule);
             dbcontext.SaveChanges();
         }
     }

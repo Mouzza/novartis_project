@@ -9,6 +9,7 @@ namespace JPP.BL.Domain.Antwoorden
 {
     public class Comment
     {
+        
         [Key]
         public int ID { get; set; }
         public string inhoud { get; set; }

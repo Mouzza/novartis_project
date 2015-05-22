@@ -1,8 +1,9 @@
 ﻿@model JPP.BL.Domain.Modules.DossierModule
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Verwijder dossiermodule";
 }
+
 
 <h2>@Model.naam</h2>
 
@@ -77,19 +78,19 @@
         </dd>
         <br />
         <dt>
-            Eerst Beloning naam (demon):
+            Beloning naam:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.beloning.First().naam)
+            @Html.DisplayFor(model => model.beloning.naam)
         </dd>
 
         <dt>
-            Beloning beschrijving(demo):
+            Beloning beschrijving:
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.beloning.First().beschrijving)
+            @Html.DisplayFor(model => model.beloning.beschrijving)
         </dd>
         <br />
         <dt>
@@ -113,8 +114,12 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Verwijder" class="btn btn-default" /> |
-            @Html.ActionLink("Ga terug", "Index")
+            <input type="submit" value="Verwijder" class="btn btn-default" /> 
+           
         </div>
     }
+</div>
+
+<div>
+    <a href="@Url.Action("DossModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
 </div>

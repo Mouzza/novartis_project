@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.title = "Beheer uw agendamodules";
+
+}
+<div>
+    <a href="@Url.Action("Manage")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+</div>
+
+    @{ Html.RenderAction("partialViewMijnAgendaModule", "Module");}
+
+
+<div id="mijnGeplandeAgendaModules">
+    @{ Html.RenderAction("MijnGeplandeAgendaModules", "Module");}
+</div>
+
+<div id="mijnGeslotenAgendaModules">
+    @{ Html.RenderAction("MijnGeslotenAgendaModules", "Module");}
+</div>

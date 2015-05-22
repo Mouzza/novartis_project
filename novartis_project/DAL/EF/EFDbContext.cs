@@ -9,11 +9,9 @@ using System.Data.Entity.Infrastructure.Annotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using JPP.BL.Domain;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
-using JPP.BL.Domain.Gebruikers.Beheerder;
-using JPP.BL.Domain.Gebruikers.SuperUser;
+
 
 namespace JPP.DAL.EF
 {
@@ -35,11 +33,12 @@ namespace JPP.DAL.EF
         //Antwoorden
       
         public DbSet<Antwoord> antwoord { get; set; }
+        public DbSet<Flag> flags { get; set; }
         public DbSet<Comment> comments { get; set; }
-       
+        public DbSet<Stem> stemmen { get; set; }
         public DbSet<Evenement> evenementen { get; set; }
         
-        public DbSet<Tag> tags { get; set; }
+        public DbSet<VasteTag> tags { get; set; }
         public DbSet<VasteVraagAntwoord> vasteVraagAntwoorden { get; set; }
 
         //Modules
@@ -52,20 +51,7 @@ namespace JPP.DAL.EF
 
         public DbSet<VasteVraag> vasteVragen { get; set; }
         public DbSet<CentraleVraag> centraleVragen { get; set; }
-        public DbSet<Voorstel> voorstellen { get; set; }
 
-        //Gebruikers
-        //beheerder
-        public DbSet<Beheerder> beheerder { get; set; }
-        public DbSet<Medebeheerder> medebeheerder { get; set; }
-
-        //SuperUser
-        public DbSet<Admin> admin { get; set; }
-        public DbSet<Moderator> moderator { get; set; }
-        public DbSet<SuperAdmin> superAdmin { get; set; }
-
-        public DbSet<Expert> expert { get; set; }
-        public DbSet<Gebruiker> gebruiker { get; set; }
 
       
         

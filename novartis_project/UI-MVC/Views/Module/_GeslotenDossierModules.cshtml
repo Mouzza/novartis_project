@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<JPP.BL.Domain.Modules.Module>
+@using PagedList
+@using PagedList.Mvc
+@{
+
+    Layout = "";
+}
+<div class="table-title">
+    <h3>Afgesloten Modules</h3>
+</div>
+
+<div id="VolgOpLayout">
+        <div onclick="goToPagina(this)">
+            <table class="table-fill">
+                <thead>
+                    <tr>
+                        <th class=" text-left">
+                            Begin datum
+                        </th>
+                        <th class="text-left">
+                            Eind datum
+                        </th>
+                        <th>
+                            Vraag
+                        </th>
+                    </tr>
+                </thead>
+                </table>
+            
+                @foreach (var item in Model)
+                {
+                    <table class="table-fill">
+                        <tbody class="table-hover">
+                            <tr>
+                                <td class="text-left">
+                                 @Html.DisplayFor(modelItem => item.beginDatum.Day)/@Html.DisplayFor(modelItem => item.beginDatum.Month)/@Html.DisplayFor(modelItem => item.beginDatum.Year)
+
+                                </td>
+                                <td class="text-left">
+                                  @Html.DisplayFor(modelItem => item.eindDatum.Day)/@Html.DisplayFor(modelItem => item.eindDatum.Month)/@Html.DisplayFor(modelItem => item.eindDatum.Year)
+                                </td>
+                                <td class="text-left">
+                                    @Html.DisplayFor(modelItem => item.centraleVraag.inhoud)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a id="paginaLink" href="@Url.Action("WinnaarVanModule", "Module", new { id = item.ID })"></a>
+                }
+
+            
+            
+        </div>
+  
+    </div>
+        <script>
+            function goToPagina(element) {
+                window.location = $(element).find("#paginaLink").attr("href");
+                return false;
+            };
+
+        </script>
+
+    <div id="pager1">
+        @Html.PagedListPager(Model, page => Url.Action("_GeslotenDossierModules", new { page }))
+    </div>
+
+    <script>
+        
+   
+  
+        $(function () {
+            $('#pager1').on('click', 'a', function () {
+                if (this.href == "") { return; }
+                $.ajax({
+                    url: this.href,
+                    type: 'GET',
+                    cache: false,
+                    success: function (result) {
+                        $('#geslotenDossierModules').html(result);
+                    }
+                });
+                return false;
+            });
+        });
+
+    </script>

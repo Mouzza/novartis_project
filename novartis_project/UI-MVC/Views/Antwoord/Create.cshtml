@@ -1,7 +1,7 @@
 ﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Oplossing";
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 @{
@@ -21,12 +21,21 @@
         @Html.HiddenFor(model => model.percentageVolledigheid)
         @Html.HiddenFor(model => model.statusOnline)
         @Html.HiddenFor(model => model.datum)
-        @Html.HiddenFor(model => model.aantalStemmen)
-        @Html.HiddenFor(model => model.persoonlijkeTags)
+        @Html.HiddenFor(model => model.stemmen)
         @Html.HiddenFor(model => model.vasteTags)
-        @Html.HiddenFor(model => model.aantalFlags)
-        @Html.HiddenFor(model => model.evenement)
+        @Html.HiddenFor(model => model.flags)
+        @Html.HiddenFor(model => model.evenementen)
         @Html.HiddenFor(model => model.module)
+        @Html.HiddenFor(model => model.backgroundColor)
+        @Html.HiddenFor(model => model.backgroundImage)
+        @Html.HiddenFor(model => model.afbeeldingPath)
+        @Html.HiddenFor(model => model.foregroundColor)
+        @Html.HiddenFor(model => model.textvak2)
+        @Html.HiddenFor(model => model.textvak3)
+      
+
+
+
 
 
 
@@ -38,6 +47,21 @@
 
 
 
+            <div class="form-group">
+                <label class="control-label col-md-2">Titel</label>
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.titel)
+                    @Html.ValidationMessageFor(model => model.titel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Subtitel</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.subtitel, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.subtitel, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
 
             <div class="form-group">
@@ -69,6 +93,8 @@
             </div>
 
 
+
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Bevestig" class="btn btn-default" />
@@ -77,9 +103,7 @@
         </div>
     }
 
-    <div>
-        @Html.ActionLink("Ga terug", "Index")
-    </div>
+
 
 </div>
 

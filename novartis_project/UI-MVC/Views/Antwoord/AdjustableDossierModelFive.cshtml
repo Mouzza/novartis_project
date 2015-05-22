@@ -1,0 +1,126 @@
+﻿@model JPP.BL.Domain.Antwoorden.DossierAntwoord
+
+@{
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    ViewBag.Title = "Maak een dossier";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/AdjustableDossierModelOne.css">
+
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+    function initialize() {
+        var mapCanvasTwo = document.getElementById('map-canvasTwo');
+        var mapOptionsTwo = {
+            center: new google.maps.LatLng(44.5403, -78.5463),
+            zoom: 5,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvasTwo, mapOptionsTwo)
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+<div id="AdjustableButtonWrapper">
+    <div id="OptionsbarTitle">1. Kies je Layout</div>
+        <div id="AdjButtonWrapper">
+            <button id="AdjButtonFive"> <img id="MainFilterImgOJ" src="~/Images/DossierModel/Layout 1.png" onclick="location.href='@Url.Action("AdjustableDossierModelOne", "Antwoord")'" /> </button>
+            <button id="AdjButtonTwo"> <img id="MainFilterImgAZ" src="~/Images/DossierModel/Layout 2.png" onclick="location.href='@Url.Action("AdjustableDossierModelTwo", "Antwoord")'" /> </button>
+            <button id="AdjButtonThree"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 3.png" onclick="location.href='@Url.Action("AdjustableDossierModelThree", "Antwoord")'" /> </button>
+            <button id="AdjButtonThree" class="activeLayout"> <img id="MainFilterImgZA" src="~/Images/DossierModel/Layout 4.png" onclick="location.href='@Url.Action("AdjustableDossierModelFive", "Antwoord")'" /> </button>
+            <button id="AdjButtonSix"> <img id="MainFilterImgJO" src="~/Images/DossierModel/Layout 5.png" onclick="location.href='@Url.Action("AdjustableDossierModelSix", "Antwoord")'" /> </button>
+
+
+
+        </div>
+
+</div>
+
+@using (Html.BeginForm("AdjustableDossierModelFive", "Antwoord", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div id="OptionsBar">
+        <div id="OptionsbarTitle">2. Personaliseer</div>
+        <div id="AdjCleanUp">
+
+            <div id="googlemaps">Google maps informatie:@Html.TextBoxFor(model => model.googleMapsAdress)</div>
+            <!--<input type="text" name="googleMaps" />-->
+
+            <div id="titleColor">Kleur van de titel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.TitleColor)</div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.vasteTags, "Tags")
+            </div>
+            <div class="editor-field">
+                @Html.ListBox("Tags")
+
+            </div>
+
+
+            <div id="foregroundColor">Kleur van tekst : (vb.: white, black of #666666) @Html.TextBoxFor(model => model.foregroundColor)</div>
+            <div id="backgroundColor">Kleur van achtergrond: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.backgroundColor)</div>
+
+            <div id="subTitleColor">Kleur van de subtitel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.SubTitleColor)</div>
+
+
+        </div>
+    </div>
+
+    <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
+    <div id="DossierModelPercent" style="color:@(Model.foregroundColor)"> <h1>Dossier volledigheid: @(Model.percentageVolledigheid) %</h1></div><!--Hier moet de titel van de pagina komen-->
+    <div>@ViewBag.PercentError</div>
+    @Html.TextAreaFor(model => model.titel, new { @class = "AdjDossierModelTitle" })
+    <p id="ValidatieError">@Html.ValidationMessageFor(model => model.titel)</p>
+    @*<textarea id="AdjDossierModelSubTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Phasellus nec hendrerit metus. Sed sodales rhoncus nibh, a convallis quam lacinia ut.</textarea>*@ <!--Hier moet de subtitel(beknopte uitleg) van de pagina komen-->
+        @Html.TextAreaFor(model => model.subtitel, new { @class = "AdjDossierModelSubTitle" })
+        <p id="ValidatieError">@Html.ValidationMessageFor(model => model.subtitel)</p>
+    
+ <p id="ValidatieError2">@Html.ValidationMessageFor(model => model.inhoud)</p>
+<div id="TextWrapperFive">
+
+        @Html.TextAreaFor(model => model.inhoud, new { @class = "AdjDossierModelFiveTextVakEen" })
+      
+
+        <div id="TweeTextvakWrapperTwo">
+                @Html.TextAreaFor(model => model.textvak2, new { @class = "AdjDossierModelTwoTextVakTwee" })
+                @Html.ValidationMessageFor(model => model.textvak2)
+
+                @*<textarea id="DossierModelTextVakDrie"> condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.
+
+        Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus, vel pretium nulla posuere sit amet.</textarea>*@<!--Hier moet de derde textvak van de pagina komen-->
+                @Html.TextAreaFor(model => model.textvak3, new { @class = "AdjDossierModelTwoTextVakDrie" })
+                @Html.ValidationMessageFor(model => model.textvak3)
+
+
+        </div>
+    </div>
+
+    <div id="DossierModelFiveAfbeelding">
+        <img src="@Url.Content(Model.afbeeldingPath)" />
+
+        <div id="map-canvasTwo"></div>
+
+    </div><!--Hier moet de afbeelding van de pagina komen-->
+
+
+    <label id="fileUploadLabel" for="file">Selecteer een afbeelding</label>
+    <input id="fileUploadInput" type="file" name="file" />
+
+        if (Model.vasteTags != null)
+        {
+            <div id="DossierModelTag">
+                <p>
+                    Tags: @foreach (var tag in @Model.vasteTags)
+                    { <span>@tag.naam, </span>
+                    }
+                </p>
+            </div> <!--Hier moet de Tag van de pagina komen-->
+        }
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ga verder" class="btn btn-default" />
+        </div>
+    </div>
+    }

@@ -13,7 +13,7 @@
     <div id="homeIconMenu" class="row verborgen">
         <div id="eersteMenuItem" class="col-md-4 centraal">
 
-            <a id="eersteMenuLink" href="@Url.Action("Dossier","Module")"><img src="~/Images/homeSpecialMenu icons/iconStart.png"></a>
+            <a id="eersteMenuLink" href="@Url.Action("Menu","Home")"><img src="~/Images/homeSpecialMenu icons/iconStart.png"></a>
             <h2>Bedenk</h2>
             <h2>Comment</h2>
             <h2>Like</h2>
@@ -24,7 +24,7 @@
         </div>
         <div id="tweedeMenuItem" class="col-md-4 centraal">
 
-            <a id="tweedeMenuLink" href="@Url.Action("Agenda","Module")"><img src="~/Images/homeSpecialMenu icons/iconFinish.png"></a>
+            <a id="tweedeMenuLink" href="@Url.Action("VolgOp", "Module")"><img src="~/Images/homeSpecialMenu icons/iconFinish.png"></a>
             <h2>Volg op</h2>
             <h4>Wat gebeurt er met de voorstelen die gewonnen hebben.</h4>
          
@@ -33,17 +33,37 @@
 
         <div id="derdeMenuItem" class="col-md-4 centraal">
 
-            <a href="#"><img src="~/Images/homeSpecialMenu icons/iconComing.png"></a>
+            <a id="derdeMenuLink" href="@Url.Action("CommingSoon","Module")"><img src="~/Images/homeSpecialMenu icons/iconComing.png"></a>
             <h2>Comming soon</h2>
             <h4>Vind hier de toekomstige projecten.</h4>
         </div>
 
     </div>
     <div id="homeTitelHeader">
-        <button id="hide">Verberg</button>
-        <button id="show">Toon</button>
+        <button id="hide"><span>Verberg</span></button>
+        <button id="show"><span>Toon</span></button>
         <p>
-            <span>Populairste pagina's</span>
+            @if (Request.Url.AbsoluteUri.Contains("AZ"))
+            {
+                <span>Pagina's gesorteerd op titel(A-Z)</span>
+            }
+            else if (Request.Url.AbsoluteUri.Contains("ZA"))
+            {
+                <span>Pagina's gesorteerd op titel(Z-A)</span>
+            }
+            else if (Request.Url.AbsoluteUri.Contains("Likes"))
+            {
+                <span>Populairste pagina's</span>
+            }
+            else if (Request.Url.AbsoluteUri.Contains("NPop"))
+            {
+                <span>Minst populairste pagina's</span>
+            }
+            else
+            {
+                <span>Meest recente pagina's</span>
+            }
+           
         </p>
         
 
@@ -54,17 +74,11 @@
 
     <div id="mainWrapper2">
         <div class="container body-content">
-
-
-  
-
-            @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
-            @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
-            @{ Html.RenderAction("recenteGebruikers", "Gebruiker");}
-
-
-
-
+            <div id="body-contentwrapper">
+                <div id="homeMid">
+                    @{ Html.RenderAction("homePartialAntwoorden", "Antwoord");}
+                </div>
+            </div>
 
 
         </div>
@@ -84,8 +98,8 @@ else
                     <a href="#"><img src="~/Images/websitePage logos/iconIdea.png"></a>
                     <h2>Bedenk</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
-                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                        Bedenk een oplossing voor ons probleem. Wees zo creatief mogelijk en maak je eigenpagina om je idee kracht bij te zetten.
+                        Of geef je mening over een door ons bepaalde thema.
                     </p>
                 </div>
                 <div class="col-md-4 centraal">
@@ -93,8 +107,8 @@ else
                     <a href="#"><img src="~/Images/websitePage logos/iconSamenwerken.png"></a>
                     <h2>Werk samen</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
-                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                        Communiceer met je stadsgenoten, en werk samen om de vooropgestelde problemen op te lossen.
+                        Werk samen met je stadsgenoten om van Leuven een betere stad te maken.
                     </p>
                 </div>
                 <div class="col-md-4 centraal">
@@ -102,8 +116,8 @@ else
                     <a href="#"><img src="~/Images/websitePage logos/iconLike.png"></a>
                     <h2>Like</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet ullamcorper tempor.
-                        Nullam at suscipit arcu. Nunc a magna id diam efficitur scelerisque eget ac eros. Ut consectetur erat diam.
+                        Like je favoriete pagina's en help zo je favoriete pagina te laten winnen.
+                        Of Verzamel genoeg stemmen voor je eigen pagina en mogelijk win je een prijs!
                     </p>
                 </div>
 

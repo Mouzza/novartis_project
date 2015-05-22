@@ -3,15 +3,20 @@
     ViewBag.Title = "Wijzig dossiermodule";
 }
 
+
+
 <h2>Wijzig dossiermodule</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    @Html.HiddenFor(model => model.vasteVragen)
+    @Html.HiddenFor(model => model.vasteVraagEen)
+    @Html.HiddenFor(model => model.vasteVraagTwee)
+    @Html.HiddenFor(model => model.vasteVraagDrie)
     @Html.HiddenFor(model => model.dossierAntwoorden)
-    
+
+
     @Html.HiddenFor(model => model.ID)
     @Html.HiddenFor(model => model.adminNaam)
     @Html.HiddenFor(model => model.organisatie)
@@ -19,11 +24,17 @@
 
     @Html.HiddenFor(model => model.thema.modules)
     @Html.HiddenFor(model => model.thema.ID)
-
-    @Html.HiddenFor(model => model.beloning.First().ID)
-    @Html.HiddenFor(model => model.centraleVraag.moduleID)
+    
+    @Html.HiddenFor(model => model.centraleVraag.ID)
     @Html.HiddenFor(model => model.centraleVraag.datum)
-    @Html.HiddenFor(model => model.centraleVraag.module)
+    @Html.HiddenFor(model => model.beloning.ID)
+    @Html.HiddenFor(model => model.beloning.modules)
+
+
+
+
+
+
 
 
 
@@ -137,19 +148,19 @@
         <hr />
 
         <div class="form-group">
-            <label class="control-label col-md-2">Eerste beloning naam (demo)</label>
+            <label class="control-label col-md-2">Beloning naam</label>
 
             <div class="col-md-10">
-                @Html.EditorFor(model => model.beloning.First().naam, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.beloning.First().naam, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.beloning.naam, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beloning.naam, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            <label class="control-label col-md-2">Beschrijving (demo)</label>
+            <label class="control-label col-md-2">Beschrijving</label>
 
             <div class="col-md-10">
-                @Html.EditorFor(model => model.beloning.First().beschrijving, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.beloning.First().beschrijving, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.beloning.beschrijving, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.beloning.beschrijving, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -170,8 +181,11 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("DossModules","Module")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
 </div>
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

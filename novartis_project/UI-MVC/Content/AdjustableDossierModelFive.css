@@ -1,0 +1,290 @@
+﻿#TextWrapperFive {
+    margin-left: 16%;
+    width: 83%;
+    height: 250px;
+}
+
+#DossierModelFiveAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 90px;
+}
+
+    #DossierModelFiveAfbeelding img {
+        width: 500px;
+        height: 300px;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+    #OptionsBar {
+    background-color: #D3D3D3;
+    box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    width: 100%;
+    height: 180px;
+    display: table;
+    margin-top: 50px;
+}
+
+#OptionsbarTitleHead {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: #0099CC;
+    font-weight: bold;
+}
+
+#OptionsbarTitle {
+    text-align: center;
+    font-size: 30px;
+    color: #0099CC;
+    font-weight: bold;
+}
+
+#AdjCleanUp {
+    margin-top: 25px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#persoonlijkeTags {
+    display: table-cell;
+    float: left;
+    margin-left: 1%;
+    width: 370px;
+}
+
+#persoonlijkeTags input {
+    width: 290px;
+}
+
+#foregroundColor {
+    display: table-cell;
+    clear: left;
+    float: left;
+    width: 370px;
+}
+
+#foregroundColor input {
+    width: 370px;
+}
+
+
+#backgroundColor {
+    display: table-cell;
+    float: left;
+    margin-left: 1%;
+    width: 370px;
+}
+
+#backgroundColor input {
+    width: 370px;
+}
+
+#DossierModelTwoAfbeelding {
+    width: 80%;
+    height: 300px;
+    margin-left: 16%;
+    margin-top: 50px;
+}
+
+    #DossierModelTwoAfbeelding img {
+        width: 38%;
+        height: 100%;
+        float: left;
+        box-shadow: 0px 0px 50px rgba(0,0,0,0.8);
+    }
+
+    #ValidatieError{
+    color:red;
+    font-size:20px;
+    text-align:center;
+}
+
+#fileUploadInput {
+    margin-left: 15%;
+}
+
+#fileUploadLabel {
+    margin-left: 15%;
+}
+
+#DossierModelTwoTag {
+    margin-top: 20px;
+    width: 500px;
+    height: 100px;
+    margin-left: 60%;
+}
+
+#TextWrapperTwo {
+    width: 80%;
+    height: 100px;
+    margin-left: 15%;
+}
+
+#TweeTextvakWrapperTwo {
+    width: 38%;
+    height: 200px;
+    float: right;
+    margin-right: 13%;
+}
+
+.AdjAgendaModelTitle {
+    width: 100%;
+    max-width: 100%;
+    color: #0099cc;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 50px;
+    overflow: hidden;
+    border: #FFF;
+    height: 80px;
+    margin-top: 50px;
+}
+
+
+
+.AdjAgendaModelSubTitle {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    color: #666666;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 30px;
+    font-weight: bold;
+    overflow: hidden;
+    border: #FFF;
+}
+
+.AdjDossierModelTextVakEen {
+    float: right;
+    max-width: 500px;
+    width: 500px;
+    height: 300px;
+    margin-right: 15%;
+    border: #FFF;
+    overflow: hidden;
+}
+
+.AdjDossierModelTextVakTwee {
+    width: 500px;
+    height: 120px;
+    max-height: 120px;
+    float: left;
+    max-width: 500px;
+    border: #FFF;
+    overflow: hidden;
+}
+
+.AdjDossierModelTextVakDrie {
+    width: 500px;
+    height: 120px;
+    float: right;
+    max-height: 120px;
+    margin-right: 15%;
+    max-width: 500px;
+    border: #FFF;
+    overflow: hidden;
+}
+
+.activeLayout {
+    border: 2px solid red;
+}
+
+.AdjDossierModelTwoTextVakDrie {
+    width: 500px;
+    height: 120px;
+    margin-top: 20px;
+    margin-right: 15%;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
+}
+
+.AdjDossierModelTwoTextVakTwee {
+    width: 500px;
+    height: 120px;
+    max-height: 120px;
+    max-width: 500px;
+    border: #FFF;
+    overflow: hidden;
+}
+
+
+.AdjDossierModelTwoTextVakEen {
+    float: left;
+    width: 500px;
+    height: 300px;
+    margin-left: 1%;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
+}
+
+.AdjDossierModelThreeTextVakEen {
+    max-width: 500px;
+    border: #FFF;
+    float: right;
+    width: 500px;
+    height: 300px;
+    margin-right: 15%;
+    overflow: hidden;
+}
+
+.AdjDossierModelFiveTextVakEen {
+    max-width: 500px;
+    border: #FFF;
+    float: left;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+}
+
+#TextWrapperFive {
+    margin-left: 16%;
+    width: 83%;
+    height: 250px;
+}
+
+.AdjDossierModelSixTextVakDrie {
+    width: 500px;
+    height: 120px;
+    margin-top: 20px;
+    max-width: 500px;
+    overflow: hidden;
+    border: #FFF;
+    margin-left: 9%;
+}
+
+            #titleColor {
+        display: table-cell;
+        float: left;
+        margin-left: 1%;
+        width: 370px;
+    }
+
+        #titleColor input {
+            width: 370px;
+        }
+
+            #subTitleColor {
+        display: table-cell;
+        float: left;
+        margin-left: 1%;
+        width: 370px;
+    }
+
+        #subTitleColor input {
+            width: 370px;
+        }
+
+
+
+
+
+
+

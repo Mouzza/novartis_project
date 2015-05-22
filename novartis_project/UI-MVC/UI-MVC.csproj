@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -21,6 +22,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <NuGetPackageImportStamp>13ce1c95</NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>1.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -114,6 +117,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -124,6 +131,14 @@
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,31 +196,36 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AndroidAccountController.cs" />
+    <Compile Include="Controllers\AndroidAntwoordController.cs" />
     <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
+    <Compile Include="Controllers\FlagController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\StemController.cs" />
+    <Compile Include="Controllers\VasteTagController.cs" />
     <Compile Include="Extra\Startup.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AdroidModels.cs" />
+    <Compile Include="Models\AndroidModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ModuleModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\" />
     <Folder Include="Data\Sql Scripts\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\AndroidModule\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
@@ -259,6 +279,11 @@
     <Content Include="bin\System.Web.WebPages.dll" />
     <Content Include="bin\System.Web.WebPages.Razor.dll" />
     <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\AdjustableDossierModelFive.css" />
+    <Content Include="Content\AdjustableDossierModelOne.css" />
+    <Content Include="Content\AdjustableDossierModelSix.css" />
+    <Content Include="Content\AdjustableDossierModelThree.css" />
+    <Content Include="Content\AdjustableDossierModelTwo.css" />
     <Content Include="Content\bootstrap-datepicker.css" />
     <Content Include="Content\bootstrap-datepicker.min.css" />
     <Content Include="Content\bootstrap-datepicker.standalone.css" />
@@ -271,9 +296,14 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DossierModel.css" />
+    <Content Include="Content\DossierModelOne.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
+    <Content Include="Content\jquery-ui-1.10.4.custom.css" />
+    <Content Include="Content\KeuzePagina.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\select2.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -308,6 +338,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="Content\TimeLine.css" />
+    <Content Include="Content\WinnaarPagina.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -316,34 +348,83 @@
     <Content Include="Images\afbeeldingen\homeImage2.jpg" />
     <Content Include="Images\afbeeldingen\homeImage3.jpg" />
     <Content Include="Images\afbeeldingen\homeImage4.png" />
+    <Content Include="Images\countdown\flipper00.png" />
+    <Content Include="Images\countdown\flipper01.png" />
+    <Content Include="Images\countdown\flipper02.png" />
+    <Content Include="Images\countdown\flipper10.png" />
+    <Content Include="Images\countdown\flipper11.png" />
+    <Content Include="Images\countdown\flipper12.png" />
+    <Content Include="Images\countdown\flipper20.png" />
+    <Content Include="Images\countdown\flipper21.png" />
+    <Content Include="Images\countdown\flipper22.png" />
+    <Content Include="Images\countdown\flipper30.png" />
+    <Content Include="Images\countdown\flipper31.png" />
+    <Content Include="Images\countdown\flipper32.png" />
+    <Content Include="Images\countdown\flipper40.png" />
+    <Content Include="Images\countdown\flipper41.png" />
+    <Content Include="Images\countdown\flipper42.png" />
+    <Content Include="Images\countdown\flipper50.png" />
+    <Content Include="Images\countdown\flipper51.png" />
+    <Content Include="Images\countdown\flipper52.png" />
+    <Content Include="Images\countdown\flipper60.png" />
+    <Content Include="Images\countdown\flipper61.png" />
+    <Content Include="Images\countdown\flipper62.png" />
+    <Content Include="Images\countdown\flipper70.png" />
+    <Content Include="Images\countdown\flipper71.png" />
+    <Content Include="Images\countdown\flipper72.png" />
+    <Content Include="Images\countdown\flipper80.png" />
+    <Content Include="Images\countdown\flipper81.png" />
+    <Content Include="Images\countdown\flipper82.png" />
+    <Content Include="Images\countdown\flipper90.png" />
+    <Content Include="Images\countdown\flipper91.png" />
+    <Content Include="Images\countdown\flipper92.png" />
+    <Content Include="Images\buttonAgenda.png" />
+    <Content Include="Images\buttonDossier.png" />
+    <Content Include="Images\dossier-white.png" />
+    <Content Include="Images\DossierModel\Layout 1.png" />
+    <Content Include="Images\DossierModel\Layout 2.png" />
+    <Content Include="Images\DossierModel\Layout 3.png" />
+    <Content Include="Images\DossierModel\Layout 4.png" />
+    <Content Include="Images\DossierModel\Layout 5.png" />
+    <Content Include="Images\filter.png" />
     <Content Include="Images\homeImage.jpg" />
     <Content Include="Images\homeSpecialMenu icons\iconComing.png" />
     <Content Include="Images\homeSpecialMenu icons\iconFinish.png" />
     <Content Include="Images\homeSpecialMenu icons\iconStart.png" />
+    <Content Include="Images\iconmonstr-sort-14-icon-256.png" />
+    <Content Include="Images\iconmonstr-sort-16-icon-256.png" />
+    <Content Include="Images\iconmonstr-x-mark-4-icon-256.png" />
     <Content Include="Images\icons.png" />
+    <Content Include="Images\IconsForPages\iconmonstr-flag-11-icon-256.png" />
+    <Content Include="Images\IconsForPages\RedFlag.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Images\logoOld.png" />
     <Content Include="Images\menu logos\adminpanelLogo.png" />
     <Content Include="Images\menu logos\berichtenLogo.png" />
-    <Content Include="Images\menu logos\contactpersonenLogo.png" />
+    <Content Include="Images\menu logos\moduleLogo.png" />
     <Content Include="Images\menu logos\dossier.png" />
     <Content Include="Images\menu logos\gebruikersLogo.png" />
     <Content Include="Images\menu logos\loginsLogo.png" />
     <Content Include="Images\menu logos\oplosing.png" />
     <Content Include="Images\menu logos\profielLogo.png" />
     <Content Include="Images\menu logos\profielSettingsLogo.png" />
-    <Content Include="Images\menu logos\recensiesLogo.png" />
+    <Content Include="Images\menu logos\antwoordLogo.png" />
     <Content Include="Images\menu logos\rolesLogo.png" />
+    <Content Include="Images\oplosing2.png" />
     <Content Include="Images\Paars.png" />
     <Content Include="Images\page icons\goBack2.png" />
     <Content Include="Images\page icons\new.png" />
+    <Content Include="Images\search.png" />
     <Content Include="Images\socialMedia icons\fb.png" />
     <Content Include="Images\socialMedia icons\google.png" />
     <Content Include="Images\socialMedia icons\twitter.png" />
+    <Content Include="Images\sort.png" />
+    <Content Include="Images\sortFlip.png" />
     <Content Include="Images\sponsors logos\iconKULeuven.png" />
     <Content Include="Images\sponsors logos\iconLeuven.png" />
     <Content Include="Images\sponsors logos\iconTreeCompany.png" />
     <Content Include="Images\sponsors logos\iconTreeCompany2.png" />
+    <Content Include="Images\sponsors logos\Novartis.png" />
     <Content Include="Images\websitePage logos\iconContinue.png" />
     <Content Include="Images\websitePage logos\iconExpert.png" />
     <Content Include="Images\websitePage logos\iconIdea.png" />
@@ -357,9 +438,11 @@
     <Content Include="Images\websitePage logos\iconSamenwerken.png" />
     <Content Include="Images\websitePage logos\iconVolgOp.png" />
     <Content Include="Images\websitePage logos\verder.png" />
+    <Content Include="Images\Winnaars\NumberOne.png" />
+    <Content Include="Images\Winnaars\NumberThree.png" />
+    <Content Include="Images\Winnaars\NumberTwo.png" />
     <Content Include="obj\Debug\UI-MVC.csproj.FileListAbsolute.txt" />
     <Content Include="Project_Readme.html" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\UI-MVC.csprojResolveAssemblyReference.cache" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="bin\JPP.UI.Web.MVC.dll.config" />
@@ -368,6 +451,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\countdown\.DS_Store" />
     <None Include="Properties\PublishProfiles\JPP Web deployment.pubxml" />
     <None Include="Properties\PublishProfiles\JPP.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -375,6 +459,9 @@
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\countdown.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.nl-BE.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -398,8 +485,12 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2.js" />
+    <Content Include="Scripts\TimeLine.js" />
     <Content Include="Scripts\websiteAnimation.js" />
     <Content Include="Scripts\websiteRouting.js" />
+    <Content Include="uploads\379465.png" />
+    <Content Include="uploads\default.jpg" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -480,6 +571,79 @@
     <Content Include="Views\Module\partialViewAgendaModule.cshtml" />
     <Content Include="Views\Module\_Details.cshtml" />
     <Content Include="Views\Antwoord\_Lijst.cshtml" />
+    <Content Include="Views\Antwoord\homePartialAntwoorden.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Module\partialViewDossierModule.cshtml" />
+    <Content Include="Views\Antwoord\Delete.cshtml" />
+    <Content Include="Views\Module\CommingSoon.cshtml" />
+    <Content Include="Views\Module\GeplandeModules.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelOne.cshtml" />
+    <Content Include="Views\Antwoord\Dossier.cshtml" />
+    <Content Include="Views\Antwoord\Agenda.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelTwo.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelThree.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelFive.cshtml" />
+    <Content Include="Views\Antwoord\DossierModelSix.cshtml" />
+    <Content Include="Views\Antwoord\CreateDossier.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelOne.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelTwo.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelThree.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelFive.cshtml" />
+    <Content Include="Views\Antwoord\AdjustableDossierModelSix.cshtml" />
+    <Content Include="Views\Shared\Error2.cshtml" />
+    <Content Include="Views\Module\_Create.cshtml" />
+    <Content Include="Views\Module\_Delete.cshtml" />
+    <Content Include="Views\Module\_Edit.cshtml" />
+    <Content Include="Views\Module\DossModules.cshtml" />
+    <Content Include="Views\Module\AgdModules.cshtml" />
+    <Content Include="Views\Module\GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Module\GeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\VolgOp.cshtml" />
+    <Content Include="Views\Module\_GeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\_GeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\_GeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\_GeplandeDossierModules.cshtml" />
+    <Content Include="Views\Antwoord\AdjAgendaAntwoord.cshtml" />
+    <Content Include="Views\Module\DossierModuleUitleg.cshtml" />
+    <Content Include="Views\Module\AgendaModuleUitleg.cshtml" />
+    <Content Include="Views\Antwoord\_partialMijnDossierAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\MijnDossiers.cshtml" />
+    <Content Include="Views\Antwoord\Manage.cshtml" />
+    <Content Include="Views\Antwoord\MijnAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\_partialMijnAgendaAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\Verwijder.cshtml" />
+    <Content Include="Views\Module\MijnAgendaModules.cshtml" />
+    <Content Include="Views\Module\MijnDossierModules.cshtml" />
+    <Content Include="Views\Module\WinnaarVanModule.cshtml" />
+    <Content Include="Views\Module\Manage.cshtml" />
+    <Content Include="Views\Module\MijnGeplandeAgendaModules.cshtml" />
+    <Content Include="Views\Module\MijnGeplandeDossierModules.cshtml" />
+    <Content Include="Views\Module\MijnGeslotenAgendaModules.cshtml" />
+    <Content Include="Views\Module\MijnGeslotenDossierModules.cshtml" />
+    <Content Include="Views\Module\partialViewMijnAgendaModule.cshtml" />
+    <Content Include="Views\Module\partialViewMijnDossierModule.cshtml" />
+    <Content Include="Views\Antwoord\_Lijst2.cshtml" />
+    <Content Include="Views\Antwoord\BlokkeerAgendaAntwoord.cshtml" />
+    <Content Include="Views\Antwoord\AgdAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\DossAntwoorden.cshtml" />
+    <Content Include="Views\Antwoord\Lijst2.cshtml" />
+    <Content Include="Views\Antwoord\BlokkeerDossierAntwoord.cshtml" />
+    <Content Include="Views\Antwoord\Wijzig.cshtml" />
+    <Content Include="Views\Module\WinnaarVanModuleAgenda.cshtml" />
+    <Content Include="Views\Module\DossierModuleToekomst.cshtml" />
+    <Content Include="Views\Antwoord\_Wijzig.cshtml" />
+    <Content Include="Views\Antwoord\Edit.cshtml" />
+    <Content Include="Views\Antwoord\MijnAntwoordenMenu.cshtml" />
+    <Content Include="Views\Module\MijnModuleMenu.cshtml" />
+    <Content Include="Views\Antwoord\_Edit.cshtml" />
+    <Content Include="Views\Stem\StemError.cshtml" />
+    <Content Include="Views\Flag\FlagError.cshtml" />
+    <Content Include="Views\VasteTag\Create.cshtml" />
+    <Content Include="Views\VasteTag\Index.cshtml" />
+    <Content Include="Views\VasteTag\Wijzig.cshtml" />
+    <Content Include="Views\VasteTag\Verwijder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -495,6 +659,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
@@ -518,6 +683,13 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

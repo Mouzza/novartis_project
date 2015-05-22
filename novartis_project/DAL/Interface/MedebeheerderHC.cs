@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Antwoorden;
 using JPP.BL.Domain.Vragen;
 
@@ -11,6 +10,7 @@ namespace JPP.DAL.Interface
 {
     public interface MedebeheerderHC
     {
+        /* Interfaceklassen voor de EF klassen */
         
         //void deleteVoorstel(Voorstel voorstel);
         //void wijzigVoorstel(Voorstel voorstel);

@@ -7,14 +7,13 @@ using JPP.BL;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Antwoorden;
-using JPP.BL.Domain.Gebruikers;
-using JPP.BL.Domain.Gebruikers.SuperUser;
+
 
 namespace JPP.DAL.Interface
 {
     public interface AdminHC
     {
-        
+        /* Interfaceklassen voor de EF klassen */
         VasteVraag createVastevraag(VasteVraag vastevraag);
         void deleteVastevraag(int id);
         void wijzigVastevraag(VasteVraag vastevraag);
@@ -35,17 +34,14 @@ namespace JPP.DAL.Interface
         void deleteDossierAntwoord(int id);
         void wijzigDossierAntwoord(DossierAntwoord dossierAntwoord);
 
-        void stelInAantalStemmen(int aantalstemmen, int id);
+     
 
         void stelInVolledigheidsPercentage(int volledigheidsPercentage, int id);
 
-        Expert setExpert(Expert expert);
-        void deleteExpert(int id);
-        void wijzigExpert(Expert expert);
 
-        Moderator setModerator(Moderator moderator);
-        void deleteModerator(int id);
-        void wijzigModerator(Moderator moderator);
+        DossierModule maakDossierModule(DossierModule dossierModule);
+
+        AgendaModule maakAgendaModule(AgendaModule agendaModule);
         
     }
 }

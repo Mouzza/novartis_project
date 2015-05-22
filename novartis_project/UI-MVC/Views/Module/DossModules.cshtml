@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Beheer dossiermodules";
+}
+
+
+
+@if (User.IsInRole("Admin") || User.IsInRole("Moderator"))
+{
+
+    <div>
+        <a href="@Url.Action("Index")"><img src="~/Images/page icons/goBack2.png" /> Ga terug</a>
+    </div>
+    
+<div id="dossierModules">
+    @{ Html.RenderAction("partialViewDossierModule", "Module"); }
+</div>
+
+<div id="geplandeDossierModules">
+
+    @{ Html.RenderAction("GeplandeDossierModules", "Module"); }
+</div>
+
+<div id="geslotenDossierModules">
+
+    @{ Html.RenderAction("GeslotenDossierModules", "Module"); }
+</div>
+
+}

@@ -1,7 +1,13 @@
 ﻿
 $(document).ready(function () {
    
-    
+    $("#Tags").select2({
+        placeholder: "Selecteer tags",
+        maximumSelectionSize: 5,
+        width: 280,
+        height:26
+
+    });
 
     if (window.localStorage.getItem("hideMenu")=="hidden") {
         $("#homeIconMenu").css("display","none");
@@ -15,6 +21,8 @@ $(document).ready(function () {
  
     } else {
         $("#homeIconMenu").removeClass("verborgen");
+        $("#hide").css('display', 'block');
+        $("#show").css('display', 'none');
     }
     $('#to-top').hide();
   
@@ -29,6 +37,8 @@ $(document).ready(function () {
       
 
     });
+
+
     window.onload = function () {
 
         
@@ -42,6 +52,7 @@ $(document).ready(function () {
     
 
     };
+
 
 
     //Click event to scroll to top
@@ -85,5 +96,19 @@ $(document).ready(function () {
     });
 
 
+    if ($("#antwoordlijstWrapper").height() != null) {
+        
+        var update = setInterval(function () {
+            //you can access the width as a percentage pretty easily:
+            var divHeight = $("#antwoordlijstWrapper").height();
 
+            $("#moduleLeftMenuSection").height(divHeight);
+        }, 100);
+
+    } 
+   
+    
 });
+
+
+
