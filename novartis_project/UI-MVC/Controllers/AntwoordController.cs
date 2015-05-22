@@ -16,6 +16,7 @@ using JPP.BL.Domain.Gebruikers;
 using JPP.BL.Domain.Gebruikers.Beheerder;
 using JPP.BL.Domain.Gebruikers.SuperUser;
 using JPP.UI.Web.MVC;
+using System.Drawing;
 
 namespace JPP.UI.Web.MVC.Controllers
 {
@@ -23,6 +24,7 @@ namespace JPP.UI.Web.MVC.Controllers
     {
         AntwoordManager antwManager = new AntwoordManager();
         ModuleManager dossManager = new ModuleManager();
+        VasteTagManager vtManager = new VasteTagManager();
 
         // GET: Antwoord
         public ActionResult Index()
@@ -315,7 +317,9 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
+            var list = vtManager.readAllVasteTags();
 
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
             if (dossierAntwoord.titel != null)
             {
@@ -323,7 +327,8 @@ namespace JPP.UI.Web.MVC.Controllers
             }
             else
             {
-
+    
+       
 
                 dossierAntwoord = new DossierAntwoord()
                 {
@@ -333,10 +338,12 @@ namespace JPP.UI.Web.MVC.Controllers
                     inhoud = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium. Morbi magna lorem, eleifend at convallis quis, pretium id turpis. In suscipit, magna ac laoreet pellentesque, augue risus cursus arcu, eget ornare est libero vel leo. Etiam hendrerit hendrerit arcu, posuere semper sapien facilisis a.",
                     textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
-                    afbeeldingPath = "~/uploads/379465.png"
+                    afbeeldingPath = "~/uploads/379465.png",
+                   
 
                 };
 
+             
                 return View(dossierAntwoord);
 
             }
@@ -346,9 +353,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
-
+            
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
@@ -369,26 +376,40 @@ namespace JPP.UI.Web.MVC.Controllers
                     
                     
                     
-                    
                     });
             }
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
-                  
-                }
                 
 
-                byte[] imgByte;
-                using(MemoryStream ms = new MemoryStream()){
+                    using (MemoryStream ms = new MemoryStream())
+                    {
 
-                    file.InputStream.CopyTo(ms);
-                      imgByte = ms.GetBuffer();
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
+
+                }
+                else
+                {
+
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
 
@@ -404,17 +425,32 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
+                }
+                if (file == null)
+                {
+                    
                 }
 
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
+                }
+
+              
+            
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -428,13 +464,24 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                      afbeeldingByte = imgByte
                    
 
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
+                
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
                 DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
@@ -461,10 +508,10 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossierAntwoord)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam"); 
+
 
             if (dossierAntwoord.titel != null)
             {
@@ -492,7 +539,7 @@ namespace JPP.UI.Web.MVC.Controllers
         
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelTwo(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
             
             if (!Request.IsAuthenticated)
@@ -522,22 +569,39 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                 
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
-                }
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
 
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
+                }
+                
+            
                 if (dossAntwoord.googleMapsAdress == null)
                 {
 
@@ -551,7 +615,17 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
+                }
+
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
                 }
 
 
@@ -560,9 +634,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -576,10 +649,20 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte=imgByte
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
@@ -599,6 +682,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult AdjustableDossierModelThree(DossierAntwoord dossierAntwoord)
         {
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
      
             if (dossierAntwoord.titel != null)
@@ -626,7 +712,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
         
         [HttpPost]
-        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelThree(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
            
             if (!Request.IsAuthenticated)
@@ -656,21 +742,36 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
                 if (dossAntwoord.googleMapsAdress == null)
@@ -685,7 +786,17 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
+                }
+
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
                 }
 
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
@@ -693,9 +804,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -709,11 +819,21 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte = imgByte
 
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
@@ -733,7 +853,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
         public ActionResult AdjustableDossierModelFive(DossierAntwoord dossierAntwoord)
         {
+            var list = vtManager.readAllVasteTags();
 
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
         
             if (dossierAntwoord.titel != null)
             {
@@ -759,7 +881,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelFive(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
 
             if (!Request.IsAuthenticated)
@@ -773,7 +895,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     new
                     {
                         inhoud = dossAntwoord.inhoud,
-
+                        
                         textvak2 = dossAntwoord.textvak2,
                         textvak3 = dossAntwoord.textvak3,
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
@@ -793,7 +915,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                    
 
                 }
 
@@ -819,7 +941,17 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
+                }
+
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
                 }
 
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
@@ -827,9 +959,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -843,6 +974,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte = imgByte
 
@@ -865,13 +998,12 @@ namespace JPP.UI.Web.MVC.Controllers
             }
         }
 
-        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossierAntwoord, int[] Tags)
         {
 
-            //if (!Request.IsAuthenticated)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
             if (dossierAntwoord.titel != null)
             {
@@ -897,7 +1029,7 @@ namespace JPP.UI.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file)
+        public ActionResult AdjustableDossierModelSix(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
 
             if (!Request.IsAuthenticated)
@@ -927,21 +1059,36 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    file.SaveAs(path);
+                  
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
                 if (dossAntwoord.googleMapsAdress == null)
@@ -956,7 +1103,17 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 if (dossAntwoord.foregroundColor == null)
                 {
-                    dossAntwoord.backgroundColor = "Black";
+                    dossAntwoord.foregroundColor = "Black";
+                }
+
+                if (dossAntwoord.TitleColor == null)
+                {
+                    dossAntwoord.TitleColor = "#0099CC";
+                }
+
+                if (dossAntwoord.SubTitleColor == null)
+                {
+                    dossAntwoord.SubTitleColor = "#666666";
                 }
 
 
@@ -965,9 +1122,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     datum = DateTime.Now,
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
                     percentageVolledigheid = 50,
                     statusOnline = false,
@@ -981,11 +1137,21 @@ namespace JPP.UI.Web.MVC.Controllers
                     afbeeldingPath = "/uploads/" + fileName,
                     foregroundColor = dossAntwoord.foregroundColor,
                     backgroundColor = dossAntwoord.backgroundColor,
+                    TitleColor = dossAntwoord.TitleColor,
+                    SubTitleColor = dossAntwoord.SubTitleColor,
                     evenementen = new List<Evenement>(),
                     afbeeldingByte = imgByte
 
                 };
 
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        dossierAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
@@ -1046,6 +1212,47 @@ namespace JPP.UI.Web.MVC.Controllers
             return RedirectToAction("DossierModelOne", new { id = dossierAntwoord.ID });
 
         }
+        [HttpPost]
+        public ActionResult DossierModelTwo(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelTwo", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelThree(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelThree", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelFive(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelFive", new { id = dossierAntwoord.ID });
+
+        }
+        [HttpPost]
+        public ActionResult DossierModelSix(int id, FormCollection collection)
+        {
+            DossierAntwoord dossierAntwoord = (DossierAntwoord)antwManager.readAntwoord(id);
+            dossierAntwoord.statusOnline = true;
+
+            antwManager.updateDossierAntwoord(dossierAntwoord);
+            return RedirectToAction("DossierModelSix", new { id = dossierAntwoord.ID });
+
+        }
+
 
         public ActionResult DossierModelTwo(int id)
         {
@@ -1669,7 +1876,10 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord)
         {
 
-          
+
+            var list = vtManager.readAllVasteTags();
+
+            ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
 
               if (agendaAntwoord.titel != null)
               {
@@ -1694,7 +1904,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
         [HttpPost]
-        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection formCollection)
+        public ActionResult AdjAgendaAntwoord(AgendaAntwoord agendaAntwoord, FormCollection formCollection, int[] Tags)
         {
             if (!Request.IsAuthenticated)
             {
@@ -1712,15 +1922,25 @@ namespace JPP.UI.Web.MVC.Controllers
                     gebruikersNaam = User.Identity.GetUserName(),
                     datum = DateTime.Now,
                     stemmen = new List<Stem>(),
-                    aantalFlags = 0,
+                    flags = new List<Flag>(),
                     statusOnline = true,
                     inhoud = agendaAntwoord.inhoud,
                     subtitel = agendaAntwoord.subtitel,
                     titel = agendaAntwoord.titel,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    vasteTags=new List<VasteTag>()
                   
 
                 };
+
+                if (Tags != null)
+                {
+                    foreach (var tag in Tags)
+                    {
+                        VasteTag vasteTag = vtManager.readVasteTag(tag);
+                        agendaAntwoordX.vasteTags.Add(vasteTag);
+                    }
+                }
 
                 //Voeg toe en leg relatie tussen de agenda antwoord en de actieve agenda module
                 AgendaModule actieveAgendaModule = dossManager.readActieveAgendaModule();
@@ -1738,5 +1958,9 @@ namespace JPP.UI.Web.MVC.Controllers
 
             }    
         }
+
+       
     }
+
+
 }

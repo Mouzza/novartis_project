@@ -49,11 +49,7 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 ANDROIDDossierAntwoord dos = new ANDROIDDossierAntwoord()
                 {
-                    aantalFlags = dosAntwoord.aantalFlags,
-                    aantalStemmen = dosAntwoord.stemmen.Count,
                     datum=dosAntwoord.datum,
-                    //editable=dosAntwoord.editable,
-                    evenementID=10/*dosAntwoord.evenement.ID*/,
                     extraInfo=dosAntwoord.extraInfo,
                     extraVraag=dosAntwoord.extraVraag,
                     gebruikersNaam=dosAntwoord.gebruikersNaam,
@@ -63,11 +59,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     percentageVolledigheid=dosAntwoord.percentageVolledigheid,
                     statusOnline=dosAntwoord.statusOnline,
                     titel=dosAntwoord.titel,
-                    afbeeldingPath = dosAntwoord.afbeeldingPath,
+                    afbeeldingByte = dosAntwoord.afbeeldingByte,
                     textvak2=dosAntwoord.textvak2,
                     textvak3=dosAntwoord.textvak3,
-                    comments = new List<ANDROIDComment>(),
-                    //persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
                     //vasteTags=new List<ANDROIDVasteTag>(),
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel,
@@ -86,10 +80,18 @@ namespace JPP.UI.Web.MVC.Controllers
                     ANDROIDstem astem = new ANDROIDstem()
                     {
                         antwoordid=stem.antwoord.ID,
-                        gebruikersNaam=stem.gebruikersNaam,
-                        id=stem.ID
+                        gebruikersNaam=stem.gebruikersNaam
                     };
                     dos.stemmen.Add(astem);
+                }
+                foreach (var flag in dosAntwoord.flags)
+                {
+                    ANDROIDFlag aFlag = new ANDROIDFlag()
+                    {
+                        antwoordid = flag.antwoord.ID,
+                        gebruikersNaam = flag.gebruikersNaam
+                    };
+                    dos.flags.Add(aFlag);
                 }
                 //foreach (var vTag in dosAntwoord.vasteTags)
                 //{
@@ -111,19 +113,6 @@ namespace JPP.UI.Web.MVC.Controllers
                 //    };
                 //    dos.persoonlijkeTags.Add(persTag);
                 //}
-
-                foreach (var comment in dosAntwoord.comments)
-                {
-                    ANDROIDComment aComment = new ANDROIDComment()
-                    {
-                        ID = comment.ID,
-                        inhoud = comment.inhoud,
-                        datum = comment.datum,
-                        aantalStemmen = comment.aantalStemmen,
-                        gebruikersNaam = comment.gebruikersNaam
-                    };
-                    dos.comments.Add(aComment);
-                }
                 dosModule.dossierAntwoorden.Add(dos);
             }
             ANDROIDBeloning beloning = new ANDROIDBeloning()
@@ -170,8 +159,6 @@ namespace JPP.UI.Web.MVC.Controllers
             {
                 ANDROIDAgendaAntwoord ag = new ANDROIDAgendaAntwoord()
                 {
-                    aantalFlags = agAntwoord.aantalFlags,
-                    aantalStemmen = agAntwoord.stemmen.Count,
                     datum = agAntwoord.datum,
                     //editable = agAntwoord.editable,
                     extraInfo = agAntwoord.extraInfo,
@@ -196,10 +183,18 @@ namespace JPP.UI.Web.MVC.Controllers
                     ANDROIDstem astem = new ANDROIDstem()
                     {
                         antwoordid = stem.antwoord.ID,
-                        gebruikersNaam = stem.gebruikersNaam,
-                        id = stem.ID
+                        gebruikersNaam = stem.gebruikersNaam
                     };
                     ag.stemmen.Add(astem);
+                } 
+                foreach (var flag in agAntwoord.flags)
+                {
+                    ANDROIDFlag aFlag = new ANDROIDFlag()
+                    {
+                        antwoordid = flag.antwoord.ID,
+                        gebruikersNaam = flag.gebruikersNaam
+                    };
+                    ag.flags.Add(aFlag);
                 }
                 //foreach (var pTag in agAntwoord.persoonlijkeTags)
                 //{

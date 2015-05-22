@@ -13,6 +13,8 @@ using JPP.BL.Domain.Modules;
 using JPP.BL.Domain.Vragen;
 using JPP.BL.Domain.Gebruikers.Beheerder;
 using JPP.BL.Domain.Gebruikers.SuperUser;
+using System.Drawing;
+
 
 
 namespace JPP.DAL.EF
@@ -22,6 +24,16 @@ namespace JPP.DAL.EF
        protected override void Seed(EFDbContext context)
         {
 
+            byte[] imgByte;
+            Image image = Image.FromFile(Path.Combine(System.Web.HttpContext.Current.Server.MapPath("/uploads"), "default.jpg"));
+
+            using (MemoryStream ms = new MemoryStream())
+            {
+                MemoryStream ms2 = new MemoryStream();
+                image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                imgByte = ms2.ToArray();
+            }
 
             #region actieve modules
 
@@ -134,13 +146,6 @@ namespace JPP.DAL.EF
 
             };
 
-            PersoonlijkeTag pTag = new PersoonlijkeTag()
-            {
-
-                naam = "Fun!",
-                antwoorden = new List<Antwoord>(),
-                voorstellen = new List<Voorstel>()
-            };
 
             VasteTag tag = new VasteTag()
             {
@@ -148,7 +153,7 @@ namespace JPP.DAL.EF
                 naam = "Sport",
                 antwoorden = new List<Antwoord>(),
 
-                voorstellen = new List<Voorstel>()
+   
             };
 
             Organisatie organisatieLeuven = new Organisatie()
@@ -159,6 +164,7 @@ namespace JPP.DAL.EF
 
             };
 
+            
 
             for (int i = 0; i < 32; i++)
             {
@@ -177,15 +183,16 @@ namespace JPP.DAL.EF
                     percentageVolledigheid = 95,
                     statusOnline = true,
                     extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
-                    aantalFlags = 0,
                     comments = new List<Comment>(),
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
+                    flags = new List<Flag>(),
                     afbeeldingPath = "~/uploads/Jellyfish.jpg",
                     textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                     layoutOption = 1,
-                    evenementen=new List<Evenement>()
+                    evenementen=new List<Evenement>(),
+                    afbeeldingByte=imgByte,
+                    googleMapsAdress="Leuven"
                     
                 };
 
@@ -200,11 +207,10 @@ namespace JPP.DAL.EF
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     stemmen = new List<Stem>(),
-                    aantalFlags = 0,
                     vasteTags = new List<VasteTag>(),
-                    persoonlijkeTags = new List<PersoonlijkeTag>(),
                     statusOnline=true,
-                    evenementen = new List<Evenement>()
+                    evenementen = new List<Evenement>(),
+                    flags = new List<Flag>()
 
                 };
 
@@ -220,7 +226,7 @@ namespace JPP.DAL.EF
                 //DossierAntwoord
 
                 //dossierAntwoord.vasteTags.Add(tag);
-                //dossierAntwoord.persoonlijkeTags.Add(pTag);
+
 
             }
 
@@ -563,58 +569,17 @@ namespace JPP.DAL.EF
                         percentageVolledigheid = 95,
                         statusOnline = true,
                         extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
-                        aantalFlags = 0,
                         comments = new List<Comment>(),
                         vasteTags = new List<VasteTag>(),
-                        persoonlijkeTags = new List<PersoonlijkeTag>(),
                         afbeeldingPath = "~/uploads/Jellyfish.jpg",
                         textvak2 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                         textvak3 = "Aliquam condimentum magna ac ultricies posuere. Cras viverra velit lectus,vel pretium nulla posuere sit amet. Vestibulum venenatis volutpat dui. Aliquam dictum metus eget est sodales malesuada. Nunc pharetra iaculis suscipit. Mauris sed lectus nec nunc laoreet molestie et ac ex. Duis a aliquam sapien. Nullam fermentum diam arcu, nec lacinia metus pulvinar at. Nunc eget tempor ex. Nunc vehicula neque ut vulputate feugiat. Aenean euismod posuere nunc, a aliquet nunc laoreet nec. Phasellus faucibus mi et bibendum pretium.",
                         layoutOption = 1,
-                        evenementen = evenementenList
+                        evenementen = evenementenList,
+                        afbeeldingByte = imgByte,
+                        flags = new List<Flag>(),
+                        googleMapsAdress = "Leuven"
                     };
-
-                    Evenement evenementAA = new Evenement()
-                    {
-                        title = "Maggie De Block Ontvangt voorstel",
-                        startDatum = new DateTime(2015, 03, 01, 15, 5, 59),
-                        eindDatum = new DateTime(2015, 03, 02, 15, 5, 59),
-                        locatie = "Leuven",
-                        evenementText = "Vandaag heeft Maggie De Block onze voorstel aangenomen. 'Ik hoop zo snel mogelijk werk te kunnen maken van dit voorstel': zei Maggie De Block Vandaag"
-                    };
-
-                    Evenement evenementBB = new Evenement()
-                    {
-                        title = "Het voorstel komt in de kamer",
-                        startDatum = new DateTime(2015, 04, 01, 15, 5, 59),
-                        eindDatum = new DateTime(2015, 04, 05, 15, 5, 59),
-                        locatie = "Brussel",
-                        evenementText = "Het Voorstel is in de kamer verschenen, er wordt verwacht dat er zo snel mogelijk gestemt wordt"
-                    };
-
-                    Evenement evenementCC = new Evenement()
-                    {
-                        title = "Het voorstel is gestemd",
-                        startDatum = new DateTime(2015, 04, 10, 15, 5, 59),
-                        eindDatum = new DateTime(2015, 04, 11, 15, 5, 59),
-                        locatie = "Brussel",
-                        evenementText = "Het voorstel is gestemt"
-                    };
-
-                    Evenement evenementDD = new Evenement()
-                    {
-                        title = "ActiePlan van 2016",
-                        startDatum = new DateTime(2015, 05, 13, 15, 5, 59),
-                        eindDatum = new DateTime(2015, 05, 14, 15, 5, 59),
-                        locatie = "Brussel",
-                        evenementText = "Het voorstel maakt deel uit van het Actieplan van 2016, er wordt verwacht dat deze zo snel mogelijk wordt uitgevoerd"
-                    };
-
-                    List<Evenement> evenementenListA = new List<Evenement>();
-                    evenementenListA.Add(evenementAA);
-                    evenementenListA.Add(evenementBB);
-                    evenementenListA.Add(evenementCC);
-                    evenementenListA.Add(evenementDD);
 
                     AgendaAntwoord agendaAntwoord = new AgendaAntwoord()
                     {
@@ -627,11 +592,9 @@ namespace JPP.DAL.EF
                         extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                         datum = DateTime.Now,
                         stemmen = new List<Stem>(),
-                        aantalFlags = 0,
                         vasteTags = new List<VasteTag>(),
-                        persoonlijkeTags = new List<PersoonlijkeTag>(),
                         statusOnline=true,
-                        evenementen = evenementenListA
+                        flags = new List<Flag>()
                     };
 
                     
@@ -646,7 +609,43 @@ namespace JPP.DAL.EF
 
 
             #endregion
-            
+
+            VasteTag vt1 = new VasteTag()
+            {
+                naam="Sport",
+                beschrijving="Sporten is gezond!",
+                antwoorden= new List<Antwoord>()
+            };
+            VasteTag vt2 = new VasteTag()
+            {
+                naam = "Algemeen",
+                beschrijving = "Vanalles een beetje!",
+                antwoorden = new List<Antwoord>()
+            };
+            VasteTag vt3 = new VasteTag()
+            {
+                naam = "Gezondheid",
+                beschrijving = "Gezondheid is belangrijk!",
+                antwoorden = new List<Antwoord>()
+            };
+            VasteTag vt4 = new VasteTag()
+            {
+                naam = "Educatie",
+                beschrijving = "Kennis is power!",
+                antwoorden = new List<Antwoord>()
+            };
+            VasteTag vt5 = new VasteTag()
+            {
+                naam = "Jeugd",
+                beschrijving = "De jeugd van tegenwoordig!",
+                antwoorden = new List<Antwoord>()
+            };
+
+            context.tags.Add(vt1);
+            context.tags.Add(vt2);
+            context.tags.Add(vt3);
+            context.tags.Add(vt4);
+            context.tags.Add(vt5);
             context.SaveChanges();
 
         }

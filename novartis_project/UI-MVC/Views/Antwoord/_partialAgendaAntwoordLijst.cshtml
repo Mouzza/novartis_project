@@ -136,7 +136,7 @@
                                         }
                                         | <span id="extrainfoSpan">Datum: </span> @item.datum
                                         <br />
-                                        <a id="FlagButton" href="#"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
+                                        <a id="FlagButton" href="@Url.Action("FlagAntwoord", "Flag", new { id = item.ID, type="Agenda" })"><img src="~/Images/IconsForPages/RedFlag.png" /></a>
                                     </p>
                                     <div id="DossierVoteUpDetect" class="DossierVoteUpwrap">
                                         <div class="votes">+@Html.DisplayFor(modelItem => item.stemmen.Count)</div>

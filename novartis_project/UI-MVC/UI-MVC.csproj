@@ -203,12 +203,14 @@
     <Compile Include="Controllers\AndroidAntwoordController.cs" />
     <Compile Include="Controllers\AndroidModuleController.cs" />
     <Compile Include="Controllers\AntwoordController.cs" />
+    <Compile Include="Controllers\FlagController.cs" />
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StemController.cs" />
+    <Compile Include="Controllers\VasteTagController.cs" />
     <Compile Include="Extra\Startup.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -298,8 +300,10 @@
     <Content Include="Content\DossierModelOne.css" />
     <Content Include="Content\inlog.css" />
     <Content Include="Content\jqeury-ui.css" />
+    <Content Include="Content\jquery-ui-1.10.4.custom.css" />
     <Content Include="Content\KeuzePagina.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\select2.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -456,6 +460,8 @@
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\countdown.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.4.custom.js" />
     <Content Include="Scripts\locales\bootstrap-datepicker.nl-BE.min.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -479,16 +485,12 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2.js" />
     <Content Include="Scripts\TimeLine.js" />
     <Content Include="Scripts\websiteAnimation.js" />
     <Content Include="Scripts\websiteRouting.js" />
     <Content Include="uploads\379465.png" />
-    <Content Include="uploads\389631_343833325673042_120674037988973_959634_1081499447_n.jpg" />
-    <Content Include="uploads\ae0K8gv_460s.jpg" />
-    <Content Include="uploads\archlinux-sticker-powered-by-arch.png" />
-    <Content Include="uploads\Arch_Linux_Start_Icons_by_gabriela2400.png" />
     <Content Include="uploads\default.jpg" />
-    <Content Include="uploads\Jellyfish.jpg" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -637,6 +639,11 @@
     <Content Include="Views\Module\MijnModuleMenu.cshtml" />
     <Content Include="Views\Antwoord\_Edit.cshtml" />
     <Content Include="Views\Stem\StemError.cshtml" />
+    <Content Include="Views\Flag\FlagError.cshtml" />
+    <Content Include="Views\VasteTag\Create.cshtml" />
+    <Content Include="Views\VasteTag\Index.cshtml" />
+    <Content Include="Views\VasteTag\Wijzig.cshtml" />
+    <Content Include="Views\VasteTag\Verwijder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

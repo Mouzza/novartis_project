@@ -35,11 +35,12 @@ namespace JPP.DAL.EF
         //Antwoorden
       
         public DbSet<Antwoord> antwoord { get; set; }
+        public DbSet<Flag> flags { get; set; }
         public DbSet<Comment> comments { get; set; }
         public DbSet<Stem> stemmen { get; set; }
         public DbSet<Evenement> evenementen { get; set; }
         
-        public DbSet<Tag> tags { get; set; }
+        public DbSet<VasteTag> tags { get; set; }
         public DbSet<VasteVraagAntwoord> vasteVraagAntwoorden { get; set; }
 
         //Modules
@@ -52,7 +53,6 @@ namespace JPP.DAL.EF
 
         public DbSet<VasteVraag> vasteVragen { get; set; }
         public DbSet<CentraleVraag> centraleVragen { get; set; }
-        public DbSet<Voorstel> voorstellen { get; set; }
 
         //Gebruikers
         //beheerder

@@ -18,47 +18,40 @@ namespace JPP.DAL.EF
     {
        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
     
-        public Tag createTag(Tag tag)
+        public VasteTag CreateVasteTag(VasteTag vasteTag)
         {
-            dbcontext.tags.Add(tag);
+            dbcontext.tags.Add(vasteTag);
             dbcontext.SaveChanges();
-            return tag;
+            return vasteTag;
         }
 
-        public void deletePersoonlijkeTag(int ID)
+ 
+        public void DeleteVasteTag(int ID)
         {
-            Tag tag = dbcontext.tags.Find(ID);
-            dbcontext.tags.Remove(tag);
-            dbcontext.SaveChanges();
-        }
-
-        public void DeleteTag(int ID)
-        {
-            Tag tag = dbcontext.tags.Find(ID);
-            dbcontext.tags.Remove(tag);
+            VasteTag vasteTag = dbcontext.tags.Find(ID);
+            dbcontext.tags.Remove(vasteTag);
             dbcontext.SaveChanges();
         }
 
-        public void AlterTag(Tag tag)
+        public void AlterVasteTag(VasteTag vasteTag)
         {
-            dbcontext.Entry(tag).State = System.Data.Entity.EntityState.Modified;
+            VasteTag oldVasteTag = (VasteTag)dbcontext.tags.Find(vasteTag.ID);
+            dbcontext.Entry(oldVasteTag).CurrentValues.SetValues(vasteTag);
+      
             dbcontext.SaveChanges();
         }
 
-        public void setInactiefGebruiker(int ID)
+        public List<VasteTag> GetAllVasteTags()
         {
-            Gebruiker gebruiker = dbcontext.gebruiker.Find(ID);
-            gebruiker.active = false;
-            dbcontext.Entry(gebruiker).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
+            return dbcontext.tags.ToList();
+  
+        }
+        public VasteTag GetVasteTag(int id)
+        {
+            return dbcontext.tags.Find(id);
+
         }
 
-        public void setActiefGebruiker(int ID)
-        {
-            Gebruiker gebruiker = dbcontext.gebruiker.Find(ID);
-            gebruiker.active = true;
-            dbcontext.Entry(gebruiker).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
+      
     }
 }

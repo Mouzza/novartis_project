@@ -17,18 +17,7 @@ namespace JPP.DAL.Interface
 
 
 
-        //Kan een voorstel maken???
-        Beheerder createBeheerder(Beheerder beheerder);
-        //Voorstel maakVoorstel(Voorstel voorstel);
 
-
-        
-        void deleteGebruiker(int id);
-       
-        void wijzigGebruiker(Gebruiker gebruiker);
-
-
-//        Antwoord maakAntwoord(Antwoord antwoord);
 
         DossierAntwoord maakDossierAntwoord(DossierAntwoord dossierAntwoord);
 

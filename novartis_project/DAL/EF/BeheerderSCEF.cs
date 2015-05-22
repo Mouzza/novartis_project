@@ -18,46 +18,6 @@ namespace JPP.DAL.EF
     {
 
         EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
-        public Medebeheerder createMedeBeheerder(Medebeheerder medebeheerder)
-        {
-
-            dbcontext.medebeheerder.Add(medebeheerder);
-            dbcontext.SaveChanges();
-            return medebeheerder;
-        }
-
-        public void DeleteMedeBeheerder(int ID)
-        {
-            Medebeheerder medebeheerder = dbcontext.medebeheerder.Find(ID);
-            dbcontext.medebeheerder.Remove(medebeheerder);
-            dbcontext.SaveChanges();
-        }
-
-        public void WijzigMedeBeheerder(Medebeheerder medebeheerder)
-        {
-            dbcontext.Entry(medebeheerder).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }
-
-        public PersoonlijkeTag maakPersoonlijkeTag(PersoonlijkeTag persoonlijkeTag)
-        {
-            dbcontext.tags.Add(persoonlijkeTag);
-            dbcontext.SaveChanges();
-            return persoonlijkeTag;
-        }
-
-        public void deletePersoonlijkeTag(int id)
-        {
-
-            PersoonlijkeTag persoonlijketag = (PersoonlijkeTag) dbcontext.tags.Find(id);
-            dbcontext.tags.Remove(persoonlijketag);
-            dbcontext.SaveChanges();
-        }
-
-     /*   public void wijzigAgendaAntwoord(AgendaAntwoord agendeaAntwoord)
-        {
-            dbcontext.Entry(agendeaAntwoord).State = System.Data.Entity.EntityState.Modified;
-            dbcontext.SaveChanges();
-        }*/
+   
     }
 }

@@ -6,7 +6,7 @@
 
     .containerButton {
         margin: 5% 0 0;
-        margin-left: 5%;
+        margin-left: 10%;
     }
 
     .ButtonDossier {
@@ -166,7 +166,7 @@
         }
 
     .informationButton {
-        margin-left: 5%;
+        margin-left: 10%;
     }
 
     .InformationDossier {

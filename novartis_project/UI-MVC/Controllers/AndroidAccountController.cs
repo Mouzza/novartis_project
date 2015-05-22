@@ -95,38 +95,14 @@ namespace JPP.UI.Web.MVC.Controllers
         }
         #endregion
         private ApplicationDbContext apc = new ApplicationDbContext();
-        #region login
-        [HttpGet]
-        [ActionName("login1")]
-        public IHttpActionResult login(string userN, string pas)
-        {
-            List<User> users = apc.Users.ToList();
-            ANDROIDGebruiker returnUser = new ANDROIDGebruiker();
-            foreach(var user in users)
-            {
-                if (user.UserName == userN && user.PasswordHash == pas)
-                {
-                    returnUser.Birthday = user.Birthday;
-                    returnUser.Email = user.Id;
-                    returnUser.FirstName = user.FirstName ;
-                    returnUser.id = user.Id;
-                    returnUser.LastName = user.LastName;
-                    returnUser.Name = user.UserName;
-                    returnUser.Password = user.PasswordHash;
-                    returnUser.Zipcode = user.Zipcode;
-                    break;
-                }
-            }
-            return Ok(returnUser);
-        }
-        #endregion
+       
 
       
         [HttpPost]
         [ActionName("login")]
         public async Task<IHttpActionResult> Login(ANDROIDLoginView model)
         {
-            User us = null;
+            ANDROIDGebruiker us = null;
             // Require the user to have a confirmed email before they can log on.
             var user = await UserManager.FindByNameAsync(model.Name);
             if (user == null)
@@ -143,8 +119,20 @@ namespace JPP.UI.Web.MVC.Controllers
                     var store = new UserStore<User>(new ApplicationDbContext());
                     UserManager.Update(user);
                     var ctx = store.Context;
+
                     ctx.SaveChanges();
-                    return Ok(user);
+                    ANDROIDGebruiker gebruiker = new ANDROIDGebruiker()
+                    {
+                      Name=user.UserName,
+                      FirstName= user.FirstName,
+                      LastName=user.LastName,
+                      Birthday=user.Birthday,
+                      Zipcode = user.Zipcode,
+                      Email = user.Email
+     
+                    };
+
+                    return Ok(gebruiker);
                 case SignInStatus.Failure:
                     return Ok(us);
                 default:

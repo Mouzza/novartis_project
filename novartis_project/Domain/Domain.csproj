@@ -59,9 +59,8 @@
     <Compile Include="Antwoorden\Comment.cs" />
     <Compile Include="Antwoorden\DossierAntwoord.cs" />
     <Compile Include="Antwoorden\Evenement.cs" />
-    <Compile Include="Antwoorden\PersoonlijkeTag.cs" />
+    <Compile Include="Antwoorden\Flag.cs" />
     <Compile Include="Antwoorden\Stem.cs" />
-    <Compile Include="Antwoorden\Tag.cs" />
     <Compile Include="Antwoorden\VasteTag.cs" />
     <Compile Include="Antwoorden\VasteVraagAntwoord.cs" />
     <Compile Include="Vragen\ExpertVraag.cs" />
@@ -86,7 +85,6 @@
     <Compile Include="Gebruikers\Wachtwoord.cs" />
     <Compile Include="Vragen\CentraleVraag.cs" />
     <Compile Include="Vragen\VasteVraag.cs" />
-    <Compile Include="Vragen\Voorstel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -12,13 +12,10 @@ namespace JPP.DAL.Interface
     public interface ModeratorHC
     {
         
-        Tag createTag(Tag tag);
-        void deletePersoonlijkeTag(int ID);
-        void DeleteTag(int ID);
-        void AlterTag(Tag tag);
-
-        void setInactiefGebruiker(int ID);
-        void setActiefGebruiker(int ID);
-         
+        VasteTag CreateVasteTag(VasteTag vasteTag);
+        void DeleteVasteTag(int ID);
+        void AlterVasteTag(VasteTag vasteTag);
+        VasteTag GetVasteTag(int id);
+        List<VasteTag> GetAllVasteTags();
     }
 }
