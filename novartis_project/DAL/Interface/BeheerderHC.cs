@@ -9,7 +9,8 @@ namespace JPP.DAL.Interface
 {
     public interface BeheerderHC
     {
-        
+
+        /* Interfaceklassen voor de EF klassen */
      
 
 

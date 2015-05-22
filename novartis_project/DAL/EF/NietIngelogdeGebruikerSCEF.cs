@@ -13,6 +13,7 @@ namespace JPP.DAL.EF
 {
     public class NietIngelogdeGebruikerSCEF
     {
+        /* Indien dit onduidelijk is wordt dit uitgelegd in AdminSCEF en NietIngelogdeGebruikerSCEF*/
         public static EFDbContext dbcontext = new EFDbContext();
        
         public Organisatie getOrganisatie(int ID)

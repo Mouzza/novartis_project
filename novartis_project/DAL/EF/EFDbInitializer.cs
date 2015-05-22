@@ -18,6 +18,7 @@ namespace JPP.DAL.EF
 {
     public class EFDbInitializer : CreateDatabaseIfNotExists<EFDbContext>
     {
+        /*Deze code voegt dummy data in de website, waaronder posts, modules, afbeeldingen, ...*/
        protected override void Seed(EFDbContext context)
         {
 

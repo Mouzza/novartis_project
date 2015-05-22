@@ -11,7 +11,7 @@ namespace JPP.BL.Domain.Modules
 {
     public class Module
     {
-       
+       /* parent classe voor Agenda en DossierModule Zie antwoord voor meer uitleg */
 
         [Key]
         public int ID { get; set; }

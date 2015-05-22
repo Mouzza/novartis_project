@@ -94,6 +94,8 @@ namespace JPP.BL
             }
             return moduleTussen;
         }
+
+        /*Create een Module maar zorgt ervoor dat alle relationele objecten ook worden opgevuld en gecreëerd */
         
         public DossierModule createDossierModule(DossierModule dossierModule)
         {
@@ -164,6 +166,7 @@ namespace JPP.BL
 
             return admin.maakDossierModule(dossierModuleX);
         }
+        /*Create een Module maar zorgt ervoor dat alle relationele objecten ook worden opgevuld en gecreëerd */
 
         public AgendaModule createAgendaModule(AgendaModule agendaModule)
         {

@@ -14,6 +14,7 @@ namespace JPP.DAL.EF
    public class MedebeheerderSCEF : MedebeheerderHC
     {
        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
+       /* Indien dit onduidelijk is wordt dit uitgelegd in AdminSCEF */
         public void deleteAntwoord(int id)
         {
             Antwoord antwoord = dbcontext.antwoord.Find(id);

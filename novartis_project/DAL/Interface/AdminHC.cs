@@ -13,7 +13,7 @@ namespace JPP.DAL.Interface
 {
     public interface AdminHC
     {
-        
+        /* Interfaceklassen voor de EF klassen */
         VasteVraag createVastevraag(VasteVraag vastevraag);
         void deleteVastevraag(int id);
         void wijzigVastevraag(VasteVraag vastevraag);

@@ -12,6 +12,7 @@ namespace JPP.DAL.Interface
 {
     public interface IngelogdeGebruikerHC
     {
+        /* Interfaceklassen voor de EF klassen */
 
 
 

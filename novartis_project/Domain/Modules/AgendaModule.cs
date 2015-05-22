@@ -9,6 +9,7 @@ namespace JPP.BL.Domain.Modules
 {
     public class AgendaModule:Module
     {
+        /* erft over van Module maar voegt een individuele attribuut toe */
         public virtual ICollection<AgendaAntwoord> agendaAntwoorden { get; set; }
     }
 }

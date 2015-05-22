@@ -11,6 +11,7 @@ namespace JPP.DAL.Interface
 {
     public interface ModeratorHC
     {
+        /* Interfaceklassen voor de EF klassen */
         
         VasteTag CreateVasteTag(VasteTag vasteTag);
         void DeleteVasteTag(int ID);

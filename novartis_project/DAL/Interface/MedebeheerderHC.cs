@@ -10,6 +10,7 @@ namespace JPP.DAL.Interface
 {
     public interface MedebeheerderHC
     {
+        /* Interfaceklassen voor de EF klassen */
         
         //void deleteVoorstel(Voorstel voorstel);
         //void wijzigVoorstel(Voorstel voorstel);

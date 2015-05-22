@@ -10,6 +10,7 @@ namespace JPP.BL.Domain.Antwoorden
 {
     public class Antwoord
     {
+        /*Alle attributen voor Agenda en DossierAntwoord beide hebben de mogelijkheid om individueel extra attributen toe te voegen */
         [Key]
         public int ID { get; set; }
         [Required]

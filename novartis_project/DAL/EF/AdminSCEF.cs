@@ -13,6 +13,7 @@ namespace JPP.DAL.EF
     {
         EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
   
+        /*Add in de databank bij vaste vragen een meegegeven object van type vaste vraag*/
         public VasteVraag createVastevraag(VasteVraag vastevraag)
         {
             dbcontext.vasteVragen.Add(vastevraag);
@@ -20,6 +21,7 @@ namespace JPP.DAL.EF
             return vastevraag;
         }
 
+        /*Delete in de databank bij vaste vragen op basis van ID*/
         public void deleteVastevraag(int id)
         {
             VasteVraag vastevraag = dbcontext.vasteVragen.Find(id);
@@ -27,11 +29,14 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
+        /*Update in dbcontext de entry van de meegegeven vaste vraag en save changes*/
         public void wijzigVastevraag(VasteVraag vastevraag)
         {
             dbcontext.Entry(vastevraag).State = System.Data.Entity.EntityState.Modified;
             dbcontext.SaveChanges();
         }
+
+        /*########################## De rest van de create, delete en update doen hetzelfde maar voor andere objecten*/
 
         public CentraleVraag createCentraleVraag(CentraleVraag centralevraag)
         {
@@ -114,6 +119,7 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
+        /*Vindt antwoord op basis van id en verander de volledigheidspercentage door de meegegeven parameter*/
      
 
         public void stelInVolledigheidsPercentage(int volledigheidsPercentage, int id)
@@ -125,6 +131,7 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
         }
 
+        /*Het is belangrijk ook de relaties te onderhouden, bij maakdossier moet ook de bijbehorende beloning van type beloning, thema en centralevraag worden ingevuld*/
 
         public DossierModule maakDossierModule(DossierModule dossierModule)
         {
@@ -142,7 +149,7 @@ namespace JPP.DAL.EF
             dbcontext.SaveChanges();
             return dossierModule;
         }
-
+         /*Het is belangrijk ook de relaties te onderhouden, bij de rest gebeurt hetzelfde maar dan voor de bijbehorende relaties*/
         public AgendaModule maakAgendaModule(AgendaModule agendaModule)
         {
 

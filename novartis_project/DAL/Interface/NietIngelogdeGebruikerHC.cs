@@ -40,5 +40,7 @@ namespace JPP.DAL.Interface
         DossierAntwoord getDossierAntwoord(int ID);
         AgendaAntwoord getAgendaAntwoord(int ID);
          * */
+        /* Interfaceklassen voor de EF klassen */
+
     }
 }

@@ -14,7 +14,7 @@ namespace JPP.DAL.EF
    public class ModeratorSCEF : IngelogdeGebruikerSCEF, ModeratorHC
     {
        EFDbContext dbcontext = NietIngelogdeGebruikerSCEF.dbcontext;
-    
+       /* Indien dit onduidelijk is wordt dit uitgelegd in AdminSCEF */
         public VasteTag CreateVasteTag(VasteTag vasteTag)
         {
             dbcontext.tags.Add(vasteTag);
