@@ -627,7 +627,7 @@ namespace JPP.UI.Web.MVC.Controllers
 
             Stem stemAntwoord = new Stem()
             {
-                antwoord=antwoordManager.readAgendaAntwoord(aStem.antwoordid),
+                antwoord = antwoordManager.readAntwoord(aStem.antwoordid),
                 gebruikersNaam=aStem.gebruikersNaam
             };
             stemManager.stemOpAntwoord(stemAntwoord);
