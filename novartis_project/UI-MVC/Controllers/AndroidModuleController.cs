@@ -84,6 +84,15 @@ namespace JPP.UI.Web.MVC.Controllers
                     };
                     dos.stemmen.Add(astem);
                 }
+                foreach (var flag in dosAntwoord.flags)
+                {
+                    ANDROIDFlag aFlag = new ANDROIDFlag()
+                    {
+                        antwoordid = flag.antwoord.ID,
+                        gebruikersNaam = flag.gebruikersNaam
+                    };
+                    dos.flags.Add(aFlag);
+                }
                 //foreach (var vTag in dosAntwoord.vasteTags)
                 //{
                 //    ANDROIDVasteTag vasteTag = new ANDROIDVasteTag()
@@ -177,6 +186,15 @@ namespace JPP.UI.Web.MVC.Controllers
                         gebruikersNaam = stem.gebruikersNaam
                     };
                     ag.stemmen.Add(astem);
+                } 
+                foreach (var flag in agAntwoord.flags)
+                {
+                    ANDROIDFlag aFlag = new ANDROIDFlag()
+                    {
+                        antwoordid = flag.antwoord.ID,
+                        gebruikersNaam = flag.gebruikersNaam
+                    };
+                    ag.flags.Add(aFlag);
                 }
                 //foreach (var pTag in agAntwoord.persoonlijkeTags)
                 //{
