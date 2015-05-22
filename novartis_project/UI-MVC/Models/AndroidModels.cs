@@ -178,6 +178,6 @@ namespace JPP.UI.Web.MVC.Models
     }
     public class ANDROIDImage
     {
-        public string imageBytes { get; set; }
+        public byte[] imageBytes { get; set; }
     }
 }

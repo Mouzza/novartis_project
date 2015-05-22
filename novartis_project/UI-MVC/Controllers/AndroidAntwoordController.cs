@@ -35,7 +35,7 @@ namespace JPP.UI.Web.MVC.Controllers
             DossierAntwoord dosAntwoordtwo = antwoordManager.readDossierAntwoord(id);
             ANDROIDImage afbeelding = new ANDROIDImage()
             {
-                imageBytes=dosAntwoordtwo.afbeeldingByte.ToString()
+                imageBytes=dosAntwoordtwo.afbeeldingByte
             };
             return Ok(afbeelding);
 
