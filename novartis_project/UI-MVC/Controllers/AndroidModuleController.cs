@@ -70,6 +70,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     googleMapsAdress=dosAntwoord.googleMapsAdress,
                     subtitel=dosAntwoord.subtitel,
                     stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>(),
                     aantalFlags=dosAntwoord.flags.Count(),
                     aantalStemmen=dosAntwoord.stemmen.Count()
                 };
@@ -176,7 +177,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     titel = agAntwoord.titel,
                     //vasteTags = new List<ANDROIDVasteTag>()
                     aantalFlags = agAntwoord.flags.Count(),
-                    aantalStemmen = agAntwoord.stemmen.Count()
+                    aantalStemmen = agAntwoord.stemmen.Count(),
+                    stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>()
                 };
                 if (agAntwoord.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {

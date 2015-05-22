@@ -62,7 +62,9 @@ namespace JPP.UI.Web.MVC.Controllers
                     subTitel = agenda.subtitel,
                     statusOnline=agenda.statusOnline,
                     aantalFlags = agenda.flags.Count(),
-                    aantalStemmen = agenda.stemmen.Count()
+                    aantalStemmen = agenda.stemmen.Count(),
+                    stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>()
                 };
                 if (agenda.module.ID == moduleManager.readActieveAgendaModule().ID)
                 {
@@ -136,7 +138,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     moduleID = dossier.module.ID,
                     // vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    afbeeldingByte = dossier.afbeeldingByte,
+                    //afbeeldingByte = dossier.afbeeldingByte,
                     percentageVolledigheid = dossier.percentageVolledigheid,
                     statusOnline = dossier.statusOnline,
                     extraVraag = dossier.extraVraag,
@@ -146,6 +148,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3,
                     stemmen=new List<ANDROIDstem>(),
+                    flags=new List<ANDROIDFlag>(),
                     aantalFlags = dossier.flags.Count(),
                     aantalStemmen = dossier.stemmen.Count()
                 };
@@ -215,6 +218,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         titel = antwoord.titel,
                         subTitel = antwoord.subtitel,
                         stemmen=new List<ANDROIDstem>(),
+                        flags=new List<ANDROIDFlag>(),
                         aantalFlags = antwoord.flags.Count(),
                         aantalStemmen = antwoord.stemmen.Count()
                     };
@@ -270,7 +274,7 @@ namespace JPP.UI.Web.MVC.Controllers
                         moduleID = dos.module.ID,
                         // vasteTags = new List<ANDROIDVasteTag>(),
                         // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                        afbeeldingByte = dos.afbeeldingByte,
+                        //afbeeldingByte = dos.afbeeldingByte,
                         percentageVolledigheid = dos.percentageVolledigheid,
                         statusOnline = dos.statusOnline,
                         extraVraag = dos.extraVraag,
@@ -279,7 +283,8 @@ namespace JPP.UI.Web.MVC.Controllers
                         subtitel = dos.subtitel,
                         textvak2 = dos.textvak2,
                         textvak3 = dos.textvak3,
-                        stemmen=new List<ANDROIDstem>(),
+                        stemmen = new List<ANDROIDstem>(),
+                        flags = new List<ANDROIDFlag>(),
                         aantalFlags = dos.flags.Count(),
                         aantalStemmen = dos.stemmen.Count()
                     };
@@ -358,6 +363,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     titel = agenda.titel,
                     subTitel = agenda.subtitel,
                     stemmen = new List<ANDROIDstem>(),
+                    flags = new List<ANDROIDFlag>(),
                     aantalFlags = agenda.flags.Count(),
                     aantalStemmen = agenda.stemmen.Count()
                 };
@@ -432,7 +438,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     moduleID = dossier.module.ID,
                     // vasteTags = new List<ANDROIDVasteTag>(),
                     // persoonlijkeTags = new List<ANDROIDPersoonlijkeTag>(),
-                    afbeeldingByte = dossier.afbeeldingByte,
+                    //afbeeldingByte = dossier.afbeeldingByte,
                     percentageVolledigheid = dossier.percentageVolledigheid,
                     statusOnline = dossier.statusOnline,
                     extraVraag = dossier.extraVraag,
@@ -441,7 +447,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     subtitel = dossier.subtitel,
                     textvak2 = dossier.textvak2,
                     textvak3 = dossier.textvak3,
-                    stemmen=new List<ANDROIDstem>(),
+                    stemmen = new List<ANDROIDstem>(),
+                    flags = new List<ANDROIDFlag>(),
                     aantalFlags = dossier.flags.Count(),
                     aantalStemmen = dossier.stemmen.Count()
                 };
@@ -526,7 +533,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 textvak2 = dossierAntwoord.textvak2,
                 textvak3 = dossierAntwoord.textvak3,
                 googleMapsAdress = dossierAntwoord.googleMapsAdress,
-                afbeeldingByte = dossierAntwoord.afbeeldingByte,
+                //afbeeldingByte = dossierAntwoord.afbeeldingByte,
                 backgroundColor="White",//
                 foregroundColor="Black",//
                 extraInfo = dossierAntwoord.extraInfo,
