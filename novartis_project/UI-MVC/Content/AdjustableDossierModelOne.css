@@ -255,6 +255,11 @@
         height: 100px;
         margin-left: 60%;
     }
+     #AgendaModelTag{
+        margin-top: 20px;
+        margin-left: 40%;
+    }
+
 
     #AdjCleanUp {
         margin-top: 25px;
@@ -920,6 +925,8 @@
         height: 100px;
     }
 
+
+
     #TweeTextvakWrapperThree {
         height: 300px;
         width: 100%;
@@ -980,3 +987,20 @@
 }
 
 
+#AgendaModelTag{
+    margin-top: 20px;
+    margin-left: 60%;
+    margin-bottom:20px;
+}
+
+@media(max-width:950px){
+    #AgendaModelTag{
+        margin-left: 30%;
+    }
+}
+
+@media(max-width:600px){
+    #AgendaModelTag{
+        margin-left: 10%;
+    }
+}

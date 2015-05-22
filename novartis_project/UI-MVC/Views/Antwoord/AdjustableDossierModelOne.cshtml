@@ -53,13 +53,15 @@
 
                     <div id="titleColor">Kleur van de titel: (vb.: white, black of #666666) @Html.TextBoxFor(model => model.TitleColor)</div>
 
-                    <div class="editor-label">
-                   @Html.LabelFor(model => model.vasteTags, "Tags")
-                     </div>
-                    <div class="editor-field">
-                        @Html.ListBox("Tags")
-
+                    <div>
+                        @Html.LabelFor(model => model.vasteTags, "Tags")
                     </div>
+           
+                    <div>@Html.ListBox("Tags")</div>
+              
+                     
+
+             
            
 
                     <div id="foregroundColor">Kleur van tekst : (vb.: white, black of #666666) @Html.TextBoxFor(model => model.foregroundColor)</div>
@@ -69,7 +71,7 @@
 
                     
                 </div>
-                </div>
+              </div>
             <div id="OptionsbarTitleHead">3. Creëer je eigen pagina!</div>
 
                 <div>
