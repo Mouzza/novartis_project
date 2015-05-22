@@ -349,6 +349,44 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
+        public double berekenPercentage(DossierAntwoord dossierAntwoord)
+        {
+             double percentage = 0;
+
+
+                 if (dossierAntwoord.vasteTags.Count>0 || dossierAntwoord.vasteTags!=null)
+                 {
+                     percentage += 10;
+                 }
+            
+                if (dossierAntwoord.textvak3 != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.textvak2 != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.backgroundColor != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.subtitel != null)
+                {
+                    percentage += 20;
+                }
+                if (dossierAntwoord.titel != null)
+                {
+                    percentage += 20;
+                }
+                if (dossierAntwoord.inhoud != null)
+                {
+                    percentage += 40;
+                }
+              
+            return percentage;
+        }
+
         [HttpPost]
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
@@ -439,7 +477,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.SubTitleColor = "#666666";
                 }
 
-              
+               
             
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
                 {
