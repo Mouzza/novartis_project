@@ -124,7 +124,7 @@ namespace JPP.DAL.EF
                 naam = "Rivierenhof categorie",
                 beginDatum = new DateTime(2014, 03, 10, 15, 5, 59),
                 eindDatum = new DateTime(2016, 10, 10, 15, 5, 59),
-                verplichteVolledigheidsPercentage = 90.5,
+                verplichteVolledigheidsPercentage = 60,
                 dossierAntwoorden = new List<DossierAntwoord>(),
                 status = true
 
@@ -177,7 +177,7 @@ namespace JPP.DAL.EF
                     extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                     datum = DateTime.Now,
                     stemmen= new List<Stem>(),
-                    percentageVolledigheid = 95,
+                    percentageVolledigheid = 60,
                     statusOnline = true,
                     extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
                     comments = new List<Comment>(),
@@ -343,7 +343,7 @@ namespace JPP.DAL.EF
                     naam = "Rivierenhof speeltuin",
                     beginDatum = new DateTime(jaar, 03, 10, 15, 5, 59),
                     eindDatum = new DateTime(jaar2, 10, 10, 15, 5, 59),
-                    verplichteVolledigheidsPercentage = 90.5,
+                    verplichteVolledigheidsPercentage = 60,
 
                     dossierAntwoorden = new List<DossierAntwoord>(),
                     status = false
@@ -474,7 +474,7 @@ namespace JPP.DAL.EF
                     naam = "Gesloten dossiermodule" + x,
                     beginDatum = new DateTime(oldJaar, 03, 10, 15, 5, 59),
                     eindDatum = new DateTime(oldJaar2, 10, 10, 15, 5, 59),
-                    verplichteVolledigheidsPercentage = 90.5,
+                    verplichteVolledigheidsPercentage = 60,
                     
                     dossierAntwoorden = new List<DossierAntwoord>(),
                     status = false
@@ -563,7 +563,7 @@ namespace JPP.DAL.EF
                         extraInfo = "Zeer positieve reacties ivm deze idee, besproken met de buurtbewoners van rivierenhof =)",
                         datum = DateTime.Now,
                         stemmen = new List<Stem>(),
-                        percentageVolledigheid = 95,
+                        percentageVolledigheid = 60,
                         statusOnline = true,
                         extraVraag = "Zou het mogelijk zijn om handtekeningen te verzamelen om mijn idee te kunnen steunen?",
                         comments = new List<Comment>(),

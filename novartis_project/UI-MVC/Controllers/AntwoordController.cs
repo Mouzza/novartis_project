@@ -315,10 +315,17 @@ namespace JPP.UI.Web.MVC.Controllers
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossierAntwoord)
         {
             var list = vtManager.readAllVasteTags();
-
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
             ViewBag.Tags = new MultiSelectList(list, "ID", "naam");
+            
+            if(dossierAntwoord.percentageVolledigheid < actieveDossierModule.verplichteVolledigheidsPercentage){
+                
+                ViewBag.PercentError = "Het verplichte volledigheidspercentage voor dit dossier is: " + actieveDossierModule.verplichteVolledigheidsPercentage;
 
-            if (dossierAntwoord.titel != null)
+            }
+       
+
+            if (dossierAntwoord.percentageVolledigheid != 0)
             {
                 return View(dossierAntwoord);
             }
@@ -349,12 +356,16 @@ namespace JPP.UI.Web.MVC.Controllers
 
 
 
-        public double berekenPercentage(DossierAntwoord dossierAntwoord)
+        public int berekenPercentage(DossierAntwoord dossierAntwoord, HttpPostedFileBase file, int[] Tags )
         {
-             double percentage = 0;
+             int percentage = 0;
 
 
-                 if (dossierAntwoord.vasteTags.Count>0 || dossierAntwoord.vasteTags!=null)
+                 if (file != null)
+                 {
+                     percentage += 10;
+                 }
+                 if (Tags!=null)
                  {
                      percentage += 10;
                  }
@@ -371,9 +382,21 @@ namespace JPP.UI.Web.MVC.Controllers
                 {
                     percentage += 5;
                 }
+                if (dossierAntwoord.foregroundColor != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.SubTitleColor != null)
+                {
+                    percentage += 5;
+                }
+                if (dossierAntwoord.TitleColor != null)
+                {
+                    percentage += 5;
+                }
                 if (dossierAntwoord.subtitel != null)
                 {
-                    percentage += 20;
+                    percentage += 10;
                 }
                 if (dossierAntwoord.titel != null)
                 {
@@ -381,7 +404,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 }
                 if (dossierAntwoord.inhoud != null)
                 {
-                    percentage += 40;
+                    percentage += 20;
                 }
               
             return percentage;
@@ -390,13 +413,16 @@ namespace JPP.UI.Web.MVC.Controllers
         [HttpPost]
         public ActionResult AdjustableDossierModelOne(DossierAntwoord dossAntwoord, HttpPostedFileBase file, int[] Tags)
         {
-            
+
+            int percent = berekenPercentage(dossAntwoord, file, Tags);
+            DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+
             if (!Request.IsAuthenticated)
             {
                 return RedirectToAction("Login", "Account");
             }
 
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || percent < actieveDossierModule.verplichteVolledigheidsPercentage)
             {
                 return RedirectToAction("AdjustableDossierModelOne",
                     new
@@ -407,8 +433,10 @@ namespace JPP.UI.Web.MVC.Controllers
                         googleMapsAdress = dossAntwoord.googleMapsAdress,
                         afbeeldingPath = dossAntwoord.afbeeldingPath,
                         foregroundColor = dossAntwoord.foregroundColor,
-                        backgroundColor = dossAntwoord.backgroundColor
-                    
+                        backgroundColor = dossAntwoord.backgroundColor,
+                        VasteTag = dossAntwoord.vasteTags,
+                        percentageVolledigheid = percent
+                        
                     
                     
                     });
@@ -448,6 +476,8 @@ namespace JPP.UI.Web.MVC.Controllers
                 }
 
 
+ 
+
                 if (dossAntwoord.googleMapsAdress == null)
                 {
 
@@ -477,6 +507,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     dossAntwoord.SubTitleColor = "#666666";
                 }
 
+
                
             
                 DossierAntwoord dossierAntwoordX = new DossierAntwoord()
@@ -487,7 +518,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     datum = DateTime.Now,
                     flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
-                    percentageVolledigheid = 50,
+                   percentageVolledigheid =percent,
                     statusOnline = false,
                     layoutOption = 1,
                     subtitel = dossAntwoord.subtitel,
@@ -507,6 +538,8 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 };
 
+ 
+
                 if (Tags != null)
                 {
                     foreach (var tag in Tags)
@@ -519,7 +552,7 @@ namespace JPP.UI.Web.MVC.Controllers
                 
                 ////Voeg toe en leg relatie tussen de dossier antwoord en de actieve dossier module
 
-                DossierModule actieveDossierModule = dossManager.readActieveDossierModule();
+              
                 dossierAntwoordX.module = actieveDossierModule;
                 DossierAntwoord createddos = antwManager.createDossierAntwoord(dossierAntwoordX);
                 actieveDossierModule.dossierAntwoorden.Add(createddos);
@@ -635,7 +668,8 @@ namespace JPP.UI.Web.MVC.Controllers
                     }
 
                 }
-                
+
+                int percent = berekenPercentage(dossAntwoord, file, Tags);
             
                 if (dossAntwoord.googleMapsAdress == null)
                 {
@@ -672,7 +706,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     datum = DateTime.Now,
                     flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
-                    percentageVolledigheid = 50,
+                    percentageVolledigheid = percent,
                     statusOnline = false,
                     layoutOption = 2,
                     subtitel = dossAntwoord.subtitel,
@@ -809,6 +843,8 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 }
 
+                int percent = berekenPercentage(dossAntwoord, file, Tags);
+
                 if (dossAntwoord.googleMapsAdress == null)
                 {
 
@@ -842,7 +878,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     datum = DateTime.Now,
                     flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
-                    percentageVolledigheid = 50,
+                    percentageVolledigheid = percent,
                     statusOnline = false,
                     layoutOption = 3,
                     subtitel = dossAntwoord.subtitel,
@@ -946,22 +982,40 @@ namespace JPP.UI.Web.MVC.Controllers
             else
             {
                 var fileName = "";
+                byte[] imgByte;
                 if (file != null && file.ContentLength > 0)
                 {
                     fileName = Path.GetFileName(file.FileName);
                     var path = Path.GetFullPath(Server.MapPath("~/uploads/") + fileName);
-                    
+
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+
+                        file.InputStream.CopyTo(ms);
+                        imgByte = ms.GetBuffer();
+                    }
+
 
                 }
-
-                byte[] imgByte;
-                using (MemoryStream ms = new MemoryStream())
+                else
                 {
 
-                    file.InputStream.CopyTo(ms);
-                    imgByte = ms.GetBuffer();
+                    Image image = Image.FromFile(Path.Combine(Server.MapPath("/uploads"), "default.jpg"));
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        MemoryStream ms2 = new MemoryStream();
+                        image.Save(ms2, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+                        imgByte = ms2.ToArray();
+                    }
+
                 }
 
+
+
+                int percent = berekenPercentage(dossAntwoord, file, Tags);
 
                 if (dossAntwoord.googleMapsAdress == null)
                 {
@@ -997,7 +1051,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     datum = DateTime.Now,
                     flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
-                    percentageVolledigheid = 50,
+                    percentageVolledigheid = percent,
                     statusOnline = false,
                     layoutOption = 5,
                     subtitel = dossAntwoord.subtitel,
@@ -1126,6 +1180,8 @@ namespace JPP.UI.Web.MVC.Controllers
 
                 }
 
+                int percent = berekenPercentage(dossAntwoord, file, Tags);
+
                 if (dossAntwoord.googleMapsAdress == null)
                 {
 
@@ -1160,7 +1216,7 @@ namespace JPP.UI.Web.MVC.Controllers
                     datum = DateTime.Now,
                     flags = new List<Flag>(),
                     stemmen = new List<Stem>(),
-                    percentageVolledigheid = 50,
+                    percentageVolledigheid = percent,
                     statusOnline = false,
                     layoutOption = 6,
                     subtitel = dossAntwoord.subtitel,
